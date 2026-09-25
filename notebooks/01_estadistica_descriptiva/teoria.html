@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Fundamentos y Estadística Descriptiva – Estadística Básica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../notebooks/01_estadistica_descriptiva/practica.html" rel="next">
+<link href="../../index.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Estadística Básica</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/TU-USUARIO/estadistica-basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 1 — Estadística Descriptiva</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 2 — Probabilidad Básica</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/02_probabilidad/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">2.1</span> Introducción</a></li>
+  <li><a href="#tipos-de-variables" id="toc-tipos-de-variables" class="nav-link" data-scroll-target="#tipos-de-variables"><span class="header-section-number">2.2</span> Tipos de Variables</a></li>
+  <li><a href="#medidas-de-tendencia-central" id="toc-medidas-de-tendencia-central" class="nav-link" data-scroll-target="#medidas-de-tendencia-central"><span class="header-section-number">2.3</span> Medidas de Tendencia Central</a>
+  <ul class="collapse">
+  <li><a href="#media-aritmética" id="toc-media-aritmética" class="nav-link" data-scroll-target="#media-aritmética"><span class="header-section-number">2.3.1</span> Media aritmética</a></li>
+  <li><a href="#mediana" id="toc-mediana" class="nav-link" data-scroll-target="#mediana"><span class="header-section-number">2.3.2</span> Mediana</a></li>
+  <li><a href="#moda" id="toc-moda" class="nav-link" data-scroll-target="#moda"><span class="header-section-number">2.3.3</span> Moda</a></li>
+  </ul></li>
+  <li><a href="#medidas-de-dispersión" id="toc-medidas-de-dispersión" class="nav-link" data-scroll-target="#medidas-de-dispersión"><span class="header-section-number">2.4</span> Medidas de Dispersión</a>
+  <ul class="collapse">
+  <li><a href="#rango" id="toc-rango" class="nav-link" data-scroll-target="#rango"><span class="header-section-number">2.4.1</span> Rango</a></li>
+  <li><a href="#varianza" id="toc-varianza" class="nav-link" data-scroll-target="#varianza"><span class="header-section-number">2.4.2</span> Varianza</a></li>
+  <li><a href="#desviación-estándar" id="toc-desviación-estándar" class="nav-link" data-scroll-target="#desviación-estándar"><span class="header-section-number">2.4.3</span> Desviación estándar</a></li>
+  <li><a href="#coeficiente-de-variación" id="toc-coeficiente-de-variación" class="nav-link" data-scroll-target="#coeficiente-de-variación"><span class="header-section-number">2.4.4</span> Coeficiente de variación</a></li>
+  </ul></li>
+  <li><a href="#medidas-de-forma" id="toc-medidas-de-forma" class="nav-link" data-scroll-target="#medidas-de-forma"><span class="header-section-number">2.5</span> Medidas de Forma</a>
+  <ul class="collapse">
+  <li><a href="#asimetría-skewness" id="toc-asimetría-skewness" class="nav-link" data-scroll-target="#asimetría-skewness"><span class="header-section-number">2.5.1</span> Asimetría (Skewness)</a></li>
+  <li><a href="#curtosis" id="toc-curtosis" class="nav-link" data-scroll-target="#curtosis"><span class="header-section-number">2.5.2</span> Curtosis</a></li>
+  </ul></li>
+  <li><a href="#resumen-de-cinco-números-y-diagrama-de-caja" id="toc-resumen-de-cinco-números-y-diagrama-de-caja" class="nav-link" data-scroll-target="#resumen-de-cinco-números-y-diagrama-de-caja"><span class="header-section-number">2.6</span> Resumen de Cinco Números y Diagrama de Caja</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">2.7</span> Cierre</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/01_estadistica_descriptiva/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></h1>
+<p class="subtitle lead">Estadística Básica — Repositorio 1</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">2.1</span> Introducción</h2>
+<p>La estadística descriptiva es el conjunto de técnicas que nos permiten <strong>resumir, organizar y presentar</strong> un conjunto de datos de forma que sus características principales sean comprensibles de un vistazo. Es el primer paso de cualquier proyecto de ciencia de datos: antes de entrenar un modelo, necesitamos entender la forma, el centro y la dispersión de nuestras variables.</p>
+<p>A lo largo de este módulo usaremos un ejemplo transversal: un conjunto de datos simulado de <strong>salarios de empleados por departamento</strong> en una empresa ficticia. Este mismo dataset se retomará en el notebook práctico (<code>practica.ipynb</code>).</p>
+</section>
+<section id="tipos-de-variables" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="tipos-de-variables"><span class="header-section-number">2.2</span> Tipos de Variables</h2>
+<p>Antes de calcular cualquier medida, debemos identificar qué tipo de variable estamos observando, ya que esto determina qué estadísticos tienen sentido.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    A[Variable] --&gt; B[Cualitativa / Categórica]
+    A --&gt; C[Cuantitativa / Numérica]
+    B --&gt; B1[Nominal: sin orden&lt;br/&gt;ej. departamento]
+    B --&gt; B2[Ordinal: con orden&lt;br/&gt;ej. nivel de seniority]
+    C --&gt; C1[Discreta: valores contables&lt;br/&gt;ej. n° de proyectos]
+    C --&gt; C2[Continua: cualquier valor real&lt;br/&gt;ej. salario]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Ejemplo en nuestro dataset</th>
+<th>Estadísticos válidos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nominal</td>
+<td>Departamento (Ventas, IT, RRHH)</td>
+<td>Moda, frecuencias</td>
+</tr>
+<tr class="even">
+<td>Ordinal</td>
+<td>Nivel (Junior, Semi-Senior, Senior)</td>
+<td>Moda, mediana</td>
+</tr>
+<tr class="odd">
+<td>Discreta</td>
+<td>Años de antigüedad</td>
+<td>Media, mediana, moda</td>
+</tr>
+<tr class="even">
+<td>Continua</td>
+<td>Salario mensual</td>
+<td>Media, mediana, varianza, desviación estándar</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="medidas-de-tendencia-central" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="medidas-de-tendencia-central"><span class="header-section-number">2.3</span> Medidas de Tendencia Central</h2>
+<p>Estas medidas buscan identificar un valor “representativo” del conjunto de datos.</p>
+<section id="media-aritmética" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="media-aritmética"><span class="header-section-number">2.3.1</span> Media aritmética</h3>
+<p>Para un conjunto de <span class="math inline">\(n\)</span> observaciones <span class="math inline">\(x_1, x_2, \dots, x_n\)</span>:</p>
+<p><span class="math display">\[
+\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+\]</span></p>
+<p>Es sensible a valores extremos (<em>outliers</em>): un solo salario atípicamente alto puede distorsionar la media de todo el departamento.</p>
+</section>
+<section id="mediana" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="mediana"><span class="header-section-number">2.3.2</span> Mediana</h3>
+<p>Es el valor central cuando los datos están ordenados. Si <span class="math inline">\(n\)</span> es impar, es el valor en la posición <span class="math inline">\(\frac{n+1}{2}\)</span>; si es par, es el promedio de los dos valores centrales.</p>
+<p><span class="math display">\[
+\text{Mediana} =
+\begin{cases}
+x_{\left(\frac{n+1}{2}\right)} &amp; \text{si } n \text{ es impar} \\[6pt]
+\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} &amp; \text{si } n \text{ es par}
+\end{cases}
+\]</span></p>
+<p>A diferencia de la media, <strong>es robusta ante outliers</strong>, lo que la hace preferible en distribuciones asimétricas (como suelen ser los salarios).</p>
+</section>
+<section id="moda" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="moda"><span class="header-section-number">2.3.3</span> Moda</h3>
+<p>El valor (o categoría) que ocurre con mayor frecuencia. Es la única medida de tendencia central aplicable a variables nominales.</p>
+</section>
+</section>
+<section id="medidas-de-dispersión" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="medidas-de-dispersión"><span class="header-section-number">2.4</span> Medidas de Dispersión</h2>
+<p>La tendencia central no es suficiente: dos departamentos pueden tener el mismo salario promedio pero una dispersión de sueldos completamente distinta.</p>
+<section id="rango" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="rango"><span class="header-section-number">2.4.1</span> Rango</h3>
+<p><span class="math display">\[
+R = x_{\max} - x_{\min}
+\]</span></p>
+<p>Muy sensible a outliers y poco informativo por sí solo.</p>
+</section>
+<section id="varianza" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="varianza"><span class="header-section-number">2.4.2</span> Varianza</h3>
+<p>Varianza <strong>poblacional</strong>:</p>
+<p><span class="math display">\[
+\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
+\]</span></p>
+<p>Varianza <strong>muestral</strong> (con corrección de Bessel, dividiendo por <span class="math inline">\(n-1\)</span> para obtener un estimador insesgado):</p>
+<p><span class="math display">\[
+s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]</span></p>
+</section>
+<section id="desviación-estándar" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="desviación-estándar"><span class="header-section-number">2.4.3</span> Desviación estándar</h3>
+<p><span class="math display">\[
+s = \sqrt{s^2}
+\]</span></p>
+<p>Se expresa en las mismas unidades que la variable original (a diferencia de la varianza), lo que facilita su interpretación.</p>
+</section>
+<section id="coeficiente-de-variación" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="coeficiente-de-variación"><span class="header-section-number">2.4.4</span> Coeficiente de variación</h3>
+<p>Permite comparar la dispersión relativa entre variables con distintas unidades o escalas:</p>
+<p><span class="math display">\[
+CV = \frac{s}{\bar{x}} \times 100\%
+\]</span></p>
+<p>Por ejemplo, para comparar la variabilidad salarial entre un departamento junior (salarios bajos) y uno directivo (salarios altos), el CV es más informativo que la desviación estándar absoluta.</p>
+</section>
+</section>
+<section id="medidas-de-forma" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="medidas-de-forma"><span class="header-section-number">2.5</span> Medidas de Forma</h2>
+<section id="asimetría-skewness" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="asimetría-skewness"><span class="header-section-number">2.5.1</span> Asimetría (Skewness)</h3>
+<p>Mide el grado de simetría de la distribución respecto a su media:</p>
+<p><span class="math display">\[
+g_1 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^3}{s^3}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(g_1 \approx 0\)</span>: distribución simétrica.</li>
+<li><span class="math inline">\(g_1 &gt; 0\)</span>: asimetría positiva (cola larga hacia la derecha) — típico en salarios, donde pocos sueldos muy altos “estiran” la distribución.</li>
+<li><span class="math inline">\(g_1 &lt; 0\)</span>: asimetría negativa (cola larga hacia la izquierda).</li>
+</ul>
+</section>
+<section id="curtosis" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="curtosis"><span class="header-section-number">2.5.2</span> Curtosis</h3>
+<p>Mide qué tan “apuntada” o “achatada” es la distribución respecto a la normal, en función del comportamiento de sus colas:</p>
+<p><span class="math display">\[
+g_2 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^4}{s^4} - 3
+\]</span></p>
+<p>(Se resta 3 para que la distribución normal tenga curtosis de referencia igual a 0 — <em>curtosis de exceso</em>).</p>
+<ul>
+<li><span class="math inline">\(g_2 &gt; 0\)</span> (<em>leptocúrtica</em>): colas más pesadas que la normal, más valores extremos.</li>
+<li><span class="math inline">\(g_2 &lt; 0\)</span> (<em>platicúrtica</em>): colas más ligeras, distribución más “plana”.</li>
+</ul>
+</section>
+</section>
+<section id="resumen-de-cinco-números-y-diagrama-de-caja" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="resumen-de-cinco-números-y-diagrama-de-caja"><span class="header-section-number">2.6</span> Resumen de Cinco Números y Diagrama de Caja</h2>
+<p>El resumen de Tukey resume una variable continua en cinco valores:</p>
+<p><span class="math display">\[
+\{ x_{\min},\ Q_1,\ \text{Mediana},\ Q_3,\ x_{\max} \}
+\]</span></p>
+<p>donde <span class="math inline">\(Q_1\)</span> y <span class="math inline">\(Q_3\)</span> son el primer y tercer cuartil. El <strong>rango intercuartílico</strong> (<span class="math inline">\(IQR = Q_3 - Q_1\)</span>) se usa para detectar outliers: cualquier valor fuera de <span class="math inline">\([Q_1 - 1.5 \cdot IQR,\ Q_3 + 1.5 \cdot IQR]\)</span> se considera atípico. Este resumen es la base del <strong>boxplot</strong>, que veremos en el notebook práctico.</p>
+</section>
+<section id="cierre" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="cierre"><span class="header-section-number">2.7</span> Cierre</h2>
+<p>Con estos conceptos ya puedes describir cuantitativamente cualquier variable numérica. En <code>practica.ipynb</code> aplicaremos cada fórmula sobre el dataset de salarios, comparando el cálculo manual con las funciones de <code>pandas</code> y <code>scipy</code>, y usando las utilidades de <code>src/stats_toolkit/descriptive.py</code>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../index.html" class="pagination-link" aria-label="Inicio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="pagination-link" aria-label="Práctica: Estadística Descriptiva">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/01_estadistica_descriptiva/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
