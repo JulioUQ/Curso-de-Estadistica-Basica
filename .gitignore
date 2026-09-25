@@ -1,0 +1,16 @@
+# Entorno virtual de Python
+venv/
+.env
+
+# Archivos de compilación de Quarto
+_book/
+.quarto/
+
+# Jupyter y checkpoints
+.ipynb_checkpoints*/
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+/.quarto/
+**/*.quarto_ipynb
