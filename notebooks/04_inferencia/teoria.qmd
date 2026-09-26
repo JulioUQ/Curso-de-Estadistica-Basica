@@ -1,0 +1,167 @@
+---
+title: "Inferencia Estadística"
+---
+
+```{python}
+#| echo: false
+import sys, os
+sys.path.append(os.path.abspath("../../src"))
+```
+
+## 4.1 Introducción
+
+En el Módulo 3 vimos que, gracias al Teorema Central del Límite, la media muestral $\bar{X}$ se comporta como una Normal aunque la población original no lo sea. Ese resultado, que hasta ahora era una curiosidad teórica, es exactamente lo que necesitamos para dar el paso central de este módulo: **la inferencia estadística**, es decir, usar una muestra para decir algo con fundamento sobre una población que no podemos observar por completo.
+
+```{mermaid}
+%%| label: fig-proceso-inferencia
+%%| fig-cap: "Del parámetro poblacional desconocido a la conclusión inferencial"
+flowchart LR
+    A["Población<br/>(parámetro μ desconocido)"] --> B["Muestra aleatoria<br/>de tamaño n"]
+    B --> C["Estadístico muestral<br/>(x̄, p̂, s)"]
+    C --> D["Intervalo de Confianza<br/>¿en qué rango está μ?"]
+    C --> E["Contraste de Hipótesis<br/>¿es μ = valor propuesto?"]
+```
+
+Trabajaremos dos herramientas complementarias:
+
+- **Estimación por intervalo de confianza**: en vez de dar un único número como estimación de un parámetro, damos un rango que probablemente lo contiene.
+- **Contraste de hipótesis**: planteamos una afirmación sobre el parámetro y usamos los datos para decidir si la evidencia la respalda o la contradice.
+
+## 4.2 Estimación Puntual y Error Estándar
+
+Un **estimador puntual** es un único valor calculado a partir de la muestra que usamos como "mejor apuesta" del parámetro poblacional: la media muestral $\bar{X}$ estima $\mu$, la proporción muestral $\hat{p}$ estima $p$.
+
+Pero un solo número no dice nada sobre su fiabilidad. Para eso usamos el **error estándar**, que mide cuánto varía el estimador de muestra a muestra:
+
+$$
+SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
+$$
+
+Es la misma cantidad que apareció como la varianza de $\bar{X}$ en el TCL del Módulo 3 ($\text{Var}(\bar{X}) = \sigma^2/n$), solo que en su forma de desviación típica. Cuanto mayor es $n$, menor es el error estándar: muestras más grandes dan estimaciones más precisas.
+
+## 4.3 Intervalos de Confianza
+
+Un intervalo de confianza al $(1-\alpha)\cdot 100\%$ es un rango $[\bar{X} - m, \bar{X} + m]$ construido de forma que, si repitiéramos el muestreo muchas veces, el intervalo contendría el verdadero parámetro en el $(1-\alpha)\cdot 100\%$ de las repeticiones.
+
+### Intervalo para la media, con $\sigma$ conocida
+
+Cuando conocemos la desviación típica poblacional $\sigma$ (poco frecuente en la práctica, pero es el caso base), usamos el valor crítico de la Normal estándar:
+
+$$
+\bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
+$$
+
+```{python}
+from stats_toolkit import inference as inf
+
+# Tiempo medio de respuesta de una API: muestra de n=40, sigma poblacional conocida = 15ms
+lower, upper = inf.confidence_interval_mean_z(sample_mean=122.5, sigma=15, n=40, confidence=0.95)
+print(f"IC 95% para μ: ({lower:.2f}, {upper:.2f}) ms")
+```
+
+### Intervalo para la media, con $\sigma$ desconocida (caso habitual)
+
+Cuando no conocemos $\sigma$ y la estimamos con la desviación típica muestral $s$, el intervalo se ensancha ligeramente porque hay una fuente extra de incertidumbre. Usamos la **distribución t de Student** con $n-1$ grados de libertad en vez de la Normal:
+
+$$
+\bar{X} \pm t_{\alpha/2,\, n-1} \cdot \frac{s}{\sqrt{n}}
+$$
+
+La t de Student tiene colas más pesadas que la Normal — refleja que, con muestras pequeñas, estimar $\sigma$ a partir de los propios datos añade incertidumbre. A medida que $n$ crece, la t converge a la Normal.
+
+```{python}
+# Salario mensual de una muestra de 25 empleados (sigma poblacional desconocida)
+lower, upper = inf.confidence_interval_mean_t(sample_mean=2450, sample_std=310, n=25, confidence=0.95)
+print(f"IC 95% para μ: ({lower:.2f}, {upper:.2f}) €")
+```
+
+### Intervalo para una proporción
+
+Para una proporción muestral $\hat{p}$ (por ejemplo, una tasa de conversión):
+
+$$
+\hat{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+$$
+
+```{python}
+# Retomamos el ejemplo del Módulo 3: 15 conversiones de 50 clientes observados
+lower, upper = inf.confidence_interval_proportion(p_hat=15/50, n=50, confidence=0.95)
+print(f"IC 95% para la tasa de conversión: ({lower:.3f}, {upper:.3f})")
+```
+
+## 4.4 Contraste de Hipótesis
+
+Un contraste de hipótesis formaliza una pregunta de sí/no sobre un parámetro:
+
+- **Hipótesis nula $H_0$**: la afirmación por defecto, normalmente "no hay efecto" o "no hay diferencia" (ej. $\mu = \mu_0$).
+- **Hipótesis alternativa $H_1$**: lo que queremos comprobar si los datos respaldan (ej. $\mu \neq \mu_0$).
+
+El procedimiento calcula un **estadístico de prueba** a partir de la muestra y lo compara con lo que esperaríamos si $H_0$ fuera cierta. El resultado se resume en el **p-valor**: la probabilidad de observar un estadístico tan extremo (o más) que el obtenido, asumiendo que $H_0$ es cierta. Un p-valor pequeño (por debajo del nivel de significancia $\alpha$, típicamente 0.05) es evidencia en contra de $H_0$.
+
+### Dos tipos de error
+
+| | $H_0$ es cierta | $H_0$ es falsa |
+|---|---|---|
+| **Rechazamos $H_0$** | Error Tipo I (falso positivo), probabilidad $\alpha$ | Decisión correcta |
+| **No rechazamos $H_0$** | Decisión correcta | Error Tipo II (falso negativo), probabilidad $\beta$ |
+
+$\alpha$ lo fijamos nosotros de antemano (nivel de significancia); $\beta$ depende del tamaño del efecto real, del tamaño muestral y de la variabilidad — por eso muestras más grandes también ayudan a detectar efectos reales con más fiabilidad (mayor **potencia** del test, $1-\beta$).
+
+### Test z para la media ($\sigma$ conocida)
+
+$$
+z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}
+$$
+
+```{python}
+# H0: el tiempo medio de respuesta es 120ms. Observamos x̄=122.5 en n=40, sigma=15
+z_stat, p_value = inf.z_test_mean(sample_mean=122.5, mu0=120, sigma=15, n=40)
+print(f"z = {z_stat:.3f}, p-valor = {p_value:.4f}")
+```
+
+Con un p-valor por encima de 0.05, no hay evidencia suficiente para rechazar $H_0$: el tiempo de respuesta observado es compatible con una media real de 120ms.
+
+### Test t para la media ($\sigma$ desconocida)
+
+```{python}
+salarios_muestra = [2340, 2510, 2280, 2600, 2455, 2390, 2470, 2530, 2410, 2380]
+
+# H0: el salario medio del departamento es 2400€
+t_stat, p_value = inf.t_test_mean(sample=salarios_muestra, mu0=2400)
+print(f"t = {t_stat:.3f}, p-valor = {p_value:.4f}")
+```
+
+### Test para dos proporciones (A/B testing)
+
+Un caso extremadamente común en la práctica: comparar la tasa de conversión de dos variantes de un mismo experimento.
+
+$$
+z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}, \qquad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}
+$$
+
+```{python}
+# Variante A: 15 conversiones de 50. Variante B: 27 conversiones de 60.
+z_stat, p_value = inf.two_proportion_z_test(x1=15, n1=50, x2=27, n2=60)
+print(f"z = {z_stat:.3f}, p-valor = {p_value:.4f}")
+```
+
+Un p-valor por debajo de 0.05 aquí indicaría que la diferencia observada entre variantes es poco probable que se deba solo al azar, y respaldaría adoptar la variante con mejor tasa de conversión.
+
+## 4.5 Qué significa realmente un intervalo de confianza
+
+Una confusión muy frecuente: un intervalo de confianza al 95% **no** significa "hay un 95% de probabilidad de que $\mu$ esté en este intervalo concreto". $\mu$ no es aleatorio, es fijo (aunque desconocido); lo aleatorio es el intervalo, que cambia de una muestra a otra. La interpretación correcta es sobre el **procedimiento**: si repitiéramos el muestreo muchas veces y construyéramos un intervalo cada vez, aproximadamente el 95% de esos intervalos contendrían el verdadero $\mu$.
+
+Podemos comprobarlo por simulación, construyendo miles de intervalos a partir de muestras distintas de una población con $\mu$ conocido, y contando en cuántos cae realmente $\mu$:
+
+```{python}
+coverage = inf.simulate_ci_coverage(true_mu=100, sigma=15, n=30, confidence=0.95, n_simulations=5000, seed=42)
+print(f"Proporción de intervalos que contienen la verdadera μ: {coverage:.3f}")
+```
+
+El resultado debería rondar 0.95, confirmando la interpretación correcta del nivel de confianza.
+
+## 4.6 Cierre
+
+Con este módulo cerramos el ciclo que empezamos en el Módulo 2: de la probabilidad de sucesos individuales, pasando por las distribuciones que describen variables aleatorias completas (Módulo 3), hasta usar esas distribuciones para estimar parámetros poblacionales y contrastar afirmaciones concretas a partir de una muestra. Estas son las herramientas que sustentan cualquier experimento de A/B testing, estudio de mercado o validación de un modelo con datos reales.
+
+Continúa con el cuaderno práctico (`practica.ipynb`).
