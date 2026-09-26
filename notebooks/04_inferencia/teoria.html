@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Distribuciones de Probabilidad – Estadística Básica</title>
+<title>8&nbsp; Inferencia Estadística – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../notebooks/03_distribuciones/practica.html" rel="next">
-<link href="../../notebooks/02_probabilidad/practica.html" rel="prev">
+<link href="../../notebooks/04_inferencia/practica.html" rel="next">
+<link href="../../notebooks/03_distribuciones/practica.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -247,7 +247,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
@@ -270,7 +270,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
   </div>
 </li>
@@ -292,31 +292,32 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">6.1</span> 3.1 Introducción</a></li>
-  <li><a href="#variables-aleatorias-discretas-vs.-continuas" id="toc-variables-aleatorias-discretas-vs.-continuas" class="nav-link" data-scroll-target="#variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">6.2</span> 3.2 Variables Aleatorias: Discretas vs.&nbsp;Continuas</a></li>
-  <li><a href="#distribuciones-discretas" id="toc-distribuciones-discretas" class="nav-link" data-scroll-target="#distribuciones-discretas"><span class="header-section-number">6.3</span> 3.3 Distribuciones Discretas</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">8.1</span> 4.1 Introducción</a></li>
+  <li><a href="#estimación-puntual-y-error-estándar" id="toc-estimación-puntual-y-error-estándar" class="nav-link" data-scroll-target="#estimación-puntual-y-error-estándar"><span class="header-section-number">8.2</span> 4.2 Estimación Puntual y Error Estándar</a></li>
+  <li><a href="#intervalos-de-confianza" id="toc-intervalos-de-confianza" class="nav-link" data-scroll-target="#intervalos-de-confianza"><span class="header-section-number">8.3</span> 4.3 Intervalos de Confianza</a>
   <ul class="collapse">
-  <li><a href="#bernoulli" id="toc-bernoulli" class="nav-link" data-scroll-target="#bernoulli"><span class="header-section-number">6.3.1</span> Bernoulli</a></li>
-  <li><a href="#binomial" id="toc-binomial" class="nav-link" data-scroll-target="#binomial"><span class="header-section-number">6.3.2</span> Binomial</a></li>
-  <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson"><span class="header-section-number">6.3.3</span> Poisson</a></li>
+  <li><a href="#intervalo-para-la-media-con-sigma-conocida" id="toc-intervalo-para-la-media-con-sigma-conocida" class="nav-link" data-scroll-target="#intervalo-para-la-media-con-sigma-conocida"><span class="header-section-number">8.3.1</span> Intervalo para la media, con <span class="math inline">\(\sigma\)</span> conocida</a></li>
+  <li><a href="#intervalo-para-la-media-con-sigma-desconocida-caso-habitual" id="toc-intervalo-para-la-media-con-sigma-desconocida-caso-habitual" class="nav-link" data-scroll-target="#intervalo-para-la-media-con-sigma-desconocida-caso-habitual"><span class="header-section-number">8.3.2</span> Intervalo para la media, con <span class="math inline">\(\sigma\)</span> desconocida (caso habitual)</a></li>
+  <li><a href="#intervalo-para-una-proporción" id="toc-intervalo-para-una-proporción" class="nav-link" data-scroll-target="#intervalo-para-una-proporción"><span class="header-section-number">8.3.3</span> Intervalo para una proporción</a></li>
   </ul></li>
-  <li><a href="#distribuciones-continuas" id="toc-distribuciones-continuas" class="nav-link" data-scroll-target="#distribuciones-continuas"><span class="header-section-number">6.4</span> 3.4 Distribuciones Continuas</a>
+  <li><a href="#contraste-de-hipótesis" id="toc-contraste-de-hipótesis" class="nav-link" data-scroll-target="#contraste-de-hipótesis"><span class="header-section-number">8.4</span> 4.4 Contraste de Hipótesis</a>
   <ul class="collapse">
-  <li><a href="#uniforme" id="toc-uniforme" class="nav-link" data-scroll-target="#uniforme"><span class="header-section-number">6.4.1</span> Uniforme</a></li>
-  <li><a href="#normal-gaussiana" id="toc-normal-gaussiana" class="nav-link" data-scroll-target="#normal-gaussiana"><span class="header-section-number">6.4.2</span> Normal (Gaussiana)</a></li>
-  <li><a href="#exponencial" id="toc-exponencial" class="nav-link" data-scroll-target="#exponencial"><span class="header-section-number">6.4.3</span> Exponencial</a></li>
+  <li><a href="#dos-tipos-de-error" id="toc-dos-tipos-de-error" class="nav-link" data-scroll-target="#dos-tipos-de-error"><span class="header-section-number">8.4.1</span> Dos tipos de error</a></li>
+  <li><a href="#test-z-para-la-media-sigma-conocida" id="toc-test-z-para-la-media-sigma-conocida" class="nav-link" data-scroll-target="#test-z-para-la-media-sigma-conocida"><span class="header-section-number">8.4.2</span> Test z para la media (<span class="math inline">\(\sigma\)</span> conocida)</a></li>
+  <li><a href="#test-t-para-la-media-sigma-desconocida" id="toc-test-t-para-la-media-sigma-desconocida" class="nav-link" data-scroll-target="#test-t-para-la-media-sigma-desconocida"><span class="header-section-number">8.4.3</span> Test t para la media (<span class="math inline">\(\sigma\)</span> desconocida)</a></li>
+  <li><a href="#test-para-dos-proporciones-ab-testing" id="toc-test-para-dos-proporciones-ab-testing" class="nav-link" data-scroll-target="#test-para-dos-proporciones-ab-testing"><span class="header-section-number">8.4.4</span> Test para dos proporciones (A/B testing)</a></li>
   </ul></li>
-  <li><a href="#el-teorema-central-del-límite" id="toc-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#el-teorema-central-del-límite"><span class="header-section-number">6.5</span> 3.5 El Teorema Central del Límite</a></li>
-  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">6.6</span> 3.6 Cierre</a></li>
+  <li><a href="#qué-significa-realmente-un-intervalo-de-confianza" id="toc-qué-significa-realmente-un-intervalo-de-confianza" class="nav-link" data-scroll-target="#qué-significa-realmente-un-intervalo-de-confianza"><span class="header-section-number">8.5</span> 4.5 Qué significa realmente un intervalo de confianza</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">8.6</span> 4.6 Cierre</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/03_distribuciones/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/04_inferencia/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></h1>
 </div>
 
 
@@ -333,202 +334,217 @@ window.Quarto = {
 </header>
 
 
-<section id="introducción" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">6.1</span> 3.1 Introducción</h2>
-<p>En el Módulo 2 definimos la probabilidad de sucesos individuales y vimos cómo actualizar nuestras creencias con el teorema de Bayes. Ahora damos un paso más: en vez de asignar probabilidades a sucesos sueltos, queremos describir <strong>el comportamiento completo de una variable aleatoria</strong> — todos sus valores posibles y la probabilidad asociada a cada uno.</p>
-<p>Esto es lo que hace una <strong>distribución de probabilidad</strong>: un modelo matemático que resume de forma compacta cómo se reparte la probabilidad a lo largo de todos los resultados posibles de una variable aleatoria <span class="math inline">\(X\)</span>.</p>
-<p>Como en los módulos anteriores, cerraremos con el puente hacia lo que viene después: el <strong>Teorema Central del Límite</strong>, la pieza que conecta las distribuciones de este módulo con la inferencia estadística (intervalos de confianza y contraste de hipótesis) del próximo módulo.</p>
-</section>
-<section id="variables-aleatorias-discretas-vs.-continuas" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">6.2</span> 3.2 Variables Aleatorias: Discretas vs.&nbsp;Continuas</h2>
-<p>Recuperamos la distinción del Módulo 1 entre variables discretas y continuas, pero ahora aplicada a variables <em>aleatorias</em> — variables cuyo valor depende del resultado de un experimento aleatorio.</p>
+<section id="introducción" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">8.1</span> 4.1 Introducción</h2>
+<p>En el Módulo 3 vimos que, gracias al Teorema Central del Límite, la media muestral <span class="math inline">\(\bar{X}\)</span> se comporta como una Normal aunque la población original no lo sea. Ese resultado, que hasta ahora era una curiosidad teórica, es exactamente lo que necesitamos para dar el paso central de este módulo: <strong>la inferencia estadística</strong>, es decir, usar una muestra para decir algo con fundamento sobre una población que no podemos observar por completo.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-tipos-variable-aleatoria" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-proceso-inferencia" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tipos-variable-aleatoria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-proceso-inferencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
-<pre class="mermaid mermaid-js" data-label="fig-tipos-variable-aleatoria">flowchart TD
-    A[Variable Aleatoria X] --&gt; B[Discreta]
-    A --&gt; C[Continua]
-    B --&gt; B1[Bernoulli]
-    B --&gt; B2[Binomial]
-    B --&gt; B3[Poisson]
-    C --&gt; C1[Uniforme]
-    C --&gt; C2[Normal]
-    C --&gt; C3[Exponencial]
+<pre class="mermaid mermaid-js" data-label="fig-proceso-inferencia">flowchart LR
+    A["Población&lt;br/&gt;(parámetro μ desconocido)"] --&gt; B["Muestra aleatoria&lt;br/&gt;de tamaño n"]
+    B --&gt; C["Estadístico muestral&lt;br/&gt;(x̄, p̂, s)"]
+    C --&gt; D["Intervalo de Confianza&lt;br/&gt;¿en qué rango está μ?"]
+    C --&gt; E["Contraste de Hipótesis&lt;br/&gt;¿es μ = valor propuesto?"]
 </pre>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tipos-variable-aleatoria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6.1: Clasificación de variables aleatorias y sus distribuciones típicas
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-proceso-inferencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8.1: Del parámetro poblacional desconocido a la conclusión inferencial
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La diferencia clave está en cómo se distribuye la probabilidad:</p>
+<p>Trabajaremos dos herramientas complementarias:</p>
 <ul>
-<li><strong>Discreta</strong>: la probabilidad se concentra en puntos aislados. Se describe con una <strong>función de masa de probabilidad (pmf)</strong>, <span class="math inline">\(P(X = x)\)</span>.</li>
-<li><strong>Continua</strong>: la probabilidad se reparte a lo largo de un intervalo continuo. Se describe con una <strong>función de densidad de probabilidad (pdf)</strong>, <span class="math inline">\(f(x)\)</span>, donde <span class="math inline">\(P(X = x) = 0\)</span> para cualquier valor puntual, y solo tienen sentido probabilidades sobre intervalos: <span class="math inline">\(P(a \le X \le b) = \int_a^b f(x)\,dx\)</span>.</li>
+<li><strong>Estimación por intervalo de confianza</strong>: en vez de dar un único número como estimación de un parámetro, damos un rango que probablemente lo contiene.</li>
+<li><strong>Contraste de hipótesis</strong>: planteamos una afirmación sobre el parámetro y usamos los datos para decidir si la evidencia la respalda o la contradice.</li>
 </ul>
-<p>En ambos casos, dos cantidades resumen la distribución:</p>
-<p><span class="math display">\[
-E[X] = \mu \qquad \text{(esperanza o valor esperado)}
-\]</span></p>
-<p><span class="math display">\[
-\text{Var}(X) = \sigma^2 = E[(X-\mu)^2] \qquad \text{(varianza)}
-\]</span></p>
 </section>
-<section id="distribuciones-discretas" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="distribuciones-discretas"><span class="header-section-number">6.3</span> 3.3 Distribuciones Discretas</h2>
-<section id="bernoulli" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="bernoulli"><span class="header-section-number">6.3.1</span> Bernoulli</h3>
-<p>Modela un único experimento con dos resultados posibles: éxito (1) o fracaso (0), con probabilidad de éxito <span class="math inline">\(p\)</span>.</p>
+<section id="estimación-puntual-y-error-estándar" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="estimación-puntual-y-error-estándar"><span class="header-section-number">8.2</span> 4.2 Estimación Puntual y Error Estándar</h2>
+<p>Un <strong>estimador puntual</strong> es un único valor calculado a partir de la muestra que usamos como “mejor apuesta” del parámetro poblacional: la media muestral <span class="math inline">\(\bar{X}\)</span> estima <span class="math inline">\(\mu\)</span>, la proporción muestral <span class="math inline">\(\hat{p}\)</span> estima <span class="math inline">\(p\)</span>.</p>
+<p>Pero un solo número no dice nada sobre su fiabilidad. Para eso usamos el <strong>error estándar</strong>, que mide cuánto varía el estimador de muestra a muestra:</p>
 <p><span class="math display">\[
-P(X = x) = p^x (1-p)^{1-x}, \quad x \in \{0, 1\}
+SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 \]</span></p>
-<p><span class="math display">\[
-E[X] = p \qquad \text{Var}(X) = p(1-p)
-\]</span></p>
-<p><strong>Ejemplo</strong>: si <span class="math inline">\(p = 0.3\)</span> es la probabilidad de que un cliente convierta tras ver un anuncio, <span class="math inline">\(X\)</span> es la variable que vale 1 si convierte y 0 si no.</p>
+<p>Es la misma cantidad que apareció como la varianza de <span class="math inline">\(\bar{X}\)</span> en el TCL del Módulo 3 (<span class="math inline">\(\text{Var}(\bar{X}) = \sigma^2/n\)</span>), solo que en su forma de desviación típica. Cuanto mayor es <span class="math inline">\(n\)</span>, menor es el error estándar: muestras más grandes dan estimaciones más precisas.</p>
 </section>
-<section id="binomial" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="binomial"><span class="header-section-number">6.3.2</span> Binomial</h3>
-<p>Cuenta el número de éxitos en <span class="math inline">\(n\)</span> ensayos de Bernoulli independientes con la misma <span class="math inline">\(p\)</span>.</p>
+<section id="intervalos-de-confianza" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="intervalos-de-confianza"><span class="header-section-number">8.3</span> 4.3 Intervalos de Confianza</h2>
+<p>Un intervalo de confianza al <span class="math inline">\((1-\alpha)\cdot 100\%\)</span> es un rango <span class="math inline">\([\bar{X} - m, \bar{X} + m]\)</span> construido de forma que, si repitiéramos el muestreo muchas veces, el intervalo contendría el verdadero parámetro en el <span class="math inline">\((1-\alpha)\cdot 100\%\)</span> de las repeticiones.</p>
+<section id="intervalo-para-la-media-con-sigma-conocida" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="intervalo-para-la-media-con-sigma-conocida"><span class="header-section-number">8.3.1</span> Intervalo para la media, con <span class="math inline">\(\sigma\)</span> conocida</h3>
+<p>Cuando conocemos la desviación típica poblacional <span class="math inline">\(\sigma\)</span> (poco frecuente en la práctica, pero es el caso base), usamos el valor crítico de la Normal estándar:</p>
 <p><span class="math display">\[
-P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n
+\bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
 \]</span></p>
-<p><span class="math display">\[
-E[X] = np \qquad \text{Var}(X) = np(1-p)
-\]</span></p>
-<p><strong>Ejemplo</strong>: de 50 clientes que ven el anuncio, ¿cuántos convertirán? <span class="math inline">\(X \sim \text{Binomial}(n=50, p=0.3)\)</span>.</p>
-<div id="0874d1f2" class="cell" data-execution_count="2">
+<div id="e043a77f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> distributions <span class="im">as</span> dist</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> inference <span class="im">as</span> inf</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidad de que exactamente 15 de 50 clientes conviertan</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>p_15 <span class="op">=</span> dist.binomial_pmf(k<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">50</span>, p<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(X = 15) = </span><span class="sc">{</span>p_15<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Tiempo medio de respuesta de una API: muestra de n=40, sigma poblacional conocida = 15ms</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> inf.confidence_interval_mean_z(sample_mean<span class="op">=</span><span class="fl">122.5</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% para μ: (</span><span class="sc">{</span>lower<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.2f}</span><span class="ss">) ms"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>P(X = 15) = 0.1223</code></pre>
+<pre><code>IC 95% para μ: (117.85, 127.15) ms</code></pre>
 </div>
 </div>
 </section>
-<section id="poisson" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="poisson"><span class="header-section-number">6.3.3</span> Poisson</h3>
-<p>Modela el número de eventos que ocurren en un intervalo fijo de tiempo o espacio, cuando esos eventos ocurren de forma independiente a una tasa media constante <span class="math inline">\(\lambda\)</span>.</p>
+<section id="intervalo-para-la-media-con-sigma-desconocida-caso-habitual" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="intervalo-para-la-media-con-sigma-desconocida-caso-habitual"><span class="header-section-number">8.3.2</span> Intervalo para la media, con <span class="math inline">\(\sigma\)</span> desconocida (caso habitual)</h3>
+<p>Cuando no conocemos <span class="math inline">\(\sigma\)</span> y la estimamos con la desviación típica muestral <span class="math inline">\(s\)</span>, el intervalo se ensancha ligeramente porque hay una fuente extra de incertidumbre. Usamos la <strong>distribución t de Student</strong> con <span class="math inline">\(n-1\)</span> grados de libertad en vez de la Normal:</p>
 <p><span class="math display">\[
-P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
+\bar{X} \pm t_{\alpha/2,\, n-1} \cdot \frac{s}{\sqrt{n}}
 \]</span></p>
-<p><span class="math display">\[
-E[X] = \lambda \qquad \text{Var}(X) = \lambda
-\]</span></p>
-<p><strong>Ejemplo</strong>: si un servidor recibe en media <span class="math inline">\(\lambda = 4\)</span> peticiones fallidas por minuto, ¿cuál es la probabilidad de que reciba exactamente 6 en el próximo minuto?</p>
-<div id="ae313ca1" class="cell" data-execution_count="3">
+<p>La t de Student tiene colas más pesadas que la Normal — refleja que, con muestras pequeñas, estimar <span class="math inline">\(\sigma\)</span> a partir de los propios datos añade incertidumbre. A medida que <span class="math inline">\(n\)</span> crece, la t converge a la Normal.</p>
+<div id="88bc2630" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_6 <span class="op">=</span> dist.poisson_pmf(k<span class="op">=</span><span class="dv">6</span>, lam<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(X = 6) = </span><span class="sc">{</span>p_6<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salario mensual de una muestra de 25 empleados (sigma poblacional desconocida)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> inf.confidence_interval_mean_t(sample_mean<span class="op">=</span><span class="dv">2450</span>, sample_std<span class="op">=</span><span class="dv">310</span>, n<span class="op">=</span><span class="dv">25</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% para μ: (</span><span class="sc">{</span>lower<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.2f}</span><span class="ss">) €"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>P(X = 6) = 0.1042</code></pre>
+<pre><code>IC 95% para μ: (2322.04, 2577.96) €</code></pre>
 </div>
 </div>
-<p>La Poisson es, de hecho, el límite de la Binomial cuando <span class="math inline">\(n \to \infty\)</span>, <span class="math inline">\(p \to 0\)</span> y <span class="math inline">\(np = \lambda\)</span> se mantiene constante — útil cuando hay muchas oportunidades de que ocurra un evento raro.</p>
 </section>
-</section>
-<section id="distribuciones-continuas" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="distribuciones-continuas"><span class="header-section-number">6.4</span> 3.4 Distribuciones Continuas</h2>
-<section id="uniforme" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="uniforme"><span class="header-section-number">6.4.1</span> Uniforme</h3>
-<p>Todos los valores en un intervalo <span class="math inline">\([a, b]\)</span> son igual de probables.</p>
+<section id="intervalo-para-una-proporción" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="intervalo-para-una-proporción"><span class="header-section-number">8.3.3</span> Intervalo para una proporción</h3>
+<p>Para una proporción muestral <span class="math inline">\(\hat{p}\)</span> (por ejemplo, una tasa de conversión):</p>
 <p><span class="math display">\[
-f(x) = \frac{1}{b-a}, \quad a \le x \le b
+\hat{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 \]</span></p>
-<p><span class="math display">\[
-E[X] = \frac{a+b}{2} \qquad \text{Var}(X) = \frac{(b-a)^2}{12}
-\]</span></p>
-</section>
-<section id="normal-gaussiana" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="normal-gaussiana"><span class="header-section-number">6.4.2</span> Normal (Gaussiana)</h3>
-<p>La distribución continua más importante en estadística, por su papel central en el Teorema Central del Límite (sección 3.5).</p>
-<p><span class="math display">\[
-f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
-\]</span></p>
-<p><span class="math display">\[
-E[X] = \mu \qquad \text{Var}(X) = \sigma^2
-\]</span></p>
-<p>Es simétrica alrededor de <span class="math inline">\(\mu\)</span>, y la conocida “regla 68-95-99.7” indica que aproximadamente el 68% de la probabilidad cae dentro de <span class="math inline">\(\pm 1\sigma\)</span>, el 95% dentro de <span class="math inline">\(\pm 2\sigma\)</span>, y el 99.7% dentro de <span class="math inline">\(\pm 3\sigma\)</span>.</p>
-<div id="4fff5766" class="cell" data-execution_count="4">
+<div id="582586c8" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidad acumulada P(X &lt;= 1.96) para una Normal estándar</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> dist.normal_cdf(x<span class="op">=</span><span class="fl">1.96</span>, mu<span class="op">=</span><span class="dv">0</span>, sigma<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(X &lt;= 1.96) = </span><span class="sc">{</span>p<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retomamos el ejemplo del Módulo 3: 15 conversiones de 50 clientes observados</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> inf.confidence_interval_proportion(p_hat<span class="op">=</span><span class="dv">15</span><span class="op">/</span><span class="dv">50</span>, n<span class="op">=</span><span class="dv">50</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% para la tasa de conversión: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>P(X &lt;= 1.96) = 0.9750</code></pre>
+<pre><code>IC 95% para la tasa de conversión: (0.173, 0.427)</code></pre>
 </div>
 </div>
 </section>
-<section id="exponencial" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="exponencial"><span class="header-section-number">6.4.3</span> Exponencial</h3>
-<p>Modela el tiempo de espera hasta que ocurre el siguiente evento en un proceso de Poisson con tasa <span class="math inline">\(\lambda\)</span>. Es el “primo continuo” de la Poisson.</p>
-<p><span class="math display">\[
-f(x) = \lambda e^{-\lambda x}, \quad x \ge 0
-\]</span></p>
-<p><span class="math display">\[
-E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
-\]</span></p>
-<p><strong>Ejemplo</strong>: si los tickets de soporte llegan a una tasa de <span class="math inline">\(\lambda = 4\)</span> por hora (Poisson), el tiempo entre tickets consecutivos sigue una Exponencial con <span class="math inline">\(E[X] = 1/4\)</span> horas = 15 minutos.</p>
 </section>
+<section id="contraste-de-hipótesis" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="contraste-de-hipótesis"><span class="header-section-number">8.4</span> 4.4 Contraste de Hipótesis</h2>
+<p>Un contraste de hipótesis formaliza una pregunta de sí/no sobre un parámetro:</p>
+<ul>
+<li><strong>Hipótesis nula <span class="math inline">\(H_0\)</span></strong>: la afirmación por defecto, normalmente “no hay efecto” o “no hay diferencia” (ej. <span class="math inline">\(\mu = \mu_0\)</span>).</li>
+<li><strong>Hipótesis alternativa <span class="math inline">\(H_1\)</span></strong>: lo que queremos comprobar si los datos respaldan (ej. <span class="math inline">\(\mu \neq \mu_0\)</span>).</li>
+</ul>
+<p>El procedimiento calcula un <strong>estadístico de prueba</strong> a partir de la muestra y lo compara con lo que esperaríamos si <span class="math inline">\(H_0\)</span> fuera cierta. El resultado se resume en el <strong>p-valor</strong>: la probabilidad de observar un estadístico tan extremo (o más) que el obtenido, asumiendo que <span class="math inline">\(H_0\)</span> es cierta. Un p-valor pequeño (por debajo del nivel de significancia <span class="math inline">\(\alpha\)</span>, típicamente 0.05) es evidencia en contra de <span class="math inline">\(H_0\)</span>.</p>
+<section id="dos-tipos-de-error" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="dos-tipos-de-error"><span class="header-section-number">8.4.1</span> Dos tipos de error</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span> es cierta</th>
+<th><span class="math inline">\(H_0\)</span> es falsa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rechazamos <span class="math inline">\(H_0\)</span></strong></td>
+<td>Error Tipo I (falso positivo), probabilidad <span class="math inline">\(\alpha\)</span></td>
+<td>Decisión correcta</td>
+</tr>
+<tr class="even">
+<td><strong>No rechazamos <span class="math inline">\(H_0\)</span></strong></td>
+<td>Decisión correcta</td>
+<td>Error Tipo II (falso negativo), probabilidad <span class="math inline">\(\beta\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\alpha\)</span> lo fijamos nosotros de antemano (nivel de significancia); <span class="math inline">\(\beta\)</span> depende del tamaño del efecto real, del tamaño muestral y de la variabilidad — por eso muestras más grandes también ayudan a detectar efectos reales con más fiabilidad (mayor <strong>potencia</strong> del test, <span class="math inline">\(1-\beta\)</span>).</p>
 </section>
-<section id="el-teorema-central-del-límite" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="el-teorema-central-del-límite"><span class="header-section-number">6.5</span> 3.5 El Teorema Central del Límite</h2>
-<p>Este es, posiblemente, el resultado más importante de toda la estadística inferencial, y el motivo por el que la distribución Normal aparece constantemente incluso cuando los datos originales no son normales.</p>
-<blockquote class="blockquote">
-<p><strong>Teorema Central del Límite (TCL)</strong>: si tomamos muestras aleatorias de tamaño <span class="math inline">\(n\)</span> (suficientemente grande) de <em>cualquier</em> población con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span> finita, la distribución de la <strong>media muestral</strong> <span class="math inline">\(\bar{X}\)</span> se aproxima a una distribución Normal:</p>
+<section id="test-z-para-la-media-sigma-conocida" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="test-z-para-la-media-sigma-conocida"><span class="header-section-number">8.4.2</span> Test z para la media (<span class="math inline">\(\sigma\)</span> conocida)</h3>
 <p><span class="math display">\[
-\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \quad \text{cuando } n \to \infty
+z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}
 \]</span></p>
-</blockquote>
-<p>Lo notable es que esto es cierto <strong>sin importar la forma de la distribución original</strong> — puede ser una Exponencial muy asimétrica, una Uniforme, o cualquier otra cosa. Al promediar muchas observaciones, ese promedio tiende a comportarse como una Normal.</p>
-<p>Podemos verlo empíricamente simulando muchas muestras de una población muy asimétrica (una Exponencial) y observando cómo se distribuyen sus medias muestrales:</p>
-<div id="797f7a2c" class="cell" data-execution_count="5">
+<div id="e5927214" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> dist.simulate_clt(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    population<span class="op">=</span><span class="st">"exponential"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    population_params<span class="op">=</span>{<span class="st">"lam"</span>: <span class="fl">0.5</span>},</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    sample_size<span class="op">=</span><span class="dv">30</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    n_samples<span class="op">=</span><span class="dv">2000</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    seed<span class="op">=</span><span class="dv">42</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.hist(sample_means, bins<span class="op">=</span><span class="dv">40</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribución de medias muestrales (n=30) de una población Exponencial"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Media muestral"</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frecuencia"</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: el tiempo medio de respuesta es 120ms. Observamos x̄=122.5 en n=40, sigma=15</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>z_stat, p_value <span class="op">=</span> inf.z_test_mean(sample_mean<span class="op">=</span><span class="fl">122.5</span>, mu0<span class="op">=</span><span class="dv">120</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="teoria_files/figure-html/cell-6-output-1.png" width="626" height="452" class="figure-img"></p>
-</figure>
+<div class="cell-output cell-output-stdout">
+<pre><code>z = 1.054, p-valor = 0.2918</code></pre>
 </div>
 </div>
-</div>
-<p>Aunque la población original (Exponencial) es muy asimétrica, la distribución de las medias muestrales ya tiene la forma característica de campana de la Normal. Esto es lo que hace posible, en el próximo módulo, construir intervalos de confianza y contrastes de hipótesis sobre la media de casi cualquier población, apoyándonos únicamente en el tamaño de la muestra.</p>
+<p>Con un p-valor por encima de 0.05, no hay evidencia suficiente para rechazar <span class="math inline">\(H_0\)</span>: el tiempo de respuesta observado es compatible con una media real de 120ms.</p>
 </section>
-<section id="cierre" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="cierre"><span class="header-section-number">6.6</span> 3.6 Cierre</h2>
-<p>En este módulo hemos pasado de sucesos individuales (Módulo 2) a variables aleatorias completas: sus distribuciones discretas (Bernoulli, Binomial, Poisson) y continuas (Uniforme, Normal, Exponencial), junto con sus medidas resumen (<span class="math inline">\(E[X]\)</span>, <span class="math inline">\(\text{Var}(X)\)</span>). El Teorema Central del Límite cierra el módulo como puente formal hacia el Módulo 4, donde usaremos estas herramientas para hacer inferencia sobre poblaciones a partir de muestras.</p>
+<section id="test-t-para-la-media-sigma-desconocida" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="test-t-para-la-media-sigma-desconocida"><span class="header-section-number">8.4.3</span> Test t para la media (<span class="math inline">\(\sigma\)</span> desconocida)</h3>
+<div id="080008fa" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>salarios_muestra <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: el salario medio del departamento es 2400€</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> inf.t_test_mean(sample<span class="op">=</span>salarios_muestra, mu0<span class="op">=</span><span class="dv">2400</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>t = 1.208, p-valor = 0.2579</code></pre>
+</div>
+</div>
+</section>
+<section id="test-para-dos-proporciones-ab-testing" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="test-para-dos-proporciones-ab-testing"><span class="header-section-number">8.4.4</span> Test para dos proporciones (A/B testing)</h3>
+<p>Un caso extremadamente común en la práctica: comparar la tasa de conversión de dos variantes de un mismo experimento.</p>
+<p><span class="math display">\[
+z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}, \qquad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}
+\]</span></p>
+<div id="d3e51b81" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variante A: 15 conversiones de 50. Variante B: 27 conversiones de 60.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>z_stat, p_value <span class="op">=</span> inf.two_proportion_z_test(x1<span class="op">=</span><span class="dv">15</span>, n1<span class="op">=</span><span class="dv">50</span>, x2<span class="op">=</span><span class="dv">27</span>, n2<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>z = -1.612, p-valor = 0.1069</code></pre>
+</div>
+</div>
+<p>Un p-valor por debajo de 0.05 aquí indicaría que la diferencia observada entre variantes es poco probable que se deba solo al azar, y respaldaría adoptar la variante con mejor tasa de conversión.</p>
+</section>
+</section>
+<section id="qué-significa-realmente-un-intervalo-de-confianza" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="qué-significa-realmente-un-intervalo-de-confianza"><span class="header-section-number">8.5</span> 4.5 Qué significa realmente un intervalo de confianza</h2>
+<p>Una confusión muy frecuente: un intervalo de confianza al 95% <strong>no</strong> significa “hay un 95% de probabilidad de que <span class="math inline">\(\mu\)</span> esté en este intervalo concreto”. <span class="math inline">\(\mu\)</span> no es aleatorio, es fijo (aunque desconocido); lo aleatorio es el intervalo, que cambia de una muestra a otra. La interpretación correcta es sobre el <strong>procedimiento</strong>: si repitiéramos el muestreo muchas veces y construyéramos un intervalo cada vez, aproximadamente el 95% de esos intervalos contendrían el verdadero <span class="math inline">\(\mu\)</span>.</p>
+<p>Podemos comprobarlo por simulación, construyendo miles de intervalos a partir de muestras distintas de una población con <span class="math inline">\(\mu\)</span> conocido, y contando en cuántos cae realmente <span class="math inline">\(\mu\)</span>:</p>
+<div id="318f71ae" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(true_mu<span class="op">=</span><span class="dv">100</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>, n_simulations<span class="op">=</span><span class="dv">5000</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Proporción de intervalos que contienen la verdadera μ: </span><span class="sc">{</span>coverage<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Proporción de intervalos que contienen la verdadera μ: 0.947</code></pre>
+</div>
+</div>
+<p>El resultado debería rondar 0.95, confirmando la interpretación correcta del nivel de confianza.</p>
+</section>
+<section id="cierre" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="cierre"><span class="header-section-number">8.6</span> 4.6 Cierre</h2>
+<p>Con este módulo cerramos el ciclo que empezamos en el Módulo 2: de la probabilidad de sucesos individuales, pasando por las distribuciones que describen variables aleatorias completas (Módulo 3), hasta usar esas distribuciones para estimar parámetros poblacionales y contrastar afirmaciones concretas a partir de una muestra. Estas son las herramientas que sustentan cualquier experimento de A/B testing, estudio de mercado o validación de un modelo con datos reales.</p>
 <p>Continúa con el cuaderno práctico (<code>practica.ipynb</code>).</p>
 
 
@@ -937,13 +953,13 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/02_probabilidad/practica.html" class="pagination-link" aria-label="Práctica: Probabilidad Básica">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span>
+      <a href="../../notebooks/03_distribuciones/practica.html" class="pagination-link" aria-label="Práctica: Distribuciones de Probabilidad">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/03_distribuciones/practica.html" class="pagination-link" aria-label="Práctica: Distribuciones de Probabilidad">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/04_inferencia/practica.html" class="pagination-link" aria-label="Práctica: Inferencia Estadística">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -952,4 +968,4 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/03_distribuciones/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/04_inferencia/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

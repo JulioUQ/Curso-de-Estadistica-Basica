@@ -469,5 +469,148 @@
       "Módulo 3 — Distribuciones de Probabilidad",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Práctica: Distribuciones de Probabilidad</span>"
     ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/teoria.html",
+    "href": "notebooks/04_inferencia/teoria.html",
+    "title": "8  Inferencia Estadística",
+    "section": "",
+    "text": "8.1 4.1 Introducción\nEn el Módulo 3 vimos que, gracias al Teorema Central del Límite, la media muestral \\(\\bar{X}\\) se comporta como una Normal aunque la población original no lo sea. Ese resultado, que hasta ahora era una curiosidad teórica, es exactamente lo que necesitamos para dar el paso central de este módulo: la inferencia estadística, es decir, usar una muestra para decir algo con fundamento sobre una población que no podemos observar por completo.\nflowchart LR\n    A[\"Población&lt;br/&gt;(parámetro μ desconocido)\"] --&gt; B[\"Muestra aleatoria&lt;br/&gt;de tamaño n\"]\n    B --&gt; C[\"Estadístico muestral&lt;br/&gt;(x̄, p̂, s)\"]\n    C --&gt; D[\"Intervalo de Confianza&lt;br/&gt;¿en qué rango está μ?\"]\n    C --&gt; E[\"Contraste de Hipótesis&lt;br/&gt;¿es μ = valor propuesto?\"]\n\n\n\n\nFigura 8.1: Del parámetro poblacional desconocido a la conclusión inferencial\nTrabajaremos dos herramientas complementarias:",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/teoria.html#introducción",
+    "href": "notebooks/04_inferencia/teoria.html#introducción",
+    "title": "8  Inferencia Estadística",
+    "section": "",
+    "text": "Estimación por intervalo de confianza: en vez de dar un único número como estimación de un parámetro, damos un rango que probablemente lo contiene.\nContraste de hipótesis: planteamos una afirmación sobre el parámetro y usamos los datos para decidir si la evidencia la respalda o la contradice.",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/teoria.html#estimación-puntual-y-error-estándar",
+    "href": "notebooks/04_inferencia/teoria.html#estimación-puntual-y-error-estándar",
+    "title": "8  Inferencia Estadística",
+    "section": "8.2 4.2 Estimación Puntual y Error Estándar",
+    "text": "8.2 4.2 Estimación Puntual y Error Estándar\nUn estimador puntual es un único valor calculado a partir de la muestra que usamos como “mejor apuesta” del parámetro poblacional: la media muestral \\(\\bar{X}\\) estima \\(\\mu\\), la proporción muestral \\(\\hat{p}\\) estima \\(p\\).\nPero un solo número no dice nada sobre su fiabilidad. Para eso usamos el error estándar, que mide cuánto varía el estimador de muestra a muestra:\n\\[\nSE(\\bar{X}) = \\frac{\\sigma}{\\sqrt{n}}\n\\]\nEs la misma cantidad que apareció como la varianza de \\(\\bar{X}\\) en el TCL del Módulo 3 (\\(\\text{Var}(\\bar{X}) = \\sigma^2/n\\)), solo que en su forma de desviación típica. Cuanto mayor es \\(n\\), menor es el error estándar: muestras más grandes dan estimaciones más precisas.",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/teoria.html#intervalos-de-confianza",
+    "href": "notebooks/04_inferencia/teoria.html#intervalos-de-confianza",
+    "title": "8  Inferencia Estadística",
+    "section": "8.3 4.3 Intervalos de Confianza",
+    "text": "8.3 4.3 Intervalos de Confianza\nUn intervalo de confianza al \\((1-\\alpha)\\cdot 100\\%\\) es un rango \\([\\bar{X} - m, \\bar{X} + m]\\) construido de forma que, si repitiéramos el muestreo muchas veces, el intervalo contendría el verdadero parámetro en el \\((1-\\alpha)\\cdot 100\\%\\) de las repeticiones.\n\n8.3.1 Intervalo para la media, con \\(\\sigma\\) conocida\nCuando conocemos la desviación típica poblacional \\(\\sigma\\) (poco frecuente en la práctica, pero es el caso base), usamos el valor crítico de la Normal estándar:\n\\[\n\\bar{X} \\pm z_{\\alpha/2} \\cdot \\frac{\\sigma}{\\sqrt{n}}\n\\]\n\n\nCódigo\nfrom stats_toolkit import inference as inf\n\n# Tiempo medio de respuesta de una API: muestra de n=40, sigma poblacional conocida = 15ms\nlower, upper = inf.confidence_interval_mean_z(sample_mean=122.5, sigma=15, n=40, confidence=0.95)\nprint(f\"IC 95% para μ: ({lower:.2f}, {upper:.2f}) ms\")\n\n\nIC 95% para μ: (117.85, 127.15) ms\n\n\n\n\n8.3.2 Intervalo para la media, con \\(\\sigma\\) desconocida (caso habitual)\nCuando no conocemos \\(\\sigma\\) y la estimamos con la desviación típica muestral \\(s\\), el intervalo se ensancha ligeramente porque hay una fuente extra de incertidumbre. Usamos la distribución t de Student con \\(n-1\\) grados de libertad en vez de la Normal:\n\\[\n\\bar{X} \\pm t_{\\alpha/2,\\, n-1} \\cdot \\frac{s}{\\sqrt{n}}\n\\]\nLa t de Student tiene colas más pesadas que la Normal — refleja que, con muestras pequeñas, estimar \\(\\sigma\\) a partir de los propios datos añade incertidumbre. A medida que \\(n\\) crece, la t converge a la Normal.\n\n\nCódigo\n# Salario mensual de una muestra de 25 empleados (sigma poblacional desconocida)\nlower, upper = inf.confidence_interval_mean_t(sample_mean=2450, sample_std=310, n=25, confidence=0.95)\nprint(f\"IC 95% para μ: ({lower:.2f}, {upper:.2f}) €\")\n\n\nIC 95% para μ: (2322.04, 2577.96) €\n\n\n\n\n8.3.3 Intervalo para una proporción\nPara una proporción muestral \\(\\hat{p}\\) (por ejemplo, una tasa de conversión):\n\\[\n\\hat{p} \\pm z_{\\alpha/2} \\cdot \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\n\\]\n\n\nCódigo\n# Retomamos el ejemplo del Módulo 3: 15 conversiones de 50 clientes observados\nlower, upper = inf.confidence_interval_proportion(p_hat=15/50, n=50, confidence=0.95)\nprint(f\"IC 95% para la tasa de conversión: ({lower:.3f}, {upper:.3f})\")\n\n\nIC 95% para la tasa de conversión: (0.173, 0.427)",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/teoria.html#contraste-de-hipótesis",
+    "href": "notebooks/04_inferencia/teoria.html#contraste-de-hipótesis",
+    "title": "8  Inferencia Estadística",
+    "section": "8.4 4.4 Contraste de Hipótesis",
+    "text": "8.4 4.4 Contraste de Hipótesis\nUn contraste de hipótesis formaliza una pregunta de sí/no sobre un parámetro:\n\nHipótesis nula \\(H_0\\): la afirmación por defecto, normalmente “no hay efecto” o “no hay diferencia” (ej. \\(\\mu = \\mu_0\\)).\nHipótesis alternativa \\(H_1\\): lo que queremos comprobar si los datos respaldan (ej. \\(\\mu \\neq \\mu_0\\)).\n\nEl procedimiento calcula un estadístico de prueba a partir de la muestra y lo compara con lo que esperaríamos si \\(H_0\\) fuera cierta. El resultado se resume en el p-valor: la probabilidad de observar un estadístico tan extremo (o más) que el obtenido, asumiendo que \\(H_0\\) es cierta. Un p-valor pequeño (por debajo del nivel de significancia \\(\\alpha\\), típicamente 0.05) es evidencia en contra de \\(H_0\\).\n\n8.4.1 Dos tipos de error\n\n\n\n\n\n\n\n\n\n\\(H_0\\) es cierta\n\\(H_0\\) es falsa\n\n\n\n\nRechazamos \\(H_0\\)\nError Tipo I (falso positivo), probabilidad \\(\\alpha\\)\nDecisión correcta\n\n\nNo rechazamos \\(H_0\\)\nDecisión correcta\nError Tipo II (falso negativo), probabilidad \\(\\beta\\)\n\n\n\n\\(\\alpha\\) lo fijamos nosotros de antemano (nivel de significancia); \\(\\beta\\) depende del tamaño del efecto real, del tamaño muestral y de la variabilidad — por eso muestras más grandes también ayudan a detectar efectos reales con más fiabilidad (mayor potencia del test, \\(1-\\beta\\)).\n\n\n8.4.2 Test z para la media (\\(\\sigma\\) conocida)\n\\[\nz = \\frac{\\bar{X} - \\mu_0}{\\sigma / \\sqrt{n}}\n\\]\n\n\nCódigo\n# H0: el tiempo medio de respuesta es 120ms. Observamos x̄=122.5 en n=40, sigma=15\nz_stat, p_value = inf.z_test_mean(sample_mean=122.5, mu0=120, sigma=15, n=40)\nprint(f\"z = {z_stat:.3f}, p-valor = {p_value:.4f}\")\n\n\nz = 1.054, p-valor = 0.2918\n\n\nCon un p-valor por encima de 0.05, no hay evidencia suficiente para rechazar \\(H_0\\): el tiempo de respuesta observado es compatible con una media real de 120ms.\n\n\n8.4.3 Test t para la media (\\(\\sigma\\) desconocida)\n\n\nCódigo\nsalarios_muestra = [2340, 2510, 2280, 2600, 2455, 2390, 2470, 2530, 2410, 2380]\n\n# H0: el salario medio del departamento es 2400€\nt_stat, p_value = inf.t_test_mean(sample=salarios_muestra, mu0=2400)\nprint(f\"t = {t_stat:.3f}, p-valor = {p_value:.4f}\")\n\n\nt = 1.208, p-valor = 0.2579\n\n\n\n\n8.4.4 Test para dos proporciones (A/B testing)\nUn caso extremadamente común en la práctica: comparar la tasa de conversión de dos variantes de un mismo experimento.\n\\[\nz = \\frac{\\hat{p}_1 - \\hat{p}_2}{\\sqrt{\\hat{p}(1-\\hat{p})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}}, \\qquad \\hat{p} = \\frac{x_1 + x_2}{n_1 + n_2}\n\\]\n\n\nCódigo\n# Variante A: 15 conversiones de 50. Variante B: 27 conversiones de 60.\nz_stat, p_value = inf.two_proportion_z_test(x1=15, n1=50, x2=27, n2=60)\nprint(f\"z = {z_stat:.3f}, p-valor = {p_value:.4f}\")\n\n\nz = -1.612, p-valor = 0.1069\n\n\nUn p-valor por debajo de 0.05 aquí indicaría que la diferencia observada entre variantes es poco probable que se deba solo al azar, y respaldaría adoptar la variante con mejor tasa de conversión.",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/teoria.html#qué-significa-realmente-un-intervalo-de-confianza",
+    "href": "notebooks/04_inferencia/teoria.html#qué-significa-realmente-un-intervalo-de-confianza",
+    "title": "8  Inferencia Estadística",
+    "section": "8.5 4.5 Qué significa realmente un intervalo de confianza",
+    "text": "8.5 4.5 Qué significa realmente un intervalo de confianza\nUna confusión muy frecuente: un intervalo de confianza al 95% no significa “hay un 95% de probabilidad de que \\(\\mu\\) esté en este intervalo concreto”. \\(\\mu\\) no es aleatorio, es fijo (aunque desconocido); lo aleatorio es el intervalo, que cambia de una muestra a otra. La interpretación correcta es sobre el procedimiento: si repitiéramos el muestreo muchas veces y construyéramos un intervalo cada vez, aproximadamente el 95% de esos intervalos contendrían el verdadero \\(\\mu\\).\nPodemos comprobarlo por simulación, construyendo miles de intervalos a partir de muestras distintas de una población con \\(\\mu\\) conocido, y contando en cuántos cae realmente \\(\\mu\\):\n\n\nCódigo\ncoverage = inf.simulate_ci_coverage(true_mu=100, sigma=15, n=30, confidence=0.95, n_simulations=5000, seed=42)\nprint(f\"Proporción de intervalos que contienen la verdadera μ: {coverage:.3f}\")\n\n\nProporción de intervalos que contienen la verdadera μ: 0.947\n\n\nEl resultado debería rondar 0.95, confirmando la interpretación correcta del nivel de confianza.",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/teoria.html#cierre",
+    "href": "notebooks/04_inferencia/teoria.html#cierre",
+    "title": "8  Inferencia Estadística",
+    "section": "8.6 4.6 Cierre",
+    "text": "8.6 4.6 Cierre\nCon este módulo cerramos el ciclo que empezamos en el Módulo 2: de la probabilidad de sucesos individuales, pasando por las distribuciones que describen variables aleatorias completas (Módulo 3), hasta usar esas distribuciones para estimar parámetros poblacionales y contrastar afirmaciones concretas a partir de una muestra. Estas son las herramientas que sustentan cualquier experimento de A/B testing, estudio de mercado o validación de un modelo con datos reales.\nContinúa con el cuaderno práctico (practica.ipynb).",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/practica.html",
+    "href": "notebooks/04_inferencia/practica.html",
+    "title": "9  Práctica: Inferencia Estadística",
+    "section": "",
+    "text": "9.1 1. Intervalo de confianza para una media\nEn este cuaderno construimos intervalos de confianza, realizamos contrastes de hipótesis sobre medias y proporciones, y verificamos por simulación qué significa realmente un nivel de confianza del 95%.\nSimulamos una muestra de 40 tiempos de respuesta de una API (población Normal con μ=120ms, σ=15ms) y construimos su IC al 95%, sabiendo σ (caso z) y sin saberlo (caso t, estimando s a partir de la propia muestra).\nCódigo\nrng = np.random.default_rng(1)\nmuestra = rng.normal(loc=120, scale=15, size=40)\n\nx_bar = muestra.mean()\ns = muestra.std(ddof=1)\nprint(f\"Media muestral: {x_bar:.2f} ms | Desviación muestral: {s:.2f} ms\")\n\nic_z = inf.confidence_interval_mean_z(x_bar, sigma=15, n=40, confidence=0.95)\nic_t = inf.confidence_interval_mean_t(x_bar, sample_std=s, n=40, confidence=0.95)\n\nprint(f\"IC 95% (sigma conocida, z): ({ic_z[0]:.2f}, {ic_z[1]:.2f})\")\nprint(f\"IC 95% (sigma desconocida, t): ({ic_t[0]:.2f}, {ic_t[1]:.2f})\")\nObserva que el intervalo basado en la t es ligeramente más ancho: refleja la incertidumbre extra de tener que estimar σ desde la propia muestra.",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Práctica: Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/practica.html#intervalo-de-confianza-para-una-proporción",
+    "href": "notebooks/04_inferencia/practica.html#intervalo-de-confianza-para-una-proporción",
+    "title": "9  Práctica: Inferencia Estadística",
+    "section": "9.2 2. Intervalo de confianza para una proporción",
+    "text": "9.2 2. Intervalo de confianza para una proporción\nRetomamos el ejemplo de conversión del Módulo 3: 15 conversiones sobre 50 clientes.\n\n\nCódigo\np_hat = 15 / 50\nlower, upper = inf.confidence_interval_proportion(p_hat, n=50, confidence=0.95)\nprint(f\"Tasa de conversión observada: {p_hat:.3f}\")\nprint(f\"IC 95%: ({lower:.3f}, {upper:.3f})\")",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Práctica: Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/practica.html#contraste-de-hipótesis-test-t-de-una-muestra",
+    "href": "notebooks/04_inferencia/practica.html#contraste-de-hipótesis-test-t-de-una-muestra",
+    "title": "9  Práctica: Inferencia Estadística",
+    "section": "9.3 3. Contraste de hipótesis: test t de una muestra",
+    "text": "9.3 3. Contraste de hipótesis: test t de una muestra\n¿El salario medio de un departamento de 10 empleados es distinto de los 2400€ que afirma la dirección?\n\n\nCódigo\nsalarios = [2340, 2510, 2280, 2600, 2455, 2390, 2470, 2530, 2410, 2380]\n\nt_stat, p_value = inf.t_test_mean(salarios, mu0=2400)\nprint(f\"t = {t_stat:.3f}, p-valor = {p_value:.4f}\")\n\nalpha = 0.05\nif p_value &lt; alpha:\n    print(f\"p-valor &lt; {alpha}: rechazamos H0, hay evidencia de que el salario medio difiere de 2400€\")\nelse:\n    print(f\"p-valor &gt;= {alpha}: no hay evidencia suficiente para rechazar H0\")",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Práctica: Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/practica.html#contraste-de-hipótesis-ab-test-de-dos-proporciones",
+    "href": "notebooks/04_inferencia/practica.html#contraste-de-hipótesis-ab-test-de-dos-proporciones",
+    "title": "9  Práctica: Inferencia Estadística",
+    "section": "9.4 4. Contraste de hipótesis: A/B test de dos proporciones",
+    "text": "9.4 4. Contraste de hipótesis: A/B test de dos proporciones\nComparamos dos variantes de una landing page: variante A (15/50 conversiones) vs. variante B (27/60 conversiones).\n\n\nCódigo\nz_stat, p_value = inf.two_proportion_z_test(x1=15, n1=50, x2=27, n2=60)\nprint(f\"z = {z_stat:.3f}, p-valor = {p_value:.4f}\")\n\np_a, p_b = 15/50, 27/60\nprint(f\"Tasa A: {p_a:.3f} | Tasa B: {p_b:.3f}\")\n\nif p_value &lt; 0.05:\n    print(\"La diferencia entre variantes es estadísticamente significativa (p &lt; 0.05).\")\nelse:\n    print(\"No hay evidencia suficiente de diferencia real entre variantes.\")",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Práctica: Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/practica.html#qué-significa-un-intervalo-de-confianza-del-95",
+    "href": "notebooks/04_inferencia/practica.html#qué-significa-un-intervalo-de-confianza-del-95",
+    "title": "9  Práctica: Inferencia Estadística",
+    "section": "9.5 5. ¿Qué significa un intervalo de confianza del 95%?",
+    "text": "9.5 5. ¿Qué significa un intervalo de confianza del 95%?\nSimulamos 5000 muestras distintas de una población Normal(μ=100, σ=15), construimos un IC al 95% para cada una, y visualizamos cuántos contienen realmente μ=100. Dibujamos los primeros 100 para verlo de forma intuitiva.\n\n\nCódigo\ntrue_mu = 100\nn_intervals = 100\n\nrng = np.random.default_rng(7)\nfig, ax = plt.subplots(figsize=(9, 8))\n\ncontains_mu = 0\nfor i in range(n_intervals):\n    sample = rng.normal(true_mu, 15, size=30)\n    x_bar = sample.mean()\n    lower, upper = inf.confidence_interval_mean_z(x_bar, sigma=15, n=30, confidence=0.95)\n    color = \"steelblue\" if lower &lt;= true_mu &lt;= upper else \"crimson\"\n    if lower &lt;= true_mu &lt;= upper:\n        contains_mu += 1\n    ax.plot([lower, upper], [i, i], color=color, alpha=0.7)\n\nax.axvline(true_mu, color=\"black\", linestyle=\"--\", label=f\"Verdadera μ = {true_mu}\")\nax.set_yticks([])\nax.set_xlabel(\"Valor\")\nax.set_title(f\"100 intervalos de confianza al 95% — {contains_mu} de 100 contienen μ (línea roja = no la contiene)\")\nax.legend()\nplt.show()\n\n# Ahora con 5000 simulaciones, usando la función del toolkit\ncoverage = inf.simulate_ci_coverage(true_mu=100, sigma=15, n=30, confidence=0.95, n_simulations=5000, seed=42)\nprint(f\"Cobertura empírica sobre 5000 simulaciones: {coverage:.3f} (esperado ≈ 0.95)\")",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Práctica: Inferencia Estadística</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/04_inferencia/practica.html#ejercicios-propuestos",
+    "href": "notebooks/04_inferencia/practica.html#ejercicios-propuestos",
+    "title": "9  Práctica: Inferencia Estadística",
+    "section": "9.6 Ejercicios propuestos",
+    "text": "9.6 Ejercicios propuestos\n\nRepite la simulación de la sección 5 con un nivel de confianza del 90% y del 99%. ¿Cómo cambia el ancho de los intervalos y la proporción que contiene a μ?\nUna muestra de 12 tiempos de entrega (en días) tiene media 5.4 y desviación muestral 1.2. Construye un IC al 95% para la media poblacional usando confidence_interval_mean_t, y contrasta si la media real podría ser de 6 días con t_test_mean (necesitarás generar o simular una muestra con esos estadísticos, o adaptar la función a partir de sample_mean/sample_std directamente).\nEn el A/B test de la sección 4, calcula también el intervalo de confianza para la diferencia de proporciones (\\(\\hat{p}_B - \\hat{p}_A\\)) en vez de solo el contraste de hipótesis. ¿Qué información adicional aporta el intervalo frente al p-valor?",
+    "crumbs": [
+      "Módulo 4 — Inferencia Estadística",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Práctica: Inferencia Estadística</span>"
+    ]
   }
 ]

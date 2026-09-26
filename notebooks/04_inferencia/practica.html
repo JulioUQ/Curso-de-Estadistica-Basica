@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Probabilidad Básica – Estadística Básica</title>
+<title>9&nbsp; Práctica: Inferencia Estadística – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -36,8 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../notebooks/02_probabilidad/practica.html" rel="next">
-<link href="../../notebooks/01_estadistica_descriptiva/practica.html" rel="prev">
+<link href="../../notebooks/04_inferencia/teoria.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -75,9 +109,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -121,7 +152,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/02_probabilidad/teoria.html">Módulo 2 — Probabilidad Básica</a></li><li class="breadcrumb-item"><a href="../../notebooks/02_probabilidad/teoria.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -189,7 +220,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
   </div>
 </li>
@@ -241,7 +272,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
@@ -257,30 +288,21 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">4.1</span> Introducción</a></li>
-  <li><a href="#espacio-muestral-y-eventos" id="toc-espacio-muestral-y-eventos" class="nav-link" data-scroll-target="#espacio-muestral-y-eventos"><span class="header-section-number">4.2</span> Espacio Muestral y Eventos</a></li>
-  <li><a href="#axiomas-de-probabilidad-kolmogorov" id="toc-axiomas-de-probabilidad-kolmogorov" class="nav-link" data-scroll-target="#axiomas-de-probabilidad-kolmogorov"><span class="header-section-number">4.3</span> Axiomas de Probabilidad (Kolmogorov)</a></li>
-  <li><a href="#probabilidad-condicional" id="toc-probabilidad-condicional" class="nav-link" data-scroll-target="#probabilidad-condicional"><span class="header-section-number">4.4</span> Probabilidad Condicional</a>
-  <ul class="collapse">
-  <li><a href="#independencia-de-eventos" id="toc-independencia-de-eventos" class="nav-link" data-scroll-target="#independencia-de-eventos"><span class="header-section-number">4.4.1</span> Independencia de eventos</a></li>
-  </ul></li>
-  <li><a href="#teorema-de-probabilidad-total" id="toc-teorema-de-probabilidad-total" class="nav-link" data-scroll-target="#teorema-de-probabilidad-total"><span class="header-section-number">4.5</span> Teorema de Probabilidad Total</a></li>
-  <li><a href="#teorema-de-bayes" id="toc-teorema-de-bayes" class="nav-link" data-scroll-target="#teorema-de-bayes"><span class="header-section-number">4.6</span> Teorema de Bayes</a>
-  <ul class="collapse">
-  <li><a href="#ejemplo-clásico-test-médico" id="toc-ejemplo-clásico-test-médico" class="nav-link" data-scroll-target="#ejemplo-clásico-test-médico"><span class="header-section-number">4.6.1</span> Ejemplo clásico: test médico</a></li>
-  </ul></li>
-  <li><a href="#hacia-naive-bayes-puente-con-machine-learning" id="toc-hacia-naive-bayes-puente-con-machine-learning" class="nav-link" data-scroll-target="#hacia-naive-bayes-puente-con-machine-learning"><span class="header-section-number">4.7</span> Hacia Naive Bayes (puente con Machine Learning)</a></li>
-  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">4.8</span> Cierre</a></li>
+  <li><a href="#intervalo-de-confianza-para-una-media" id="toc-intervalo-de-confianza-para-una-media" class="nav-link active" data-scroll-target="#intervalo-de-confianza-para-una-media"><span class="header-section-number">9.1</span> 1. Intervalo de confianza para una media</a></li>
+  <li><a href="#intervalo-de-confianza-para-una-proporción" id="toc-intervalo-de-confianza-para-una-proporción" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-una-proporción"><span class="header-section-number">9.2</span> 2. Intervalo de confianza para una proporción</a></li>
+  <li><a href="#contraste-de-hipótesis-test-t-de-una-muestra" id="toc-contraste-de-hipótesis-test-t-de-una-muestra" class="nav-link" data-scroll-target="#contraste-de-hipótesis-test-t-de-una-muestra"><span class="header-section-number">9.3</span> 3. Contraste de hipótesis: test t de una muestra</a></li>
+  <li><a href="#contraste-de-hipótesis-ab-test-de-dos-proporciones" id="toc-contraste-de-hipótesis-ab-test-de-dos-proporciones" class="nav-link" data-scroll-target="#contraste-de-hipótesis-ab-test-de-dos-proporciones"><span class="header-section-number">9.4</span> 4. Contraste de hipótesis: A/B test de dos proporciones</a></li>
+  <li><a href="#qué-significa-un-intervalo-de-confianza-del-95" id="toc-qué-significa-un-intervalo-de-confianza-del-95" class="nav-link" data-scroll-target="#qué-significa-un-intervalo-de-confianza-del-95"><span class="header-section-number">9.5</span> 5. ¿Qué significa un intervalo de confianza del 95%?</a></li>
+  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">9.6</span> Ejercicios propuestos</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/02_probabilidad/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/04_inferencia/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/02_probabilidad/teoria.html">Módulo 2 — Probabilidad Básica</a></li><li class="breadcrumb-item"><a href="../../notebooks/02_probabilidad/teoria.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></h1>
-<p class="subtitle lead">Estadística Básica — Repositorio 1</p>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></h1>
 </div>
 
 
@@ -297,135 +319,133 @@ window.Quarto = {
 </header>
 
 
-<section id="introducción" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">4.1</span> Introducción</h2>
-<p>Si la estadística descriptiva responde a <em>“¿qué pasó en mis datos?”</em>, la probabilidad responde a <em>“¿qué tan probable es que pase algo?”</em>. Es el lenguaje matemático de la incertidumbre, y es la base formal sobre la que se construyen tanto las pruebas de hipótesis (Módulo 6) como los modelos probabilísticos de Machine Learning (repositorio 2), en particular el clasificador <strong>Naive Bayes</strong>, que introduciremos de forma intuitiva al final de este módulo.</p>
+<p>En este cuaderno construimos intervalos de confianza, realizamos contrastes de hipótesis sobre medias y proporciones, y verificamos por simulación qué significa realmente un nivel de confianza del 95%.</p>
+<div id="cell-1" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> inference <span class="im">as</span> inf</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="intervalo-de-confianza-para-una-media" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-media"><span class="header-section-number">9.1</span> 1. Intervalo de confianza para una media</h2>
+<p>Simulamos una muestra de 40 tiempos de respuesta de una API (población Normal con μ=120ms, σ=15ms) y construimos su IC al 95%, sabiendo σ (caso z) y sin saberlo (caso t, estimando s a partir de la propia muestra).</p>
+<div id="cell-3" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">120</span>, scale<span class="op">=</span><span class="dv">15</span>, size<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x_bar <span class="op">=</span> muestra.mean()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> muestra.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media muestral: </span><span class="sc">{</span>x_bar<span class="sc">:.2f}</span><span class="ss"> ms | Desviación muestral: </span><span class="sc">{</span>s<span class="sc">:.2f}</span><span class="ss"> ms"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ic_z <span class="op">=</span> inf.confidence_interval_mean_z(x_bar, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ic_t <span class="op">=</span> inf.confidence_interval_mean_t(x_bar, sample_std<span class="op">=</span>s, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% (sigma conocida, z): (</span><span class="sc">{</span>ic_z[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ic_z[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% (sigma desconocida, t): (</span><span class="sc">{</span>ic_t[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ic_t[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Observa que el intervalo basado en la t es ligeramente más ancho: refleja la incertidumbre extra de tener que estimar σ desde la propia muestra.</p>
 </section>
-<section id="espacio-muestral-y-eventos" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="espacio-muestral-y-eventos"><span class="header-section-number">4.2</span> Espacio Muestral y Eventos</h2>
-<p>El <strong>espacio muestral</strong> (<span class="math inline">\(\Omega\)</span>) es el conjunto de todos los resultados posibles de un experimento aleatorio. Un <strong>evento</strong> (<span class="math inline">\(A\)</span>) es cualquier subconjunto de <span class="math inline">\(\Omega\)</span>.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Experimento</th>
-<th>Espacio muestral <span class="math inline">\(\Omega\)</span></th>
-<th>Ejemplo de evento <span class="math inline">\(A\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lanzar un dado</td>
-<td><span class="math inline">\(\{1,2,3,4,5,6\}\)</span></td>
-<td>“Sacar un número par” <span class="math inline">\(= \{2,4,6\}\)</span></td>
-</tr>
-<tr class="even">
-<td>Lanzar 2 dados</td>
-<td><span class="math inline">\(\{(1,1), (1,2), \dots, (6,6)\}\)</span>, 36 resultados</td>
-<td>“La suma es 7”</td>
-</tr>
-<tr class="odd">
-<td>Extraer 1 carta de una baraja de 52</td>
-<td>52 resultados posibles</td>
-<td>“Sacar un As” <span class="math inline">\(=\{A\heartsuit, A\diamondsuit, A\clubsuit, A\spadesuit\}\)</span></td>
-</tr>
-</tbody>
-</table>
+<section id="intervalo-de-confianza-para-una-proporción" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-proporción"><span class="header-section-number">9.2</span> 2. Intervalo de confianza para una proporción</h2>
+<p>Retomamos el ejemplo de conversión del Módulo 3: 15 conversiones sobre 50 clientes.</p>
+<div id="cell-6" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_hat <span class="op">=</span> <span class="dv">15</span> <span class="op">/</span> <span class="dv">50</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> inf.confidence_interval_proportion(p_hat, n<span class="op">=</span><span class="dv">50</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tasa de conversión observada: </span><span class="sc">{</span>p_hat<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95%: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
-<section id="axiomas-de-probabilidad-kolmogorov" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="axiomas-de-probabilidad-kolmogorov"><span class="header-section-number">4.3</span> Axiomas de Probabilidad (Kolmogorov)</h2>
-<p>Toda función de probabilidad <span class="math inline">\(P\)</span> definida sobre eventos de <span class="math inline">\(\Omega\)</span> debe cumplir:</p>
+<section id="contraste-de-hipótesis-test-t-de-una-muestra" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="contraste-de-hipótesis-test-t-de-una-muestra"><span class="header-section-number">9.3</span> 3. Contraste de hipótesis: test t de una muestra</h2>
+<p>¿El salario medio de un departamento de 10 empleados es distinto de los 2400€ que afirma la dirección?</p>
+<div id="cell-8" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salarios <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> inf.t_test_mean(salarios, mu0<span class="op">=</span><span class="dv">2400</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">: rechazamos H0, hay evidencia de que el salario medio difiere de 2400€"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">: no hay evidencia suficiente para rechazar H0"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="contraste-de-hipótesis-ab-test-de-dos-proporciones" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="contraste-de-hipótesis-ab-test-de-dos-proporciones"><span class="header-section-number">9.4</span> 4. Contraste de hipótesis: A/B test de dos proporciones</h2>
+<p>Comparamos dos variantes de una landing page: variante A (15/50 conversiones) vs.&nbsp;variante B (27/60 conversiones).</p>
+<div id="cell-10" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>z_stat, p_value <span class="op">=</span> inf.two_proportion_z_test(x1<span class="op">=</span><span class="dv">15</span>, n1<span class="op">=</span><span class="dv">50</span>, x2<span class="op">=</span><span class="dv">27</span>, n2<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p_a, p_b <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">50</span>, <span class="dv">27</span><span class="op">/</span><span class="dv">60</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tasa A: </span><span class="sc">{</span>p_a<span class="sc">:.3f}</span><span class="ss"> | Tasa B: </span><span class="sc">{</span>p_b<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"La diferencia entre variantes es estadísticamente significativa (p &lt; 0.05)."</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de diferencia real entre variantes."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="qué-significa-un-intervalo-de-confianza-del-95" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="qué-significa-un-intervalo-de-confianza-del-95"><span class="header-section-number">9.5</span> 5. ¿Qué significa un intervalo de confianza del 95%?</h2>
+<p>Simulamos 5000 muestras distintas de una población Normal(μ=100, σ=15), construimos un IC al 95% para cada una, y visualizamos cuántos contienen realmente μ=100. Dibujamos los primeros 100 para verlo de forma intuitiva.</p>
+<div id="cell-12" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>true_mu <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n_intervals <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">8</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>contains_mu <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_intervals):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> rng.normal(true_mu, <span class="dv">15</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    x_bar <span class="op">=</span> sample.mean()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    lower, upper <span class="op">=</span> inf.confidence_interval_mean_z(x_bar, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> <span class="st">"steelblue"</span> <span class="cf">if</span> lower <span class="op">&lt;=</span> true_mu <span class="op">&lt;=</span> upper <span class="cf">else</span> <span class="st">"crimson"</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lower <span class="op">&lt;=</span> true_mu <span class="op">&lt;=</span> upper:</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        contains_mu <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ax.plot([lower, upper], [i, i], color<span class="op">=</span>color, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>ax.axvline(true_mu, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="ss">f"Verdadera μ = </span><span class="sc">{</span>true_mu<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Valor"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="ss">f"100 intervalos de confianza al 95% — </span><span class="sc">{</span>contains_mu<span class="sc">}</span><span class="ss"> de 100 contienen μ (línea roja = no la contiene)"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Ahora con 5000 simulaciones, usando la función del toolkit</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(true_mu<span class="op">=</span><span class="dv">100</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>, n_simulations<span class="op">=</span><span class="dv">5000</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cobertura empírica sobre 5000 simulaciones: </span><span class="sc">{</span>coverage<span class="sc">:.3f}</span><span class="ss"> (esperado ≈ 0.95)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="ejercicios-propuestos" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">9.6</span> Ejercicios propuestos</h2>
 <ol type="1">
-<li><span class="math inline">\(P(A) \geq 0\)</span> para cualquier evento <span class="math inline">\(A\)</span>.</li>
-<li><span class="math inline">\(P(\Omega) = 1\)</span>.</li>
-<li>Si <span class="math inline">\(A_1, A_2, \dots\)</span> son eventos mutuamente excluyentes, entonces <span class="math inline">\(P\left(\bigcup_i A_i\right) = \sum_i P(A_i)\)</span>.</li>
+<li>Repite la simulación de la sección 5 con un nivel de confianza del 90% y del 99%. ¿Cómo cambia el ancho de los intervalos y la proporción que contiene a μ?</li>
+<li>Una muestra de 12 tiempos de entrega (en días) tiene media 5.4 y desviación muestral 1.2. Construye un IC al 95% para la media poblacional usando <code>confidence_interval_mean_t</code>, y contrasta si la media real podría ser de 6 días con <code>t_test_mean</code> (necesitarás generar o simular una muestra con esos estadísticos, o adaptar la función a partir de <code>sample_mean</code>/<code>sample_std</code> directamente).</li>
+<li>En el A/B test de la sección 4, calcula también el intervalo de confianza para la diferencia de proporciones (<span class="math inline">\(\hat{p}_B - \hat{p}_A\)</span>) en vez de solo el contraste de hipótesis. ¿Qué información adicional aporta el intervalo frente al p-valor?</li>
 </ol>
-<p>De aquí se derivan propiedades útiles como <span class="math inline">\(P(A^c) = 1 - P(A)\)</span> (probabilidad del complemento) y la regla de la unión:</p>
-<p><span class="math display">\[
-P(A \cup B) = P(A) + P(B) - P(A \cap B)
-\]</span></p>
-</section>
-<section id="probabilidad-condicional" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="probabilidad-condicional"><span class="header-section-number">4.4</span> Probabilidad Condicional</h2>
-<p>La probabilidad de que ocurra <span class="math inline">\(A\)</span> <strong>dado que ya sabemos que ocurrió</strong> <span class="math inline">\(B\)</span>:</p>
-<p><span class="math display">\[
-P(A \mid B) = \frac{P(A \cap B)}{P(B)}, \qquad P(B) &gt; 0
-\]</span></p>
-<p><strong>Ejemplo:</strong> al extraer una carta, <span class="math inline">\(P(\text{As}) = \frac{4}{52}\)</span>. Pero si ya sabemos que la carta es de figura roja, <span class="math inline">\(P(\text{As} \mid \text{Roja}) = \frac{2}{26}\)</span> — la información condiciona el resultado.</p>
-<section id="independencia-de-eventos" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="independencia-de-eventos"><span class="header-section-number">4.4.1</span> Independencia de eventos</h3>
-<p>Dos eventos son <strong>independientes</strong> si conocer uno no cambia la probabilidad del otro:</p>
-<p><span class="math display">\[
-P(A \mid B) = P(A) \quad \Longleftrightarrow \quad P(A \cap B) = P(A) \cdot P(B)
-\]</span></p>
-<p>Confundir independencia con exclusión mutua es uno de los errores conceptuales más comunes: eventos mutuamente excluyentes (<span class="math inline">\(P(A \cap B)=0\)</span>) son, de hecho, <strong>fuertemente dependientes</strong> (si ocurre uno, el otro es imposible).</p>
-</section>
-</section>
-<section id="teorema-de-probabilidad-total" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="teorema-de-probabilidad-total"><span class="header-section-number">4.5</span> Teorema de Probabilidad Total</h2>
-<p>Si <span class="math inline">\(B_1, B_2, \dots, B_n\)</span> forman una partición de <span class="math inline">\(\Omega\)</span> (son mutuamente excluyentes y cubren todo el espacio muestral), entonces para cualquier evento <span class="math inline">\(A\)</span>:</p>
-<p><span class="math display">\[
-P(A) = \sum_{i=1}^{n} P(A \mid B_i) \, P(B_i)
-\]</span></p>
-<p>Esto es clave porque permite calcular la probabilidad de un evento complejo descomponiéndolo en escenarios más simples.</p>
-</section>
-<section id="teorema-de-bayes" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="teorema-de-bayes"><span class="header-section-number">4.6</span> Teorema de Bayes</h2>
-<p>Combinando la definición de probabilidad condicional en ambas direcciones (<span class="math inline">\(P(A\cap B) = P(A\mid B)P(B) = P(B\mid A)P(A)\)</span>), obtenemos el resultado más importante de este módulo:</p>
-<p><span class="math display">\[
-P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)}
-\]</span></p>
-<p>En términos prácticos, cada término tiene un nombre:</p>
-<p><span class="math display">\[
-\underbrace{P(A \mid B)}_{\text{posterior}} = \frac{\overbrace{P(B \mid A)}^{\text{verosimilitud}} \cdot \overbrace{P(A)}^{\text{prior}}}{\underbrace{P(B)}_{\text{evidencia}}}
-\]</span></p>
-<section id="ejemplo-clásico-test-médico" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="ejemplo-clásico-test-médico"><span class="header-section-number">4.6.1</span> Ejemplo clásico: test médico</h3>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    Start([Población]) --&gt;|P enfermo = 1%| Enfermo[Enfermo]
-    Start --&gt;|P sano = 99%| Sano[Sano]
-    Enfermo --&gt;|Test + con 95%| EP[Enfermo y Test+]
-    Enfermo --&gt;|Test - con 5%| EN[Enfermo y Test-]
-    Sano --&gt;|Test + con 5% falso positivo| SP[Sano y Test+]
-    Sano --&gt;|Test - con 95%| SN[Sano y Test-]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Supongamos una enfermedad con prevalencia <span class="math inline">\(P(\text{Enfermo}) = 0.01\)</span>, un test con sensibilidad <span class="math inline">\(P(+\mid \text{Enfermo}) = 0.95\)</span> y tasa de falsos positivos <span class="math inline">\(P(+\mid \text{Sano}) = 0.05\)</span>. ¿Cuál es <span class="math inline">\(P(\text{Enfermo} \mid +)\)</span>?</p>
-<p>Por probabilidad total:</p>
-<p><span class="math display">\[
-P(+) = P(+\mid E)P(E) + P(+\mid S)P(S) = 0.95(0.01) + 0.05(0.99) = 0.0590
-\]</span></p>
-<p>Y por Bayes:</p>
-<p><span class="math display">\[
-P(E \mid +) = \frac{0.95 \times 0.01}{0.0590} \approx 0.161
-\]</span></p>
-<p><strong>Resultado contraintuitivo:</strong> aunque el test es 95% sensible, dar positivo solo implica ~16% de probabilidad real de estar enfermo, porque la enfermedad es rara (prior bajo). Este razonamiento es exactamente el mismo que usa un filtro de spam para decidir si un correo es spam dado que contiene ciertas palabras — lo veremos en la práctica.</p>
-</section>
-</section>
-<section id="hacia-naive-bayes-puente-con-machine-learning" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="hacia-naive-bayes-puente-con-machine-learning"><span class="header-section-number">4.7</span> Hacia Naive Bayes (puente con Machine Learning)</h2>
-<p>Un clasificador <strong>Naive Bayes</strong> aplica el teorema de Bayes para predecir una clase <span class="math inline">\(C\)</span> (ej. <em>spam</em> / <em>no spam</em>) a partir de features <span class="math inline">\(x_1, \dots, x_n\)</span> (ej. palabras presentes en el correo), asumiendo — de forma “ingenua” — que los features son condicionalmente independientes dado <span class="math inline">\(C\)</span>:</p>
-<p><span class="math display">\[
-P(C \mid x_1, \dots, x_n) \propto P(C) \prod_{i=1}^{n} P(x_i \mid C)
-\]</span></p>
-<p>En la práctica calcularemos exactamente esta expresión “a mano” sobre un mini-corpus de correos, sentando las bases del algoritmo que se formalizará con <code>scikit-learn</code> en el repositorio de Machine Learning.</p>
-</section>
-<section id="cierre" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="cierre"><span class="header-section-number">4.8</span> Cierre</h2>
-<p>Con espacio muestral, probabilidad condicional y Teorema de Bayes ya tienes las herramientas para razonar cuantitativamente bajo incertidumbre. En <code>practica.ipynb</code> estimaremos varias de estas probabilidades mediante simulación de Monte Carlo y construiremos un filtro de spam simplificado basado en Bayes.</p>
 
 
 </section>
@@ -833,14 +853,11 @@ P(C \mid x_1, \dots, x_n) \propto P(C) \prod_{i=1}^{n} P(x_i \mid C)
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="pagination-link" aria-label="Práctica: Estadística Descriptiva">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span>
+      <a href="../../notebooks/04_inferencia/teoria.html" class="pagination-link" aria-label="Inferencia Estadística">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/02_probabilidad/practica.html" class="pagination-link" aria-label="Práctica: Probabilidad Básica">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -848,4 +865,4 @@ P(C \mid x_1, \dots, x_n) \propto P(C) \prod_{i=1}^{n} P(x_i \mid C)
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/02_probabilidad/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/04_inferencia/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
