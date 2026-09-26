@@ -28,7 +28,11 @@ book:
     - part: "Módulo 4 — Inferencia Estadística"
       chapters:
         - notebooks/04_inferencia/teoria.qmd
-        - notebooks/04_inferencia/practica.ipynb       
+        - notebooks/04_inferencia/practica.ipynb 
+    - part: "Módulo 5 — Correlación y Regresión Lineal"
+      chapters:
+        - notebooks/05_regresion/teoria.qmd
+        - notebooks/05_regresion/practica.ipynb      
 format:
   html:
     theme: cosmo
