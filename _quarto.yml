@@ -33,6 +33,10 @@ book:
       chapters:
         - notebooks/05_regresion/teoria.qmd
         - notebooks/05_regresion/practica.ipynb      
+    - part: "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas"
+      chapters:
+        - notebooks/06_anova_chi2/teoria.qmd
+        - notebooks/06_anova_chi2/practica.ipynb
 format:
   html:
     theme: cosmo
