@@ -612,5 +612,137 @@
       "Módulo 4 — Inferencia Estadística",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Práctica: Inferencia Estadística</span>"
     ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/teoria.html",
+    "href": "notebooks/05_regresion/teoria.html",
+    "title": "10  Correlación y Regresión Lineal",
+    "section": "",
+    "text": "10.1 5.1 Introducción\nHasta ahora hemos trabajado con una sola variable a la vez: describirla (Módulo 1), modelar su incertidumbre (Módulos 2-3), y estimar o contrastar un parámetro suyo a partir de una muestra (Módulo 4). En este último módulo damos un paso natural: ¿qué pasa cuando tenemos dos variables y queremos saber si están relacionadas?\nflowchart LR\n    A[\"Dos variables:&lt;br/&gt;X e Y\"] --&gt; B[\"Covarianza / Correlación&lt;br/&gt;¿van juntas?\"]\n    B --&gt; C[\"Regresión Lineal&lt;br/&gt;Y = β₀ + β₁X\"]\n    C --&gt; D[\"Contraste sobre β₁&lt;br/&gt;¿la relación es real o azar?\"]\n\n\n\n\nFigura 10.1: De observar dos variables juntas a poder predecir una a partir de la otra\nEjemplos típicos: horas de estudio y nota de un examen, inversión en publicidad y ventas, temperatura y consumo eléctrico. En todos ellos nos interesan dos preguntas distintas: ¿existe relación? (correlación) y, si la hay, ¿cómo la usamos para predecir? (regresión).",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/teoria.html#covarianza-y-correlación",
+    "href": "notebooks/05_regresion/teoria.html#covarianza-y-correlación",
+    "title": "10  Correlación y Regresión Lineal",
+    "section": "10.2 5.2 Covarianza y Correlación",
+    "text": "10.2 5.2 Covarianza y Correlación\nLa covarianza mide si dos variables tienden a moverse juntas (en la misma dirección o en direcciones opuestas):\n\\[\n\\text{Cov}(X, Y) = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})(y_i - \\bar{y})\n\\]\nSu signo indica la dirección de la relación (positiva o negativa), pero su magnitud depende de las unidades de \\(X\\) e \\(Y\\), lo que dificulta comparar covarianzas entre distintos pares de variables. Para resolverlo, normalizamos con el coeficiente de correlación de Pearson:\n\\[\nr = \\frac{\\text{Cov}(X, Y)}{s_X \\, s_Y}\n\\]\n\\(r\\) siempre está entre \\(-1\\) y \\(1\\):\n\n\\(r\\) cercano a \\(1\\): relación lineal positiva fuerte.\n\\(r\\) cercano a \\(-1\\): relación lineal negativa fuerte.\n\\(r\\) cercano a \\(0\\): poca o ninguna relación lineal (¡ojo! podría haber una relación no lineal fuerte y aun así \\(r \\approx 0\\)).\n\n\n\nCódigo\nfrom stats_toolkit import regression as reg\n\nhoras_estudio = [2, 3, 4, 5, 5, 6, 7, 8, 8, 9]\nnota_examen   = [4.5, 5.2, 5.8, 6.5, 6.9, 7.2, 7.8, 8.4, 8.6, 9.1]\n\nr = reg.correlation(horas_estudio, nota_examen)\nprint(f\"Correlación de Pearson: r = {r:.3f}\")\n\n\nCorrelación de Pearson: r = 0.996\n\n\n\nCorrelación no implica causalidad. Que dos variables estén correlacionadas no significa que una cause la otra — puede haber una tercera variable oculta (variable de confusión), o la relación puede ser pura coincidencia en los datos disponibles. La correlación es una herramienta descriptiva, no una prueba causal.",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/teoria.html#regresión-lineal-simple",
+    "href": "notebooks/05_regresion/teoria.html#regresión-lineal-simple",
+    "title": "10  Correlación y Regresión Lineal",
+    "section": "10.3 5.3 Regresión Lineal Simple",
+    "text": "10.3 5.3 Regresión Lineal Simple\nMientras que la correlación solo nos dice cuán fuerte es la relación lineal, la regresión lineal va más allá: nos da un modelo concreto para predecir \\(Y\\) a partir de \\(X\\).\n\\[\nY = \\beta_0 + \\beta_1 X + \\varepsilon\n\\]\n\n\\(\\beta_0\\) (intercepto): el valor esperado de \\(Y\\) cuando \\(X = 0\\).\n\\(\\beta_1\\) (pendiente): cuánto cambia \\(Y\\), en promedio, por cada unidad que aumenta \\(X\\).\n\\(\\varepsilon\\) (error): la parte de \\(Y\\) que el modelo no explica.\n\nEl método de mínimos cuadrados ordinarios (OLS) encuentra los valores de \\(\\beta_0\\) y \\(\\beta_1\\) que minimizan la suma de los errores al cuadrado, y tienen una solución cerrada muy simple:\n\\[\n\\hat{\\beta}_1 = \\frac{\\text{Cov}(X, Y)}{\\text{Var}(X)} \\qquad \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x}\n\\]\n\n\nCódigo\nbeta0, beta1 = reg.simple_linear_regression(horas_estudio, nota_examen)\nprint(f\"Intercepto (β0): {beta0:.3f}\")\nprint(f\"Pendiente (β1): {beta1:.3f}\")\nprint(f\"Interpretación: cada hora extra de estudio se asocia con +{beta1:.2f} puntos en el examen\")\n\n\nIntercepto (β0): 3.267\nPendiente (β1): 0.655\nInterpretación: cada hora extra de estudio se asocia con +0.65 puntos en el examen\n\n\n\n\nCódigo\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nx_line = np.linspace(min(horas_estudio), max(horas_estudio), 100)\ny_line = reg.predict(x_line, beta0, beta1)\n\nplt.scatter(horas_estudio, nota_examen, color=\"steelblue\", label=\"Datos observados\")\nplt.plot(x_line, y_line, color=\"crimson\", label=f\"Y = {beta0:.2f} + {beta1:.2f}X\")\nplt.xlabel(\"Horas de estudio\")\nplt.ylabel(\"Nota del examen\")\nplt.title(\"Regresión lineal simple\")\nplt.legend()\nplt.show()",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/teoria.html#bondad-de-ajuste-r2",
+    "href": "notebooks/05_regresion/teoria.html#bondad-de-ajuste-r2",
+    "title": "10  Correlación y Regresión Lineal",
+    "section": "10.4 5.4 Bondad de Ajuste: \\(R^2\\)",
+    "text": "10.4 5.4 Bondad de Ajuste: \\(R^2\\)\n¿Qué tan bien explica el modelo los datos? El coeficiente de determinación \\(R^2\\) mide qué proporción de la variabilidad total de \\(Y\\) queda explicada por el modelo:\n\\[\nR^2 = 1 - \\frac{\\sum_i (y_i - \\hat{y}_i)^2}{\\sum_i (y_i - \\bar{y})^2}\n\\]\n\\(R^2\\) va de 0 (el modelo no explica nada) a 1 (el modelo explica toda la variabilidad). En regresión lineal simple, \\(R^2\\) es exactamente el cuadrado del coeficiente de correlación de Pearson: \\(R^2 = r^2\\).\n\n\nCódigo\nr2 = reg.r_squared(horas_estudio, nota_examen, beta0, beta1)\nprint(f\"R² = {r2:.3f}  (r² = {r**2:.3f})\")\nprint(f\"El modelo explica el {r2*100:.1f}% de la variabilidad de la nota\")\n\n\nR² = 0.992  (r² = 0.992)\nEl modelo explica el 99.2% de la variabilidad de la nota",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/teoria.html#la-relación-es-real-o-podría-deberse-al-azar",
+    "href": "notebooks/05_regresion/teoria.html#la-relación-es-real-o-podría-deberse-al-azar",
+    "title": "10  Correlación y Regresión Lineal",
+    "section": "10.5 5.5 ¿La relación es real o podría deberse al azar?",
+    "text": "10.5 5.5 ¿La relación es real o podría deberse al azar?\nAquí es donde reconectamos con el Módulo 4: \\(\\hat{\\beta}_1\\) es un estimador calculado a partir de una muestra, así que tiene su propio error estándar, y podemos plantear un contraste de hipótesis sobre él.\n\\[\nH_0: \\beta_1 = 0 \\quad \\text{(no hay relación lineal real)} \\qquad H_1: \\beta_1 \\neq 0\n\\]\nEl estadístico de prueba sigue una distribución t de Student con \\(n-2\\) grados de libertad (perdemos 2 grados de libertad por estimar \\(\\beta_0\\) y \\(\\beta_1\\)):\n\\[\nt = \\frac{\\hat{\\beta}_1}{SE(\\hat{\\beta}_1)}\n\\]\n\n\nCódigo\nt_stat, p_value = reg.t_test_slope(horas_estudio, nota_examen, beta0, beta1)\nprint(f\"t = {t_stat:.3f}, p-valor = {p_value:.6f}\")\n\nif p_value &lt; 0.05:\n    print(\"p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es estadísticamente significativa\")\nelse:\n    print(\"No hay evidencia suficiente de una relación lineal real\")\n\n\nt = 31.057, p-valor = 0.000000\np-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es estadísticamente significativa\n\n\nY, como en el Módulo 4, también podemos construir un intervalo de confianza para \\(\\beta_1\\) en vez de limitarnos a un sí/no:\n\n\nCódigo\nlower, upper = reg.confidence_interval_slope(horas_estudio, nota_examen, beta0, beta1, confidence=0.95)\nprint(f\"IC 95% para β1: ({lower:.3f}, {upper:.3f})\")\n\n\nIC 95% para β1: (0.606, 0.704)",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/teoria.html#cierre-del-curso",
+    "href": "notebooks/05_regresion/teoria.html#cierre-del-curso",
+    "title": "10  Correlación y Regresión Lineal",
+    "section": "10.6 5.6 Cierre del curso",
+    "text": "10.6 5.6 Cierre del curso\nCon este módulo completamos el recorrido de Estadística Básica: describir datos (Módulo 1), modelar la incertidumbre de sucesos (Módulo 2) y de variables aleatorias completas (Módulo 3), usar esas distribuciones para estimar y contrastar parámetros poblacionales (Módulo 4), y finalmente estudiar y validar relaciones entre variables (Módulo 5).\nEstas cinco piezas son la base sobre la que se construye prácticamente cualquier análisis de datos aplicado: desde un experimento de A/B testing hasta un modelo de machine learning — de hecho, la regresión lineal que acabamos de ver es, en sí misma, uno de los algoritmos de machine learning más usados, y el Naive Bayes que vimos como cierre del Módulo 2 es otro. Si en el futuro amplías este curso, este es el punto natural desde el que dar el salto hacia regresión múltiple, clasificación y otros modelos predictivos.",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/practica.html",
+    "href": "notebooks/05_regresion/practica.html",
+    "title": "11  Práctica: Correlación y Regresión Lineal",
+    "section": "",
+    "text": "11.1 1. Datos: inversión en publicidad vs. ventas\nEn este cuaderno calculamos correlaciones, ajustamos un modelo de regresión lineal simple, evaluamos su bondad de ajuste y contrastamos si la relación encontrada es estadísticamente significativa.\nSimulamos 20 meses de inversión en publicidad (miles de €) y ventas resultantes (miles de €), con una relación lineal real más algo de ruido.\nCódigo\nrng = np.random.default_rng(3)\npublicidad = rng.uniform(5, 50, size=20)\nventas = 20 + 3.5 * publicidad + rng.normal(0, 25, size=20)\n\nplt.scatter(publicidad, ventas, color=\"steelblue\")\nplt.xlabel(\"Inversión en publicidad (miles de €)\")\nplt.ylabel(\"Ventas (miles de €)\")\nplt.title(\"Publicidad vs. Ventas\")\nplt.show()",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Práctica: Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/practica.html#correlación",
+    "href": "notebooks/05_regresion/practica.html#correlación",
+    "title": "11  Práctica: Correlación y Regresión Lineal",
+    "section": "11.2 2. Correlación",
+    "text": "11.2 2. Correlación\n\n\nCódigo\nr = reg.correlation(publicidad, ventas)\nprint(f\"Correlación de Pearson: r = {r:.3f}\")",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Práctica: Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/practica.html#ajuste-del-modelo-de-regresión",
+    "href": "notebooks/05_regresion/practica.html#ajuste-del-modelo-de-regresión",
+    "title": "11  Práctica: Correlación y Regresión Lineal",
+    "section": "11.3 3. Ajuste del modelo de regresión",
+    "text": "11.3 3. Ajuste del modelo de regresión\n\n\nCódigo\nbeta0, beta1 = reg.simple_linear_regression(publicidad, ventas)\nprint(f\"Ventas estimadas = {beta0:.2f} + {beta1:.2f} × Publicidad\")\n\nx_line = np.linspace(publicidad.min(), publicidad.max(), 100)\ny_line = reg.predict(x_line, beta0, beta1)\n\nplt.scatter(publicidad, ventas, color=\"steelblue\", label=\"Datos observados\")\nplt.plot(x_line, y_line, color=\"crimson\", label=\"Recta ajustada\")\nplt.xlabel(\"Inversión en publicidad (miles de €)\")\nplt.ylabel(\"Ventas (miles de €)\")\nplt.legend()\nplt.title(\"Regresión lineal: Publicidad vs. Ventas\")\nplt.show()",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Práctica: Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/practica.html#residuos-y-bondad-de-ajuste",
+    "href": "notebooks/05_regresion/practica.html#residuos-y-bondad-de-ajuste",
+    "title": "11  Práctica: Correlación y Regresión Lineal",
+    "section": "11.4 4. Residuos y bondad de ajuste",
+    "text": "11.4 4. Residuos y bondad de ajuste\nUn buen ajuste debería mostrar residuos dispersos aleatoriamente alrededor de cero, sin ningún patrón sistemático (si hubiera un patrón claro, indicaría que el modelo lineal no captura bien la relación).\n\n\nCódigo\nresid = reg.residuals(publicidad, ventas, beta0, beta1)\n\nplt.scatter(publicidad, resid, color=\"darkorange\")\nplt.axhline(0, color=\"black\", linestyle=\"--\")\nplt.xlabel(\"Inversión en publicidad (miles de €)\")\nplt.ylabel(\"Residuo (ventas observadas - predichas)\")\nplt.title(\"Gráfico de residuos\")\nplt.show()\n\nr2 = reg.r_squared(publicidad, ventas, beta0, beta1)\nprint(f\"R² = {r2:.3f} — el modelo explica el {r2*100:.1f}% de la variabilidad de las ventas\")",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Práctica: Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/practica.html#es-la-relación-estadísticamente-significativa",
+    "href": "notebooks/05_regresion/practica.html#es-la-relación-estadísticamente-significativa",
+    "title": "11  Práctica: Correlación y Regresión Lineal",
+    "section": "11.5 5. ¿Es la relación estadísticamente significativa?",
+    "text": "11.5 5. ¿Es la relación estadísticamente significativa?\nContrastamos H0: β1 = 0 (no hay relación real entre publicidad y ventas) frente a H1: β1 ≠ 0.\n\n\nCódigo\nt_stat, p_value = reg.t_test_slope(publicidad, ventas, beta0, beta1)\nlower, upper = reg.confidence_interval_slope(publicidad, ventas, beta0, beta1, confidence=0.95)\n\nprint(f\"t = {t_stat:.3f}, p-valor = {p_value:.6f}\")\nprint(f\"IC 95% para β1: ({lower:.3f}, {upper:.3f})\")\n\nif p_value &lt; 0.05:\n    print(\"\\nConclusión: la relación entre publicidad y ventas es estadísticamente significativa.\")\nelse:\n    print(\"\\nConclusión: no hay evidencia suficiente de una relación lineal real.\")",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Práctica: Correlación y Regresión Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/05_regresion/practica.html#ejercicios-propuestos",
+    "href": "notebooks/05_regresion/practica.html#ejercicios-propuestos",
+    "title": "11  Práctica: Correlación y Regresión Lineal",
+    "section": "11.6 Ejercicios propuestos",
+    "text": "11.6 Ejercicios propuestos\n\nGenera un segundo conjunto de datos donde ventas sea prácticamente independiente de publicidad (por ejemplo, ruido puro sin relación real) y repite todo el análisis. Compara el R² y el p-valor con los obtenidos aquí.\nUsa el modelo ajustado para predecir las ventas esperadas con una inversión en publicidad de 60.000 €. ¿Te fías igual de esta predicción que de una dentro del rango de datos observados (5-50)? ¿Por qué?\nCalcula la correlación entre publicidad y ventas usando numpy.corrcoef y comprueba que coincide con el resultado de reg.correlation. Comprueba también que r ** 2 coincide con el R² calculado en la sección 4.",
+    "crumbs": [
+      "Módulo 5 — Correlación y Regresión Lineal",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Práctica: Correlación y Regresión Lineal</span>"
+    ]
   }
 ]

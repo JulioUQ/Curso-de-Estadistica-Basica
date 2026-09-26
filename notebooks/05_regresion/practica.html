@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Práctica: Inferencia Estadística – Estadística Básica</title>
+<title>11&nbsp; Práctica: Correlación y Regresión Lineal – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../notebooks/05_regresion/teoria.html" rel="next">
-<link href="../../notebooks/04_inferencia/teoria.html" rel="prev">
+<link href="../../notebooks/05_regresion/teoria.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -111,35 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../custom.css">
 </head>
@@ -153,7 +123,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/practica.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -273,7 +243,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
@@ -296,7 +266,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
@@ -312,21 +282,21 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#intervalo-de-confianza-para-una-media" id="toc-intervalo-de-confianza-para-una-media" class="nav-link active" data-scroll-target="#intervalo-de-confianza-para-una-media"><span class="header-section-number">9.1</span> 1. Intervalo de confianza para una media</a></li>
-  <li><a href="#intervalo-de-confianza-para-una-proporción" id="toc-intervalo-de-confianza-para-una-proporción" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-una-proporción"><span class="header-section-number">9.2</span> 2. Intervalo de confianza para una proporción</a></li>
-  <li><a href="#contraste-de-hipótesis-test-t-de-una-muestra" id="toc-contraste-de-hipótesis-test-t-de-una-muestra" class="nav-link" data-scroll-target="#contraste-de-hipótesis-test-t-de-una-muestra"><span class="header-section-number">9.3</span> 3. Contraste de hipótesis: test t de una muestra</a></li>
-  <li><a href="#contraste-de-hipótesis-ab-test-de-dos-proporciones" id="toc-contraste-de-hipótesis-ab-test-de-dos-proporciones" class="nav-link" data-scroll-target="#contraste-de-hipótesis-ab-test-de-dos-proporciones"><span class="header-section-number">9.4</span> 4. Contraste de hipótesis: A/B test de dos proporciones</a></li>
-  <li><a href="#qué-significa-un-intervalo-de-confianza-del-95" id="toc-qué-significa-un-intervalo-de-confianza-del-95" class="nav-link" data-scroll-target="#qué-significa-un-intervalo-de-confianza-del-95"><span class="header-section-number">9.5</span> 5. ¿Qué significa un intervalo de confianza del 95%?</a></li>
-  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">9.6</span> Ejercicios propuestos</a></li>
+  <li><a href="#datos-inversión-en-publicidad-vs.-ventas" id="toc-datos-inversión-en-publicidad-vs.-ventas" class="nav-link active" data-scroll-target="#datos-inversión-en-publicidad-vs.-ventas"><span class="header-section-number">11.1</span> 1. Datos: inversión en publicidad vs.&nbsp;ventas</a></li>
+  <li><a href="#correlación" id="toc-correlación" class="nav-link" data-scroll-target="#correlación"><span class="header-section-number">11.2</span> 2. Correlación</a></li>
+  <li><a href="#ajuste-del-modelo-de-regresión" id="toc-ajuste-del-modelo-de-regresión" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión"><span class="header-section-number">11.3</span> 3. Ajuste del modelo de regresión</a></li>
+  <li><a href="#residuos-y-bondad-de-ajuste" id="toc-residuos-y-bondad-de-ajuste" class="nav-link" data-scroll-target="#residuos-y-bondad-de-ajuste"><span class="header-section-number">11.4</span> 4. Residuos y bondad de ajuste</a></li>
+  <li><a href="#es-la-relación-estadísticamente-significativa" id="toc-es-la-relación-estadísticamente-significativa" class="nav-link" data-scroll-target="#es-la-relación-estadísticamente-significativa"><span class="header-section-number">11.5</span> 5. ¿Es la relación estadísticamente significativa?</a></li>
+  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">11.6</span> Ejercicios propuestos</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/04_inferencia/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/05_regresion/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/practica.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></h1>
 </div>
 
 
@@ -343,7 +313,7 @@ window.Quarto = {
 </header>
 
 
-<p>En este cuaderno construimos intervalos de confianza, realizamos contrastes de hipótesis sobre medias y proporciones, y verificamos por simulación qué significa realmente un nivel de confianza del 95%.</p>
+<p>En este cuaderno calculamos correlaciones, ajustamos un modelo de regresión lineal simple, evaluamos su bondad de ajuste y contrastamos si la relación encontrada es estadísticamente significativa.</p>
 <div id="cell-1" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -352,123 +322,103 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> inference <span class="im">as</span> inf</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> regression <span class="im">as</span> reg</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="intervalo-de-confianza-para-una-media" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-media"><span class="header-section-number">9.1</span> 1. Intervalo de confianza para una media</h2>
-<p>Simulamos una muestra de 40 tiempos de respuesta de una API (población Normal con μ=120ms, σ=15ms) y construimos su IC al 95%, sabiendo σ (caso z) y sin saberlo (caso t, estimando s a partir de la propia muestra).</p>
+<section id="datos-inversión-en-publicidad-vs.-ventas" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="datos-inversión-en-publicidad-vs.-ventas"><span class="header-section-number">11.1</span> 1. Datos: inversión en publicidad vs.&nbsp;ventas</h2>
+<p>Simulamos 20 meses de inversión en publicidad (miles de €) y ventas resultantes (miles de €), con una relación lineal real más algo de ruido.</p>
 <div id="cell-3" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">120</span>, scale<span class="op">=</span><span class="dv">15</span>, size<span class="op">=</span><span class="dv">40</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x_bar <span class="op">=</span> muestra.mean()</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> muestra.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media muestral: </span><span class="sc">{</span>x_bar<span class="sc">:.2f}</span><span class="ss"> ms | Desviación muestral: </span><span class="sc">{</span>s<span class="sc">:.2f}</span><span class="ss"> ms"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ic_z <span class="op">=</span> inf.confidence_interval_mean_z(x_bar, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ic_t <span class="op">=</span> inf.confidence_interval_mean_t(x_bar, sample_std<span class="op">=</span>s, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% (sigma conocida, z): (</span><span class="sc">{</span>ic_z[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ic_z[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% (sigma desconocida, t): (</span><span class="sc">{</span>ic_t[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ic_t[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>Observa que el intervalo basado en la t es ligeramente más ancho: refleja la incertidumbre extra de tener que estimar σ desde la propia muestra.</p>
-</section>
-<section id="intervalo-de-confianza-para-una-proporción" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-proporción"><span class="header-section-number">9.2</span> 2. Intervalo de confianza para una proporción</h2>
-<p>Retomamos el ejemplo de conversión del Módulo 3: 15 conversiones sobre 50 clientes.</p>
-<div id="cell-6" class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_hat <span class="op">=</span> <span class="dv">15</span> <span class="op">/</span> <span class="dv">50</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> inf.confidence_interval_proportion(p_hat, n<span class="op">=</span><span class="dv">50</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tasa de conversión observada: </span><span class="sc">{</span>p_hat<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95%: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">3</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>publicidad <span class="op">=</span> rng.uniform(<span class="dv">5</span>, <span class="dv">50</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ventas <span class="op">=</span> <span class="dv">20</span> <span class="op">+</span> <span class="fl">3.5</span> <span class="op">*</span> publicidad <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="dv">25</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(publicidad, ventas, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Inversión en publicidad (miles de €)"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Ventas (miles de €)"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Publicidad vs. Ventas"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="contraste-de-hipótesis-test-t-de-una-muestra" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="contraste-de-hipótesis-test-t-de-una-muestra"><span class="header-section-number">9.3</span> 3. Contraste de hipótesis: test t de una muestra</h2>
-<p>¿El salario medio de un departamento de 10 empleados es distinto de los 2400€ que afirma la dirección?</p>
-<div id="cell-8" class="cell">
+<section id="correlación" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="correlación"><span class="header-section-number">11.2</span> 2. Correlación</h2>
+<div id="cell-5" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salarios <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> inf.t_test_mean(salarios, mu0<span class="op">=</span><span class="dv">2400</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">: rechazamos H0, hay evidencia de que el salario medio difiere de 2400€"</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">: no hay evidencia suficiente para rechazar H0"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> reg.correlation(publicidad, ventas)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Correlación de Pearson: r = </span><span class="sc">{</span>r<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="contraste-de-hipótesis-ab-test-de-dos-proporciones" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="contraste-de-hipótesis-ab-test-de-dos-proporciones"><span class="header-section-number">9.4</span> 4. Contraste de hipótesis: A/B test de dos proporciones</h2>
-<p>Comparamos dos variantes de una landing page: variante A (15/50 conversiones) vs.&nbsp;variante B (27/60 conversiones).</p>
-<div id="cell-10" class="cell">
+<section id="ajuste-del-modelo-de-regresión" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión"><span class="header-section-number">11.3</span> 3. Ajuste del modelo de regresión</h2>
+<div id="cell-7" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>z_stat, p_value <span class="op">=</span> inf.two_proportion_z_test(x1<span class="op">=</span><span class="dv">15</span>, n1<span class="op">=</span><span class="dv">50</span>, x2<span class="op">=</span><span class="dv">27</span>, n2<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p_a, p_b <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">50</span>, <span class="dv">27</span><span class="op">/</span><span class="dv">60</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tasa A: </span><span class="sc">{</span>p_a<span class="sc">:.3f}</span><span class="ss"> | Tasa B: </span><span class="sc">{</span>p_b<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"La diferencia entre variantes es estadísticamente significativa (p &lt; 0.05)."</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de diferencia real entre variantes."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(publicidad, ventas)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ventas estimadas = </span><span class="sc">{</span>beta0<span class="sc">:.2f}</span><span class="ss"> + </span><span class="sc">{</span>beta1<span class="sc">:.2f}</span><span class="ss"> × Publicidad"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>x_line <span class="op">=</span> np.linspace(publicidad.<span class="bu">min</span>(), publicidad.<span class="bu">max</span>(), <span class="dv">100</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>y_line <span class="op">=</span> reg.predict(x_line, beta0, beta1)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(publicidad, ventas, color<span class="op">=</span><span class="st">"steelblue"</span>, label<span class="op">=</span><span class="st">"Datos observados"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x_line, y_line, color<span class="op">=</span><span class="st">"crimson"</span>, label<span class="op">=</span><span class="st">"Recta ajustada"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Inversión en publicidad (miles de €)"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Ventas (miles de €)"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Regresión lineal: Publicidad vs. Ventas"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="qué-significa-un-intervalo-de-confianza-del-95" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="qué-significa-un-intervalo-de-confianza-del-95"><span class="header-section-number">9.5</span> 5. ¿Qué significa un intervalo de confianza del 95%?</h2>
-<p>Simulamos 5000 muestras distintas de una población Normal(μ=100, σ=15), construimos un IC al 95% para cada una, y visualizamos cuántos contienen realmente μ=100. Dibujamos los primeros 100 para verlo de forma intuitiva.</p>
-<div id="cell-12" class="cell">
+<section id="residuos-y-bondad-de-ajuste" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="residuos-y-bondad-de-ajuste"><span class="header-section-number">11.4</span> 4. Residuos y bondad de ajuste</h2>
+<p>Un buen ajuste debería mostrar residuos dispersos aleatoriamente alrededor de cero, sin ningún patrón sistemático (si hubiera un patrón claro, indicaría que el modelo lineal no captura bien la relación).</p>
+<div id="cell-9" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>true_mu <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n_intervals <span class="op">=</span> <span class="dv">100</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>resid <span class="op">=</span> reg.residuals(publicidad, ventas, beta0, beta1)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(publicidad, resid, color<span class="op">=</span><span class="st">"darkorange"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Inversión en publicidad (miles de €)"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Residuo (ventas observadas - predichas)"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Gráfico de residuos"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(publicidad, ventas, beta0, beta1)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R² = </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss"> — el modelo explica el </span><span class="sc">{</span>r2<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">% de la variabilidad de las ventas"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="es-la-relación-estadísticamente-significativa" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="es-la-relación-estadísticamente-significativa"><span class="header-section-number">11.5</span> 5. ¿Es la relación estadísticamente significativa?</h2>
+<p>Contrastamos H0: β1 = 0 (no hay relación real entre publicidad y ventas) frente a H1: β1 ≠ 0.</p>
+<div id="cell-11" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(publicidad, ventas, beta0, beta1)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(publicidad, ventas, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">8</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% para β1: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>contains_mu <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_intervals):</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> rng.normal(true_mu, <span class="dv">15</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    x_bar <span class="op">=</span> sample.mean()</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    lower, upper <span class="op">=</span> inf.confidence_interval_mean_z(x_bar, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> <span class="st">"steelblue"</span> <span class="cf">if</span> lower <span class="op">&lt;=</span> true_mu <span class="op">&lt;=</span> upper <span class="cf">else</span> <span class="st">"crimson"</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lower <span class="op">&lt;=</span> true_mu <span class="op">&lt;=</span> upper:</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        contains_mu <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ax.plot([lower, upper], [i, i], color<span class="op">=</span>color, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>ax.axvline(true_mu, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="ss">f"Verdadera μ = </span><span class="sc">{</span>true_mu<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Valor"</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="ss">f"100 intervalos de confianza al 95% — </span><span class="sc">{</span>contains_mu<span class="sc">}</span><span class="ss"> de 100 contienen μ (línea roja = no la contiene)"</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Ahora con 5000 simulaciones, usando la función del toolkit</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(true_mu<span class="op">=</span><span class="dv">100</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>, n_simulations<span class="op">=</span><span class="dv">5000</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cobertura empírica sobre 5000 simulaciones: </span><span class="sc">{</span>coverage<span class="sc">:.3f}</span><span class="ss"> (esperado ≈ 0.95)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Conclusión: la relación entre publicidad y ventas es estadísticamente significativa."</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Conclusión: no hay evidencia suficiente de una relación lineal real."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="ejercicios-propuestos" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">9.6</span> Ejercicios propuestos</h2>
+<section id="ejercicios-propuestos" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">11.6</span> Ejercicios propuestos</h2>
 <ol type="1">
-<li>Repite la simulación de la sección 5 con un nivel de confianza del 90% y del 99%. ¿Cómo cambia el ancho de los intervalos y la proporción que contiene a μ?</li>
-<li>Una muestra de 12 tiempos de entrega (en días) tiene media 5.4 y desviación muestral 1.2. Construye un IC al 95% para la media poblacional usando <code>confidence_interval_mean_t</code>, y contrasta si la media real podría ser de 6 días con <code>t_test_mean</code> (necesitarás generar o simular una muestra con esos estadísticos, o adaptar la función a partir de <code>sample_mean</code>/<code>sample_std</code> directamente).</li>
-<li>En el A/B test de la sección 4, calcula también el intervalo de confianza para la diferencia de proporciones (<span class="math inline">\(\hat{p}_B - \hat{p}_A\)</span>) en vez de solo el contraste de hipótesis. ¿Qué información adicional aporta el intervalo frente al p-valor?</li>
+<li>Genera un segundo conjunto de datos donde <code>ventas</code> sea prácticamente independiente de <code>publicidad</code> (por ejemplo, ruido puro sin relación real) y repite todo el análisis. Compara el R² y el p-valor con los obtenidos aquí.</li>
+<li>Usa el modelo ajustado para predecir las ventas esperadas con una inversión en publicidad de 60.000 €. ¿Te fías igual de esta predicción que de una dentro del rango de datos observados (5-50)? ¿Por qué?</li>
+<li>Calcula la correlación entre publicidad y ventas usando <code>numpy.corrcoef</code> y comprueba que coincide con el resultado de <code>reg.correlation</code>. Comprueba también que <code>r ** 2</code> coincide con el <code>R²</code> calculado en la sección 4.</li>
 </ol>
 
 
@@ -877,14 +827,11 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/04_inferencia/teoria.html" class="pagination-link" aria-label="Inferencia Estadística">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span>
+      <a href="../../notebooks/05_regresion/teoria.html" class="pagination-link" aria-label="Correlación y Regresión Lineal">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/05_regresion/teoria.html" class="pagination-link" aria-label="Correlación y Regresión Lineal">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -892,4 +839,4 @@ window.Quarto = {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/04_inferencia/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/05_regresion/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

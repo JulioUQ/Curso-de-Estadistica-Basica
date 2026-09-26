@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Práctica: Inferencia Estadística – Estadística Básica</title>
+<title>10&nbsp; Correlación y Regresión Lineal – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../notebooks/05_regresion/teoria.html" rel="next">
-<link href="../../notebooks/04_inferencia/teoria.html" rel="prev">
+<link href="../../notebooks/05_regresion/practica.html" rel="next">
+<link href="../../notebooks/04_inferencia/practica.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -110,6 +110,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -153,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -273,7 +276,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
@@ -290,7 +293,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
@@ -312,21 +315,21 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#intervalo-de-confianza-para-una-media" id="toc-intervalo-de-confianza-para-una-media" class="nav-link active" data-scroll-target="#intervalo-de-confianza-para-una-media"><span class="header-section-number">9.1</span> 1. Intervalo de confianza para una media</a></li>
-  <li><a href="#intervalo-de-confianza-para-una-proporción" id="toc-intervalo-de-confianza-para-una-proporción" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-una-proporción"><span class="header-section-number">9.2</span> 2. Intervalo de confianza para una proporción</a></li>
-  <li><a href="#contraste-de-hipótesis-test-t-de-una-muestra" id="toc-contraste-de-hipótesis-test-t-de-una-muestra" class="nav-link" data-scroll-target="#contraste-de-hipótesis-test-t-de-una-muestra"><span class="header-section-number">9.3</span> 3. Contraste de hipótesis: test t de una muestra</a></li>
-  <li><a href="#contraste-de-hipótesis-ab-test-de-dos-proporciones" id="toc-contraste-de-hipótesis-ab-test-de-dos-proporciones" class="nav-link" data-scroll-target="#contraste-de-hipótesis-ab-test-de-dos-proporciones"><span class="header-section-number">9.4</span> 4. Contraste de hipótesis: A/B test de dos proporciones</a></li>
-  <li><a href="#qué-significa-un-intervalo-de-confianza-del-95" id="toc-qué-significa-un-intervalo-de-confianza-del-95" class="nav-link" data-scroll-target="#qué-significa-un-intervalo-de-confianza-del-95"><span class="header-section-number">9.5</span> 5. ¿Qué significa un intervalo de confianza del 95%?</a></li>
-  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">9.6</span> Ejercicios propuestos</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">10.1</span> 5.1 Introducción</a></li>
+  <li><a href="#covarianza-y-correlación" id="toc-covarianza-y-correlación" class="nav-link" data-scroll-target="#covarianza-y-correlación"><span class="header-section-number">10.2</span> 5.2 Covarianza y Correlación</a></li>
+  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">10.3</span> 5.3 Regresión Lineal Simple</a></li>
+  <li><a href="#bondad-de-ajuste-r2" id="toc-bondad-de-ajuste-r2" class="nav-link" data-scroll-target="#bondad-de-ajuste-r2"><span class="header-section-number">10.4</span> 5.4 Bondad de Ajuste: <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#la-relación-es-real-o-podría-deberse-al-azar" id="toc-la-relación-es-real-o-podría-deberse-al-azar" class="nav-link" data-scroll-target="#la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">10.5</span> 5.5 ¿La relación es real o podría deberse al azar?</a></li>
+  <li><a href="#cierre-del-curso" id="toc-cierre-del-curso" class="nav-link" data-scroll-target="#cierre-del-curso"><span class="header-section-number">10.6</span> 5.6 Cierre del curso</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/04_inferencia/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/05_regresion/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></h1>
 </div>
 
 
@@ -343,133 +346,183 @@ window.Quarto = {
 </header>
 
 
-<p>En este cuaderno construimos intervalos de confianza, realizamos contrastes de hipótesis sobre medias y proporciones, y verificamos por simulación qué significa realmente un nivel de confianza del 95%.</p>
-<div id="cell-1" class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> inference <span class="im">as</span> inf</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<section id="introducción" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">10.1</span> 5.1 Introducción</h2>
+<p>Hasta ahora hemos trabajado con <strong>una sola variable a la vez</strong>: describirla (Módulo 1), modelar su incertidumbre (Módulos 2-3), y estimar o contrastar un parámetro suyo a partir de una muestra (Módulo 4). En este último módulo damos un paso natural: ¿qué pasa cuando tenemos <strong>dos variables</strong> y queremos saber si están relacionadas?</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-de-correlacion-a-regresion" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-de-correlacion-a-regresion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-de-correlacion-a-regresion">flowchart LR
+    A["Dos variables:&lt;br/&gt;X e Y"] --&gt; B["Covarianza / Correlación&lt;br/&gt;¿van juntas?"]
+    B --&gt; C["Regresión Lineal&lt;br/&gt;Y = β₀ + β₁X"]
+    C --&gt; D["Contraste sobre β₁&lt;br/&gt;¿la relación es real o azar?"]
+</pre>
 </div>
-<section id="intervalo-de-confianza-para-una-media" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-media"><span class="header-section-number">9.1</span> 1. Intervalo de confianza para una media</h2>
-<p>Simulamos una muestra de 40 tiempos de respuesta de una API (población Normal con μ=120ms, σ=15ms) y construimos su IC al 95%, sabiendo σ (caso z) y sin saberlo (caso t, estimando s a partir de la propia muestra).</p>
-<div id="cell-3" class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">120</span>, scale<span class="op">=</span><span class="dv">15</span>, size<span class="op">=</span><span class="dv">40</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x_bar <span class="op">=</span> muestra.mean()</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> muestra.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media muestral: </span><span class="sc">{</span>x_bar<span class="sc">:.2f}</span><span class="ss"> ms | Desviación muestral: </span><span class="sc">{</span>s<span class="sc">:.2f}</span><span class="ss"> ms"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ic_z <span class="op">=</span> inf.confidence_interval_mean_z(x_bar, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ic_t <span class="op">=</span> inf.confidence_interval_mean_t(x_bar, sample_std<span class="op">=</span>s, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% (sigma conocida, z): (</span><span class="sc">{</span>ic_z[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ic_z[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% (sigma desconocida, t): (</span><span class="sc">{</span>ic_t[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ic_t[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
-<p>Observa que el intervalo basado en la t es ligeramente más ancho: refleja la incertidumbre extra de tener que estimar σ desde la propia muestra.</p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-de-correlacion-a-regresion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10.1: De observar dos variables juntas a poder predecir una a partir de la otra
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Ejemplos típicos: horas de estudio y nota de un examen, inversión en publicidad y ventas, temperatura y consumo eléctrico. En todos ellos nos interesan dos preguntas distintas: <strong>¿existe relación?</strong> (correlación) y, si la hay, <strong>¿cómo la usamos para predecir?</strong> (regresión).</p>
 </section>
-<section id="intervalo-de-confianza-para-una-proporción" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-proporción"><span class="header-section-number">9.2</span> 2. Intervalo de confianza para una proporción</h2>
-<p>Retomamos el ejemplo de conversión del Módulo 3: 15 conversiones sobre 50 clientes.</p>
-<div id="cell-6" class="cell">
+<section id="covarianza-y-correlación" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="covarianza-y-correlación"><span class="header-section-number">10.2</span> 5.2 Covarianza y Correlación</h2>
+<p>La <strong>covarianza</strong> mide si dos variables tienden a moverse juntas (en la misma dirección o en direcciones opuestas):</p>
+<p><span class="math display">\[
+\text{Cov}(X, Y) = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})
+\]</span></p>
+<p>Su signo indica la dirección de la relación (positiva o negativa), pero su magnitud depende de las unidades de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, lo que dificulta comparar covarianzas entre distintos pares de variables. Para resolverlo, normalizamos con el <strong>coeficiente de correlación de Pearson</strong>:</p>
+<p><span class="math display">\[
+r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
+\]</span></p>
+<p><span class="math inline">\(r\)</span> siempre está entre <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>:</p>
+<ul>
+<li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(1\)</span>: relación lineal positiva fuerte.</li>
+<li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(-1\)</span>: relación lineal negativa fuerte.</li>
+<li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(0\)</span>: poca o ninguna relación lineal (¡ojo! podría haber una relación no lineal fuerte y aun así <span class="math inline">\(r \approx 0\)</span>).</li>
+</ul>
+<div id="12c4daef" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_hat <span class="op">=</span> <span class="dv">15</span> <span class="op">/</span> <span class="dv">50</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> inf.confidence_interval_proportion(p_hat, n<span class="op">=</span><span class="dv">50</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tasa de conversión observada: </span><span class="sc">{</span>p_hat<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95%: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> regression <span class="im">as</span> reg</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>horas_estudio <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nota_examen   <span class="op">=</span> [<span class="fl">4.5</span>, <span class="fl">5.2</span>, <span class="fl">5.8</span>, <span class="fl">6.5</span>, <span class="fl">6.9</span>, <span class="fl">7.2</span>, <span class="fl">7.8</span>, <span class="fl">8.4</span>, <span class="fl">8.6</span>, <span class="fl">9.1</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> reg.correlation(horas_estudio, nota_examen)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Correlación de Pearson: r = </span><span class="sc">{</span>r<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Correlación de Pearson: r = 0.996</code></pre>
 </div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Correlación no implica causalidad.</strong> Que dos variables estén correlacionadas no significa que una cause la otra — puede haber una tercera variable oculta (variable de confusión), o la relación puede ser pura coincidencia en los datos disponibles. La correlación es una herramienta descriptiva, no una prueba causal.</p>
+</blockquote>
 </section>
-<section id="contraste-de-hipótesis-test-t-de-una-muestra" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="contraste-de-hipótesis-test-t-de-una-muestra"><span class="header-section-number">9.3</span> 3. Contraste de hipótesis: test t de una muestra</h2>
-<p>¿El salario medio de un departamento de 10 empleados es distinto de los 2400€ que afirma la dirección?</p>
-<div id="cell-8" class="cell">
+<section id="regresión-lineal-simple" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="regresión-lineal-simple"><span class="header-section-number">10.3</span> 5.3 Regresión Lineal Simple</h2>
+<p>Mientras que la correlación solo nos dice <em>cuán fuerte</em> es la relación lineal, la <strong>regresión lineal</strong> va más allá: nos da un modelo concreto para predecir <span class="math inline">\(Y\)</span> a partir de <span class="math inline">\(X\)</span>.</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \varepsilon
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> (intercepto): el valor esperado de <span class="math inline">\(Y\)</span> cuando <span class="math inline">\(X = 0\)</span>.</li>
+<li><span class="math inline">\(\beta_1\)</span> (pendiente): cuánto cambia <span class="math inline">\(Y\)</span>, en promedio, por cada unidad que aumenta <span class="math inline">\(X\)</span>.</li>
+<li><span class="math inline">\(\varepsilon\)</span> (error): la parte de <span class="math inline">\(Y\)</span> que el modelo no explica.</li>
+</ul>
+<p>El método de <strong>mínimos cuadrados ordinarios (OLS)</strong> encuentra los valores de <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> que minimizan la suma de los errores al cuadrado, y tienen una solución cerrada muy simple:</p>
+<p><span class="math display">\[
+\hat{\beta}_1 = \frac{\text{Cov}(X, Y)}{\text{Var}(X)} \qquad \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
+\]</span></p>
+<div id="a8e1a9c6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salarios <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> inf.t_test_mean(salarios, mu0<span class="op">=</span><span class="dv">2400</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">: rechazamos H0, hay evidencia de que el salario medio difiere de 2400€"</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">: no hay evidencia suficiente para rechazar H0"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(horas_estudio, nota_examen)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Intercepto (β0): </span><span class="sc">{</span>beta0<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pendiente (β1): </span><span class="sc">{</span>beta1<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Interpretación: cada hora extra de estudio se asocia con +</span><span class="sc">{</span>beta1<span class="sc">:.2f}</span><span class="ss"> puntos en el examen"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Intercepto (β0): 3.267
+Pendiente (β1): 0.655
+Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el examen</code></pre>
 </div>
-</section>
-<section id="contraste-de-hipótesis-ab-test-de-dos-proporciones" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="contraste-de-hipótesis-ab-test-de-dos-proporciones"><span class="header-section-number">9.4</span> 4. Contraste de hipótesis: A/B test de dos proporciones</h2>
-<p>Comparamos dos variantes de una landing page: variante A (15/50 conversiones) vs.&nbsp;variante B (27/60 conversiones).</p>
-<div id="cell-10" class="cell">
+</div>
+<div id="436db1e3" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>z_stat, p_value <span class="op">=</span> inf.two_proportion_z_test(x1<span class="op">=</span><span class="dv">15</span>, n1<span class="op">=</span><span class="dv">50</span>, x2<span class="op">=</span><span class="dv">27</span>, n2<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p_a, p_b <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">50</span>, <span class="dv">27</span><span class="op">/</span><span class="dv">60</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tasa A: </span><span class="sc">{</span>p_a<span class="sc">:.3f}</span><span class="ss"> | Tasa B: </span><span class="sc">{</span>p_b<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x_line <span class="op">=</span> np.linspace(<span class="bu">min</span>(horas_estudio), <span class="bu">max</span>(horas_estudio), <span class="dv">100</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>y_line <span class="op">=</span> reg.predict(x_line, beta0, beta1)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"La diferencia entre variantes es estadísticamente significativa (p &lt; 0.05)."</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de diferencia real entre variantes."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(horas_estudio, nota_examen, color<span class="op">=</span><span class="st">"steelblue"</span>, label<span class="op">=</span><span class="st">"Datos observados"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x_line, y_line, color<span class="op">=</span><span class="st">"crimson"</span>, label<span class="op">=</span><span class="ss">f"Y = </span><span class="sc">{</span>beta0<span class="sc">:.2f}</span><span class="ss"> + </span><span class="sc">{</span>beta1<span class="sc">:.2f}</span><span class="ss">X"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Horas de estudio"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Nota del examen"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Regresión lineal simple"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria_files/figure-html/cell-5-output-1.png" width="577" height="452" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="qué-significa-un-intervalo-de-confianza-del-95" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="qué-significa-un-intervalo-de-confianza-del-95"><span class="header-section-number">9.5</span> 5. ¿Qué significa un intervalo de confianza del 95%?</h2>
-<p>Simulamos 5000 muestras distintas de una población Normal(μ=100, σ=15), construimos un IC al 95% para cada una, y visualizamos cuántos contienen realmente μ=100. Dibujamos los primeros 100 para verlo de forma intuitiva.</p>
-<div id="cell-12" class="cell">
+<section id="bondad-de-ajuste-r2" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="bondad-de-ajuste-r2"><span class="header-section-number">10.4</span> 5.4 Bondad de Ajuste: <span class="math inline">\(R^2\)</span></h2>
+<p>¿Qué tan bien explica el modelo los datos? El <strong>coeficiente de determinación</strong> <span class="math inline">\(R^2\)</span> mide qué proporción de la variabilidad total de <span class="math inline">\(Y\)</span> queda explicada por el modelo:</p>
+<p><span class="math display">\[
+R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}
+\]</span></p>
+<p><span class="math inline">\(R^2\)</span> va de 0 (el modelo no explica nada) a 1 (el modelo explica toda la variabilidad). En regresión lineal simple, <span class="math inline">\(R^2\)</span> es exactamente el cuadrado del coeficiente de correlación de Pearson: <span class="math inline">\(R^2 = r^2\)</span>.</p>
+<div id="97bbd108" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>true_mu <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n_intervals <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">8</span>))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>contains_mu <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_intervals):</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> rng.normal(true_mu, <span class="dv">15</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    x_bar <span class="op">=</span> sample.mean()</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    lower, upper <span class="op">=</span> inf.confidence_interval_mean_z(x_bar, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> <span class="st">"steelblue"</span> <span class="cf">if</span> lower <span class="op">&lt;=</span> true_mu <span class="op">&lt;=</span> upper <span class="cf">else</span> <span class="st">"crimson"</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lower <span class="op">&lt;=</span> true_mu <span class="op">&lt;=</span> upper:</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        contains_mu <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ax.plot([lower, upper], [i, i], color<span class="op">=</span>color, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>ax.axvline(true_mu, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="ss">f"Verdadera μ = </span><span class="sc">{</span>true_mu<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Valor"</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="ss">f"100 intervalos de confianza al 95% — </span><span class="sc">{</span>contains_mu<span class="sc">}</span><span class="ss"> de 100 contienen μ (línea roja = no la contiene)"</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Ahora con 5000 simulaciones, usando la función del toolkit</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(true_mu<span class="op">=</span><span class="dv">100</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>, n_simulations<span class="op">=</span><span class="dv">5000</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cobertura empírica sobre 5000 simulaciones: </span><span class="sc">{</span>coverage<span class="sc">:.3f}</span><span class="ss"> (esperado ≈ 0.95)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(horas_estudio, nota_examen, beta0, beta1)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R² = </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">  (r² = </span><span class="sc">{</span>r<span class="op">**</span><span class="dv">2</span><span class="sc">:.3f}</span><span class="ss">)"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El modelo explica el </span><span class="sc">{</span>r2<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">% de la variabilidad de la nota"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>R² = 0.992  (r² = 0.992)
+El modelo explica el 99.2% de la variabilidad de la nota</code></pre>
+</div>
 </div>
 </section>
-<section id="ejercicios-propuestos" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">9.6</span> Ejercicios propuestos</h2>
-<ol type="1">
-<li>Repite la simulación de la sección 5 con un nivel de confianza del 90% y del 99%. ¿Cómo cambia el ancho de los intervalos y la proporción que contiene a μ?</li>
-<li>Una muestra de 12 tiempos de entrega (en días) tiene media 5.4 y desviación muestral 1.2. Construye un IC al 95% para la media poblacional usando <code>confidence_interval_mean_t</code>, y contrasta si la media real podría ser de 6 días con <code>t_test_mean</code> (necesitarás generar o simular una muestra con esos estadísticos, o adaptar la función a partir de <code>sample_mean</code>/<code>sample_std</code> directamente).</li>
-<li>En el A/B test de la sección 4, calcula también el intervalo de confianza para la diferencia de proporciones (<span class="math inline">\(\hat{p}_B - \hat{p}_A\)</span>) en vez de solo el contraste de hipótesis. ¿Qué información adicional aporta el intervalo frente al p-valor?</li>
-</ol>
+<section id="la-relación-es-real-o-podría-deberse-al-azar" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">10.5</span> 5.5 ¿La relación es real o podría deberse al azar?</h2>
+<p>Aquí es donde reconectamos con el Módulo 4: <span class="math inline">\(\hat{\beta}_1\)</span> es un estimador calculado a partir de una muestra, así que tiene su propio error estándar, y podemos plantear un contraste de hipótesis sobre él.</p>
+<p><span class="math display">\[
+H_0: \beta_1 = 0 \quad \text{(no hay relación lineal real)} \qquad H_1: \beta_1 \neq 0
+\]</span></p>
+<p>El estadístico de prueba sigue una distribución t de Student con <span class="math inline">\(n-2\)</span> grados de libertad (perdemos 2 grados de libertad por estimar <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span>):</p>
+<p><span class="math display">\[
+t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)}
+\]</span></p>
+<div id="336a569e" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(horas_estudio, nota_examen, beta0, beta1)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es estadísticamente significativa"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de una relación lineal real"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>t = 31.057, p-valor = 0.000000
+p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es estadísticamente significativa</code></pre>
+</div>
+</div>
+<p>Y, como en el Módulo 4, también podemos construir un intervalo de confianza para <span class="math inline">\(\beta_1\)</span> en vez de limitarnos a un sí/no:</p>
+<div id="c3e522a1" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(horas_estudio, nota_examen, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% para β1: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>IC 95% para β1: (0.606, 0.704)</code></pre>
+</div>
+</div>
+</section>
+<section id="cierre-del-curso" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="cierre-del-curso"><span class="header-section-number">10.6</span> 5.6 Cierre del curso</h2>
+<p>Con este módulo completamos el recorrido de <strong>Estadística Básica</strong>: describir datos (Módulo 1), modelar la incertidumbre de sucesos (Módulo 2) y de variables aleatorias completas (Módulo 3), usar esas distribuciones para estimar y contrastar parámetros poblacionales (Módulo 4), y finalmente estudiar y validar relaciones entre variables (Módulo 5).</p>
+<p>Estas cinco piezas son la base sobre la que se construye prácticamente cualquier análisis de datos aplicado: desde un experimento de A/B testing hasta un modelo de machine learning — de hecho, la regresión lineal que acabamos de ver es, en sí misma, uno de los algoritmos de machine learning más usados, y el Naive Bayes que vimos como cierre del Módulo 2 es otro. Si en el futuro amplías este curso, este es el punto natural desde el que dar el salto hacia regresión múltiple, clasificación y otros modelos predictivos.</p>
 
 
 </section>
@@ -877,13 +930,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/04_inferencia/teoria.html" class="pagination-link" aria-label="Inferencia Estadística">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span>
+      <a href="../../notebooks/04_inferencia/practica.html" class="pagination-link" aria-label="Práctica: Inferencia Estadística">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/05_regresion/teoria.html" class="pagination-link" aria-label="Correlación y Regresión Lineal">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/05_regresion/practica.html" class="pagination-link" aria-label="Práctica: Correlación y Regresión Lineal">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -892,4 +945,4 @@ window.Quarto = {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/04_inferencia/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/05_regresion/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
