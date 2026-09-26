@@ -5,12 +5,13 @@ venv/
 # Archivos de compilación de Quarto
 _book/
 .quarto/
-
+**/*.quarto_ipynb
 # Jupyter y checkpoints
 .ipynb_checkpoints*/
 
 # Caché de Python
 __pycache__/
 *.py[cod]
-/.quarto/
-**/*.quarto_ipynb
+
+# Restos de renders sueltos (fuera del libro) 
+/index.html /index_files/

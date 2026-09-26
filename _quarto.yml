@@ -43,7 +43,7 @@ format:
     toc: true
     number-sections: true
     code-fold: true
-    css: custom.css
+    css: styles.css
 
 execute:
   freeze: auto
