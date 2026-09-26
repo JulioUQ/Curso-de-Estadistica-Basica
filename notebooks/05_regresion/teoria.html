@@ -305,6 +305,29 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -387,7 +410,7 @@ r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(-1\)</span>: relación lineal negativa fuerte.</li>
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(0\)</span>: poca o ninguna relación lineal (¡ojo! podría haber una relación no lineal fuerte y aun así <span class="math inline">\(r \approx 0\)</span>).</li>
 </ul>
-<div id="12c4daef" class="cell" data-execution_count="2">
+<div id="7cbb0a5d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> regression <span class="im">as</span> reg</span>
@@ -421,7 +444,7 @@ Y = \beta_0 + \beta_1 X + \varepsilon
 <p><span class="math display">\[
 \hat{\beta}_1 = \frac{\text{Cov}(X, Y)}{\text{Var}(X)} \qquad \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
 \]</span></p>
-<div id="a8e1a9c6" class="cell" data-execution_count="3">
+<div id="76f6ab28" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(horas_estudio, nota_examen)</span>
@@ -435,7 +458,7 @@ Pendiente (β1): 0.655
 Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el examen</code></pre>
 </div>
 </div>
-<div id="436db1e3" class="cell" data-execution_count="4">
+<div id="e52a3e2c" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -468,7 +491,7 @@ Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el exa
 R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}
 \]</span></p>
 <p><span class="math inline">\(R^2\)</span> va de 0 (el modelo no explica nada) a 1 (el modelo explica toda la variabilidad). En regresión lineal simple, <span class="math inline">\(R^2\)</span> es exactamente el cuadrado del coeficiente de correlación de Pearson: <span class="math inline">\(R^2 = r^2\)</span>.</p>
-<div id="97bbd108" class="cell" data-execution_count="5">
+<div id="fd514ff8" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(horas_estudio, nota_examen, beta0, beta1)</span>
@@ -491,7 +514,7 @@ H_0: \beta_1 = 0 \quad \text{(no hay relación lineal real)} \qquad H_1: \beta_1
 <p><span class="math display">\[
 t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)}
 \]</span></p>
-<div id="336a569e" class="cell" data-execution_count="6">
+<div id="738e3048" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(horas_estudio, nota_examen, beta0, beta1)</span>
@@ -508,7 +531,7 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 </div>
 <p>Y, como en el Módulo 4, también podemos construir un intervalo de confianza para <span class="math inline">\(\beta_1\)</span> en vez de limitarnos a un sí/no:</p>
-<div id="c3e522a1" class="cell" data-execution_count="7">
+<div id="d5edd5a5" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(horas_estudio, nota_examen, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>

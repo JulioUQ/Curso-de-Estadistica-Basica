@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Práctica: Correlación y Regresión Lineal – Estadística Básica</title>
+<title>13&nbsp; Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../notebooks/06_anova_chi2/teoria.html" rel="next">
-<link href="../../notebooks/05_regresion/teoria.html" rel="prev">
+<link href="../../notebooks/06_anova_chi2/teoria.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -124,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/practica.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -267,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
@@ -290,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
@@ -306,21 +305,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#datos-inversión-en-publicidad-vs.-ventas" id="toc-datos-inversión-en-publicidad-vs.-ventas" class="nav-link active" data-scroll-target="#datos-inversión-en-publicidad-vs.-ventas"><span class="header-section-number">11.1</span> 1. Datos: inversión en publicidad vs.&nbsp;ventas</a></li>
-  <li><a href="#correlación" id="toc-correlación" class="nav-link" data-scroll-target="#correlación"><span class="header-section-number">11.2</span> 2. Correlación</a></li>
-  <li><a href="#ajuste-del-modelo-de-regresión" id="toc-ajuste-del-modelo-de-regresión" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión"><span class="header-section-number">11.3</span> 3. Ajuste del modelo de regresión</a></li>
-  <li><a href="#residuos-y-bondad-de-ajuste" id="toc-residuos-y-bondad-de-ajuste" class="nav-link" data-scroll-target="#residuos-y-bondad-de-ajuste"><span class="header-section-number">11.4</span> 4. Residuos y bondad de ajuste</a></li>
-  <li><a href="#es-la-relación-estadísticamente-significativa" id="toc-es-la-relación-estadísticamente-significativa" class="nav-link" data-scroll-target="#es-la-relación-estadísticamente-significativa"><span class="header-section-number">11.5</span> 5. ¿Es la relación estadísticamente significativa?</a></li>
-  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">11.6</span> Ejercicios propuestos</a></li>
+  <li><a href="#anova-efectividad-de-3-tratamientos-médicos" id="toc-anova-efectividad-de-3-tratamientos-médicos" class="nav-link active" data-scroll-target="#anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">13.1</span> 1. ANOVA: efectividad de 3 tratamientos médicos</a></li>
+  <li><a href="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" id="toc-chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="nav-link" data-scroll-target="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">13.2</span> 2. Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</a></li>
+  <li><a href="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" id="toc-mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="nav-link" data-scroll-target="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">13.3</span> 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app</a></li>
+  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">13.4</span> Ejercicios propuestos</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/05_regresion/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/06_anova_chi2/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/practica.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></h1>
 </div>
 
 
@@ -337,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>En este cuaderno calculamos correlaciones, ajustamos un modelo de regresión lineal simple, evaluamos su bondad de ajuste y contrastamos si la relación encontrada es estadísticamente significativa.</p>
+<p>En este cuaderno comparamos tres tratamientos médicos con ANOVA, estudiamos la asociación entre dos variables categóricas con un test Chi-cuadrado sobre una tabla de contingencia, y aplicamos Mann-Whitney U cuando los datos no siguen una distribución Normal.</p>
 <div id="cell-1" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -345,104 +342,126 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> regression <span class="im">as</span> reg</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> group_comparisons <span class="im">as</span> gc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="datos-inversión-en-publicidad-vs.-ventas" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="datos-inversión-en-publicidad-vs.-ventas"><span class="header-section-number">11.1</span> 1. Datos: inversión en publicidad vs.&nbsp;ventas</h2>
-<p>Simulamos 20 meses de inversión en publicidad (miles de €) y ventas resultantes (miles de €), con una relación lineal real más algo de ruido.</p>
+<section id="anova-efectividad-de-3-tratamientos-médicos" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">13.1</span> 1. ANOVA: efectividad de 3 tratamientos médicos</h2>
+<p>Comparamos el tiempo de recuperación (en días) de pacientes bajo tres tratamientos distintos.</p>
 <div id="cell-3" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">3</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>publicidad <span class="op">=</span> rng.uniform(<span class="dv">5</span>, <span class="dv">50</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ventas <span class="op">=</span> <span class="dv">20</span> <span class="op">+</span> <span class="fl">3.5</span> <span class="op">*</span> publicidad <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="dv">25</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(publicidad, ventas, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Inversión en publicidad (miles de €)"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Ventas (miles de €)"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Publicidad vs. Ventas"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tratamiento_a <span class="op">=</span> rng.normal(<span class="dv">6</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tratamiento_b <span class="op">=</span> rng.normal(<span class="fl">8.5</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>tratamiento_c <span class="op">=</span> rng.normal(<span class="dv">5</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.boxplot([tratamiento_a, tratamiento_b, tratamiento_c], labels<span class="op">=</span>[<span class="st">"Tratamiento A"</span>, <span class="st">"Tratamiento B"</span>, <span class="st">"Tratamiento C"</span>])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Días de recuperación"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Tiempo de recuperación por tratamiento"</span>)</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-</section>
-<section id="correlación" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="correlación"><span class="header-section-number">11.2</span> 2. Correlación</h2>
-<div id="cell-5" class="cell">
+<div id="cell-4" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> reg.correlation(publicidad, ventas)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Correlación de Pearson: r = </span><span class="sc">{</span>r<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>f_stat, p_value <span class="op">=</span> gc.anova_one_way(tratamiento_a, tratamiento_b, tratamiento_c)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"F = </span><span class="sc">{</span>f_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Al menos un tratamiento difiere significativamente de los demás."</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de diferencias entre tratamientos."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="ajuste-del-modelo-de-regresión" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión"><span class="header-section-number">11.3</span> 3. Ajuste del modelo de regresión</h2>
+<section id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">13.2</span> 2. Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</h2>
+<p>Construimos una tabla de contingencia a partir de datos simulados de clientes y comprobamos si el segmento de edad está asociado con el producto que prefieren.</p>
+<div id="cell-6" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">9</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n_clientes <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>segmento <span class="op">=</span> rng.choice([<span class="st">"Joven"</span>, <span class="st">"Adulto"</span>, <span class="st">"Senior"</span>], size<span class="op">=</span>n_clientes, p<span class="op">=</span>[<span class="fl">0.4</span>, <span class="fl">0.35</span>, <span class="fl">0.25</span>])</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># La preferencia depende del segmento (para que haya una asociación real que detectar)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>prob_digital <span class="op">=</span> {<span class="st">"Joven"</span>: <span class="fl">0.8</span>, <span class="st">"Adulto"</span>: <span class="fl">0.5</span>, <span class="st">"Senior"</span>: <span class="fl">0.2</span>}</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>producto <span class="op">=</span> [</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    rng.choice([<span class="st">"Digital"</span>, <span class="st">"Físico"</span>], p<span class="op">=</span>[prob_digital[s], <span class="dv">1</span> <span class="op">-</span> prob_digital[s]])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> segmento</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>tabla <span class="op">=</span> gc.build_contingency_table(segmento, producto)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>tabla</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 <div id="cell-7" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(publicidad, ventas)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ventas estimadas = </span><span class="sc">{</span>beta0<span class="sc">:.2f}</span><span class="ss"> + </span><span class="sc">{</span>beta1<span class="sc">:.2f}</span><span class="ss"> × Publicidad"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>x_line <span class="op">=</span> np.linspace(publicidad.<span class="bu">min</span>(), publicidad.<span class="bu">max</span>(), <span class="dv">100</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>y_line <span class="op">=</span> reg.predict(x_line, beta0, beta1)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(publicidad, ventas, color<span class="op">=</span><span class="st">"steelblue"</span>, label<span class="op">=</span><span class="st">"Datos observados"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x_line, y_line, color<span class="op">=</span><span class="st">"crimson"</span>, label<span class="op">=</span><span class="st">"Recta ajustada"</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Inversión en publicidad (miles de €)"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Ventas (miles de €)"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Regresión lineal: Publicidad vs. Ventas"</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value, dof, esperadas <span class="op">=</span> gc.chi2_test_independence(tabla)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Chi² = </span><span class="sc">{</span>chi2_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">, g.l. = </span><span class="sc">{</span>dof<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Frecuencias esperadas bajo independencia:"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame(esperadas, index<span class="op">=</span>tabla.index, columns<span class="op">=</span>tabla.columns).<span class="bu">round</span>(<span class="dv">1</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Hay evidencia de asociación entre segmento y producto preferido."</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">No hay evidencia suficiente de asociación."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="residuos-y-bondad-de-ajuste" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="residuos-y-bondad-de-ajuste"><span class="header-section-number">11.4</span> 4. Residuos y bondad de ajuste</h2>
-<p>Un buen ajuste debería mostrar residuos dispersos aleatoriamente alrededor de cero, sin ningún patrón sistemático (si hubiera un patrón claro, indicaría que el modelo lineal no captura bien la relación).</p>
+<section id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">13.3</span> 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app</h2>
+<p>Simulamos valoraciones (escala 1-10) claramente no normales: la versión 1 tiene valoraciones polarizadas (o encanta o decepciona), mientras que la versión 2 tiene valoraciones más consistentes.</p>
 <div id="cell-9" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>resid <span class="op">=</span> reg.residuals(publicidad, ventas, beta0, beta1)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(publicidad, resid, color<span class="op">=</span><span class="st">"darkorange"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Inversión en publicidad (miles de €)"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Residuo (ventas observadas - predichas)"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Gráfico de residuos"</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(publicidad, ventas, beta0, beta1)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R² = </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss"> — el modelo explica el </span><span class="sc">{</span>r2<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">% de la variabilidad de las ventas"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">11</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribución bimodal: mezcla de valoraciones muy bajas y muy altas</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>valoraciones_v1 <span class="op">=</span> np.concatenate([</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    rng.integers(<span class="dv">1</span>, <span class="dv">4</span>, size<span class="op">=</span><span class="dv">15</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    rng.integers(<span class="dv">8</span>, <span class="dv">11</span>, size<span class="op">=</span><span class="dv">15</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>valoraciones_v2 <span class="op">=</span> rng.integers(<span class="dv">5</span>, <span class="dv">8</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].hist(valoraciones_v1, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">12</span>), edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Versión 1 (polarizada)"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].hist(valoraciones_v2, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">12</span>), edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Versión 2 (consistente)"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Valoración"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-</section>
-<section id="es-la-relación-estadísticamente-significativa" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="es-la-relación-estadísticamente-significativa"><span class="header-section-number">11.5</span> 5. ¿Es la relación estadísticamente significativa?</h2>
-<p>Contrastamos H0: β1 = 0 (no hay relación real entre publicidad y ventas) frente a H1: β1 ≠ 0.</p>
-<div id="cell-11" class="cell">
+<div id="cell-10" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(publicidad, ventas, beta0, beta1)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(publicidad, ventas, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% para β1: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Conclusión: la relación entre publicidad y ventas es estadísticamente significativa."</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Conclusión: no hay evidencia suficiente de una relación lineal real."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>u_stat, p_value <span class="op">=</span> gc.mann_whitney_u(valoraciones_v1, valoraciones_v2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"U = </span><span class="sc">{</span>u_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media v1: </span><span class="sc">{</span>valoraciones_v1<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> | Media v2: </span><span class="sc">{</span>valoraciones_v2<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Hay diferencia significativa entre las distribuciones de ambas versiones."</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">No hay evidencia suficiente de diferencia entre versiones."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+<p>Fíjate en que ambas versiones pueden tener una media muy similar (por eso un t-test podría no detectar diferencia), pero Mann-Whitney sí puede detectar que sus <strong>distribuciones</strong> son distintas, porque compara la forma completa de los datos vía rangos, no solo la media.</p>
 </section>
-<section id="ejercicios-propuestos" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">11.6</span> Ejercicios propuestos</h2>
+<section id="ejercicios-propuestos" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">13.4</span> Ejercicios propuestos</h2>
 <ol type="1">
-<li>Genera un segundo conjunto de datos donde <code>ventas</code> sea prácticamente independiente de <code>publicidad</code> (por ejemplo, ruido puro sin relación real) y repite todo el análisis. Compara el R² y el p-valor con los obtenidos aquí.</li>
-<li>Usa el modelo ajustado para predecir las ventas esperadas con una inversión en publicidad de 60.000 €. ¿Te fías igual de esta predicción que de una dentro del rango de datos observados (5-50)? ¿Por qué?</li>
-<li>Calcula la correlación entre publicidad y ventas usando <code>numpy.corrcoef</code> y comprueba que coincide con el resultado de <code>reg.correlation</code>. Comprueba también que <code>r ** 2</code> coincide con el <code>R²</code> calculado en la sección 4.</li>
+<li>Repite el ANOVA de la sección 1 pero con tres grupos generados con la MISMA media (por ejemplo, los tres con media 6). Comprueba que el p-valor ya no indica significancia.</li>
+<li>Añade una cuarta categoría de producto (“Suscripción”) a la tabla de contingencia de la sección 2 y repite el test Chi-cuadrado. ¿Cambian los grados de libertad? ¿Por qué?</li>
+<li>Compara los resultados de aplicar un t-test estándar (<code>scipy.stats.ttest_ind</code>) frente a Mann-Whitney U sobre los datos polarizados de la sección 3. ¿Llegan a la misma conclusión? ¿Cuál te parece más apropiado dado que los datos no son normales?</li>
 </ol>
 
 
@@ -851,14 +870,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/05_regresion/teoria.html" class="pagination-link" aria-label="Correlación y Regresión Lineal">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span>
+      <a href="../../notebooks/06_anova_chi2/teoria.html" class="pagination-link" aria-label="ANOVA, Chi-cuadrado y Pruebas No Paramétricas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/06_anova_chi2/teoria.html" class="pagination-link" aria-label="ANOVA, Chi-cuadrado y Pruebas No Paramétricas">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -866,4 +882,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/05_regresion/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/06_anova_chi2/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

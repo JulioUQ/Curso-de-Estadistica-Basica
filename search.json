@@ -744,5 +744,115 @@
       "Módulo 5 — Correlación y Regresión Lineal",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Práctica: Correlación y Regresión Lineal</span>"
     ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/teoria.html",
+    "href": "notebooks/06_anova_chi2/teoria.html",
+    "title": "12  ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "",
+    "text": "12.1 6.1 Introducción\nEn el Módulo 4 aprendimos a comparar dos grupos (un test t o z), y en el Módulo 5 a estudiar la relación entre dos variables numéricas. Pero en la práctica surgen preguntas que esas herramientas no cubren:\nEste módulo cierra esos tres huecos, y de paso conecta con el mundo del machine learning: comparar grupos, tablas de contingencia y pruebas robustas frente a la normalidad son herramientas que reaparecen constantemente en la validación de modelos y en la selección de variables.\nflowchart TD\n    A[\"¿Qué quiero comparar?\"] --&gt; B[\"Medias de 2 grupos\"]\n    A --&gt; C[\"Medias de 3+ grupos\"]\n    A --&gt; D[\"Dos variables categóricas\"]\n    A --&gt; E[\"Datos que no siguen una Normal\"]\n    B --&gt; B1[\"t-test (Módulo 4)\"]\n    C --&gt; C1[\"ANOVA de un factor\"]\n    D --&gt; D1[\"Test Chi-cuadrado\"]\n    E --&gt; E1[\"Mann-Whitney U\"]\n\n\n\n\nFigura 12.1: Qué prueba usar según lo que quieras comparar",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/teoria.html#introducción",
+    "href": "notebooks/06_anova_chi2/teoria.html#introducción",
+    "title": "12  ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "",
+    "text": "¿Y si quiero comparar tres o más grupos a la vez (tres tratamientos, cuatro campañas, cinco segmentos)?\n¿Y si mis variables no son numéricas, sino categóricas (sexo, segmento de cliente, tipo de producto)?\n¿Y si mis datos claramente no siguen una distribución Normal y no puedo asumir las condiciones de un t-test?",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/teoria.html#anova-de-un-factor",
+    "href": "notebooks/06_anova_chi2/teoria.html#anova-de-un-factor",
+    "title": "12  ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "12.2 6.2 ANOVA de un Factor",
+    "text": "12.2 6.2 ANOVA de un Factor\n\n12.2.1 El problema de comparar 3+ grupos con t-tests repetidos\nSi quisiéramos comparar tres tratamientos médicos, una tentación es hacer tres t-tests por pares (A vs B, A vs C, B vs C). El problema es que cada test individual tiene un 5% de probabilidad de un falso positivo (error Tipo I), y al repetir tests esa probabilidad se acumula: con tres comparaciones, la probabilidad de al menos un falso positivo sube por encima del 5% nominal. El ANOVA (Análisis de la Varianza) resuelve esto con un único test que compara los tres grupos a la vez.\n\n\n12.2.2 Hipótesis e idea central\n\\[\nH_0: \\mu_1 = \\mu_2 = \\dots = \\mu_k \\qquad H_1: \\text{al menos una media es distinta}\n\\]\nLa idea, pese al nombre “análisis de la varianza”, es comparar medias: descompone la variabilidad total de los datos en dos partes:\n\nVarianza entre grupos: cuánto difieren las medias de cada grupo respecto a la media global.\nVarianza dentro de grupos: cuánto varían los datos dentro de cada grupo (el “ruido” natural).\n\nSi la variabilidad entre grupos es mucho mayor que la variabilidad dentro de los grupos, es señal de que las diferencias observadas no se deben solo al azar:\n\\[\nF = \\frac{MS_{\\text{entre}}}{MS_{\\text{dentro}}} = \\frac{SS_{\\text{entre}} / (k-1)}{SS_{\\text{dentro}} / (n-k)}\n\\]\ndonde \\(k\\) es el número de grupos y \\(n\\) el número total de observaciones. Bajo \\(H_0\\), este estadístico sigue una distribución F con \\((k-1, n-k)\\) grados de libertad.\n\n\nCódigo\nfrom stats_toolkit import group_comparisons as gc\n\n# Días de recuperación de pacientes bajo 3 tratamientos distintos\ntratamiento_a = [5, 6, 7, 5, 6, 8, 6]\ntratamiento_b = [8, 9, 7, 10, 8, 9, 9]\ntratamiento_c = [4, 5, 4, 6, 5, 5, 4]\n\nf_stat, p_value = gc.anova_one_way(tratamiento_a, tratamiento_b, tratamiento_c)\nprint(f\"F = {f_stat:.3f}, p-valor = {p_value:.6f}\")\n\n\nF = 29.946, p-valor = 0.000002\n\n\nUn p-valor por debajo de 0.05 indica que al menos un tratamiento difiere significativamente de los demás en tiempo de recuperación — aunque el ANOVA por sí solo no dice cuál; para eso harían falta comparaciones post-hoc (fuera del alcance de este módulo introductorio).",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/teoria.html#test-chi-cuadrado-de-independencia",
+    "href": "notebooks/06_anova_chi2/teoria.html#test-chi-cuadrado-de-independencia",
+    "title": "12  ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "12.3 6.3 Test Chi-cuadrado de Independencia",
+    "text": "12.3 6.3 Test Chi-cuadrado de Independencia\nCuando ambas variables son categóricas (por ejemplo, segmento de cliente y producto preferido), no tiene sentido hablar de medias. En su lugar, organizamos los datos en una tabla de contingencia (frecuencias observadas cruzando ambas variables) y contrastamos si existe asociación entre ellas.\n\\[\nH_0: \\text{las dos variables son independientes} \\qquad H_1: \\text{existe asociación entre ellas}\n\\]\nEl estadístico compara las frecuencias observadas con las que esperaríamos si las variables fueran realmente independientes:\n\\[\n\\chi^2 = \\sum_{i,j} \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\n\\]\ndonde \\(E_{ij}\\) es la frecuencia esperada bajo independencia, calculada a partir de los totales de fila y columna. Sigue una distribución Chi-cuadrado con \\((filas-1)(columnas-1)\\) grados de libertad.\n\n\nCódigo\nimport pandas as pd\n\n# Segmento de cliente vs. producto preferido\nsegmento = [\"Joven\"]*40 + [\"Joven\"]*10 + [\"Adulto\"]*20 + [\"Adulto\"]*30 + [\"Senior\"]*15 + [\"Senior\"]*35\nproducto = [\"Digital\"]*40 + [\"Físico\"]*10 + [\"Digital\"]*20 + [\"Físico\"]*30 + [\"Digital\"]*15 + [\"Físico\"]*35\n\ntabla = gc.build_contingency_table(segmento, producto)\nprint(tabla)\n\n\nY       Digital  Físico\nX                      \nAdulto       20      30\nJoven        40      10\nSenior       15      35\n\n\n\n\nCódigo\nchi2_stat, p_value, dof, esperadas = gc.chi2_test_independence(tabla)\nprint(f\"\\nChi² = {chi2_stat:.3f}, p-valor = {p_value:.6f}, g.l. = {dof}\")\n\nif p_value &lt; 0.05:\n    print(\"Hay evidencia de asociación entre segmento de cliente y producto preferido\")\nelse:\n    print(\"No hay evidencia suficiente de asociación entre ambas variables\")\n\n\n\nChi² = 28.000, p-valor = 0.000001, g.l. = 2\nHay evidencia de asociación entre segmento de cliente y producto preferido",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/teoria.html#pruebas-no-paramétricas-mann-whitney-u",
+    "href": "notebooks/06_anova_chi2/teoria.html#pruebas-no-paramétricas-mann-whitney-u",
+    "title": "12  ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "12.4 6.4 Pruebas No Paramétricas: Mann-Whitney U",
+    "text": "12.4 6.4 Pruebas No Paramétricas: Mann-Whitney U\nTanto el t-test como el ANOVA asumen que los datos siguen (aproximadamente) una distribución Normal dentro de cada grupo. Cuando esa suposición no se sostiene — muestras muy pequeñas, datos claramente asimétricos, escalas ordinales (por ejemplo, valoraciones de 1 a 5) — recurrimos a pruebas no paramétricas, que no hacen ninguna suposición sobre la forma de la distribución.\nEl test de Mann-Whitney U es la alternativa no paramétrica al t-test de dos muestras independientes. En vez de comparar medias, compara si los valores de un grupo tienden a ser sistemáticamente mayores (o menores) que los del otro, trabajando con los rangos de los datos combinados en vez de con sus valores originales.\n\\[\nH_0: \\text{ambas distribuciones son iguales} \\qquad H_1: \\text{una tiende a tomar valores mayores que la otra}\n\\]\n\n\nCódigo\n# Valoraciones de satisfacción (escala 1-10) de dos versiones de una app,\n# claramente no normales (concentradas en los extremos)\nvaloraciones_v1 = [2, 3, 2, 9, 3, 2, 8, 3, 2, 9]\nvaloraciones_v2 = [5, 6, 7, 6, 5, 7, 6, 5, 6, 7]\n\nu_stat, p_value = gc.mann_whitney_u(valoraciones_v1, valoraciones_v2)\nprint(f\"U = {u_stat:.3f}, p-valor = {p_value:.6f}\")\n\nif p_value &lt; 0.05:\n    print(\"Hay diferencia significativa entre las distribuciones de valoraciones de ambas versiones\")\nelse:\n    print(\"No hay evidencia suficiente de diferencia entre versiones\")\n\n\nU = 30.000, p-valor = 0.135517\nNo hay evidencia suficiente de diferencia entre versiones\n\n\nEste tipo de pruebas basadas en rangos, robustas frente a la forma de la distribución, son la razón por la que muchos algoritmos de machine learning (árboles de decisión, bosques aleatorios, tests de importancia de variables) prefieren criterios no paramétricos: no dependen de que los datos reales del mundo se comporten como una Normal perfecta.",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/teoria.html#cierre",
+    "href": "notebooks/06_anova_chi2/teoria.html#cierre",
+    "title": "12  ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "12.5 6.5 Cierre",
+    "text": "12.5 6.5 Cierre\nEste módulo amplía el curso más allá de los cinco módulos iniciales, cubriendo tres herramientas que aparecen constantemente en análisis con más de dos grupos o con variables categóricas: el ANOVA para comparar varias medias a la vez, el test Chi-cuadrado para relaciones entre variables categóricas, y el Mann-Whitney U como alternativa robusta cuando no se cumplen los supuestos de normalidad. Con esto, el conjunto de pruebas de hipótesis del curso queda prácticamente completo para cualquier análisis exploratorio o experimento aplicado — y sienta las bases para dar el salto hacia modelos predictivos más flexibles (regresión múltiple, clasificación) si decides continuar el curso en esa dirección.",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/practica.html",
+    "href": "notebooks/06_anova_chi2/practica.html",
+    "title": "13  Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "",
+    "text": "13.1 1. ANOVA: efectividad de 3 tratamientos médicos\nEn este cuaderno comparamos tres tratamientos médicos con ANOVA, estudiamos la asociación entre dos variables categóricas con un test Chi-cuadrado sobre una tabla de contingencia, y aplicamos Mann-Whitney U cuando los datos no siguen una distribución Normal.\nComparamos el tiempo de recuperación (en días) de pacientes bajo tres tratamientos distintos.\nCódigo\nrng = np.random.default_rng(5)\ntratamiento_a = rng.normal(6, 1.2, size=15)\ntratamiento_b = rng.normal(8.5, 1.2, size=15)\ntratamiento_c = rng.normal(5, 1.2, size=15)\n\nplt.boxplot([tratamiento_a, tratamiento_b, tratamiento_c], labels=[\"Tratamiento A\", \"Tratamiento B\", \"Tratamiento C\"])\nplt.ylabel(\"Días de recuperación\")\nplt.title(\"Tiempo de recuperación por tratamiento\")\nplt.show()\nCódigo\nf_stat, p_value = gc.anova_one_way(tratamiento_a, tratamiento_b, tratamiento_c)\nprint(f\"F = {f_stat:.3f}, p-valor = {p_value:.6f}\")\n\nif p_value &lt; 0.05:\n    print(\"Al menos un tratamiento difiere significativamente de los demás.\")\nelse:\n    print(\"No hay evidencia suficiente de diferencias entre tratamientos.\")",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/practica.html#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido",
+    "href": "notebooks/06_anova_chi2/practica.html#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido",
+    "title": "13  Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "13.2 2. Chi-cuadrado: segmento de cliente vs. producto preferido",
+    "text": "13.2 2. Chi-cuadrado: segmento de cliente vs. producto preferido\nConstruimos una tabla de contingencia a partir de datos simulados de clientes y comprobamos si el segmento de edad está asociado con el producto que prefieren.\n\n\nCódigo\nrng = np.random.default_rng(9)\nn_clientes = 300\n\nsegmento = rng.choice([\"Joven\", \"Adulto\", \"Senior\"], size=n_clientes, p=[0.4, 0.35, 0.25])\n\n# La preferencia depende del segmento (para que haya una asociación real que detectar)\nprob_digital = {\"Joven\": 0.8, \"Adulto\": 0.5, \"Senior\": 0.2}\nproducto = [\n    rng.choice([\"Digital\", \"Físico\"], p=[prob_digital[s], 1 - prob_digital[s]])\n    for s in segmento\n]\n\ntabla = gc.build_contingency_table(segmento, producto)\ntabla\n\n\n\n\nCódigo\nchi2_stat, p_value, dof, esperadas = gc.chi2_test_independence(tabla)\nprint(f\"Chi² = {chi2_stat:.3f}, p-valor = {p_value:.6f}, g.l. = {dof}\")\n\nprint(\"\\nFrecuencias esperadas bajo independencia:\")\nprint(pd.DataFrame(esperadas, index=tabla.index, columns=tabla.columns).round(1))\n\nif p_value &lt; 0.05:\n    print(\"\\nHay evidencia de asociación entre segmento y producto preferido.\")\nelse:\n    print(\"\\nNo hay evidencia suficiente de asociación.\")",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/practica.html#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app",
+    "href": "notebooks/06_anova_chi2/practica.html#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app",
+    "title": "13  Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "13.3 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app",
+    "text": "13.3 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app\nSimulamos valoraciones (escala 1-10) claramente no normales: la versión 1 tiene valoraciones polarizadas (o encanta o decepciona), mientras que la versión 2 tiene valoraciones más consistentes.\n\n\nCódigo\nrng = np.random.default_rng(11)\n\n# Distribución bimodal: mezcla de valoraciones muy bajas y muy altas\nvaloraciones_v1 = np.concatenate([\n    rng.integers(1, 4, size=15),\n    rng.integers(8, 11, size=15),\n])\nvaloraciones_v2 = rng.integers(5, 8, size=30)\n\nfig, axes = plt.subplots(1, 2, figsize=(10, 4), sharey=True)\naxes[0].hist(valoraciones_v1, bins=range(1, 12), edgecolor=\"black\")\naxes[0].set_title(\"Versión 1 (polarizada)\")\naxes[1].hist(valoraciones_v2, bins=range(1, 12), edgecolor=\"black\")\naxes[1].set_title(\"Versión 2 (consistente)\")\nfor ax in axes:\n    ax.set_xlabel(\"Valoración\")\nplt.tight_layout()\nplt.show()\n\n\n\n\nCódigo\nu_stat, p_value = gc.mann_whitney_u(valoraciones_v1, valoraciones_v2)\nprint(f\"U = {u_stat:.3f}, p-valor = {p_value:.6f}\")\nprint(f\"Media v1: {valoraciones_v1.mean():.2f} | Media v2: {valoraciones_v2.mean():.2f}\")\n\nif p_value &lt; 0.05:\n    print(\"\\nHay diferencia significativa entre las distribuciones de ambas versiones.\")\nelse:\n    print(\"\\nNo hay evidencia suficiente de diferencia entre versiones.\")\n\n\nFíjate en que ambas versiones pueden tener una media muy similar (por eso un t-test podría no detectar diferencia), pero Mann-Whitney sí puede detectar que sus distribuciones son distintas, porque compara la forma completa de los datos vía rangos, no solo la media.",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/06_anova_chi2/practica.html#ejercicios-propuestos",
+    "href": "notebooks/06_anova_chi2/practica.html#ejercicios-propuestos",
+    "title": "13  Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+    "section": "13.4 Ejercicios propuestos",
+    "text": "13.4 Ejercicios propuestos\n\nRepite el ANOVA de la sección 1 pero con tres grupos generados con la MISMA media (por ejemplo, los tres con media 6). Comprueba que el p-valor ya no indica significancia.\nAñade una cuarta categoría de producto (“Suscripción”) a la tabla de contingencia de la sección 2 y repite el test Chi-cuadrado. ¿Cambian los grados de libertad? ¿Por qué?\nCompara los resultados de aplicar un t-test estándar (scipy.stats.ttest_ind) frente a Mann-Whitney U sobre los datos polarizados de la sección 3. ¿Llegan a la misma conclusión? ¿Cuál te parece más apropiado dado que los datos no son normales?",
+    "crumbs": [
+      "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span>"
+    ]
   }
 ]
