@@ -1,5 +1,0 @@
-/* Oculta el número de capítulo en el menú lateral,
-   sin afectar a la numeración de secciones dentro del cuerpo del texto */
-.sidebar-item .chapter-number {
-  display: none;
-}

@@ -144,7 +144,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../custom.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -428,7 +428,7 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 <p><span class="math display">\[
 \bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
 \]</span></p>
-<div id="59cc4959" class="cell" data-execution_count="2">
+<div id="7d381fcc" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> inference <span class="im">as</span> inf</span>
@@ -449,7 +449,7 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 \bar{X} \pm t_{\alpha/2,\, n-1} \cdot \frac{s}{\sqrt{n}}
 \]</span></p>
 <p>La t de Student tiene colas más pesadas que la Normal — refleja que, con muestras pequeñas, estimar <span class="math inline">\(\sigma\)</span> a partir de los propios datos añade incertidumbre. A medida que <span class="math inline">\(n\)</span> crece, la t converge a la Normal.</p>
-<div id="d62454cd" class="cell" data-execution_count="3">
+<div id="ea7db949" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salario mensual de una muestra de 25 empleados (sigma poblacional desconocida)</span></span>
@@ -467,7 +467,7 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 <p><span class="math display">\[
 \hat{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 \]</span></p>
-<div id="868fcf86" class="cell" data-execution_count="4">
+<div id="a5b3aaec" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retomamos el ejemplo del Módulo 3: 15 conversiones de 50 clientes observados</span></span>
@@ -523,7 +523,7 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 <p><span class="math display">\[
 z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}
 \]</span></p>
-<div id="1a4d7502" class="cell" data-execution_count="5">
+<div id="b1c65f78" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: el tiempo medio de respuesta es 120ms. Observamos x̄=122.5 en n=40, sigma=15</span></span>
@@ -538,7 +538,7 @@ z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}
 </section>
 <section id="test-t-para-la-media-sigma-desconocida" class="level3" data-number="8.4.3">
 <h3 data-number="8.4.3" class="anchored" data-anchor-id="test-t-para-la-media-sigma-desconocida"><span class="header-section-number">8.4.3</span> Test t para la media (<span class="math inline">\(\sigma\)</span> desconocida)</h3>
-<div id="d0177d88" class="cell" data-execution_count="6">
+<div id="16ef2efe" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>salarios_muestra <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
@@ -558,7 +558,7 @@ z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}
 <p><span class="math display">\[
 z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}, \qquad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}
 \]</span></p>
-<div id="0807a46a" class="cell" data-execution_count="7">
+<div id="994f59ce" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variante A: 15 conversiones de 50. Variante B: 27 conversiones de 60.</span></span>
@@ -576,7 +576,7 @@ z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \
 <h2 data-number="8.5" class="anchored" data-anchor-id="qué-significa-realmente-un-intervalo-de-confianza"><span class="header-section-number">8.5</span> 4.5 Qué significa realmente un intervalo de confianza</h2>
 <p>Una confusión muy frecuente: un intervalo de confianza al 95% <strong>no</strong> significa “hay un 95% de probabilidad de que <span class="math inline">\(\mu\)</span> esté en este intervalo concreto”. <span class="math inline">\(\mu\)</span> no es aleatorio, es fijo (aunque desconocido); lo aleatorio es el intervalo, que cambia de una muestra a otra. La interpretación correcta es sobre el <strong>procedimiento</strong>: si repitiéramos el muestreo muchas veces y construyéramos un intervalo cada vez, aproximadamente el 95% de esos intervalos contendrían el verdadero <span class="math inline">\(\mu\)</span>.</p>
 <p>Podemos comprobarlo por simulación, construyendo miles de intervalos a partir de muestras distintas de una población con <span class="math inline">\(\mu\)</span> conocido, y contando en cuántos cae realmente <span class="math inline">\(\mu\)</span>:</p>
-<div id="ca094d2a" class="cell" data-execution_count="8">
+<div id="5378e8fc" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(true_mu<span class="op">=</span><span class="dv">100</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>, n_simulations<span class="op">=</span><span class="dv">5000</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>

@@ -1,0 +1,159 @@
+/* ============================================================
+   styles.css
+   Hoja de estilos personalizada del curso "Estadística Básica"
+   Se carga desde _quarto.yml (format: html: css: styles.css)
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1) SIDEBAR — menú lateral de navegación
+   ------------------------------------------------------------ */
+
+/* Oculta el número de capítulo que Quarto añade automáticamente
+   delante de cada entrada del menú (ej. "1", "2.2"...).
+   No afecta a la numeración de secciones dentro del cuerpo del
+   texto (esa la controla number-sections en _quarto.yml y se
+   mantiene intacta). */
+.sidebar-item .chapter-number {
+  display: none;
+}
+
+/* Pone en negrita todo el texto del menú lateral: enlaces,
+   texto de secciones ("Módulo X — ..."), y páginas hijas
+   (teoria/practica de cada módulo). */
+#quarto-sidebar .sidebar-item-text,
+#quarto-sidebar .sidebar-link,
+#quarto-sidebar .menu-text {
+  font-weight: 700;
+}
+
+/* Refuerzo adicional: "Inicio" y los títulos de cada Módulo
+   (nivel superior del menú) con un peso aún mayor, para que
+   destaquen sobre las páginas hijas (teoria/practica).
+   Si prefieres que todo el sidebar tenga el mismo peso visual,
+   basta con eliminar este bloque. */
+#quarto-sidebar > div.sidebar-menu-container > ul.sidebar-section > li.sidebar-item > div.sidebar-item-container > a.sidebar-item-text,
+#quarto-sidebar .sidebar-item-section > .sidebar-item-text {
+  font-weight: 800;
+}
+
+/* Un pequeño margen extra entre partes (Módulos) del sidebar,
+   para separar visualmente cada bloque temático. */
+#quarto-sidebar .sidebar-item-section {
+  margin-top: 0.5rem;
+}
+
+
+/* ------------------------------------------------------------
+   2) BLOQUES DE CITA (blockquote) — definiciones y avisos
+   ------------------------------------------------------------
+   Usados en el contenido para resaltar definiciones formales
+   (ej. "Teorema Central del Límite") y avisos conceptuales
+   (ej. "Correlación no implica causalidad"). Se les da un
+   estilo visual distinto al texto normal para que llamen
+   la atención sin ser tan intrusivos como una alerta de color. */
+.content blockquote,
+main blockquote {
+  border-left: 4px solid #2c3e50;
+  background-color: #f7f8fa;
+  padding: 0.75rem 1.25rem;
+  margin: 1.25rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.content blockquote p:last-child,
+main blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ------------------------------------------------------------
+   3) BLOQUES DE CÓDIGO — mayor legibilidad
+   ------------------------------------------------------------ */
+
+/* Un poco más de aire interno en los bloques de código y bordes
+   redondeados suaves, para que no se sientan tan "pegados" al
+   texto que los rodea. */
+div.sourceCode {
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+/* Tamaño de fuente ligeramente reducido en el código, útil
+   sobre todo en los notebooks con salidas largas. */
+pre.sourceCode code {
+  font-size: 0.88em;
+}
+
+
+/* ------------------------------------------------------------
+   4) TABLAS — más legibles en las comparativas de cada módulo
+   ------------------------------------------------------------
+   (ej. tabla de tipos de variable del Módulo 1, tabla de
+   errores Tipo I/II del Módulo 4, tabla de contingencia del
+   Módulo 6). */
+.content table,
+main table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+}
+
+.content table th,
+main table th {
+  background-color: #f0f2f5;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid #d0d4da;
+}
+
+.content table td,
+main table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* ------------------------------------------------------------
+   5) DIAGRAMAS MERMAID — centrado y espaciado
+   ------------------------------------------------------------
+   Cada módulo abre con un diagrama Mermaid a modo de mapa
+   conceptual; se centran y se les da algo de aire vertical
+   para que actúen como un respiro visual dentro del texto. */
+.mermaid,
+.cell-output-display svg {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+}
+
+
+/* ------------------------------------------------------------
+   6) FÓRMULAS MATEMÁTICAS — algo de espacio de respiración
+   ------------------------------------------------------------
+   Las fórmulas en bloque ($$...$$) quedan muy pegadas al texto
+   circundante por defecto; les damos un poco más de margen
+   vertical para que se lean como un elemento propio. */
+.content .math.display,
+main .math.display {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+}
+
+
+/* ------------------------------------------------------------
+   7) ENLACES — color acorde al tema "cosmo"
+   ------------------------------------------------------------
+   Un subrayado sutil solo al pasar el ratón, para que los
+   enlaces dentro del texto (referencias cruzadas entre
+   módulos, bibliografía) no compitan visualmente con el
+   texto normal salvo cuando se interactúa con ellos. */
+.content a:not(.sidebar-link):not(.nav-link),
+main a:not(.sidebar-link):not(.nav-link) {
+  text-decoration: none;
+}
+
+.content a:not(.sidebar-link):not(.nav-link):hover,
+main a:not(.sidebar-link):not(.nav-link):hover {
+  text-decoration: underline;
+}
