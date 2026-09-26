@@ -21,7 +21,11 @@ book:
       chapters:
         - notebooks/02_probabilidad/teoria.qmd
         - notebooks/02_probabilidad/practica.ipynb
-
+    - part: "Módulo 3 — Distribuciones de Probabilidad"
+      chapters:
+        - notebooks/03_distribuciones/teoria.qmd
+        - notebooks/03_distribuciones/practica.ipynb
+        
 format:
   html:
     theme: cosmo
