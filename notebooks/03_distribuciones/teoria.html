@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Distribuciones de Probabilidad – Estadística Básica</title>
+<title>7&nbsp; Distribuciones de Probabilidad – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -173,7 +173,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/TU-USUARIO/estadistica-basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -202,13 +202,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></span></a>
   </div>
 </li>
       </ul>
@@ -225,13 +231,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
   </div>
 </li>
       </ul>
@@ -248,13 +254,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
       </ul>
@@ -271,13 +277,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
       </ul>
@@ -294,13 +300,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
       </ul>
@@ -317,13 +323,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
       </ul>
@@ -338,31 +344,31 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">6.1</span> 3.1 Introducción</a></li>
-  <li><a href="#variables-aleatorias-discretas-vs.-continuas" id="toc-variables-aleatorias-discretas-vs.-continuas" class="nav-link" data-scroll-target="#variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">6.2</span> 3.2 Variables Aleatorias: Discretas vs.&nbsp;Continuas</a></li>
-  <li><a href="#distribuciones-discretas" id="toc-distribuciones-discretas" class="nav-link" data-scroll-target="#distribuciones-discretas"><span class="header-section-number">6.3</span> 3.3 Distribuciones Discretas</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">7.1</span> 3.1 Introducción</a></li>
+  <li><a href="#variables-aleatorias-discretas-vs.-continuas" id="toc-variables-aleatorias-discretas-vs.-continuas" class="nav-link" data-scroll-target="#variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">7.2</span> 3.2 Variables Aleatorias: Discretas vs.&nbsp;Continuas</a></li>
+  <li><a href="#distribuciones-discretas" id="toc-distribuciones-discretas" class="nav-link" data-scroll-target="#distribuciones-discretas"><span class="header-section-number">7.3</span> 3.3 Distribuciones Discretas</a>
   <ul class="collapse">
-  <li><a href="#bernoulli" id="toc-bernoulli" class="nav-link" data-scroll-target="#bernoulli"><span class="header-section-number">6.3.1</span> Bernoulli</a></li>
-  <li><a href="#binomial" id="toc-binomial" class="nav-link" data-scroll-target="#binomial"><span class="header-section-number">6.3.2</span> Binomial</a></li>
-  <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson"><span class="header-section-number">6.3.3</span> Poisson</a></li>
+  <li><a href="#bernoulli" id="toc-bernoulli" class="nav-link" data-scroll-target="#bernoulli"><span class="header-section-number">7.3.1</span> Bernoulli</a></li>
+  <li><a href="#binomial" id="toc-binomial" class="nav-link" data-scroll-target="#binomial"><span class="header-section-number">7.3.2</span> Binomial</a></li>
+  <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson"><span class="header-section-number">7.3.3</span> Poisson</a></li>
   </ul></li>
-  <li><a href="#distribuciones-continuas" id="toc-distribuciones-continuas" class="nav-link" data-scroll-target="#distribuciones-continuas"><span class="header-section-number">6.4</span> 3.4 Distribuciones Continuas</a>
+  <li><a href="#distribuciones-continuas" id="toc-distribuciones-continuas" class="nav-link" data-scroll-target="#distribuciones-continuas"><span class="header-section-number">7.4</span> 3.4 Distribuciones Continuas</a>
   <ul class="collapse">
-  <li><a href="#uniforme" id="toc-uniforme" class="nav-link" data-scroll-target="#uniforme"><span class="header-section-number">6.4.1</span> Uniforme</a></li>
-  <li><a href="#normal-gaussiana" id="toc-normal-gaussiana" class="nav-link" data-scroll-target="#normal-gaussiana"><span class="header-section-number">6.4.2</span> Normal (Gaussiana)</a></li>
-  <li><a href="#exponencial" id="toc-exponencial" class="nav-link" data-scroll-target="#exponencial"><span class="header-section-number">6.4.3</span> Exponencial</a></li>
+  <li><a href="#uniforme" id="toc-uniforme" class="nav-link" data-scroll-target="#uniforme"><span class="header-section-number">7.4.1</span> Uniforme</a></li>
+  <li><a href="#normal-gaussiana" id="toc-normal-gaussiana" class="nav-link" data-scroll-target="#normal-gaussiana"><span class="header-section-number">7.4.2</span> Normal (Gaussiana)</a></li>
+  <li><a href="#exponencial" id="toc-exponencial" class="nav-link" data-scroll-target="#exponencial"><span class="header-section-number">7.4.3</span> Exponencial</a></li>
   </ul></li>
-  <li><a href="#el-teorema-central-del-límite" id="toc-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#el-teorema-central-del-límite"><span class="header-section-number">6.5</span> 3.5 El Teorema Central del Límite</a></li>
-  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">6.6</span> 3.6 Cierre</a></li>
+  <li><a href="#el-teorema-central-del-límite" id="toc-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#el-teorema-central-del-límite"><span class="header-section-number">7.5</span> 3.5 El Teorema Central del Límite</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">7.6</span> 3.6 Cierre</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/03_distribuciones/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/03_distribuciones/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></h1>
 </div>
 
 
@@ -379,14 +385,14 @@ window.Quarto = {
 </header>
 
 
-<section id="introducción" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">6.1</span> 3.1 Introducción</h2>
+<section id="introducción" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">7.1</span> 3.1 Introducción</h2>
 <p>En el Módulo 2 definimos la probabilidad de sucesos individuales y vimos cómo actualizar nuestras creencias con el teorema de Bayes. Ahora damos un paso más: en vez de asignar probabilidades a sucesos sueltos, queremos describir <strong>el comportamiento completo de una variable aleatoria</strong> — todos sus valores posibles y la probabilidad asociada a cada uno.</p>
 <p>Esto es lo que hace una <strong>distribución de probabilidad</strong>: un modelo matemático que resume de forma compacta cómo se reparte la probabilidad a lo largo de todos los resultados posibles de una variable aleatoria <span class="math inline">\(X\)</span>.</p>
 <p>Como en los módulos anteriores, cerraremos con el puente hacia lo que viene después: el <strong>Teorema Central del Límite</strong>, la pieza que conecta las distribuciones de este módulo con la inferencia estadística (intervalos de confianza y contraste de hipótesis) del próximo módulo.</p>
 </section>
-<section id="variables-aleatorias-discretas-vs.-continuas" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">6.2</span> 3.2 Variables Aleatorias: Discretas vs.&nbsp;Continuas</h2>
+<section id="variables-aleatorias-discretas-vs.-continuas" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">7.2</span> 3.2 Variables Aleatorias: Discretas vs.&nbsp;Continuas</h2>
 <p>Recuperamos la distinción del Módulo 1 entre variables discretas y continuas, pero ahora aplicada a variables <em>aleatorias</em> — variables cuyo valor depende del resultado de un experimento aleatorio.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -407,7 +413,7 @@ window.Quarto = {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tipos-variable-aleatoria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6.1: Clasificación de variables aleatorias y sus distribuciones típicas
+Figura&nbsp;7.1: Clasificación de variables aleatorias y sus distribuciones típicas
 </figcaption>
 </figure>
 </div>
@@ -426,10 +432,10 @@ E[X] = \mu \qquad \text{(esperanza o valor esperado)}
 \text{Var}(X) = \sigma^2 = E[(X-\mu)^2] \qquad \text{(varianza)}
 \]</span></p>
 </section>
-<section id="distribuciones-discretas" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="distribuciones-discretas"><span class="header-section-number">6.3</span> 3.3 Distribuciones Discretas</h2>
-<section id="bernoulli" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="bernoulli"><span class="header-section-number">6.3.1</span> Bernoulli</h3>
+<section id="distribuciones-discretas" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="distribuciones-discretas"><span class="header-section-number">7.3</span> 3.3 Distribuciones Discretas</h2>
+<section id="bernoulli" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="bernoulli"><span class="header-section-number">7.3.1</span> Bernoulli</h3>
 <p>Modela un único experimento con dos resultados posibles: éxito (1) o fracaso (0), con probabilidad de éxito <span class="math inline">\(p\)</span>.</p>
 <p><span class="math display">\[
 P(X = x) = p^x (1-p)^{1-x}, \quad x \in \{0, 1\}
@@ -439,8 +445,8 @@ E[X] = p \qquad \text{Var}(X) = p(1-p)
 \]</span></p>
 <p><strong>Ejemplo</strong>: si <span class="math inline">\(p = 0.3\)</span> es la probabilidad de que un cliente convierta tras ver un anuncio, <span class="math inline">\(X\)</span> es la variable que vale 1 si convierte y 0 si no.</p>
 </section>
-<section id="binomial" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="binomial"><span class="header-section-number">6.3.2</span> Binomial</h3>
+<section id="binomial" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="binomial"><span class="header-section-number">7.3.2</span> Binomial</h3>
 <p>Cuenta el número de éxitos en <span class="math inline">\(n\)</span> ensayos de Bernoulli independientes con la misma <span class="math inline">\(p\)</span>.</p>
 <p><span class="math display">\[
 P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n
@@ -463,8 +469,8 @@ E[X] = np \qquad \text{Var}(X) = np(1-p)
 </div>
 </div>
 </section>
-<section id="poisson" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="poisson"><span class="header-section-number">6.3.3</span> Poisson</h3>
+<section id="poisson" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="poisson"><span class="header-section-number">7.3.3</span> Poisson</h3>
 <p>Modela el número de eventos que ocurren en un intervalo fijo de tiempo o espacio, cuando esos eventos ocurren de forma independiente a una tasa media constante <span class="math inline">\(\lambda\)</span>.</p>
 <p><span class="math display">\[
 P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
@@ -486,10 +492,10 @@ E[X] = \lambda \qquad \text{Var}(X) = \lambda
 <p>La Poisson es, de hecho, el límite de la Binomial cuando <span class="math inline">\(n \to \infty\)</span>, <span class="math inline">\(p \to 0\)</span> y <span class="math inline">\(np = \lambda\)</span> se mantiene constante — útil cuando hay muchas oportunidades de que ocurra un evento raro.</p>
 </section>
 </section>
-<section id="distribuciones-continuas" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="distribuciones-continuas"><span class="header-section-number">6.4</span> 3.4 Distribuciones Continuas</h2>
-<section id="uniforme" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="uniforme"><span class="header-section-number">6.4.1</span> Uniforme</h3>
+<section id="distribuciones-continuas" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="distribuciones-continuas"><span class="header-section-number">7.4</span> 3.4 Distribuciones Continuas</h2>
+<section id="uniforme" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="uniforme"><span class="header-section-number">7.4.1</span> Uniforme</h3>
 <p>Todos los valores en un intervalo <span class="math inline">\([a, b]\)</span> son igual de probables.</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{b-a}, \quad a \le x \le b
@@ -498,8 +504,8 @@ f(x) = \frac{1}{b-a}, \quad a \le x \le b
 E[X] = \frac{a+b}{2} \qquad \text{Var}(X) = \frac{(b-a)^2}{12}
 \]</span></p>
 </section>
-<section id="normal-gaussiana" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="normal-gaussiana"><span class="header-section-number">6.4.2</span> Normal (Gaussiana)</h3>
+<section id="normal-gaussiana" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="normal-gaussiana"><span class="header-section-number">7.4.2</span> Normal (Gaussiana)</h3>
 <p>La distribución continua más importante en estadística, por su papel central en el Teorema Central del Límite (sección 3.5).</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
@@ -520,8 +526,8 @@ E[X] = \mu \qquad \text{Var}(X) = \sigma^2
 </div>
 </div>
 </section>
-<section id="exponencial" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="exponencial"><span class="header-section-number">6.4.3</span> Exponencial</h3>
+<section id="exponencial" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="exponencial"><span class="header-section-number">7.4.3</span> Exponencial</h3>
 <p>Modela el tiempo de espera hasta que ocurre el siguiente evento en un proceso de Poisson con tasa <span class="math inline">\(\lambda\)</span>. Es el “primo continuo” de la Poisson.</p>
 <p><span class="math display">\[
 f(x) = \lambda e^{-\lambda x}, \quad x \ge 0
@@ -532,8 +538,8 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
 <p><strong>Ejemplo</strong>: si los tickets de soporte llegan a una tasa de <span class="math inline">\(\lambda = 4\)</span> por hora (Poisson), el tiempo entre tickets consecutivos sigue una Exponencial con <span class="math inline">\(E[X] = 1/4\)</span> horas = 15 minutos.</p>
 </section>
 </section>
-<section id="el-teorema-central-del-límite" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="el-teorema-central-del-límite"><span class="header-section-number">6.5</span> 3.5 El Teorema Central del Límite</h2>
+<section id="el-teorema-central-del-límite" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="el-teorema-central-del-límite"><span class="header-section-number">7.5</span> 3.5 El Teorema Central del Límite</h2>
 <p>Este es, posiblemente, el resultado más importante de toda la estadística inferencial, y el motivo por el que la distribución Normal aparece constantemente incluso cuando los datos originales no son normales.</p>
 <blockquote class="blockquote">
 <p><strong>Teorema Central del Límite (TCL)</strong>: si tomamos muestras aleatorias de tamaño <span class="math inline">\(n\)</span> (suficientemente grande) de <em>cualquier</em> población con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span> finita, la distribución de la <strong>media muestral</strong> <span class="math inline">\(\bar{X}\)</span> se aproxima a una distribución Normal:</p>
@@ -572,8 +578,8 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
 </div>
 <p>Aunque la población original (Exponencial) es muy asimétrica, la distribución de las medias muestrales ya tiene la forma característica de campana de la Normal. Esto es lo que hace posible, en el próximo módulo, construir intervalos de confianza y contrastes de hipótesis sobre la media de casi cualquier población, apoyándonos únicamente en el tamaño de la muestra.</p>
 </section>
-<section id="cierre" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="cierre"><span class="header-section-number">6.6</span> 3.6 Cierre</h2>
+<section id="cierre" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="cierre"><span class="header-section-number">7.6</span> 3.6 Cierre</h2>
 <p>En este módulo hemos pasado de sucesos individuales (Módulo 2) a variables aleatorias completas: sus distribuciones discretas (Bernoulli, Binomial, Poisson) y continuas (Uniforme, Normal, Exponencial), junto con sus medidas resumen (<span class="math inline">\(E[X]\)</span>, <span class="math inline">\(\text{Var}(X)\)</span>). El Teorema Central del Límite cierra el módulo como puente formal hacia el Módulo 4, donde usaremos estas herramientas para hacer inferencia sobre poblaciones a partir de muestras.</p>
 <p>Continúa con el cuaderno práctico (<code>practica.ipynb</code>).</p>
 
@@ -984,12 +990,12 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/02_probabilidad/practica.html" class="pagination-link" aria-label="Práctica: Probabilidad Básica">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../notebooks/03_distribuciones/practica.html" class="pagination-link" aria-label="Práctica: Distribuciones de Probabilidad">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -998,4 +1004,4 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/03_distribuciones/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/03_distribuciones/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

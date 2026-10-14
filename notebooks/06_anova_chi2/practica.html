@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas – Estadística Básica</title>
+<title>14&nbsp; Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/TU-USUARIO/estadistica-basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -169,13 +169,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></span></a>
   </div>
 </li>
       </ul>
@@ -192,13 +198,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
   </div>
 </li>
       </ul>
@@ -215,13 +221,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
       </ul>
@@ -238,13 +244,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
       </ul>
@@ -261,13 +267,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
       </ul>
@@ -284,13 +290,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
       </ul>
@@ -305,19 +311,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#anova-efectividad-de-3-tratamientos-médicos" id="toc-anova-efectividad-de-3-tratamientos-médicos" class="nav-link active" data-scroll-target="#anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">13.1</span> 1. ANOVA: efectividad de 3 tratamientos médicos</a></li>
-  <li><a href="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" id="toc-chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="nav-link" data-scroll-target="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">13.2</span> 2. Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</a></li>
-  <li><a href="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" id="toc-mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="nav-link" data-scroll-target="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">13.3</span> 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app</a></li>
-  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">13.4</span> Ejercicios propuestos</a></li>
+  <li><a href="#anova-efectividad-de-3-tratamientos-médicos" id="toc-anova-efectividad-de-3-tratamientos-médicos" class="nav-link active" data-scroll-target="#anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">14.1</span> 1. ANOVA: efectividad de 3 tratamientos médicos</a></li>
+  <li><a href="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" id="toc-chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="nav-link" data-scroll-target="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">14.2</span> 2. Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</a></li>
+  <li><a href="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" id="toc-mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="nav-link" data-scroll-target="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">14.3</span> 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app</a></li>
+  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">14.4</span> Ejercicios propuestos</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/06_anova_chi2/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/06_anova_chi2/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></h1>
 </div>
 
 
@@ -347,8 +353,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> group_comparisons <span class="im">as</span> gc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="anova-efectividad-de-3-tratamientos-médicos" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">13.1</span> 1. ANOVA: efectividad de 3 tratamientos médicos</h2>
+<section id="anova-efectividad-de-3-tratamientos-médicos" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">14.1</span> 1. ANOVA: efectividad de 3 tratamientos médicos</h2>
 <p>Comparamos el tiempo de recuperación (en días) de pacientes bajo tres tratamientos distintos.</p>
 <div id="cell-3" class="cell">
 <details class="code-fold">
@@ -377,8 +383,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">13.2</span> 2. Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</h2>
+<section id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">14.2</span> 2. Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</h2>
 <p>Construimos una tabla de contingencia a partir de datos simulados de clientes y comprobamos si el segmento de edad está asociado con el producto que prefieren.</p>
 <div id="cell-6" class="cell">
 <details class="code-fold">
@@ -415,8 +421,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">13.3</span> 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app</h2>
+<section id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">14.3</span> 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app</h2>
 <p>Simulamos valoraciones (escala 1-10) claramente no normales: la versión 1 tiene valoraciones polarizadas (o encanta o decepciona), mientras que la versión 2 tiene valoraciones más consistentes.</p>
 <div id="cell-9" class="cell">
 <details class="code-fold">
@@ -456,8 +462,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Fíjate en que ambas versiones pueden tener una media muy similar (por eso un t-test podría no detectar diferencia), pero Mann-Whitney sí puede detectar que sus <strong>distribuciones</strong> son distintas, porque compara la forma completa de los datos vía rangos, no solo la media.</p>
 </section>
-<section id="ejercicios-propuestos" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">13.4</span> Ejercicios propuestos</h2>
+<section id="ejercicios-propuestos" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">14.4</span> Ejercicios propuestos</h2>
 <ol type="1">
 <li>Repite el ANOVA de la sección 1 pero con tres grupos generados con la MISMA media (por ejemplo, los tres con media 6). Comprueba que el p-valor ya no indica significancia.</li>
 <li>Añade una cuarta categoría de producto (“Suscripción”) a la tabla de contingencia de la sección 2 y repite el test Chi-cuadrado. ¿Cambian los grados de libertad? ¿Por qué?</li>
@@ -871,7 +877,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/06_anova_chi2/teoria.html" class="pagination-link" aria-label="ANOVA, Chi-cuadrado y Pruebas No Paramétricas">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -882,4 +888,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/06_anova_chi2/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/06_anova_chi2/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

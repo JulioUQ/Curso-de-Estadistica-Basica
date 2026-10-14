@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Fundamentos y Estadística Descriptiva – Estadística Básica</title>
+<title>2&nbsp; Teoría: Fundamentos y Estadística Descriptiva – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -44,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -121,7 +140,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -138,7 +157,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/TU-USUARIO/estadistica-basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -167,13 +186,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></span></a>
   </div>
 </li>
       </ul>
@@ -190,13 +215,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
   </div>
 </li>
       </ul>
@@ -213,13 +238,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
       </ul>
@@ -236,13 +261,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
       </ul>
@@ -259,13 +284,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
       </ul>
@@ -282,13 +307,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
       </ul>
@@ -304,36 +329,40 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">2.1</span> Introducción</a></li>
-  <li><a href="#tipos-de-variables" id="toc-tipos-de-variables" class="nav-link" data-scroll-target="#tipos-de-variables"><span class="header-section-number">2.2</span> Tipos de Variables</a></li>
-  <li><a href="#medidas-de-tendencia-central" id="toc-medidas-de-tendencia-central" class="nav-link" data-scroll-target="#medidas-de-tendencia-central"><span class="header-section-number">2.3</span> Medidas de Tendencia Central</a>
+  <li><a href="#qué-es-la-estadística" id="toc-qué-es-la-estadística" class="nav-link" data-scroll-target="#qué-es-la-estadística"><span class="header-section-number">2.2</span> ¿Qué es la estadística?</a></li>
+  <li><a href="#tipos-de-variables" id="toc-tipos-de-variables" class="nav-link" data-scroll-target="#tipos-de-variables"><span class="header-section-number">2.3</span> Tipos de variables</a></li>
+  <li><a href="#medidas-de-tendencia-central" id="toc-medidas-de-tendencia-central" class="nav-link" data-scroll-target="#medidas-de-tendencia-central"><span class="header-section-number">2.4</span> Medidas de tendencia central</a>
   <ul class="collapse">
-  <li><a href="#media-aritmética" id="toc-media-aritmética" class="nav-link" data-scroll-target="#media-aritmética"><span class="header-section-number">2.3.1</span> Media aritmética</a></li>
-  <li><a href="#mediana" id="toc-mediana" class="nav-link" data-scroll-target="#mediana"><span class="header-section-number">2.3.2</span> Mediana</a></li>
-  <li><a href="#moda" id="toc-moda" class="nav-link" data-scroll-target="#moda"><span class="header-section-number">2.3.3</span> Moda</a></li>
+  <li><a href="#media-aritmética" id="toc-media-aritmética" class="nav-link" data-scroll-target="#media-aritmética"><span class="header-section-number">2.4.1</span> Media aritmética</a></li>
+  <li><a href="#mediana" id="toc-mediana" class="nav-link" data-scroll-target="#mediana"><span class="header-section-number">2.4.2</span> Mediana</a></li>
+  <li><a href="#moda" id="toc-moda" class="nav-link" data-scroll-target="#moda"><span class="header-section-number">2.4.3</span> Moda</a></li>
   </ul></li>
-  <li><a href="#medidas-de-dispersión" id="toc-medidas-de-dispersión" class="nav-link" data-scroll-target="#medidas-de-dispersión"><span class="header-section-number">2.4</span> Medidas de Dispersión</a>
+  <li><a href="#medidas-de-dispersión" id="toc-medidas-de-dispersión" class="nav-link" data-scroll-target="#medidas-de-dispersión"><span class="header-section-number">2.5</span> Medidas de dispersión</a>
   <ul class="collapse">
-  <li><a href="#rango" id="toc-rango" class="nav-link" data-scroll-target="#rango"><span class="header-section-number">2.4.1</span> Rango</a></li>
-  <li><a href="#varianza" id="toc-varianza" class="nav-link" data-scroll-target="#varianza"><span class="header-section-number">2.4.2</span> Varianza</a></li>
-  <li><a href="#desviación-estándar" id="toc-desviación-estándar" class="nav-link" data-scroll-target="#desviación-estándar"><span class="header-section-number">2.4.3</span> Desviación estándar</a></li>
-  <li><a href="#coeficiente-de-variación" id="toc-coeficiente-de-variación" class="nav-link" data-scroll-target="#coeficiente-de-variación"><span class="header-section-number">2.4.4</span> Coeficiente de variación</a></li>
+  <li><a href="#rango" id="toc-rango" class="nav-link" data-scroll-target="#rango"><span class="header-section-number">2.5.1</span> Rango</a></li>
+  <li><a href="#varianza-y-desviación-estándar" id="toc-varianza-y-desviación-estándar" class="nav-link" data-scroll-target="#varianza-y-desviación-estándar"><span class="header-section-number">2.5.2</span> Varianza y desviación estándar</a></li>
+  <li><a href="#coeficiente-de-variación" id="toc-coeficiente-de-variación" class="nav-link" data-scroll-target="#coeficiente-de-variación"><span class="header-section-number">2.5.3</span> Coeficiente de variación</a></li>
   </ul></li>
-  <li><a href="#medidas-de-forma" id="toc-medidas-de-forma" class="nav-link" data-scroll-target="#medidas-de-forma"><span class="header-section-number">2.5</span> Medidas de Forma</a>
+  <li><a href="#medidas-de-forma" id="toc-medidas-de-forma" class="nav-link" data-scroll-target="#medidas-de-forma"><span class="header-section-number">2.6</span> Medidas de forma</a>
   <ul class="collapse">
-  <li><a href="#asimetría-skewness" id="toc-asimetría-skewness" class="nav-link" data-scroll-target="#asimetría-skewness"><span class="header-section-number">2.5.1</span> Asimetría (Skewness)</a></li>
-  <li><a href="#curtosis" id="toc-curtosis" class="nav-link" data-scroll-target="#curtosis"><span class="header-section-number">2.5.2</span> Curtosis</a></li>
+  <li><a href="#asimetría-skewness" id="toc-asimetría-skewness" class="nav-link" data-scroll-target="#asimetría-skewness"><span class="header-section-number">2.6.1</span> Asimetría (skewness)</a></li>
+  <li><a href="#curtosis-exceso" id="toc-curtosis-exceso" class="nav-link" data-scroll-target="#curtosis-exceso"><span class="header-section-number">2.6.2</span> Curtosis (exceso)</a></li>
   </ul></li>
-  <li><a href="#resumen-de-cinco-números-y-diagrama-de-caja" id="toc-resumen-de-cinco-números-y-diagrama-de-caja" class="nav-link" data-scroll-target="#resumen-de-cinco-números-y-diagrama-de-caja"><span class="header-section-number">2.6</span> Resumen de Cinco Números y Diagrama de Caja</a></li>
-  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">2.7</span> Cierre</a></li>
+  <li><a href="#resumen-de-cinco-números-y-diagrama-de-caja" id="toc-resumen-de-cinco-números-y-diagrama-de-caja" class="nav-link" data-scroll-target="#resumen-de-cinco-números-y-diagrama-de-caja"><span class="header-section-number">2.7</span> Resumen de cinco números y diagrama de caja</a></li>
+  <li><a href="#valores-atípicos-y-estadística-robusta" id="toc-valores-atípicos-y-estadística-robusta" class="nav-link" data-scroll-target="#valores-atípicos-y-estadística-robusta"><span class="header-section-number">2.8</span> Valores atípicos y estadística robusta</a></li>
+  <li><a href="#valores-perdidos-missing-data" id="toc-valores-perdidos-missing-data" class="nav-link" data-scroll-target="#valores-perdidos-missing-data"><span class="header-section-number">2.9</span> Valores perdidos (missing data)</a></li>
+  <li><a href="#estadística-y-minería-de-datos" id="toc-estadística-y-minería-de-datos" class="nav-link" data-scroll-target="#estadística-y-minería-de-datos"><span class="header-section-number">2.10</span> Estadística y minería de datos</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">2.11</span> Cierre</a></li>
+  <li><a href="#material-de-referencia-adicional" id="toc-material-de-referencia-adicional" class="nav-link" data-scroll-target="#material-de-referencia-adicional"><span class="header-section-number">2.12</span> Material de referencia adicional</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/01_estadistica_descriptiva/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/01_estadistica_descriptiva/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></h1>
 <p class="subtitle lead">Estadística Básica — Repositorio 1</p>
 </div>
 
@@ -353,12 +382,53 @@ window.Quarto = {
 
 <section id="introducción" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">2.1</span> Introducción</h2>
-<p>La estadística descriptiva es el conjunto de técnicas que nos permiten <strong>resumir, organizar y presentar</strong> un conjunto de datos de forma que sus características principales sean comprensibles de un vistazo. Es el primer paso de cualquier proyecto de ciencia de datos: antes de entrenar un modelo, necesitamos entender la forma, el centro y la dispersión de nuestras variables.</p>
-<p>A lo largo de este módulo usaremos un ejemplo transversal: un conjunto de datos simulado de <strong>salarios de empleados por departamento</strong> en una empresa ficticia. Este mismo dataset se retomará en el notebook práctico (<code>practica.ipynb</code>).</p>
+<p>Vivimos en lo que suele llamarse la <em>era de los datos</em>: prácticamente cualquier interacción digital —una compra, una búsqueda, un sensor de un dispositivo— queda registrada en algún lugar <span class="citation" data-cites="mayerschonberger2013bigdata">(<a href="#ref-mayerschonberger2013bigdata" role="doc-biblioref">Mayer-Schönberger y Cukier 2013</a>)</span>. Pero un conjunto de números en bruto no es, por sí solo, información útil. La <strong>estadística</strong> es la disciplina que convierte esos datos en conclusiones: resume, describe, detecta patrones y permite generalizar lo observado en una muestra al conjunto de una población.</p>
+<p>Este primer módulo se centra en la <strong>estadística descriptiva</strong>: el conjunto de técnicas para resumir, organizar y visualizar un conjunto de datos, sin todavía intentar generalizar conclusiones más allá de la muestra observada (eso es tarea de la estadística <em>inferencial</em>, que veremos en módulos posteriores). Usaremos como hilo conductor un dataset simulado de salarios de empleados por departamento, el mismo que se retoma en <code>practica.ipynb</code>.</p>
 </section>
-<section id="tipos-de-variables" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="tipos-de-variables"><span class="header-section-number">2.2</span> Tipos de Variables</h2>
-<p>Antes de calcular cualquier medida, debemos identificar qué tipo de variable estamos observando, ya que esto determina qué estadísticos tienen sentido.</p>
+<section id="qué-es-la-estadística" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="qué-es-la-estadística"><span class="header-section-number">2.2</span> ¿Qué es la estadística?</h2>
+<p>Una definición operativa y muy citada es la de Moore, McCabe y Craig <span class="citation" data-cites="moore2012introduction">(<a href="#ref-moore2012introduction" role="doc-biblioref">2012</a>)</span>: calcular la media y la desviación del peso al nacer de 1.000 bebés es aritmética; interpretar qué significa ese resultado —si es alto o bajo, qué lo explica, qué margen de confianza tiene— es estadística. La disciplina no se limita a calcular números: los sitúa en un contexto que permite tomar decisiones.</p>
+<p>Conviene distinguir desde el principio sus dos grandes ramas:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Estadística descriptiva</th>
+<th>Estadística inferencial</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Objetivo</strong></td>
+<td>Resumir y describir los datos disponibles</td>
+<td>Generalizar conclusiones de una muestra a una población</td>
+</tr>
+<tr class="even">
+<td><strong>Pregunta típica</strong></td>
+<td>¿Cuál es el salario medio de la muestra?</td>
+<td>¿Cuál es el salario medio de <em>toda la empresa</em>, con qué margen de confianza?</td>
+</tr>
+<tr class="odd">
+<td><strong>Herramientas</strong></td>
+<td>Media, mediana, varianza, gráficos</td>
+<td>Intervalos de confianza, contrastes de hipótesis</td>
+</tr>
+<tr class="even">
+<td><strong>Módulo del curso</strong></td>
+<td>Módulo 1 (este módulo)</td>
+<td>Módulos posteriores (tras Probabilidad)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tipos-de-variables" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="tipos-de-variables"><span class="header-section-number">2.3</span> Tipos de variables</h2>
+<p>Antes de calcular cualquier medida, hay que identificar qué tipo de variable se está observando, porque de ello depende qué estadísticos tienen sentido.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -369,7 +439,7 @@ window.Quarto = {
     A --&gt; C[Cuantitativa / Numérica]
     B --&gt; B1[Nominal: sin orden&lt;br/&gt;ej. departamento]
     B --&gt; B2[Ordinal: con orden&lt;br/&gt;ej. nivel de seniority]
-    C --&gt; C1[Discreta: valores contables&lt;br/&gt;ej. n° de proyectos]
+    C --&gt; C1[Discreta: valores contables&lt;br/&gt;ej. n.º de proyectos]
     C --&gt; C2[Continua: cualquier valor real&lt;br/&gt;ej. salario]
 </pre>
 </div>
@@ -379,55 +449,61 @@ window.Quarto = {
 </div>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Tipo</th>
-<th>Ejemplo en nuestro dataset</th>
-<th>Estadísticos válidos</th>
+<th>Tipo estadístico</th>
+<th>Subtipo</th>
+<th>Ejemplo</th>
+<th>Tipo típico en pandas</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>Cualitativa</td>
 <td>Nominal</td>
 <td>Departamento (Ventas, IT, RRHH)</td>
-<td>Moda, frecuencias</td>
+<td><code>object</code> / <code>category</code></td>
 </tr>
 <tr class="even">
+<td>Cualitativa</td>
 <td>Ordinal</td>
 <td>Nivel (Junior, Semi-Senior, Senior)</td>
-<td>Moda, mediana</td>
+<td><code>CategoricalDtype(ordered=True)</code></td>
 </tr>
 <tr class="odd">
+<td>Cuantitativa</td>
 <td>Discreta</td>
 <td>Años de antigüedad</td>
-<td>Media, mediana, moda</td>
+<td><code>int64</code></td>
 </tr>
 <tr class="even">
+<td>Cuantitativa</td>
 <td>Continua</td>
 <td>Salario mensual</td>
-<td>Media, mediana, varianza, desviación estándar</td>
+<td><code>float64</code></td>
 </tr>
 </tbody>
 </table>
+<p>Una variable cuantitativa continua registrada sin decimales (por ejemplo, el peso de una persona anotado solo en kilogramos) puede parecer discreta a simple vista; lo que determina el tipo es la naturaleza de la magnitud, no la precisión con la que se haya anotado.</p>
 </section>
-<section id="medidas-de-tendencia-central" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="medidas-de-tendencia-central"><span class="header-section-number">2.3</span> Medidas de Tendencia Central</h2>
-<p>Estas medidas buscan identificar un valor “representativo” del conjunto de datos.</p>
-<section id="media-aritmética" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="media-aritmética"><span class="header-section-number">2.3.1</span> Media aritmética</h3>
+<section id="medidas-de-tendencia-central" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="medidas-de-tendencia-central"><span class="header-section-number">2.4</span> Medidas de tendencia central</h2>
+<section id="media-aritmética" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="media-aritmética"><span class="header-section-number">2.4.1</span> Media aritmética</h3>
 <p>Para un conjunto de <span class="math inline">\(n\)</span> observaciones <span class="math inline">\(x_1, x_2, \dots, x_n\)</span>:</p>
 <p><span class="math display">\[
 \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
 \]</span></p>
-<p>Es sensible a valores extremos (<em>outliers</em>): un solo salario atípicamente alto puede distorsionar la media de todo el departamento.</p>
+<p>Es sensible a valores extremos: un solo salario atípicamente alto puede distorsionar la media de todo un departamento.</p>
 </section>
-<section id="mediana" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="mediana"><span class="header-section-number">2.3.2</span> Mediana</h3>
-<p>Es el valor central cuando los datos están ordenados. Si <span class="math inline">\(n\)</span> es impar, es el valor en la posición <span class="math inline">\(\frac{n+1}{2}\)</span>; si es par, es el promedio de los dos valores centrales.</p>
+<section id="mediana" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="mediana"><span class="header-section-number">2.4.2</span> Mediana</h3>
+<p>Es el valor central una vez ordenados los datos:</p>
 <p><span class="math display">\[
 \text{Mediana} =
 \begin{cases}
@@ -435,90 +511,175 @@ x_{\left(\frac{n+1}{2}\right)} &amp; \text{si } n \text{ es impar} \\[6pt]
 \dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} &amp; \text{si } n \text{ es par}
 \end{cases}
 \]</span></p>
-<p>A diferencia de la media, <strong>es robusta ante outliers</strong>, lo que la hace preferible en distribuciones asimétricas (como suelen ser los salarios).</p>
+<p>A diferencia de la media, es <strong>robusta</strong> ante outliers, lo que la hace preferible en distribuciones asimétricas como suelen ser los salarios.</p>
 </section>
-<section id="moda" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="moda"><span class="header-section-number">2.3.3</span> Moda</h3>
-<p>El valor (o categoría) que ocurre con mayor frecuencia. Es la única medida de tendencia central aplicable a variables nominales.</p>
+<section id="moda" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="moda"><span class="header-section-number">2.4.3</span> Moda</h3>
+<p>El valor (o categoría) más frecuente. Es la única medida de tendencia central aplicable a variables nominales.</p>
 </section>
 </section>
-<section id="medidas-de-dispersión" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="medidas-de-dispersión"><span class="header-section-number">2.4</span> Medidas de Dispersión</h2>
-<p>La tendencia central no es suficiente: dos departamentos pueden tener el mismo salario promedio pero una dispersión de sueldos completamente distinta.</p>
-<section id="rango" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="rango"><span class="header-section-number">2.4.1</span> Rango</h3>
+<section id="medidas-de-dispersión" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="medidas-de-dispersión"><span class="header-section-number">2.5</span> Medidas de dispersión</h2>
+<section id="rango" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="rango"><span class="header-section-number">2.5.1</span> Rango</h3>
 <p><span class="math display">\[
 R = x_{\max} - x_{\min}
 \]</span></p>
 <p>Muy sensible a outliers y poco informativo por sí solo.</p>
 </section>
-<section id="varianza" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="varianza"><span class="header-section-number">2.4.2</span> Varianza</h3>
-<p>Varianza <strong>poblacional</strong>:</p>
-<p><span class="math display">\[
-\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
-\]</span></p>
-<p>Varianza <strong>muestral</strong> (con corrección de Bessel, dividiendo por <span class="math inline">\(n-1\)</span> para obtener un estimador insesgado):</p>
+<section id="varianza-y-desviación-estándar" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="varianza-y-desviación-estándar"><span class="header-section-number">2.5.2</span> Varianza y desviación estándar</h3>
+<p>Varianza muestral (con corrección de Bessel, dividiendo por <span class="math inline">\(n-1\)</span> para obtener un estimador insesgado):</p>
 <p><span class="math display">\[
 s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
-\]</span></p>
-</section>
-<section id="desviación-estándar" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="desviación-estándar"><span class="header-section-number">2.4.3</span> Desviación estándar</h3>
-<p><span class="math display">\[
+\qquad\qquad
 s = \sqrt{s^2}
 \]</span></p>
-<p>Se expresa en las mismas unidades que la variable original (a diferencia de la varianza), lo que facilita su interpretación.</p>
 </section>
-<section id="coeficiente-de-variación" class="level3" data-number="2.4.4">
-<h3 data-number="2.4.4" class="anchored" data-anchor-id="coeficiente-de-variación"><span class="header-section-number">2.4.4</span> Coeficiente de variación</h3>
-<p>Permite comparar la dispersión relativa entre variables con distintas unidades o escalas:</p>
+<section id="coeficiente-de-variación" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="coeficiente-de-variación"><span class="header-section-number">2.5.3</span> Coeficiente de variación</h3>
+<p>Permite comparar la dispersión relativa entre variables con distinta escala:</p>
 <p><span class="math display">\[
 CV = \frac{s}{\bar{x}} \times 100\%
 \]</span></p>
-<p>Por ejemplo, para comparar la variabilidad salarial entre un departamento junior (salarios bajos) y uno directivo (salarios altos), el CV es más informativo que la desviación estándar absoluta.</p>
+<p>Por ejemplo, para comparar la variabilidad salarial de un departamento junior (sueldos bajos) frente a uno directivo (sueldos altos), el CV es más informativo que la desviación estándar absoluta.</p>
 </section>
 </section>
-<section id="medidas-de-forma" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="medidas-de-forma"><span class="header-section-number">2.5</span> Medidas de Forma</h2>
-<section id="asimetría-skewness" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="asimetría-skewness"><span class="header-section-number">2.5.1</span> Asimetría (Skewness)</h3>
-<p>Mide el grado de simetría de la distribución respecto a su media:</p>
+<section id="medidas-de-forma" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="medidas-de-forma"><span class="header-section-number">2.6</span> Medidas de forma</h2>
+<section id="asimetría-skewness" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="asimetría-skewness"><span class="header-section-number">2.6.1</span> Asimetría (skewness)</h3>
 <p><span class="math display">\[
 g_1 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^3}{s^3}
 \]</span></p>
-<ul>
-<li><span class="math inline">\(g_1 \approx 0\)</span>: distribución simétrica.</li>
-<li><span class="math inline">\(g_1 &gt; 0\)</span>: asimetría positiva (cola larga hacia la derecha) — típico en salarios, donde pocos sueldos muy altos “estiran” la distribución.</li>
-<li><span class="math inline">\(g_1 &lt; 0\)</span>: asimetría negativa (cola larga hacia la izquierda).</li>
-</ul>
+<p><span class="math inline">\(g_1 \approx 0\)</span> indica simetría; <span class="math inline">\(g_1 &gt; 0\)</span> indica cola larga hacia la derecha (típico en salarios: pocos sueldos muy altos “estiran” la distribución).</p>
 </section>
-<section id="curtosis" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="curtosis"><span class="header-section-number">2.5.2</span> Curtosis</h3>
-<p>Mide qué tan “apuntada” o “achatada” es la distribución respecto a la normal, en función del comportamiento de sus colas:</p>
+<section id="curtosis-exceso" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="curtosis-exceso"><span class="header-section-number">2.6.2</span> Curtosis (exceso)</h3>
 <p><span class="math display">\[
 g_2 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^4}{s^4} - 3
 \]</span></p>
-<p>(Se resta 3 para que la distribución normal tenga curtosis de referencia igual a 0 — <em>curtosis de exceso</em>).</p>
-<ul>
-<li><span class="math inline">\(g_2 &gt; 0\)</span> (<em>leptocúrtica</em>): colas más pesadas que la normal, más valores extremos.</li>
-<li><span class="math inline">\(g_2 &lt; 0\)</span> (<em>platicúrtica</em>): colas más ligeras, distribución más “plana”.</li>
-</ul>
+<p>Se resta 3 para que la distribución normal tenga curtosis de referencia 0. <span class="math inline">\(g_2 &gt; 0\)</span> (leptocúrtica) indica colas más pesadas que la normal; <span class="math inline">\(g_2 &lt; 0\)</span> (platicúrtica) indica colas más ligeras.</p>
 </section>
 </section>
-<section id="resumen-de-cinco-números-y-diagrama-de-caja" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="resumen-de-cinco-números-y-diagrama-de-caja"><span class="header-section-number">2.6</span> Resumen de Cinco Números y Diagrama de Caja</h2>
-<p>El resumen de Tukey resume una variable continua en cinco valores:</p>
+<section id="resumen-de-cinco-números-y-diagrama-de-caja" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="resumen-de-cinco-números-y-diagrama-de-caja"><span class="header-section-number">2.7</span> Resumen de cinco números y diagrama de caja</h2>
+<p>El resumen de cinco números resume una variable continua como:</p>
 <p><span class="math display">\[
 \{ x_{\min},\ Q_1,\ \text{Mediana},\ Q_3,\ x_{\max} \}
 \]</span></p>
-<p>donde <span class="math inline">\(Q_1\)</span> y <span class="math inline">\(Q_3\)</span> son el primer y tercer cuartil. El <strong>rango intercuartílico</strong> (<span class="math inline">\(IQR = Q_3 - Q_1\)</span>) se usa para detectar outliers: cualquier valor fuera de <span class="math inline">\([Q_1 - 1.5 \cdot IQR,\ Q_3 + 1.5 \cdot IQR]\)</span> se considera atípico. Este resumen es la base del <strong>boxplot</strong>, que veremos en el notebook práctico.</p>
+<p>donde <span class="math inline">\(Q_1\)</span> y <span class="math inline">\(Q_3\)</span> son el primer y tercer cuartil, y el <strong>rango intercuartílico</strong> es <span class="math inline">\(IQR = Q_3 - Q_1\)</span>. Esta idea, junto con el diagrama de caja que la visualiza, se debe originalmente a Tukey <span class="citation" data-cites="tukey1977exploratory">(<a href="#ref-tukey1977exploratory" role="doc-biblioref">1977</a>)</span> y sigue siendo la herramienta exploratoria de referencia:</p>
+<div style="text-align:center; margin: 1.5em 0;">
+<svg viewbox="0 0 640 180" width="100%" style="max-width:600px" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="90" x2="600" y2="90" stroke="#999" stroke-width="1"></line>
+  <line x1="80" y1="90" x2="180" y2="90" stroke="#333" stroke-width="2"></line>
+  <line x1="80" y1="60" x2="80" y2="120" stroke="#333" stroke-width="2"></line>
+  <rect x="180" y="50" width="200" height="80" fill="#AED6F1" stroke="#1B4F72" stroke-width="2"></rect>
+  <line x1="280" y1="50" x2="280" y2="130" stroke="#1B4F72" stroke-width="3"></line>
+  <line x1="380" y1="90" x2="480" y2="90" stroke="#333" stroke-width="2"></line>
+  <line x1="480" y1="60" x2="480" y2="120" stroke="#333" stroke-width="2"></line>
+  <circle cx="560" cy="90" r="6" fill="#E74C3C"></circle>
+  <text x="80" y="145" font-size="13" text-anchor="middle">Mínimo</text>
+  <text x="180" y="145" font-size="13" text-anchor="middle">Q1</text>
+  <text x="280" y="145" font-size="13" text-anchor="middle" font-weight="bold">Mediana</text>
+  <text x="380" y="145" font-size="13" text-anchor="middle">Q3</text>
+  <text x="480" y="165" font-size="13" text-anchor="middle">Máximo (dentro de 1.5·RIC)</text>
+  <text x="560" y="145" font-size="13" text-anchor="middle" fill="#E74C3C">Valor atípico</text>
+</svg>
+</div>
+<p>Un valor se considera atípico por esta regla si cae fuera de <span class="math inline">\([Q_1 - 1.5 \cdot IQR,\ Q_3 + 1.5 \cdot IQR]\)</span>.</p>
 </section>
-<section id="cierre" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="cierre"><span class="header-section-number">2.7</span> Cierre</h2>
-<p>Con estos conceptos ya puedes describir cuantitativamente cualquier variable numérica. En <code>practica.ipynb</code> aplicaremos cada fórmula sobre el dataset de salarios, comparando el cálculo manual con las funciones de <code>pandas</code> y <code>scipy</code>, y usando las utilidades de <code>src/stats_toolkit/descriptive.py</code>.</p>
+<section id="valores-atípicos-y-estadística-robusta" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="valores-atípicos-y-estadística-robusta"><span class="header-section-number">2.8</span> Valores atípicos y estadística robusta</h2>
+<p>Un valor atípico (<em>outlier</em>) es, de forma general, una observación que parece inconsistente con el resto del conjunto de datos <span class="citation" data-cites="barnettlewis1994outliers">(<a href="#ref-barnettlewis1994outliers" role="doc-biblioref">Barnett y Lewis 1994</a>)</span>. No siempre es un error: puede ser un dato real pero poco frecuente, o puede deberse a un error de captura (por ejemplo, un dígito de más al teclear una edad). La decisión de corregirlo, eliminarlo o conservarlo es una decisión estadística, no automática.</p>
+<p>Como la media y la desviación estándar son muy sensibles a estos valores, el subcampo de la <strong>estadística robusta</strong> propone alternativas menos afectadas:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>Estimador clásico</th>
+<th>Alternativa robusta</th>
+<th>Por qué es más robusta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tendencia central</td>
+<td>Media (<span class="math inline">\(\bar{x}\)</span>)</td>
+<td>Mediana / media recortada</td>
+<td>Ignora o pondera menos los extremos</td>
+</tr>
+<tr class="even">
+<td>Dispersión</td>
+<td>Desviación estándar (<span class="math inline">\(s\)</span>)</td>
+<td>Rango intercuartílico (RIC) / MAD</td>
+<td>Se basa en cuantiles, no en distancias al cuadrado</td>
+</tr>
+</tbody>
+</table>
+<p>La <strong>media recortada</strong> al <span class="math inline">\(k\%\)</span> elimina ese porcentaje de valores en cada extremo antes de promediar, y la <strong>desviación absoluta respecto de la mediana (MAD)</strong> sustituye la media por la mediana como valor central de referencia:</p>
+<p><span class="math display">\[
+\text{MAD}(x) = \text{mediana}\big(|x_i - \text{mediana}(x)|\big)
+\]</span></p>
+<p>En <code>practica.ipynb</code> ya se usa la función <code>detect_outliers()</code> de <code>stats_toolkit.descriptive</code> para aplicar la regla del RIC sobre el dataset de salarios — esta sección le da el fundamento teórico a ese cálculo.</p>
+</section>
+<section id="valores-perdidos-missing-data" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="valores-perdidos-missing-data"><span class="header-section-number">2.9</span> Valores perdidos (missing data)</h2>
+<p>En datos reales, es habitual que falten valores en algunas observaciones (una encuesta sin responder, un sensor que falla un día). Ignorar esas filas sin más reduce el tamaño efectivo de la muestra y puede introducir sesgo si la ausencia no es completamente aleatoria <span class="citation" data-cites="littlerubin1987missing">(<a href="#ref-littlerubin1987missing" role="doc-biblioref">Little y Rubin 1987</a>)</span>. Las estrategias más simples son:</p>
+<ul>
+<li><strong>Eliminación</strong>: descartar las observaciones incompletas, razonable solo si son muy pocas en relación con el total.</li>
+<li><strong>Imputación simple</strong>: sustituir el valor ausente por la media o la mediana de la variable, que no sesga la tendencia central pero sí reduce artificialmente la dispersión observada.</li>
+</ul>
+<p>Trataremos estrategias de imputación más elaboradas (basadas en modelos o en vecinos más cercanos) cuando abordemos regresión en el repositorio de Machine Learning.</p>
+</section>
+<section id="estadística-y-minería-de-datos" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="estadística-y-minería-de-datos"><span class="header-section-number">2.10</span> Estadística y minería de datos</h2>
+<p>A medida que el volumen de datos crece, han surgido enfoques computacionales —minería de datos, aprendizaje automático— que comparten objetivo con la estadística pero parten de una lógica distinta. Simplificando mucho: la estadística clásica suele partir de una hipótesis que se quiere contrastar contra los datos, mientras que los algoritmos de minería de datos exploran los datos en busca de patrones sin una hipótesis previa concreta <span class="citation" data-cites="hankamber2001datamining">(<a href="#ref-hankamber2001datamining" role="doc-biblioref">Han y Kamber 2001</a>)</span>. En la práctica, ambos enfoques se solapan cada vez más y comparten técnicas <span class="citation" data-cites="wittenfrankhall2011datamining">(<a href="#ref-wittenfrankhall2011datamining" role="doc-biblioref">Witten et&nbsp;al. 2011</a>)</span>; profundizaremos en esta conexión en el repositorio de Machine Learning.</p>
+</section>
+<section id="cierre" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="cierre"><span class="header-section-number">2.11</span> Cierre</h2>
+<p>Con tipos de variables, medidas de tendencia central, dispersión, forma y el tratamiento de valores atípicos, ya tienes las herramientas para describir cuantitativamente cualquier variable numérica. En <code>practica.ipynb</code> se aplica todo esto sobre el dataset de salarios por departamento. El Módulo 2 introduce la probabilidad, el lenguaje necesario para dar el salto de “describir una muestra” a “generalizar a una población”.</p>
+</section>
+<section id="material-de-referencia-adicional" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="material-de-referencia-adicional"><span class="header-section-number">2.12</span> Material de referencia adicional</h2>
+<p>Este módulo se preparó como apoyo didáctico junto a dos textos de la UOC que cubren temas afines con mayor detalle: introducción general a la estadística <span class="citation" data-cites="bernado2017introduccion">(<a href="#ref-bernado2017introduccion" role="doc-biblioref">Bernadó 2017</a>)</span> y preprocesamiento de datos <span class="citation" data-cites="vegas2020preprocesamiento">(<a href="#ref-vegas2020preprocesamiento" role="doc-biblioref">Vegas Lozano 2020</a>)</span>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-barnettlewis1994outliers" class="csl-entry" role="listitem">
+Barnett, Vic, y Toby Lewis. 1994. <em>Outliers in Statistical Data</em>. 3.ª ed. John Wiley &amp; Sons.
+</div>
+<div id="ref-bernado2017introduccion" class="csl-entry" role="listitem">
+Bernadó, Ester. 2017. <em>Introducci<span>ó</span>n a la Estad<span>í</span>stica</em>. Universitat Oberta de Catalunya (FUOC); PID_00247916.
+</div>
+<div id="ref-hankamber2001datamining" class="csl-entry" role="listitem">
+Han, Jiawei, y Micheline Kamber. 2001. <em>Data Mining: Concepts and Techniques</em>. Morgan Kaufmann Publishers.
+</div>
+<div id="ref-littlerubin1987missing" class="csl-entry" role="listitem">
+Little, Roderick J. A., y Donald B. Rubin. 1987. <em>Statistical Analysis with Missing Data</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-mayerschonberger2013bigdata" class="csl-entry" role="listitem">
+Mayer-Schönberger, Viktor, y Kenneth Cukier. 2013. <em>Big Data: A Revolution That Will Transform How We Live, Work and Think</em>. John Murray.
+</div>
+<div id="ref-moore2012introduction" class="csl-entry" role="listitem">
+Moore, David S., George P. McCabe, y Bruce A. Craig. 2012. <em>Introduction to the Practice of Statistics</em>. 7.ª ed. W.H. Freeman; Company.
+</div>
+<div id="ref-tukey1977exploratory" class="csl-entry" role="listitem">
+Tukey, John W. 1977. <em>Exploratory Data Analysis</em>. Addison-Wesley.
+</div>
+<div id="ref-vegas2020preprocesamiento" class="csl-entry" role="listitem">
+Vegas Lozano, Esteban. 2020. <em>Preprocesamiento de los datos</em>. Universitat Oberta de Catalunya (FUOC); PID_00276230.
+</div>
+<div id="ref-wittenfrankhall2011datamining" class="csl-entry" role="listitem">
+Witten, Ian H., Eibe Frank, y Mark A. Hall. 2011. <em>Data Mining: Practical Machine Learning Tools and Techniques</em>. 3.ª ed. Morgan Kaufmann.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -939,4 +1100,4 @@ g_2 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^4}{s^4} - 3
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/01_estadistica_descriptiva/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/01_estadistica_descriptiva/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

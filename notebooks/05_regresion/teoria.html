@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Correlación y Regresión Lineal – Estadística Básica</title>
+<title>11&nbsp; Correlación y Regresión Lineal – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -173,7 +173,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/TU-USUARIO/estadistica-basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -202,13 +202,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></span></a>
   </div>
 </li>
       </ul>
@@ -225,13 +231,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
   </div>
 </li>
       </ul>
@@ -248,13 +254,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
       </ul>
@@ -271,13 +277,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
       </ul>
@@ -294,13 +300,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
       </ul>
@@ -317,13 +323,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
       </ul>
@@ -338,21 +344,21 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">10.1</span> 5.1 Introducción</a></li>
-  <li><a href="#covarianza-y-correlación" id="toc-covarianza-y-correlación" class="nav-link" data-scroll-target="#covarianza-y-correlación"><span class="header-section-number">10.2</span> 5.2 Covarianza y Correlación</a></li>
-  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">10.3</span> 5.3 Regresión Lineal Simple</a></li>
-  <li><a href="#bondad-de-ajuste-r2" id="toc-bondad-de-ajuste-r2" class="nav-link" data-scroll-target="#bondad-de-ajuste-r2"><span class="header-section-number">10.4</span> 5.4 Bondad de Ajuste: <span class="math inline">\(R^2\)</span></a></li>
-  <li><a href="#la-relación-es-real-o-podría-deberse-al-azar" id="toc-la-relación-es-real-o-podría-deberse-al-azar" class="nav-link" data-scroll-target="#la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">10.5</span> 5.5 ¿La relación es real o podría deberse al azar?</a></li>
-  <li><a href="#cierre-del-curso" id="toc-cierre-del-curso" class="nav-link" data-scroll-target="#cierre-del-curso"><span class="header-section-number">10.6</span> 5.6 Cierre del curso</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">11.1</span> 5.1 Introducción</a></li>
+  <li><a href="#covarianza-y-correlación" id="toc-covarianza-y-correlación" class="nav-link" data-scroll-target="#covarianza-y-correlación"><span class="header-section-number">11.2</span> 5.2 Covarianza y Correlación</a></li>
+  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">11.3</span> 5.3 Regresión Lineal Simple</a></li>
+  <li><a href="#bondad-de-ajuste-r2" id="toc-bondad-de-ajuste-r2" class="nav-link" data-scroll-target="#bondad-de-ajuste-r2"><span class="header-section-number">11.4</span> 5.4 Bondad de Ajuste: <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#la-relación-es-real-o-podría-deberse-al-azar" id="toc-la-relación-es-real-o-podría-deberse-al-azar" class="nav-link" data-scroll-target="#la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">11.5</span> 5.5 ¿La relación es real o podría deberse al azar?</a></li>
+  <li><a href="#cierre-del-curso" id="toc-cierre-del-curso" class="nav-link" data-scroll-target="#cierre-del-curso"><span class="header-section-number">11.6</span> 5.6 Cierre del curso</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/05_regresion/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/05_regresion/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></h1>
 </div>
 
 
@@ -369,8 +375,8 @@ window.Quarto = {
 </header>
 
 
-<section id="introducción" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">10.1</span> 5.1 Introducción</h2>
+<section id="introducción" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">11.1</span> 5.1 Introducción</h2>
 <p>Hasta ahora hemos trabajado con <strong>una sola variable a la vez</strong>: describirla (Módulo 1), modelar su incertidumbre (Módulos 2-3), y estimar o contrastar un parámetro suyo a partir de una muestra (Módulo 4). En este último módulo damos un paso natural: ¿qué pasa cuando tenemos <strong>dos variables</strong> y queremos saber si están relacionadas?</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -386,7 +392,7 @@ window.Quarto = {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-de-correlacion-a-regresion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.1: De observar dos variables juntas a poder predecir una a partir de la otra
+Figura&nbsp;11.1: De observar dos variables juntas a poder predecir una a partir de la otra
 </figcaption>
 </figure>
 </div>
@@ -394,8 +400,8 @@ Figura&nbsp;10.1: De observar dos variables juntas a poder predecir una a partir
 </div>
 <p>Ejemplos típicos: horas de estudio y nota de un examen, inversión en publicidad y ventas, temperatura y consumo eléctrico. En todos ellos nos interesan dos preguntas distintas: <strong>¿existe relación?</strong> (correlación) y, si la hay, <strong>¿cómo la usamos para predecir?</strong> (regresión).</p>
 </section>
-<section id="covarianza-y-correlación" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="covarianza-y-correlación"><span class="header-section-number">10.2</span> 5.2 Covarianza y Correlación</h2>
+<section id="covarianza-y-correlación" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="covarianza-y-correlación"><span class="header-section-number">11.2</span> 5.2 Covarianza y Correlación</h2>
 <p>La <strong>covarianza</strong> mide si dos variables tienden a moverse juntas (en la misma dirección o en direcciones opuestas):</p>
 <p><span class="math display">\[
 \text{Cov}(X, Y) = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})
@@ -410,7 +416,7 @@ r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(-1\)</span>: relación lineal negativa fuerte.</li>
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(0\)</span>: poca o ninguna relación lineal (¡ojo! podría haber una relación no lineal fuerte y aun así <span class="math inline">\(r \approx 0\)</span>).</li>
 </ul>
-<div id="13237fdc" class="cell" data-execution_count="2">
+<div id="a56d1135" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> regression <span class="im">as</span> reg</span>
@@ -429,8 +435,8 @@ r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
 <p><strong>Correlación no implica causalidad.</strong> Que dos variables estén correlacionadas no significa que una cause la otra — puede haber una tercera variable oculta (variable de confusión), o la relación puede ser pura coincidencia en los datos disponibles. La correlación es una herramienta descriptiva, no una prueba causal.</p>
 </blockquote>
 </section>
-<section id="regresión-lineal-simple" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="regresión-lineal-simple"><span class="header-section-number">10.3</span> 5.3 Regresión Lineal Simple</h2>
+<section id="regresión-lineal-simple" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="regresión-lineal-simple"><span class="header-section-number">11.3</span> 5.3 Regresión Lineal Simple</h2>
 <p>Mientras que la correlación solo nos dice <em>cuán fuerte</em> es la relación lineal, la <strong>regresión lineal</strong> va más allá: nos da un modelo concreto para predecir <span class="math inline">\(Y\)</span> a partir de <span class="math inline">\(X\)</span>.</p>
 <p><span class="math display">\[
 Y = \beta_0 + \beta_1 X + \varepsilon
@@ -444,7 +450,7 @@ Y = \beta_0 + \beta_1 X + \varepsilon
 <p><span class="math display">\[
 \hat{\beta}_1 = \frac{\text{Cov}(X, Y)}{\text{Var}(X)} \qquad \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
 \]</span></p>
-<div id="175aae27" class="cell" data-execution_count="3">
+<div id="f405b8b2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(horas_estudio, nota_examen)</span>
@@ -458,7 +464,7 @@ Pendiente (β1): 0.655
 Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el examen</code></pre>
 </div>
 </div>
-<div id="c3a5c7cd" class="cell" data-execution_count="4">
+<div id="8117a593" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -484,14 +490,14 @@ Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el exa
 </div>
 </div>
 </section>
-<section id="bondad-de-ajuste-r2" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="bondad-de-ajuste-r2"><span class="header-section-number">10.4</span> 5.4 Bondad de Ajuste: <span class="math inline">\(R^2\)</span></h2>
+<section id="bondad-de-ajuste-r2" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="bondad-de-ajuste-r2"><span class="header-section-number">11.4</span> 5.4 Bondad de Ajuste: <span class="math inline">\(R^2\)</span></h2>
 <p>¿Qué tan bien explica el modelo los datos? El <strong>coeficiente de determinación</strong> <span class="math inline">\(R^2\)</span> mide qué proporción de la variabilidad total de <span class="math inline">\(Y\)</span> queda explicada por el modelo:</p>
 <p><span class="math display">\[
 R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}
 \]</span></p>
 <p><span class="math inline">\(R^2\)</span> va de 0 (el modelo no explica nada) a 1 (el modelo explica toda la variabilidad). En regresión lineal simple, <span class="math inline">\(R^2\)</span> es exactamente el cuadrado del coeficiente de correlación de Pearson: <span class="math inline">\(R^2 = r^2\)</span>.</p>
-<div id="eb57c899" class="cell" data-execution_count="5">
+<div id="e6b16d6f" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(horas_estudio, nota_examen, beta0, beta1)</span>
@@ -504,8 +510,8 @@ El modelo explica el 99.2% de la variabilidad de la nota</code></pre>
 </div>
 </div>
 </section>
-<section id="la-relación-es-real-o-podría-deberse-al-azar" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">10.5</span> 5.5 ¿La relación es real o podría deberse al azar?</h2>
+<section id="la-relación-es-real-o-podría-deberse-al-azar" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">11.5</span> 5.5 ¿La relación es real o podría deberse al azar?</h2>
 <p>Aquí es donde reconectamos con el Módulo 4: <span class="math inline">\(\hat{\beta}_1\)</span> es un estimador calculado a partir de una muestra, así que tiene su propio error estándar, y podemos plantear un contraste de hipótesis sobre él.</p>
 <p><span class="math display">\[
 H_0: \beta_1 = 0 \quad \text{(no hay relación lineal real)} \qquad H_1: \beta_1 \neq 0
@@ -514,7 +520,7 @@ H_0: \beta_1 = 0 \quad \text{(no hay relación lineal real)} \qquad H_1: \beta_1
 <p><span class="math display">\[
 t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)}
 \]</span></p>
-<div id="51c24e9a" class="cell" data-execution_count="6">
+<div id="bca170bb" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(horas_estudio, nota_examen, beta0, beta1)</span>
@@ -531,7 +537,7 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 </div>
 <p>Y, como en el Módulo 4, también podemos construir un intervalo de confianza para <span class="math inline">\(\beta_1\)</span> en vez de limitarnos a un sí/no:</p>
-<div id="2f5b02bc" class="cell" data-execution_count="7">
+<div id="7c78c982" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(horas_estudio, nota_examen, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
@@ -542,8 +548,8 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 </div>
 </section>
-<section id="cierre-del-curso" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="cierre-del-curso"><span class="header-section-number">10.6</span> 5.6 Cierre del curso</h2>
+<section id="cierre-del-curso" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="cierre-del-curso"><span class="header-section-number">11.6</span> 5.6 Cierre del curso</h2>
 <p>Con este módulo completamos el recorrido de <strong>Estadística Básica</strong>: describir datos (Módulo 1), modelar la incertidumbre de sucesos (Módulo 2) y de variables aleatorias completas (Módulo 3), usar esas distribuciones para estimar y contrastar parámetros poblacionales (Módulo 4), y finalmente estudiar y validar relaciones entre variables (Módulo 5).</p>
 <p>Estas cinco piezas son la base sobre la que se construye prácticamente cualquier análisis de datos aplicado: desde un experimento de A/B testing hasta un modelo de machine learning — de hecho, la regresión lineal que acabamos de ver es, en sí misma, uno de los algoritmos de machine learning más usados, y el Naive Bayes que vimos como cierre del Módulo 2 es otro. Si en el futuro amplías este curso, este es el punto natural desde el que dar el salto hacia regresión múltiple, clasificación y otros modelos predictivos.</p>
 
@@ -954,12 +960,12 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/04_inferencia/practica.html" class="pagination-link" aria-label="Práctica: Inferencia Estadística">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../notebooks/05_regresion/practica.html" class="pagination-link" aria-label="Práctica: Correlación y Regresión Lineal">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -968,4 +974,4 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/05_regresion/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/05_regresion/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

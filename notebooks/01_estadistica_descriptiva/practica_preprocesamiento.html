@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Práctica: Exploración y preprocesamiento de datos – Estadística Básica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../notebooks/02_probabilidad/teoria.html" rel="next">
+<link href="../../notebooks/01_estadistica_descriptiva/practica.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Estadística Básica</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 1 — Estadística Descriptiva</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 2 — Probabilidad Básica</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/02_probabilidad/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 3 — Distribuciones de Probabilidad</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/03_distribuciones/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 4 — Inferencia Estadística</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 5 — Correlación y Regresión Lineal</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#preparación-del-conjunto-de-datos" id="toc-preparación-del-conjunto-de-datos" class="nav-link active" data-scroll-target="#preparación-del-conjunto-de-datos"><span class="header-section-number">4.1</span> 1. Preparación del conjunto de datos</a>
+  <ul class="collapse">
+  <li><a href="#cargar-el-archivo-de-datos" id="toc-cargar-el-archivo-de-datos" class="nav-link" data-scroll-target="#cargar-el-archivo-de-datos"><span class="header-section-number">4.1.1</span> 1.1. Cargar el archivo de datos</a></li>
+  <li><a href="#identificación-de-valores-duplicados" id="toc-identificación-de-valores-duplicados" class="nav-link" data-scroll-target="#identificación-de-valores-duplicados"><span class="header-section-number">4.1.2</span> 1.2. Identificación de valores duplicados</a></li>
+  <li><a href="#identificación-de-valores-vacíos-yo-nulos" id="toc-identificación-de-valores-vacíos-yo-nulos" class="nav-link" data-scroll-target="#identificación-de-valores-vacíos-yo-nulos"><span class="header-section-number">4.1.3</span> 1.3. Identificación de valores vacíos y/o nulos</a></li>
+  <li><a href="#simplificación-del-nombre-de-las-columnas" id="toc-simplificación-del-nombre-de-las-columnas" class="nav-link" data-scroll-target="#simplificación-del-nombre-de-las-columnas"><span class="header-section-number">4.1.4</span> 1.4. Simplificación del nombre de las columnas</a></li>
+  </ul></li>
+  <li><a href="#normalización-de-formatos-en-variables-categóricas" id="toc-normalización-de-formatos-en-variables-categóricas" class="nav-link" data-scroll-target="#normalización-de-formatos-en-variables-categóricas"><span class="header-section-number">4.2</span> 2. Normalización de formatos en variables categóricas</a>
+  <ul class="collapse">
+  <li><a href="#errores-sintácticos" id="toc-errores-sintácticos" class="nav-link" data-scroll-target="#errores-sintácticos"><span class="header-section-number">4.2.1</span> 2.1. Errores sintácticos</a></li>
+  <li><a href="#corrección-de-tipos-de-dato" id="toc-corrección-de-tipos-de-dato" class="nav-link" data-scroll-target="#corrección-de-tipos-de-dato"><span class="header-section-number">4.2.2</span> 2.2. Corrección de tipos de dato</a></li>
+  <li><a href="#estandarización-de-las-categorías" id="toc-estandarización-de-las-categorías" class="nav-link" data-scroll-target="#estandarización-de-las-categorías"><span class="header-section-number">4.2.3</span> 2.3. Estandarización de las categorías</a></li>
+  </ul></li>
+  <li><a href="#inconsistencias-en-variables-cuantitativas" id="toc-inconsistencias-en-variables-cuantitativas" class="nav-link" data-scroll-target="#inconsistencias-en-variables-cuantitativas"><span class="header-section-number">4.3</span> 3. Inconsistencias en variables cuantitativas</a>
+  <ul class="collapse">
+  <li><a href="#identificación-de-variables-cuantitativas" id="toc-identificación-de-variables-cuantitativas" class="nav-link" data-scroll-target="#identificación-de-variables-cuantitativas"><span class="header-section-number">4.3.1</span> 3.1. Identificación de variables cuantitativas</a></li>
+  <li><a href="#revisión-de-valores-vacíos" id="toc-revisión-de-valores-vacíos" class="nav-link" data-scroll-target="#revisión-de-valores-vacíos"><span class="header-section-number">4.3.2</span> 3.2. Revisión de valores vacíos</a></li>
+  <li><a href="#descomposición-de-bp-en-bpsyst-y-bpdias" id="toc-descomposición-de-bp-en-bpsyst-y-bpdias" class="nav-link" data-scroll-target="#descomposición-de-bp-en-bpsyst-y-bpdias"><span class="header-section-number">4.3.3</span> 3.3. Descomposición de <code>BP</code> en <code>BPsyst</code> y <code>BPdias</code></a></li>
+  </ul></li>
+  <li><a href="#valores-erróneos-o-atípicos" id="toc-valores-erróneos-o-atípicos" class="nav-link" data-scroll-target="#valores-erróneos-o-atípicos"><span class="header-section-number">4.4</span> 4. Valores erróneos o atípicos</a>
+  <ul class="collapse">
+  <li><a href="#valores-erróneos" id="toc-valores-erróneos" class="nav-link" data-scroll-target="#valores-erróneos"><span class="header-section-number">4.4.1</span> 4.1. Valores erróneos</a></li>
+  <li><a href="#valores-atípicos" id="toc-valores-atípicos" class="nav-link" data-scroll-target="#valores-atípicos"><span class="header-section-number">4.4.2</span> 4.2. Valores atípicos</a></li>
+  <li><a href="#manejo-de-valores-atípicos" id="toc-manejo-de-valores-atípicos" class="nav-link" data-scroll-target="#manejo-de-valores-atípicos"><span class="header-section-number">4.4.3</span> 4.2.1. Manejo de valores atípicos</a></li>
+  </ul></li>
+  <li><a href="#imputación" id="toc-imputación" class="nav-link" data-scroll-target="#imputación"><span class="header-section-number">4.5</span> 5. Imputación</a></li>
+  <li><a href="#correlaciones" id="toc-correlaciones" class="nav-link" data-scroll-target="#correlaciones"><span class="header-section-number">4.6</span> 6. Correlaciones</a>
+  <ul class="collapse">
+  <li><a href="#matriz-de-correlaciones" id="toc-matriz-de-correlaciones" class="nav-link" data-scroll-target="#matriz-de-correlaciones"><span class="header-section-number">4.6.1</span> 6.1. Matriz de correlaciones</a></li>
+  <li><a href="#cálculo-manual-de-la-correlación-de-pearson" id="toc-cálculo-manual-de-la-correlación-de-pearson" class="nav-link" data-scroll-target="#cálculo-manual-de-la-correlación-de-pearson"><span class="header-section-number">4.6.2</span> 6.2. Cálculo manual de la correlación de Pearson</a></li>
+  </ul></li>
+  <li><a href="#análisis-descriptivo-y-visual" id="toc-análisis-descriptivo-y-visual" class="nav-link" data-scroll-target="#análisis-descriptivo-y-visual"><span class="header-section-number">4.7</span> 7. Análisis descriptivo y visual</a>
+  <ul class="collapse">
+  <li><a href="#tabla-resumen-de-tendencia-central-y-variabilidad-según-sd" id="toc-tabla-resumen-de-tendencia-central-y-variabilidad-según-sd" class="nav-link" data-scroll-target="#tabla-resumen-de-tendencia-central-y-variabilidad-según-sd"><span class="header-section-number">4.7.1</span> 7.1. Tabla resumen de tendencia central y variabilidad según <code>SD</code></a></li>
+  <li><a href="#gráfico-de-medias-de-hr-según-occupation-y-sd" id="toc-gráfico-de-medias-de-hr-según-occupation-y-sd" class="nav-link" data-scroll-target="#gráfico-de-medias-de-hr-según-occupation-y-sd"><span class="header-section-number">4.7.2</span> 7.2. Gráfico de medias de <code>HR</code> según <code>Occupation</code> y <code>SD</code></a></li>
+  </ul></li>
+  <li><a href="#archivo-final" id="toc-archivo-final" class="nav-link" data-scroll-target="#archivo-final"><span class="header-section-number">4.8</span> 8. Archivo final</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/01_estadistica_descriptiva/practica_preprocesamiento.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Autor:</strong> Julio Úbeda Quesada · Versión en Python del ejercicio original en R</p>
+<p>Este notebook replica, en Python, la actividad de exploración y preprocesamiento sobre un conjunto de datos de <strong>salud del sueño y estilo de vida</strong>. El dataset contiene variables relacionadas con hábitos de sueño, actividad física, niveles de estrés y otros factores de salud.</p>
+<p>El flujo de trabajo cubre: carga y preparación de los datos, normalización de variables categóricas, corrección de inconsistencias en variables cuantitativas, detección y tratamiento de valores erróneos o atípicos, imputación mediante k-vecinos más cercanos (KNN), cálculo e interpretación de correlaciones, y un análisis descriptivo y visual final. El resultado es un archivo de datos procesado, listo para análisis posteriores.</p>
+<div id="c4f29466" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:19.971328Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:19.971180Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.677501Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.676154Z&quot;}}" data-execution_count="1">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> KNNImputer</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> descriptive <span class="im">as</span> desc</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.max_columns"</span>, <span class="va">None</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="preparación-del-conjunto-de-datos" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="preparación-del-conjunto-de-datos"><span class="header-section-number">4.1</span> 1. Preparación del conjunto de datos</h2>
+<section id="cargar-el-archivo-de-datos" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="cargar-el-archivo-de-datos"><span class="header-section-number">4.1.1</span> 1.1. Cargar el archivo de datos</h3>
+<p>Cargamos el archivo Excel con los datos de salud del sueño y estilo de vida.</p>
+<div id="5dff1761" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.680235Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.679332Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.859560Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.858381Z&quot;}}" data-execution_count="2">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"data/sleephealth.xlsx"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El dataset tiene </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> filas y </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columnas.</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>desc.describe_df(df)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>El dataset tiene 374 filas y 13 columnas.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Column</th>
+<th data-quarto-table-cell-role="th">Data Type</th>
+<th data-quarto-table-cell-role="th">Non-null Count</th>
+<th data-quarto-table-cell-role="th">% Null Values</th>
+<th data-quarto-table-cell-role="th">Unique Values</th>
+<th data-quarto-table-cell-role="th">TopCounts</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">median</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Person.ID</td>
+<td>int64</td>
+<td>374</td>
+<td>0.00</td>
+<td>372</td>
+<td>None</td>
+<td>187.500000</td>
+<td>187.5</td>
+<td>108.108717</td>
+<td>1.0</td>
+<td>94.25</td>
+<td>280.75</td>
+<td>374.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Gender</td>
+<td>str</td>
+<td>374</td>
+<td>0.00</td>
+<td>2</td>
+<td>Male (189), Female (185)</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Age</td>
+<td>float64</td>
+<td>371</td>
+<td>0.80</td>
+<td>34</td>
+<td>None</td>
+<td>57.840970</td>
+<td>43.0</td>
+<td>121.153550</td>
+<td>27.0</td>
+<td>36.00</td>
+<td>50.00</td>
+<td>999.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Occupation</td>
+<td>str</td>
+<td>374</td>
+<td>0.00</td>
+<td>12</td>
+<td>Nurse (73), Doctor (71), Engineer (60)</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Sleep.Duration</td>
+<td>str</td>
+<td>374</td>
+<td>0.00</td>
+<td>29</td>
+<td>7.2 (36), 6 (31), 7.8 (27)</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>Quality.of.Sleep</td>
+<td>int64</td>
+<td>374</td>
+<td>0.00</td>
+<td>6</td>
+<td>None</td>
+<td>7.312834</td>
+<td>7.0</td>
+<td>1.196956</td>
+<td>4.0</td>
+<td>6.00</td>
+<td>8.00</td>
+<td>9.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>Physical.Activity.Level</td>
+<td>int64</td>
+<td>374</td>
+<td>0.00</td>
+<td>16</td>
+<td>None</td>
+<td>59.171123</td>
+<td>60.0</td>
+<td>20.830804</td>
+<td>30.0</td>
+<td>45.00</td>
+<td>75.00</td>
+<td>90.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>Stress.Level</td>
+<td>int64</td>
+<td>374</td>
+<td>0.00</td>
+<td>6</td>
+<td>None</td>
+<td>5.385027</td>
+<td>5.0</td>
+<td>1.774526</td>
+<td>3.0</td>
+<td>4.00</td>
+<td>7.00</td>
+<td>8.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>BMI.Category</td>
+<td>str</td>
+<td>374</td>
+<td>0.00</td>
+<td>4</td>
+<td>Normal (195), Overweight (148), Normal Weight ...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>Blood.Pressure</td>
+<td>str</td>
+<td>374</td>
+<td>0.00</td>
+<td>25</td>
+<td>130/85 (99), 125/80 (65), 140/95 (65)</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>Heart.Rate</td>
+<td>int64</td>
+<td>374</td>
+<td>0.00</td>
+<td>19</td>
+<td>None</td>
+<td>70.165775</td>
+<td>70.0</td>
+<td>4.135676</td>
+<td>65.0</td>
+<td>68.00</td>
+<td>72.00</td>
+<td>86.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>Daily.Steps</td>
+<td>int64</td>
+<td>374</td>
+<td>0.00</td>
+<td>20</td>
+<td>None</td>
+<td>6816.844920</td>
+<td>7000.0</td>
+<td>1617.915679</td>
+<td>3000.0</td>
+<td>5600.00</td>
+<td>8000.00</td>
+<td>10000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>Sleep.Disorder</td>
+<td>str</td>
+<td>155</td>
+<td>58.56</td>
+<td>2</td>
+<td>Sleep Apnea (78), Insomnia (77)</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Tras cargar los datos, el <code>DataFrame</code> tiene 374 filas y 13 columnas, coincidiendo con el archivo original.</p>
+</section>
+<section id="identificación-de-valores-duplicados" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="identificación-de-valores-duplicados"><span class="header-section-number">4.1.2</span> 1.2. Identificación de valores duplicados</h3>
+<p>El conjunto de datos debería tener un registro por <code>Person.ID</code>; cualquier <code>ID</code> repetido indica un error de captura. Filtramos los <code>ID</code> que aparecen más de una vez:</p>
+<div id="72ddb593" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.861365Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.861142Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.872444Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.871638Z&quot;}}" data-execution_count="3">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>duplicates_by_id <span class="op">=</span> desc.detect_duplicates(df, subset<span class="op">=</span>[<span class="st">"Person.ID"</span>])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>duplicates_by_id</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Se encontraron 3 filas duplicadas según: ['Person.ID'].</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Person.ID</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Occupation</th>
+<th data-quarto-table-cell-role="th">Sleep.Duration</th>
+<th data-quarto-table-cell-role="th">Quality.of.Sleep</th>
+<th data-quarto-table-cell-role="th">Physical.Activity.Level</th>
+<th data-quarto-table-cell-role="th">Stress.Level</th>
+<th data-quarto-table-cell-role="th">BMI.Category</th>
+<th data-quarto-table-cell-role="th">Blood.Pressure</th>
+<th data-quarto-table-cell-role="th">Heart.Rate</th>
+<th data-quarto-table-cell-role="th">Daily.Steps</th>
+<th data-quarto-table-cell-role="th">Sleep.Disorder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">33</th>
+<td>35</td>
+<td>Male</td>
+<td>31.0</td>
+<td>Doctor</td>
+<td>6.1</td>
+<td>6</td>
+<td>30</td>
+<td>8</td>
+<td>Normal</td>
+<td>125/80</td>
+<td>72</td>
+<td>5000</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">34</th>
+<td>35</td>
+<td>Male</td>
+<td>31.0</td>
+<td>Doctor</td>
+<td>7.7</td>
+<td>7</td>
+<td>75</td>
+<td>6</td>
+<td>Normal</td>
+<td>120/80</td>
+<td>70</td>
+<td>8000</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">35</th>
+<td>35</td>
+<td>Male</td>
+<td>31.0</td>
+<td>Doctor</td>
+<td>6.1</td>
+<td>6</td>
+<td>30</td>
+<td>8</td>
+<td>Normal</td>
+<td>125/80</td>
+<td>72</td>
+<td>5000</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>La presencia de registros con el mismo <code>Person.ID</code> indica duplicados, posiblemente por errores en la captura o consolidación de los datos. En lugar de eliminar información, creamos una columna <code>ID</code> nueva, secuencial y única, y la usamos como identificador definitivo a partir de ahora.</p>
+<div id="0b445cde" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.874635Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.874035Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.879367Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.878606Z&quot;}}" data-execution_count="4">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"ID"</span>] <span class="op">=</span> df.index <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprobamos que ahora es único por registro</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> df[<span class="st">"ID"</span>].is_unique</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"El nuevo identificador 'ID' es único para las"</span>, <span class="bu">len</span>(df), <span class="st">"filas."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>El nuevo identificador 'ID' es único para las 374 filas.</code></pre>
+</div>
+</div>
+</section>
+<section id="identificación-de-valores-vacíos-yo-nulos" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="identificación-de-valores-vacíos-yo-nulos"><span class="header-section-number">4.1.3</span> 1.3. Identificación de valores vacíos y/o nulos</h3>
+<p>Revisamos si hay valores nulos (<code>NaN</code>), espacios en blanco o cadenas vacías en cualquier columna.</p>
+<div id="bd589566" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.881434Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.880771Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.908376Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.907518Z&quot;}}" data-execution_count="5">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>resumen_cols <span class="op">=</span> desc.describe_df(df)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>columnas_con_vacios <span class="op">=</span> resumen_cols.loc[resumen_cols[<span class="st">"% Null Values"</span>] <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"Column"</span>].tolist()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Columnas con valores vacíos o nulos:"</span>, columnas_con_vacios)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df[columnas_con_vacios].isna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Columnas con valores vacíos o nulos: ['Age', 'Sleep.Disorder']</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>Age                 3
+Sleep.Disorder    219
+dtype: int64</code></pre>
+</div>
+</div>
+<p><code>Age</code> tiene valores nulos genuinos, y <code>Sleep.Disorder</code> tiene muchos <code>NaN</code> — pero en este caso no son datos perdidos: representan ausencia de trastorno del sueño. Más adelante lo recodificamos explícitamente como la categoría <code>"None"</code>.</p>
+</section>
+<section id="simplificación-del-nombre-de-las-columnas" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="simplificación-del-nombre-de-las-columnas"><span class="header-section-number">4.1.4</span> 1.4. Simplificación del nombre de las columnas</h3>
+<p>Renombramos las columnas para simplificar el código:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Original</th>
+<th>Nuevo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Sleep.Duration</code></td>
+<td><code>SH</code></td>
+</tr>
+<tr class="even">
+<td><code>Quality.of.Sleep</code></td>
+<td><code>SQ</code></td>
+</tr>
+<tr class="odd">
+<td><code>Physical.Activity.Level</code></td>
+<td><code>PHY</code></td>
+</tr>
+<tr class="even">
+<td><code>Stress.Level</code></td>
+<td><code>Stress</code></td>
+</tr>
+<tr class="odd">
+<td><code>BMI.Category</code></td>
+<td><code>BMI</code></td>
+</tr>
+<tr class="even">
+<td><code>Blood.Pressure</code></td>
+<td><code>BP</code></td>
+</tr>
+<tr class="odd">
+<td><code>Heart.Rate</code></td>
+<td><code>HR</code></td>
+</tr>
+<tr class="even">
+<td><code>Daily.Steps</code></td>
+<td><code>Steps</code></td>
+</tr>
+<tr class="odd">
+<td><code>Sleep.Disorder</code></td>
+<td><code>SD</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>Gender</code>, <code>Age</code>, <code>Occupation</code> e <code>ID</code> mantienen su nombre.</p>
+<div id="e2ca71c2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.910518Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.909913Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.921124Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.920129Z&quot;}}" data-execution_count="6">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sleep.Duration"</span>: <span class="st">"SH"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Quality.of.Sleep"</span>: <span class="st">"SQ"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Physical.Activity.Level"</span>: <span class="st">"PHY"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Stress.Level"</span>: <span class="st">"Stress"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"BMI.Category"</span>: <span class="st">"BMI"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Blood.Pressure"</span>: <span class="st">"BP"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Heart.Rate"</span>: <span class="st">"HR"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Daily.Steps"</span>: <span class="st">"Steps"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sleep.Disorder"</span>: <span class="st">"SD"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">"ID"</span>, <span class="st">"Gender"</span>, <span class="st">"Age"</span>, <span class="st">"Occupation"</span>, <span class="st">"SH"</span>, <span class="st">"SQ"</span>, <span class="st">"PHY"</span>, <span class="st">"Stress"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">"BMI"</span>, <span class="st">"BP"</span>, <span class="st">"HR"</span>, <span class="st">"Steps"</span>, <span class="st">"SD"</span>]]</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Occupation</th>
+<th data-quarto-table-cell-role="th">SH</th>
+<th data-quarto-table-cell-role="th">SQ</th>
+<th data-quarto-table-cell-role="th">PHY</th>
+<th data-quarto-table-cell-role="th">Stress</th>
+<th data-quarto-table-cell-role="th">BMI</th>
+<th data-quarto-table-cell-role="th">BP</th>
+<th data-quarto-table-cell-role="th">HR</th>
+<th data-quarto-table-cell-role="th">Steps</th>
+<th data-quarto-table-cell-role="th">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>Male</td>
+<td>27.0</td>
+<td>Software Engineer</td>
+<td>6.1</td>
+<td>6</td>
+<td>42</td>
+<td>6</td>
+<td>Overweight</td>
+<td>126/83</td>
+<td>77</td>
+<td>4200</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>Male</td>
+<td>28.0</td>
+<td>Doctor</td>
+<td>6.2</td>
+<td>6</td>
+<td>60</td>
+<td>8</td>
+<td>Normal</td>
+<td>125/80</td>
+<td>75</td>
+<td>10000</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>Male</td>
+<td>28.0</td>
+<td>Doctor</td>
+<td>6.2</td>
+<td>6</td>
+<td>60</td>
+<td>8</td>
+<td>Normal</td>
+<td>125/80</td>
+<td>75</td>
+<td>10000</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>Male</td>
+<td>28.0</td>
+<td>Sales Representative</td>
+<td>5.9</td>
+<td>4</td>
+<td>30</td>
+<td>8</td>
+<td>Obese</td>
+<td>140/90</td>
+<td>85</td>
+<td>3000</td>
+<td>Sleep Apnea</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5</td>
+<td>Male</td>
+<td>28.0</td>
+<td>Sales Representative</td>
+<td>5.9</td>
+<td>4</td>
+<td>30</td>
+<td>8</td>
+<td>Obese</td>
+<td>140/90</td>
+<td>85</td>
+<td>3000</td>
+<td>Sleep Apnea</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="normalización-de-formatos-en-variables-categóricas" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="normalización-de-formatos-en-variables-categóricas"><span class="header-section-number">4.2</span> 2. Normalización de formatos en variables categóricas</h2>
+<p>Identificamos las columnas categóricas del dataset.</p>
+<div id="82448e83" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.922810Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.922647Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.927430Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.926440Z&quot;}}" data-execution_count="7">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>, <span class="st">"string"</span>]).columns.tolist()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Variables categóricas:"</span>, cat_cols)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variables categóricas: ['Gender', 'Occupation', 'SH', 'BMI', 'BP', 'SD']</code></pre>
+</div>
+</div>
+<section id="errores-sintácticos" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="errores-sintácticos"><span class="header-section-number">4.2.1</span> 2.1. Errores sintácticos</h3>
+<p>Comprobamos si hay espacios en blanco al inicio o al final de los valores categóricos, un error de captura habitual.</p>
+<div id="a7411179" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.929030Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.928822Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.936648Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.935915Z&quot;}}" data-execution_count="8">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cols_con_espacios <span class="op">=</span> [</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    c <span class="cf">for</span> c <span class="kw">in</span> cat_cols</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> df[c].dropna().astype(<span class="bu">str</span>).<span class="bu">str</span>.contains(<span class="vs">r"</span><span class="dv">^\s</span><span class="cf">|</span><span class="dv">\s$</span><span class="vs">"</span>).<span class="bu">any</span>()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Columnas con espacios al inicio/final:"</span>, cols_con_espacios <span class="cf">if</span> cols_con_espacios <span class="cf">else</span> <span class="st">"ninguna"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Columnas con espacios al inicio/final: ninguna</code></pre>
+</div>
+</div>
+<p>No hay espacios en blanco al inicio o al final en ninguna columna categórica.</p>
+</section>
+<section id="corrección-de-tipos-de-dato" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="corrección-de-tipos-de-dato"><span class="header-section-number">4.2.2</span> 2.2. Corrección de tipos de dato</h3>
+<p><code>SH</code> (duración del sueño) se cargó como texto porque mezcla el punto y la coma como separador decimal (un problema típico al combinar fuentes con distinta configuración regional). Unificamos al punto decimal y convertimos a <code>float</code>.</p>
+<div id="7da703f9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.938257Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.938110Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.946598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.945443Z&quot;}}" data-execution_count="9">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tipo de 'SH' antes:"</span>, df[<span class="st">"SH"</span>].dtype)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"SH"</span>] <span class="op">=</span> df[<span class="st">"SH"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="st">","</span>, <span class="st">"."</span>, regex<span class="op">=</span><span class="va">False</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tipo de 'SH' después:"</span>, df[<span class="st">"SH"</span>].dtype)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"SH"</span>].describe()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tipo de 'SH' antes: str
+Tipo de 'SH' después: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>count    374.000000
+mean       7.132380
+std        0.795874
+min        5.800000
+25%        6.400000
+50%        7.200000
+75%        7.800000
+max        8.500000
+Name: SH, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="estandarización-de-las-categorías" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="estandarización-de-las-categorías"><span class="header-section-number">4.2.3</span> 2.3. Estandarización de las categorías</h3>
+<p><strong><code>Occupation</code></strong>: unificamos variantes que designan la misma ocupación — <code>"engineer"</code> (minúscula) y <code>"Software Engineer"</code> pasan a <code>"Engineer"</code>; <code>"Sales Representative"</code> pasa a <code>"Salesperson"</code>.</p>
+<div id="abf1deba" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.948777Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.948173Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.955024Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.954149Z&quot;}}" data-execution_count="10">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Antes de normalizar:"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>desc.unique_categories(df, columns<span class="op">=</span>[<span class="st">"Occupation"</span>])</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Occupation"</span>] <span class="op">=</span> df[<span class="st">"Occupation"</span>].<span class="bu">str</span>.title()</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Occupation"</span>] <span class="op">=</span> df[<span class="st">"Occupation"</span>].replace({</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Software Engineer"</span>: <span class="st">"Engineer"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sales Representative"</span>: <span class="st">"Salesperson"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Después de normalizar:"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>desc.unique_categories(df, columns<span class="op">=</span>[<span class="st">"Occupation"</span>])<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Antes de normalizar:
+'Occupation': ['Accountant', 'Doctor', 'Engineer', 'Lawyer', 'Manager', 'Nurse', 'Sales Representative', 'Salesperson', 'Scientist', 'Software Engineer', 'Teacher', 'engineer']
+
+Después de normalizar:
+'Occupation': ['Accountant', 'Doctor', 'Engineer', 'Lawyer', 'Manager', 'Nurse', 'Salesperson', 'Scientist', 'Teacher']
+</code></pre>
+</div>
+</div>
+<p><strong><code>BMI</code></strong>: unificamos <code>"Normal Weight"</code> en <code>"Normal"</code>, ya que designan la misma categoría.</p>
+<div id="02cf3a88" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.956589Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.956438Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.962427Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.961541Z&quot;}}" data-execution_count="11">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Antes de normalizar:"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>desc.unique_categories(df, columns<span class="op">=</span>[<span class="st">"BMI"</span>])</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"BMI"</span>] <span class="op">=</span> df[<span class="st">"BMI"</span>].replace({<span class="st">"Normal Weight"</span>: <span class="st">"Normal"</span>})</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Después de normalizar:"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>desc.unique_categories(df, columns<span class="op">=</span>[<span class="st">"BMI"</span>])<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Antes de normalizar:
+'BMI': ['Normal', 'Normal Weight', 'Obese', 'Overweight']
+
+Después de normalizar:
+'BMI': ['Normal', 'Obese', 'Overweight']
+</code></pre>
+</div>
+</div>
+<p><strong><code>BP</code></strong> (presión arterial) mantiene el formato correcto (<code>XXX/XX</code>) en todos los registros. <strong><code>SD</code></strong> (trastorno del sueño) usa <code>NaN</code> quiere decir “sin trastorno”, así que lo recodificamos de forma explícita como la categoría <code>"None"</code> en lugar de dejarlo como valor perdido:</p>
+<div id="655fa055" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.964578Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.963904Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.970670Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.969923Z&quot;}}" data-execution_count="12">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"SD"</span>] <span class="op">=</span> df[<span class="st">"SD"</span>].fillna(<span class="st">"None"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"SD"</span>].value_counts()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>SD
+None           219
+Sleep Apnea     78
+Insomnia        77
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="inconsistencias-en-variables-cuantitativas" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="inconsistencias-en-variables-cuantitativas"><span class="header-section-number">4.3</span> 3. Inconsistencias en variables cuantitativas</h2>
+<section id="identificación-de-variables-cuantitativas" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="identificación-de-variables-cuantitativas"><span class="header-section-number">4.3.1</span> 3.1. Identificación de variables cuantitativas</h3>
+<div id="836f34ef" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.972592Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.972026Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.976769Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.975954Z&quot;}}" data-execution_count="13">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>num_cols <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[np.number]).columns.tolist()</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>num_cols.remove(<span class="st">"ID"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Variables cuantitativas:"</span>, num_cols)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variables cuantitativas: ['Age', 'SH', 'SQ', 'PHY', 'Stress', 'HR', 'Steps']</code></pre>
+</div>
+</div>
+</section>
+<section id="revisión-de-valores-vacíos" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="revisión-de-valores-vacíos"><span class="header-section-number">4.3.2</span> 3.2. Revisión de valores vacíos</h3>
+<p>Confirmamos que no quedan cadenas vacías (<code>""</code>) sin convertir a <code>NaN</code> en ninguna columna.</p>
+<div id="f4f1ec40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.978837Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.978282Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.986288Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.985365Z&quot;}}" data-execution_count="14">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> df.columns:</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> df[c].dtype <span class="op">==</span> <span class="bu">object</span> <span class="kw">or</span> pd.api.types.is_string_dtype(df[c]):</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        df[c] <span class="op">=</span> df[c].replace(<span class="st">""</span>, np.nan)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Columnas con NaN tras la revisión:"</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.isna().<span class="bu">sum</span>()[df.isna().<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Columnas con NaN tras la revisión:
+Age    3
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="descomposición-de-bp-en-bpsyst-y-bpdias" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="descomposición-de-bp-en-bpsyst-y-bpdias"><span class="header-section-number">4.3.3</span> 3.3. Descomposición de <code>BP</code> en <code>BPsyst</code> y <code>BPdias</code></h3>
+<p><code>BP</code> combina dos medidas (presión sistólica y diastólica) en un único campo de texto con formato <code>"sistólica/diastólica"</code>. Lo separamos en dos variables numéricas independientes.</p>
+<div id="886ff0f7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.988330Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.987647Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:21.997899Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:21.997072Z&quot;}}" data-execution_count="15">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"BPsyst"</span>, <span class="st">"BPdias"</span>]] <span class="op">=</span> df[<span class="st">"BP"</span>].<span class="bu">str</span>.split(<span class="st">"/"</span>, expand<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"BP"</span>, <span class="st">"BPsyst"</span>, <span class="st">"BPdias"</span>]].head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">BP</th>
+<th data-quarto-table-cell-role="th">BPsyst</th>
+<th data-quarto-table-cell-role="th">BPdias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>126/83</td>
+<td>126.0</td>
+<td>83.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>125/80</td>
+<td>125.0</td>
+<td>80.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>125/80</td>
+<td>125.0</td>
+<td>80.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>140/90</td>
+<td>140.0</td>
+<td>90.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>140/90</td>
+<td>140.0</td>
+<td>90.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="valores-erróneos-o-atípicos" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="valores-erróneos-o-atípicos"><span class="header-section-number">4.4</span> 4. Valores erróneos o atípicos</h2>
+<section id="valores-erróneos" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="valores-erróneos"><span class="header-section-number">4.4.1</span> 4.1. Valores erróneos</h3>
+<p>El <code>Person.ID</code> duplicado ya se trató en el apartado 1.2, creando un identificador <code>ID</code> nuevo y único.</p>
+</section>
+<section id="valores-atípicos" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="valores-atípicos"><span class="header-section-number">4.4.2</span> 4.2. Valores atípicos</h3>
+<p>Usamos diagramas de caja para inspeccionar visualmente las variables numéricas y detectar outliers.</p>
+<div id="595f5b35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:21.999939Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:21.999288Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:22.830259Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:22.829090Z&quot;}}" data-execution_count="16">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> num_cols <span class="cf">if</span> c <span class="op">!=</span> <span class="st">"ID"</span>] <span class="op">+</span> [<span class="st">"BPsyst"</span>, <span class="st">"BPdias"</span>]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">10</span>))</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, col <span class="kw">in</span> <span class="bu">zip</span>(axes.flat, plot_cols):</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    sns.boxplot(y<span class="op">=</span>df[col], ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    ax.set_title(col, fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">""</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes.flat[<span class="bu">len</span>(plot_cols):]:</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica_preprocesamiento_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Se observa un valor atípico extremo en <strong><code>Age</code></strong>, muy por encima del resto de edades — un claro candidato a <strong>valor centinela</strong> (un código usado para representar “desconocido”, en vez de un dato real). <code>HR</code> muestra algunos valores altos, pero una frecuencia cardíaca en reposo algo por encima de 85 está dentro de la variabilidad fisiológica normal, así que no la tratamos como error. El resto de variables numéricas no muestra outliers destacables.</p>
+</section>
+<section id="manejo-de-valores-atípicos" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="manejo-de-valores-atípicos"><span class="header-section-number">4.4.3</span> 4.2.1. Manejo de valores atípicos</h3>
+<p>Para <code>Age</code>, identificamos los valores atípicos aplicando la regla del rango intercuartílico (1.5 × RIC):</p>
+<div id="1e1779d2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:22.832082Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:22.831795Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:22.843263Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:22.842386Z&quot;}}" data-execution_count="17">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Q1 <span class="op">=</span> df[<span class="st">"Age"</span>].quantile(<span class="fl">0.25</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>Q3 <span class="op">=</span> df[<span class="st">"Age"</span>].quantile(<span class="fl">0.75</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>IQR <span class="op">=</span> Q3 <span class="op">-</span> Q1</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> Q1 <span class="op">-</span> <span class="fl">1.5</span> <span class="op">*</span> IQR, Q3 <span class="op">+</span> <span class="fl">1.5</span> <span class="op">*</span> IQR</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>outliers_age <span class="op">=</span> df[(df[<span class="st">"Age"</span>] <span class="op">&lt;</span> lower) <span class="op">|</span> (df[<span class="st">"Age"</span>] <span class="op">&gt;</span> upper)]</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>outliers_age[[<span class="st">"ID"</span>, <span class="st">"Age"</span>]]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">41</th>
+<td>42</td>
+<td>999.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">51</th>
+<td>52</td>
+<td>999.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">75</th>
+<td>76</td>
+<td>999.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">130</th>
+<td>131</td>
+<td>73.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">179</th>
+<td>180</td>
+<td>999.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">304</th>
+<td>305</td>
+<td>999.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">333</th>
+<td>334</td>
+<td>999.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Todos corresponden al valor centinela <code>999</code> (“edad desconocida”). Lo sustituimos por <code>NaN</code>, el estándar para datos faltantes, de forma que se trate correctamente en los análisis estadísticos y se pueda imputar en el siguiente apartado.</p>
+<div id="007fdf09" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:22.844925Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:22.844702Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:22.850476Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:22.849528Z&quot;}}" data-execution_count="18">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Age"</span>] <span class="op">=</span> df[<span class="st">"Age"</span>].replace(<span class="dv">999</span>, np.nan)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Valores == 999 restantes:"</span>, (df[<span class="st">"Age"</span>] <span class="op">==</span> <span class="dv">999</span>).<span class="bu">sum</span>())</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Valores NaN en 'Age':"</span>, df[<span class="st">"Age"</span>].isna().<span class="bu">sum</span>())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Valores == 999 restantes: 0
+Valores NaN en 'Age': 9</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="imputación" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="imputación"><span class="header-section-number">4.5</span> 5. Imputación</h2>
+<p>Imputamos los <code>NaN</code> de las variables numéricas (excluyendo <code>ID</code>) mediante el método de los <strong>k vecinos más cercanos</strong> (k = 3): cada valor ausente se sustituye por el promedio del mismo valor en los k registros más parecidos.</p>
+<div id="455d946b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:22.852088Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:22.851917Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:22.872678Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:22.871920Z&quot;}}" data-execution_count="19">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>impute_cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> num_cols <span class="cf">if</span> c <span class="op">!=</span> <span class="st">"ID"</span>] <span class="op">+</span> [<span class="st">"BPsyst"</span>, <span class="st">"BPdias"</span>]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>imputer <span class="op">=</span> KNNImputer(n_neighbors<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>before_na <span class="op">=</span> df[impute_cols].isna()</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>df_imputed <span class="op">=</span> df.copy()</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>df_imputed[impute_cols] <span class="op">=</span> imputer.fit_transform(df[impute_cols])</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>filas_imputadas <span class="op">=</span> before_na.<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>df_imputed.loc[filas_imputadas, [<span class="st">"ID"</span>] <span class="op">+</span> impute_cols]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">SH</th>
+<th data-quarto-table-cell-role="th">SQ</th>
+<th data-quarto-table-cell-role="th">PHY</th>
+<th data-quarto-table-cell-role="th">Stress</th>
+<th data-quarto-table-cell-role="th">HR</th>
+<th data-quarto-table-cell-role="th">Steps</th>
+<th data-quarto-table-cell-role="th">BPsyst</th>
+<th data-quarto-table-cell-role="th">BPdias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">41</th>
+<td>42</td>
+<td>31.000000</td>
+<td>7.7</td>
+<td>7.0</td>
+<td>75.0</td>
+<td>6.0</td>
+<td>70.0</td>
+<td>8000.0</td>
+<td>120.0</td>
+<td>80.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">51</th>
+<td>52</td>
+<td>34.666667</td>
+<td>7.5</td>
+<td>8.0</td>
+<td>45.0</td>
+<td>3.0</td>
+<td>70.0</td>
+<td>8000.0</td>
+<td>120.0</td>
+<td>80.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">75</th>
+<td>76</td>
+<td>32.000000</td>
+<td>6.0</td>
+<td>6.0</td>
+<td>30.0</td>
+<td>8.0</td>
+<td>72.0</td>
+<td>5000.0</td>
+<td>125.0</td>
+<td>80.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">86</th>
+<td>87</td>
+<td>35.000000</td>
+<td>7.2</td>
+<td>8.0</td>
+<td>60.0</td>
+<td>4.0</td>
+<td>65.0</td>
+<td>5000.0</td>
+<td>125.0</td>
+<td>80.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">153</th>
+<td>154</td>
+<td>39.000000</td>
+<td>7.2</td>
+<td>8.0</td>
+<td>60.0</td>
+<td>5.0</td>
+<td>68.0</td>
+<td>8000.0</td>
+<td>130.0</td>
+<td>85.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">179</th>
+<td>180</td>
+<td>43.000000</td>
+<td>7.8</td>
+<td>8.0</td>
+<td>90.0</td>
+<td>5.0</td>
+<td>70.0</td>
+<td>8000.0</td>
+<td>130.0</td>
+<td>85.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">244</th>
+<td>245</td>
+<td>44.000000</td>
+<td>6.3</td>
+<td>6.0</td>
+<td>45.0</td>
+<td>7.0</td>
+<td>72.0</td>
+<td>6000.0</td>
+<td>130.0</td>
+<td>85.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">304</th>
+<td>305</td>
+<td>49.333333</td>
+<td>6.1</td>
+<td>6.0</td>
+<td>90.0</td>
+<td>8.0</td>
+<td>75.0</td>
+<td>10000.0</td>
+<td>140.0</td>
+<td>95.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">333</th>
+<td>334</td>
+<td>52.000000</td>
+<td>8.4</td>
+<td>9.0</td>
+<td>30.0</td>
+<td>3.0</td>
+<td>65.0</td>
+<td>5000.0</td>
+<td>125.0</td>
+<td>80.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>La tabla anterior muestra los registros donde <code>Age</code> ha sido imputado (9 en total: 3 valores nulos originales más 6 que eran el centinela <code>999</code>), usando el método KNN con <span class="math inline">\(k=3\)</span>.</p>
+</section>
+<section id="correlaciones" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="correlaciones"><span class="header-section-number">4.6</span> 6. Correlaciones</h2>
+<section id="matriz-de-correlaciones" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="matriz-de-correlaciones"><span class="header-section-number">4.6.1</span> 6.1. Matriz de correlaciones</h3>
+<p>Calculamos la correlación de Pearson entre todas las variables numéricas y la visualizamos como un mapa de calor.</p>
+<div id="92a98baa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:22.874462Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:22.874199Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:23.127603Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:23.126655Z&quot;}}" data-execution_count="20">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>corr_cols <span class="op">=</span> [<span class="st">"Age"</span>, <span class="st">"SH"</span>, <span class="st">"SQ"</span>, <span class="st">"PHY"</span>, <span class="st">"Stress"</span>, <span class="st">"HR"</span>, <span class="st">"Steps"</span>, <span class="st">"BPsyst"</span>, <span class="st">"BPdias"</span>]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="op">=</span> df_imputed[corr_cols].corr()</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">7</span>))</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">"coolwarm"</span>, center<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>            vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>, square<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Matriz de correlación de Pearson"</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica_preprocesamiento_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretación de las correlaciones más relevantes:</strong></p>
+<p>Positivas:</p>
+<ul>
+<li><code>BPsyst</code> y <code>BPdias</code> (≈0.97): presión sistólica y diastólica están, como es fisiológicamente esperable, fuertemente ligadas.</li>
+<li><code>PHY</code> y <code>Steps</code> (≈0.77): más actividad física reportada se traduce en más pasos diarios.</li>
+<li><code>Stress</code> y <code>HR</code> (≈0.67): a mayor estrés, mayor frecuencia cardíaca.</li>
+<li><code>Age</code> con <code>BPsyst</code>/<code>BPdias</code> (≈0.56–0.57): la presión arterial tiende a subir con la edad.</li>
+</ul>
+<p>Negativas:</p>
+<ul>
+<li><code>Stress</code> y <code>SQ</code> (≈-0.90) / <code>Stress</code> y <code>SH</code> (≈-0.81): más estrés se asocia con peor calidad y menor duración del sueño — la relación más fuerte de todo el dataset.</li>
+<li><code>HR</code> y <code>SQ</code> (≈-0.66): una frecuencia cardíaca en reposo más alta se asocia con peor calidad de sueño percibida.</li>
+</ul>
+</section>
+<section id="cálculo-manual-de-la-correlación-de-pearson" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="cálculo-manual-de-la-correlación-de-pearson"><span class="header-section-number">4.6.2</span> 6.2. Cálculo manual de la correlación de Pearson</h3>
+<p>Implementamos la fórmula de Pearson sin usar funciones ya existentes para el cálculo, y validamos el resultado comparándolo con <code>scipy.stats.pearsonr</code> y con <code>DataFrame.corr()</code>.</p>
+<div id="75dbe2f2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:23.129841Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:23.129163Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:23.139154Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:23.138325Z&quot;}}" data-execution_count="21">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pearson_manual(x: np.ndarray, y: np.ndarray) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> np.asarray(x, dtype<span class="op">=</span><span class="bu">float</span>), np.asarray(y, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x.shape <span class="op">!=</span> y.shape:</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"x e y deben tener la misma longitud"</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> <span class="op">~</span>(np.isnan(x) <span class="op">|</span> np.isnan(y))</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> x[mask], y[mask]</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    mean_x, mean_y <span class="op">=</span> x.mean(), y.mean()</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> np.<span class="bu">sum</span>((x <span class="op">-</span> mean_x) <span class="op">*</span> (y <span class="op">-</span> mean_y))</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    den <span class="op">=</span> np.sqrt(np.<span class="bu">sum</span>((x <span class="op">-</span> mean_x) <span class="op">**</span> <span class="dv">2</span>) <span class="op">*</span> np.<span class="bu">sum</span>((y <span class="op">-</span> mean_y) <span class="op">**</span> <span class="dv">2</span>))</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> num <span class="op">/</span> den</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> df_imputed[<span class="st">"BPsyst"</span>].values</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_imputed[<span class="st">"BPdias"</span>].values</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>r_manual <span class="op">=</span> pearson_manual(x, y)</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>r_scipy, _ <span class="op">=</span> pearsonr(x, y)</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>r_pandas <span class="op">=</span> df_imputed[<span class="st">"BPsyst"</span>].corr(df_imputed[<span class="st">"BPdias"</span>])</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Correlación manual:   </span><span class="sc">{</span>r_manual<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Correlación (scipy):  </span><span class="sc">{</span>r_scipy<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Correlación (pandas): </span><span class="sc">{</span>r_pandas<span class="sc">:.6f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Correlación manual:   0.972885
+Correlación (scipy):  0.972885
+Correlación (pandas): 0.972885</code></pre>
+</div>
+</div>
+<p>Los tres valores coinciden, lo que confirma que la implementación manual de Pearson es correcta.</p>
+</section>
+</section>
+<section id="análisis-descriptivo-y-visual" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="análisis-descriptivo-y-visual"><span class="header-section-number">4.7</span> 7. Análisis descriptivo y visual</h2>
+<section id="tabla-resumen-de-tendencia-central-y-variabilidad-según-sd" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="tabla-resumen-de-tendencia-central-y-variabilidad-según-sd"><span class="header-section-number">4.7.1</span> 7.1. Tabla resumen de tendencia central y variabilidad según <code>SD</code></h3>
+<p>Media y desviación estándar de <code>SH</code>, <code>SQ</code>, <code>HR</code> y <code>Stress</code>, agregadas por tipo de trastorno del sueño (<code>SD</code>).</p>
+<div id="80e486e0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:23.141421Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:23.140750Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:23.158626Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:23.157618Z&quot;}}" data-execution_count="22">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>summary_table <span class="op">=</span> desc.summarize_by_group(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    df_imputed,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    levels<span class="op">=</span>[<span class="st">"SD"</span>],</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    metric_cols<span class="op">=</span>[<span class="st">"SH"</span>, <span class="st">"SQ"</span>, <span class="st">"HR"</span>, <span class="st">"Stress"</span>],</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    metrics<span class="op">=</span>[<span class="st">"mean"</span>, <span class="st">"std"</span>],</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>summary_table.<span class="bu">round</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">SD</th>
+<th data-quarto-table-cell-role="th">SH_mean</th>
+<th data-quarto-table-cell-role="th">SH_std</th>
+<th data-quarto-table-cell-role="th">SQ_mean</th>
+<th data-quarto-table-cell-role="th">SQ_std</th>
+<th data-quarto-table-cell-role="th">HR_mean</th>
+<th data-quarto-table-cell-role="th">HR_std</th>
+<th data-quarto-table-cell-role="th">Stress_mean</th>
+<th data-quarto-table-cell-role="th">Stress_std</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Insomnia</td>
+<td>6.59</td>
+<td>0.39</td>
+<td>6.53</td>
+<td>0.80</td>
+<td>70.47</td>
+<td>4.95</td>
+<td>5.87</td>
+<td>1.46</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>None</td>
+<td>7.36</td>
+<td>0.73</td>
+<td>7.63</td>
+<td>0.98</td>
+<td>69.02</td>
+<td>2.66</td>
+<td>5.11</td>
+<td>1.59</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Sleep Apnea</td>
+<td>7.03</td>
+<td>0.97</td>
+<td>7.21</td>
+<td>1.65</td>
+<td>73.09</td>
+<td>5.12</td>
+<td>5.67</td>
+<td>2.33</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="gráfico-de-medias-de-hr-según-occupation-y-sd" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="gráfico-de-medias-de-hr-según-occupation-y-sd"><span class="header-section-number">4.7.2</span> 7.2. Gráfico de medias de <code>HR</code> según <code>Occupation</code> y <code>SD</code></h3>
+<p>Un gráfico de líneas con el tipo de <code>SD</code> en el eje X y una línea por ocupación, mostrando la media de <code>HR</code> en cada combinación.</p>
+<div id="c0d075fa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:23.161135Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:23.160332Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:23.373577Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:23.372311Z&quot;}}" data-execution_count="23">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>hr_summary <span class="op">=</span> (</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    df_imputed.groupby([<span class="st">"SD"</span>, <span class="st">"Occupation"</span>])[<span class="st">"HR"</span>]</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>sd_order <span class="op">=</span> [<span class="st">"None"</span>, <span class="st">"Sleep Apnea"</span>, <span class="st">"Insomnia"</span>]</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>hr_summary[<span class="st">"SD"</span>] <span class="op">=</span> pd.Categorical(hr_summary[<span class="st">"SD"</span>], categories<span class="op">=</span>sd_order, ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>hr_summary <span class="op">=</span> hr_summary.sort_values(<span class="st">"SD"</span>)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>hr_summary, x<span class="op">=</span><span class="st">"SD"</span>, y<span class="op">=</span><span class="st">"HR"</span>, hue<span class="op">=</span><span class="st">"Occupation"</span>,</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>             marker<span class="op">=</span><span class="st">"o"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Media de HR según Ocupación y trastorno del sueño (SD)"</span>)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Tipo de trastorno del sueño (SD)"</span>)</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Media de HR"</span>)</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="va">None</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.02</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">"upper left"</span>)</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica_preprocesamiento_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="archivo-final" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="archivo-final"><span class="header-section-number">4.8</span> 8. Archivo final</h2>
+<p>Guardamos el resultado del preprocesamiento en un archivo CSV.</p>
+<div id="222cf3cf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:23.375756Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:23.375533Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:23.396807Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:23.395808Z&quot;}}">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> <span class="st">"output/sleephealth_processed.csv"</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>df_imputed.to_csv(output_path, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Archivo guardado en: </span><span class="sc">{</span>output_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>df_imputed.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Archivo guardado en: sleephealth_processed.csv</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Occupation</th>
+<th data-quarto-table-cell-role="th">SH</th>
+<th data-quarto-table-cell-role="th">SQ</th>
+<th data-quarto-table-cell-role="th">PHY</th>
+<th data-quarto-table-cell-role="th">Stress</th>
+<th data-quarto-table-cell-role="th">BMI</th>
+<th data-quarto-table-cell-role="th">BP</th>
+<th data-quarto-table-cell-role="th">HR</th>
+<th data-quarto-table-cell-role="th">Steps</th>
+<th data-quarto-table-cell-role="th">SD</th>
+<th data-quarto-table-cell-role="th">BPsyst</th>
+<th data-quarto-table-cell-role="th">BPdias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>Male</td>
+<td>27.0</td>
+<td>Engineer</td>
+<td>6.1</td>
+<td>6.0</td>
+<td>42.0</td>
+<td>6.0</td>
+<td>Overweight</td>
+<td>126/83</td>
+<td>77.0</td>
+<td>4200.0</td>
+<td>None</td>
+<td>126.0</td>
+<td>83.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>Male</td>
+<td>28.0</td>
+<td>Doctor</td>
+<td>6.2</td>
+<td>6.0</td>
+<td>60.0</td>
+<td>8.0</td>
+<td>Normal</td>
+<td>125/80</td>
+<td>75.0</td>
+<td>10000.0</td>
+<td>None</td>
+<td>125.0</td>
+<td>80.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>Male</td>
+<td>28.0</td>
+<td>Doctor</td>
+<td>6.2</td>
+<td>6.0</td>
+<td>60.0</td>
+<td>8.0</td>
+<td>Normal</td>
+<td>125/80</td>
+<td>75.0</td>
+<td>10000.0</td>
+<td>None</td>
+<td>125.0</td>
+<td>80.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>Male</td>
+<td>28.0</td>
+<td>Salesperson</td>
+<td>5.9</td>
+<td>4.0</td>
+<td>30.0</td>
+<td>8.0</td>
+<td>Obese</td>
+<td>140/90</td>
+<td>85.0</td>
+<td>3000.0</td>
+<td>Sleep Apnea</td>
+<td>140.0</td>
+<td>90.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5</td>
+<td>Male</td>
+<td>28.0</td>
+<td>Salesperson</td>
+<td>5.9</td>
+<td>4.0</td>
+<td>30.0</td>
+<td>8.0</td>
+<td>Obese</td>
+<td>140/90</td>
+<td>85.0</td>
+<td>3000.0</td>
+<td>Sleep Apnea</td>
+<td>140.0</td>
+<td>90.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="pagination-link" aria-label="Práctica: Estadística Descriptiva">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../notebooks/02_probabilidad/teoria.html" class="pagination-link" aria-label="Probabilidad Básica">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/01_estadistica_descriptiva/practica_preprocesamiento.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

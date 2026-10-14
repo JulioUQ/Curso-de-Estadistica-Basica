@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; ANOVA, Chi-cuadrado y Pruebas No Paramétricas – Estadística Básica</title>
+<title>13&nbsp; ANOVA, Chi-cuadrado y Pruebas No Paramétricas – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -173,7 +173,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/TU-USUARIO/estadistica-basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -202,13 +202,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></span></a>
   </div>
 </li>
       </ul>
@@ -225,13 +231,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
   </div>
 </li>
       </ul>
@@ -248,13 +254,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
       </ul>
@@ -271,13 +277,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
       </ul>
@@ -294,13 +300,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
       </ul>
@@ -317,13 +323,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
       </ul>
@@ -338,24 +344,24 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">12.1</span> 6.1 Introducción</a></li>
-  <li><a href="#anova-de-un-factor" id="toc-anova-de-un-factor" class="nav-link" data-scroll-target="#anova-de-un-factor"><span class="header-section-number">12.2</span> 6.2 ANOVA de un Factor</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">13.1</span> 6.1 Introducción</a></li>
+  <li><a href="#anova-de-un-factor" id="toc-anova-de-un-factor" class="nav-link" data-scroll-target="#anova-de-un-factor"><span class="header-section-number">13.2</span> 6.2 ANOVA de un Factor</a>
   <ul class="collapse">
-  <li><a href="#el-problema-de-comparar-3-grupos-con-t-tests-repetidos" id="toc-el-problema-de-comparar-3-grupos-con-t-tests-repetidos" class="nav-link" data-scroll-target="#el-problema-de-comparar-3-grupos-con-t-tests-repetidos"><span class="header-section-number">12.2.1</span> El problema de comparar 3+ grupos con t-tests repetidos</a></li>
-  <li><a href="#hipótesis-e-idea-central" id="toc-hipótesis-e-idea-central" class="nav-link" data-scroll-target="#hipótesis-e-idea-central"><span class="header-section-number">12.2.2</span> Hipótesis e idea central</a></li>
+  <li><a href="#el-problema-de-comparar-3-grupos-con-t-tests-repetidos" id="toc-el-problema-de-comparar-3-grupos-con-t-tests-repetidos" class="nav-link" data-scroll-target="#el-problema-de-comparar-3-grupos-con-t-tests-repetidos"><span class="header-section-number">13.2.1</span> El problema de comparar 3+ grupos con t-tests repetidos</a></li>
+  <li><a href="#hipótesis-e-idea-central" id="toc-hipótesis-e-idea-central" class="nav-link" data-scroll-target="#hipótesis-e-idea-central"><span class="header-section-number">13.2.2</span> Hipótesis e idea central</a></li>
   </ul></li>
-  <li><a href="#test-chi-cuadrado-de-independencia" id="toc-test-chi-cuadrado-de-independencia" class="nav-link" data-scroll-target="#test-chi-cuadrado-de-independencia"><span class="header-section-number">12.3</span> 6.3 Test Chi-cuadrado de Independencia</a></li>
-  <li><a href="#pruebas-no-paramétricas-mann-whitney-u" id="toc-pruebas-no-paramétricas-mann-whitney-u" class="nav-link" data-scroll-target="#pruebas-no-paramétricas-mann-whitney-u"><span class="header-section-number">12.4</span> 6.4 Pruebas No Paramétricas: Mann-Whitney U</a></li>
-  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">12.5</span> 6.5 Cierre</a></li>
+  <li><a href="#test-chi-cuadrado-de-independencia" id="toc-test-chi-cuadrado-de-independencia" class="nav-link" data-scroll-target="#test-chi-cuadrado-de-independencia"><span class="header-section-number">13.3</span> 6.3 Test Chi-cuadrado de Independencia</a></li>
+  <li><a href="#pruebas-no-paramétricas-mann-whitney-u" id="toc-pruebas-no-paramétricas-mann-whitney-u" class="nav-link" data-scroll-target="#pruebas-no-paramétricas-mann-whitney-u"><span class="header-section-number">13.4</span> 6.4 Pruebas No Paramétricas: Mann-Whitney U</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">13.5</span> 6.5 Cierre</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/06_anova_chi2/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/06_anova_chi2/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></h1>
 </div>
 
 
@@ -372,8 +378,8 @@ window.Quarto = {
 </header>
 
 
-<section id="introducción" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">12.1</span> 6.1 Introducción</h2>
+<section id="introducción" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">13.1</span> 6.1 Introducción</h2>
 <p>En el Módulo 4 aprendimos a comparar <strong>dos</strong> grupos (un test t o z), y en el Módulo 5 a estudiar la relación entre <strong>dos variables numéricas</strong>. Pero en la práctica surgen preguntas que esas herramientas no cubren:</p>
 <ul>
 <li>¿Y si quiero comparar <strong>tres o más</strong> grupos a la vez (tres tratamientos, cuatro campañas, cinco segmentos)?</li>
@@ -400,21 +406,21 @@ window.Quarto = {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-decision-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.1: Qué prueba usar según lo que quieras comparar
+Figura&nbsp;13.1: Qué prueba usar según lo que quieras comparar
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="anova-de-un-factor" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="anova-de-un-factor"><span class="header-section-number">12.2</span> 6.2 ANOVA de un Factor</h2>
-<section id="el-problema-de-comparar-3-grupos-con-t-tests-repetidos" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="el-problema-de-comparar-3-grupos-con-t-tests-repetidos"><span class="header-section-number">12.2.1</span> El problema de comparar 3+ grupos con t-tests repetidos</h3>
+<section id="anova-de-un-factor" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="anova-de-un-factor"><span class="header-section-number">13.2</span> 6.2 ANOVA de un Factor</h2>
+<section id="el-problema-de-comparar-3-grupos-con-t-tests-repetidos" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="el-problema-de-comparar-3-grupos-con-t-tests-repetidos"><span class="header-section-number">13.2.1</span> El problema de comparar 3+ grupos con t-tests repetidos</h3>
 <p>Si quisiéramos comparar tres tratamientos médicos, una tentación es hacer tres t-tests por pares (A vs B, A vs C, B vs C). El problema es que cada test individual tiene un 5% de probabilidad de un falso positivo (error Tipo I), y al repetir tests esa probabilidad se <strong>acumula</strong>: con tres comparaciones, la probabilidad de al menos un falso positivo sube por encima del 5% nominal. El <strong>ANOVA</strong> (Análisis de la Varianza) resuelve esto con un único test que compara los tres grupos a la vez.</p>
 </section>
-<section id="hipótesis-e-idea-central" class="level3" data-number="12.2.2">
-<h3 data-number="12.2.2" class="anchored" data-anchor-id="hipótesis-e-idea-central"><span class="header-section-number">12.2.2</span> Hipótesis e idea central</h3>
+<section id="hipótesis-e-idea-central" class="level3" data-number="13.2.2">
+<h3 data-number="13.2.2" class="anchored" data-anchor-id="hipótesis-e-idea-central"><span class="header-section-number">13.2.2</span> Hipótesis e idea central</h3>
 <p><span class="math display">\[
 H_0: \mu_1 = \mu_2 = \dots = \mu_k \qquad H_1: \text{al menos una media es distinta}
 \]</span></p>
@@ -428,7 +434,7 @@ H_0: \mu_1 = \mu_2 = \dots = \mu_k \qquad H_1: \text{al menos una media es disti
 F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-1)}{SS_{\text{dentro}} / (n-k)}
 \]</span></p>
 <p>donde <span class="math inline">\(k\)</span> es el número de grupos y <span class="math inline">\(n\)</span> el número total de observaciones. Bajo <span class="math inline">\(H_0\)</span>, este estadístico sigue una <strong>distribución F</strong> con <span class="math inline">\((k-1, n-k)\)</span> grados de libertad.</p>
-<div id="e5054d18" class="cell" data-execution_count="2">
+<div id="295b75d9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> group_comparisons <span class="im">as</span> gc</span>
@@ -448,8 +454,8 @@ F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-
 <p>Un p-valor por debajo de 0.05 indica que al menos un tratamiento difiere significativamente de los demás en tiempo de recuperación — aunque el ANOVA por sí solo <strong>no dice cuál</strong>; para eso harían falta comparaciones post-hoc (fuera del alcance de este módulo introductorio).</p>
 </section>
 </section>
-<section id="test-chi-cuadrado-de-independencia" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="test-chi-cuadrado-de-independencia"><span class="header-section-number">12.3</span> 6.3 Test Chi-cuadrado de Independencia</h2>
+<section id="test-chi-cuadrado-de-independencia" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="test-chi-cuadrado-de-independencia"><span class="header-section-number">13.3</span> 6.3 Test Chi-cuadrado de Independencia</h2>
 <p>Cuando ambas variables son <strong>categóricas</strong> (por ejemplo, segmento de cliente y producto preferido), no tiene sentido hablar de medias. En su lugar, organizamos los datos en una <strong>tabla de contingencia</strong> (frecuencias observadas cruzando ambas variables) y contrastamos si existe asociación entre ellas.</p>
 <p><span class="math display">\[
 H_0: \text{las dos variables son independientes} \qquad H_1: \text{existe asociación entre ellas}
@@ -459,7 +465,7 @@ H_0: \text{las dos variables son independientes} \qquad H_1: \text{existe asocia
 \chi^2 = \sum_{i,j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
 \]</span></p>
 <p>donde <span class="math inline">\(E_{ij}\)</span> es la frecuencia esperada bajo independencia, calculada a partir de los totales de fila y columna. Sigue una distribución Chi-cuadrado con <span class="math inline">\((filas-1)(columnas-1)\)</span> grados de libertad.</p>
-<div id="d9912cfd" class="cell" data-execution_count="3">
+<div id="d7d52233" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -479,7 +485,7 @@ Joven        40      10
 Senior       15      35</code></pre>
 </div>
 </div>
-<div id="e302a106" class="cell" data-execution_count="4">
+<div id="9b1b96e0" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value, dof, esperadas <span class="op">=</span> gc.chi2_test_independence(tabla)</span>
@@ -497,14 +503,14 @@ Hay evidencia de asociación entre segmento de cliente y producto preferido</cod
 </div>
 </div>
 </section>
-<section id="pruebas-no-paramétricas-mann-whitney-u" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="pruebas-no-paramétricas-mann-whitney-u"><span class="header-section-number">12.4</span> 6.4 Pruebas No Paramétricas: Mann-Whitney U</h2>
+<section id="pruebas-no-paramétricas-mann-whitney-u" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="pruebas-no-paramétricas-mann-whitney-u"><span class="header-section-number">13.4</span> 6.4 Pruebas No Paramétricas: Mann-Whitney U</h2>
 <p>Tanto el t-test como el ANOVA asumen que los datos siguen (aproximadamente) una distribución Normal dentro de cada grupo. Cuando esa suposición no se sostiene — muestras muy pequeñas, datos claramente asimétricos, escalas ordinales (por ejemplo, valoraciones de 1 a 5) — recurrimos a <strong>pruebas no paramétricas</strong>, que no hacen ninguna suposición sobre la forma de la distribución.</p>
 <p>El <strong>test de Mann-Whitney U</strong> es la alternativa no paramétrica al t-test de dos muestras independientes. En vez de comparar medias, compara si los valores de un grupo tienden a ser sistemáticamente mayores (o menores) que los del otro, trabajando con los <strong>rangos</strong> de los datos combinados en vez de con sus valores originales.</p>
 <p><span class="math display">\[
 H_0: \text{ambas distribuciones son iguales} \qquad H_1: \text{una tiende a tomar valores mayores que la otra}
 \]</span></p>
-<div id="c7751935" class="cell" data-execution_count="5">
+<div id="9c8d75af" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valoraciones de satisfacción (escala 1-10) de dos versiones de una app,</span></span>
@@ -527,8 +533,8 @@ No hay evidencia suficiente de diferencia entre versiones</code></pre>
 </div>
 <p>Este tipo de pruebas basadas en rangos, robustas frente a la forma de la distribución, son la razón por la que muchos algoritmos de <em>machine learning</em> (árboles de decisión, bosques aleatorios, tests de importancia de variables) prefieren criterios no paramétricos: no dependen de que los datos reales del mundo se comporten como una Normal perfecta.</p>
 </section>
-<section id="cierre" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="cierre"><span class="header-section-number">12.5</span> 6.5 Cierre</h2>
+<section id="cierre" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="cierre"><span class="header-section-number">13.5</span> 6.5 Cierre</h2>
 <p>Este módulo amplía el curso más allá de los cinco módulos iniciales, cubriendo tres herramientas que aparecen constantemente en análisis con más de dos grupos o con variables categóricas: el <strong>ANOVA</strong> para comparar varias medias a la vez, el <strong>test Chi-cuadrado</strong> para relaciones entre variables categóricas, y el <strong>Mann-Whitney U</strong> como alternativa robusta cuando no se cumplen los supuestos de normalidad. Con esto, el conjunto de pruebas de hipótesis del curso queda prácticamente completo para cualquier análisis exploratorio o experimento aplicado — y sienta las bases para dar el salto hacia modelos predictivos más flexibles (regresión múltiple, clasificación) si decides continuar el curso en esa dirección.</p>
 
 
@@ -938,12 +944,12 @@ No hay evidencia suficiente de diferencia entre versiones</code></pre>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/05_regresion/practica.html" class="pagination-link" aria-label="Práctica: Correlación y Regresión Lineal">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../notebooks/06_anova_chi2/practica.html" class="pagination-link" aria-label="Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -952,4 +958,4 @@ No hay evidencia suficiente de diferencia entre versiones</code></pre>
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/TU-USUARIO/estadistica-basica/edit/main/notebooks/06_anova_chi2/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/06_anova_chi2/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>

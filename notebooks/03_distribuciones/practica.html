@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Práctica: Distribuciones de Probabilidad – Estadística Básica</title>
+<title>8&nbsp; Práctica: Distribuciones de Probabilidad – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/practica.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/practica.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -170,7 +170,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/TU-USUARIO/estadistica-basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -199,13 +199,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos y Estadística Descriptiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/practica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Práctica: Exploración y preprocesamiento de datos</span></span></a>
   </div>
 </li>
       </ul>
@@ -222,13 +228,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad Básica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span></a>
   </div>
 </li>
       </ul>
@@ -245,13 +251,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/practica.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span></a>
   </div>
 </li>
       </ul>
@@ -268,13 +274,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
   </div>
 </li>
       </ul>
@@ -291,13 +297,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Práctica: Correlación y Regresión Lineal</span></span></a>
   </div>
 </li>
       </ul>
@@ -314,13 +320,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span></a>
   </div>
 </li>
       </ul>
@@ -335,21 +341,21 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#distribución-binomial" id="toc-distribución-binomial" class="nav-link active" data-scroll-target="#distribución-binomial"><span class="header-section-number">7.1</span> 1. Distribución Binomial</a></li>
-  <li><a href="#distribución-de-poisson" id="toc-distribución-de-poisson" class="nav-link" data-scroll-target="#distribución-de-poisson"><span class="header-section-number">7.2</span> 2. Distribución de Poisson</a></li>
-  <li><a href="#distribución-normal" id="toc-distribución-normal" class="nav-link" data-scroll-target="#distribución-normal"><span class="header-section-number">7.3</span> 3. Distribución Normal</a></li>
-  <li><a href="#distribución-exponencial" id="toc-distribución-exponencial" class="nav-link" data-scroll-target="#distribución-exponencial"><span class="header-section-number">7.4</span> 4. Distribución Exponencial</a></li>
-  <li><a href="#comprobando-el-teorema-central-del-límite" id="toc-comprobando-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#comprobando-el-teorema-central-del-límite"><span class="header-section-number">7.5</span> 5. Comprobando el Teorema Central del Límite</a></li>
-  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">7.6</span> Ejercicios propuestos</a></li>
+  <li><a href="#distribución-binomial" id="toc-distribución-binomial" class="nav-link active" data-scroll-target="#distribución-binomial"><span class="header-section-number">8.1</span> 1. Distribución Binomial</a></li>
+  <li><a href="#distribución-de-poisson" id="toc-distribución-de-poisson" class="nav-link" data-scroll-target="#distribución-de-poisson"><span class="header-section-number">8.2</span> 2. Distribución de Poisson</a></li>
+  <li><a href="#distribución-normal" id="toc-distribución-normal" class="nav-link" data-scroll-target="#distribución-normal"><span class="header-section-number">8.3</span> 3. Distribución Normal</a></li>
+  <li><a href="#distribución-exponencial" id="toc-distribución-exponencial" class="nav-link" data-scroll-target="#distribución-exponencial"><span class="header-section-number">8.4</span> 4. Distribución Exponencial</a></li>
+  <li><a href="#comprobando-el-teorema-central-del-límite" id="toc-comprobando-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#comprobando-el-teorema-central-del-límite"><span class="header-section-number">8.5</span> 5. Comprobando el Teorema Central del Límite</a></li>
+  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">8.6</span> Ejercicios propuestos</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/03_distribuciones/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/03_distribuciones/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/practica.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/practica.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></h1>
 </div>
 
 
@@ -378,8 +384,8 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> distributions <span class="im">as</span> dist</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="distribución-binomial" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="distribución-binomial"><span class="header-section-number">7.1</span> 1. Distribución Binomial</h2>
+<section id="distribución-binomial" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="distribución-binomial"><span class="header-section-number">8.1</span> 1. Distribución Binomial</h2>
 <p>Simulamos 50 clientes con probabilidad de conversión <span class="math inline">\(p = 0.3\)</span> y comparamos la pmf teórica con un histograma de 10.000 simulaciones.</p>
 <div id="cell-3" class="cell">
 <details class="code-fold">
@@ -402,8 +408,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="distribución-de-poisson" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="distribución-de-poisson"><span class="header-section-number">7.2</span> 2. Distribución de Poisson</h2>
+<section id="distribución-de-poisson" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="distribución-de-poisson"><span class="header-section-number">8.2</span> 2. Distribución de Poisson</h2>
 <p>Comparamos la pmf de Poisson para distintos valores de <span class="math inline">\(\lambda\)</span>: fíjate en cómo la forma se vuelve más simétrica (más “normal”) a medida que <span class="math inline">\(\lambda\)</span> crece.</p>
 <div id="cell-5" class="cell">
 <details class="code-fold">
@@ -424,8 +430,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="distribución-normal" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="distribución-normal"><span class="header-section-number">7.3</span> 3. Distribución Normal</h2>
+<section id="distribución-normal" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="distribución-normal"><span class="header-section-number">8.3</span> 3. Distribución Normal</h2>
 <p>Superponemos la pdf teórica sobre un histograma de muestras simuladas, y calculamos una probabilidad acumulada concreta con <code>normal_cdf</code>.</p>
 <div id="cell-7" class="cell">
 <details class="code-fold">
@@ -449,8 +455,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="distribución-exponencial" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="distribución-exponencial"><span class="header-section-number">7.4</span> 4. Distribución Exponencial</h2>
+<section id="distribución-exponencial" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="distribución-exponencial"><span class="header-section-number">8.4</span> 4. Distribución Exponencial</h2>
 <p>Simulamos el tiempo entre tickets de soporte consecutivos, con una tasa de llegada <span class="math inline">\(\lambda = 4\)</span> tickets/hora.</p>
 <div id="cell-9" class="cell">
 <details class="code-fold">
@@ -473,8 +479,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="comprobando-el-teorema-central-del-límite" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="comprobando-el-teorema-central-del-límite"><span class="header-section-number">7.5</span> 5. Comprobando el Teorema Central del Límite</h2>
+<section id="comprobando-el-teorema-central-del-límite" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="comprobando-el-teorema-central-del-límite"><span class="header-section-number">8.5</span> 5. Comprobando el Teorema Central del Límite</h2>
 <p>Partimos de una población muy asimétrica (Exponencial) y observamos cómo la distribución de las medias muestrales se acerca a una Normal a medida que crece el tamaño de muestra <span class="math inline">\(n\)</span>.</p>
 <div id="cell-11" class="cell">
 <details class="code-fold">
@@ -501,8 +507,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="ejercicios-propuestos" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">7.6</span> Ejercicios propuestos</h2>
+<section id="ejercicios-propuestos" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">8.6</span> Ejercicios propuestos</h2>
 <ol type="1">
 <li>Una fábrica produce piezas con una tasa de defectos del 2%. Si se inspecciona un lote de 200 piezas, calcula la probabilidad de encontrar exactamente 5 defectuosas usando <code>binomial_pmf</code>, y compárala con la aproximación de Poisson (<code>poisson_pmf</code> con λ = n·p).</li>
 <li>Los tiempos de respuesta de una API siguen una distribución Normal con μ = 120 ms y σ = 15 ms. ¿Qué proporción de peticiones tarda más de 150 ms? (usa <code>normal_cdf</code>).</li>
@@ -916,12 +922,12 @@ window.Quarto = {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/03_distribuciones/teoria.html" class="pagination-link" aria-label="Distribuciones de Probabilidad">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../notebooks/04_inferencia/teoria.html" class="pagination-link" aria-label="Inferencia Estadística">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -930,4 +936,4 @@ window.Quarto = {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/TU-USUARIO/estadistica-basica/blob/main/notebooks/03_distribuciones/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/TU-USUARIO/estadistica-basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/03_distribuciones/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
