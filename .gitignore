@@ -2,16 +2,20 @@
 venv/
 .env
 
-# Archivos de compilación de Quarto
+# Archivos generados por Quarto
 _book/
 .quarto/
+_freeze/
 **/*.quarto_ipynb
-# Jupyter y checkpoints
-.ipynb_checkpoints*/
+
+# Jupyter
+.ipynb_checkpoints/
 
 # Caché de Python
 __pycache__/
 *.py[cod]
 
-# Restos de renders sueltos (fuera del libro) 
-/index.html /index_files/
+# Restos de renders sueltos
+/index.html
+/index_files/
+/.quarto/
