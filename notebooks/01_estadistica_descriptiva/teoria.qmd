@@ -1,5 +1,5 @@
 ---
-title: "Fundamentos y Estadística Descriptiva"
+title: "Teoría: Fundamentos y Estadística Descriptiva"
 subtitle: "Estadística Básica — Repositorio 1"
 format:
   html:
@@ -11,13 +11,43 @@ bibliography: ../../references.bib
 
 ## Introducción
 
-La estadística descriptiva es el conjunto de técnicas que nos permiten **resumir, organizar y presentar** un conjunto de datos de forma que sus características principales sean comprensibles de un vistazo. Es el primer paso de cualquier proyecto de ciencia de datos: antes de entrenar un modelo, necesitamos entender la forma, el centro y la dispersión de nuestras variables.
+Vivimos en lo que suele llamarse la *era de los datos*: prácticamente cualquier
+interacción digital —una compra, una búsqueda, un sensor de un dispositivo—
+queda registrada en algún lugar [@mayerschonberger2013bigdata]. Pero un
+conjunto de números en bruto no es, por sí solo, información útil. La
+**estadística** es la disciplina que convierte esos datos en conclusiones:
+resume, describe, detecta patrones y permite generalizar lo observado en una
+muestra al conjunto de una población.
 
-A lo largo de este módulo usaremos un ejemplo transversal: un conjunto de datos simulado de **salarios de empleados por departamento** en una empresa ficticia. Este mismo dataset se retomará en el notebook práctico (`practica.ipynb`).
+Este primer módulo se centra en la **estadística descriptiva**: el conjunto
+de técnicas para resumir, organizar y visualizar un conjunto de datos, sin
+todavía intentar generalizar conclusiones más allá de la muestra observada
+(eso es tarea de la estadística *inferencial*, que veremos en módulos
+posteriores). Usaremos como hilo conductor un dataset simulado de salarios de
+empleados por departamento, el mismo que se retoma en `practica.ipynb`.
 
-## Tipos de Variables
+## ¿Qué es la estadística?
 
-Antes de calcular cualquier medida, debemos identificar qué tipo de variable estamos observando, ya que esto determina qué estadísticos tienen sentido.
+Una definición operativa y muy citada es la de Moore, McCabe y Craig
+[-@moore2012introduction]: calcular la media y la desviación del peso al
+nacer de 1.000 bebés es aritmética; interpretar qué significa ese resultado
+—si es alto o bajo, qué lo explica, qué margen de confianza tiene— es
+estadística. La disciplina no se limita a calcular números: los sitúa en un
+contexto que permite tomar decisiones.
+
+Conviene distinguir desde el principio sus dos grandes ramas:
+
+| | Estadística descriptiva | Estadística inferencial |
+|---|---|---|
+| **Objetivo** | Resumir y describir los datos disponibles | Generalizar conclusiones de una muestra a una población |
+| **Pregunta típica** | ¿Cuál es el salario medio de la muestra? | ¿Cuál es el salario medio de *toda la empresa*, con qué margen de confianza? |
+| **Herramientas** | Media, mediana, varianza, gráficos | Intervalos de confianza, contrastes de hipótesis |
+| **Módulo del curso** | Módulo 1 (este módulo) | Módulos posteriores (tras Probabilidad) |
+
+## Tipos de variables
+
+Antes de calcular cualquier medida, hay que identificar qué tipo de variable
+se está observando, porque de ello depende qué estadísticos tienen sentido.
 
 ```{mermaid}
 flowchart TD
@@ -25,20 +55,23 @@ flowchart TD
     A --> C[Cuantitativa / Numérica]
     B --> B1[Nominal: sin orden<br/>ej. departamento]
     B --> B2[Ordinal: con orden<br/>ej. nivel de seniority]
-    C --> C1[Discreta: valores contables<br/>ej. n° de proyectos]
+    C --> C1[Discreta: valores contables<br/>ej. n.º de proyectos]
     C --> C2[Continua: cualquier valor real<br/>ej. salario]
 ```
 
-| Tipo | Ejemplo en nuestro dataset | Estadísticos válidos |
-|---|---|---|
-| Nominal | Departamento (Ventas, IT, RRHH) | Moda, frecuencias |
-| Ordinal | Nivel (Junior, Semi-Senior, Senior) | Moda, mediana |
-| Discreta | Años de antigüedad | Media, mediana, moda |
-| Continua | Salario mensual | Media, mediana, varianza, desviación estándar |
+| Tipo estadístico | Subtipo | Ejemplo | Tipo típico en pandas |
+|---|---|---|---|
+| Cualitativa | Nominal | Departamento (Ventas, IT, RRHH) | `object` / `category` |
+| Cualitativa | Ordinal | Nivel (Junior, Semi-Senior, Senior) | `CategoricalDtype(ordered=True)` |
+| Cuantitativa | Discreta | Años de antigüedad | `int64` |
+| Cuantitativa | Continua | Salario mensual | `float64` |
 
-## Medidas de Tendencia Central
+Una variable cuantitativa continua registrada sin decimales (por ejemplo, el
+peso de una persona anotado solo en kilogramos) puede parecer discreta a
+simple vista; lo que determina el tipo es la naturaleza de la magnitud, no la
+precisión con la que se haya anotado.
 
-Estas medidas buscan identificar un valor "representativo" del conjunto de datos.
+## Medidas de tendencia central
 
 ### Media aritmética
 
@@ -48,11 +81,12 @@ $$
 \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
 $$
 
-Es sensible a valores extremos (*outliers*): un solo salario atípicamente alto puede distorsionar la media de todo el departamento.
+Es sensible a valores extremos: un solo salario atípicamente alto puede
+distorsionar la media de todo un departamento.
 
 ### Mediana
 
-Es el valor central cuando los datos están ordenados. Si $n$ es impar, es el valor en la posición $\frac{n+1}{2}$; si es par, es el promedio de los dos valores centrales.
+Es el valor central una vez ordenados los datos:
 
 $$
 \text{Mediana} =
@@ -62,15 +96,15 @@ x_{\left(\frac{n+1}{2}\right)} & \text{si } n \text{ es impar} \\[6pt]
 \end{cases}
 $$
 
-A diferencia de la media, **es robusta ante outliers**, lo que la hace preferible en distribuciones asimétricas (como suelen ser los salarios).
+A diferencia de la media, es **robusta** ante outliers, lo que la hace
+preferible en distribuciones asimétricas como suelen ser los salarios.
 
 ### Moda
 
-El valor (o categoría) que ocurre con mayor frecuencia. Es la única medida de tendencia central aplicable a variables nominales.
+El valor (o categoría) más frecuente. Es la única medida de tendencia central
+aplicable a variables nominales.
 
-## Medidas de Dispersión
-
-La tendencia central no es suficiente: dos departamentos pueden tener el mismo salario promedio pero una dispersión de sueldos completamente distinta.
+## Medidas de dispersión
 
 ### Rango
 
@@ -80,75 +114,159 @@ $$
 
 Muy sensible a outliers y poco informativo por sí solo.
 
-### Varianza
+### Varianza y desviación estándar
 
-Varianza **poblacional**:
-
-$$
-\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
-$$
-
-Varianza **muestral** (con corrección de Bessel, dividiendo por $n-1$ para obtener un estimador insesgado):
+Varianza muestral (con corrección de Bessel, dividiendo por $n-1$ para
+obtener un estimador insesgado):
 
 $$
 s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
-$$
-
-### Desviación estándar
-
-$$
+\qquad\qquad
 s = \sqrt{s^2}
 $$
 
-Se expresa en las mismas unidades que la variable original (a diferencia de la varianza), lo que facilita su interpretación.
-
 ### Coeficiente de variación
 
-Permite comparar la dispersión relativa entre variables con distintas unidades o escalas:
+Permite comparar la dispersión relativa entre variables con distinta escala:
 
 $$
 CV = \frac{s}{\bar{x}} \times 100\%
 $$
 
-Por ejemplo, para comparar la variabilidad salarial entre un departamento junior (salarios bajos) y uno directivo (salarios altos), el CV es más informativo que la desviación estándar absoluta.
+Por ejemplo, para comparar la variabilidad salarial de un departamento junior
+(sueldos bajos) frente a uno directivo (sueldos altos), el CV es más
+informativo que la desviación estándar absoluta.
 
-## Medidas de Forma
+## Medidas de forma
 
-### Asimetría (Skewness)
-
-Mide el grado de simetría de la distribución respecto a su media:
+### Asimetría (skewness)
 
 $$
 g_1 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^3}{s^3}
 $$
 
-- $g_1 \approx 0$: distribución simétrica.
-- $g_1 > 0$: asimetría positiva (cola larga hacia la derecha) — típico en salarios, donde pocos sueldos muy altos "estiran" la distribución.
-- $g_1 < 0$: asimetría negativa (cola larga hacia la izquierda).
+$g_1 \approx 0$ indica simetría; $g_1 > 0$ indica cola larga hacia la derecha
+(típico en salarios: pocos sueldos muy altos "estiran" la distribución).
 
-### Curtosis
-
-Mide qué tan "apuntada" o "achatada" es la distribución respecto a la normal, en función del comportamiento de sus colas:
+### Curtosis (exceso)
 
 $$
 g_2 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^4}{s^4} - 3
 $$
 
-(Se resta 3 para que la distribución normal tenga curtosis de referencia igual a 0 — *curtosis de exceso*).
+Se resta 3 para que la distribución normal tenga curtosis de referencia 0.
+$g_2 > 0$ (leptocúrtica) indica colas más pesadas que la normal; $g_2 < 0$
+(platicúrtica) indica colas más ligeras.
 
-- $g_2 > 0$ (*leptocúrtica*): colas más pesadas que la normal, más valores extremos.
-- $g_2 < 0$ (*platicúrtica*): colas más ligeras, distribución más "plana".
+## Resumen de cinco números y diagrama de caja
 
-## Resumen de Cinco Números y Diagrama de Caja
-
-El resumen de Tukey resume una variable continua en cinco valores:
+El resumen de cinco números resume una variable continua como:
 
 $$
 \{ x_{\min},\ Q_1,\ \text{Mediana},\ Q_3,\ x_{\max} \}
 $$
 
-donde $Q_1$ y $Q_3$ son el primer y tercer cuartil. El **rango intercuartílico** ($IQR = Q_3 - Q_1$) se usa para detectar outliers: cualquier valor fuera de $[Q_1 - 1.5 \cdot IQR,\ Q_3 + 1.5 \cdot IQR]$ se considera atípico. Este resumen es la base del **boxplot**, que veremos en el notebook práctico.
+donde $Q_1$ y $Q_3$ son el primer y tercer cuartil, y el **rango
+intercuartílico** es $IQR = Q_3 - Q_1$. Esta idea, junto con el diagrama de
+caja que la visualiza, se debe originalmente a Tukey
+[-@tukey1977exploratory] y sigue siendo la herramienta exploratoria de
+referencia:
+
+```{=html}
+<div style="text-align:center; margin: 1.5em 0;">
+<svg viewBox="0 0 640 180" width="100%" style="max-width:600px" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="90" x2="600" y2="90" stroke="#999" stroke-width="1"/>
+  <line x1="80" y1="90" x2="180" y2="90" stroke="#333" stroke-width="2"/>
+  <line x1="80" y1="60" x2="80" y2="120" stroke="#333" stroke-width="2"/>
+  <rect x="180" y="50" width="200" height="80" fill="#AED6F1" stroke="#1B4F72" stroke-width="2"/>
+  <line x1="280" y1="50" x2="280" y2="130" stroke="#1B4F72" stroke-width="3"/>
+  <line x1="380" y1="90" x2="480" y2="90" stroke="#333" stroke-width="2"/>
+  <line x1="480" y1="60" x2="480" y2="120" stroke="#333" stroke-width="2"/>
+  <circle cx="560" cy="90" r="6" fill="#E74C3C"/>
+  <text x="80" y="145" font-size="13" text-anchor="middle">Mínimo</text>
+  <text x="180" y="145" font-size="13" text-anchor="middle">Q1</text>
+  <text x="280" y="145" font-size="13" text-anchor="middle" font-weight="bold">Mediana</text>
+  <text x="380" y="145" font-size="13" text-anchor="middle">Q3</text>
+  <text x="480" y="165" font-size="13" text-anchor="middle">Máximo (dentro de 1.5·RIC)</text>
+  <text x="560" y="145" font-size="13" text-anchor="middle" fill="#E74C3C">Valor atípico</text>
+</svg>
+</div>
+```
+
+Un valor se considera atípico por esta regla si cae fuera de
+$[Q_1 - 1.5 \cdot IQR,\ Q_3 + 1.5 \cdot IQR]$.
+
+## Valores atípicos y estadística robusta
+
+Un valor atípico (*outlier*) es, de forma general, una observación que
+parece inconsistente con el resto del conjunto de datos
+[@barnettlewis1994outliers]. No siempre es un error: puede ser un dato real
+pero poco frecuente, o puede deberse a un error de captura (por ejemplo, un
+dígito de más al teclear una edad). La decisión de corregirlo, eliminarlo o
+conservarlo es una decisión estadística, no automática.
+
+Como la media y la desviación estándar son muy sensibles a estos valores, el
+subcampo de la **estadística robusta** propone alternativas menos afectadas:
+
+| Medida | Estimador clásico | Alternativa robusta | Por qué es más robusta |
+|---|---|---|---|
+| Tendencia central | Media ($\bar{x}$) | Mediana / media recortada | Ignora o pondera menos los extremos |
+| Dispersión | Desviación estándar ($s$) | Rango intercuartílico (RIC) / MAD | Se basa en cuantiles, no en distancias al cuadrado |
+
+La **media recortada** al $k\%$ elimina ese porcentaje de valores en cada
+extremo antes de promediar, y la **desviación absoluta respecto de la
+mediana (MAD)** sustituye la media por la mediana como valor central de
+referencia:
+
+$$
+\text{MAD}(x) = \text{mediana}\big(|x_i - \text{mediana}(x)|\big)
+$$
+
+En `practica.ipynb` ya se usa la función `detect_outliers()` de
+`stats_toolkit.descriptive` para aplicar la regla del RIC sobre el dataset de
+salarios — esta sección le da el fundamento teórico a ese cálculo.
+
+## Valores perdidos (missing data)
+
+En datos reales, es habitual que falten valores en algunas observaciones
+(una encuesta sin responder, un sensor que falla un día). Ignorar esas filas
+sin más reduce el tamaño efectivo de la muestra y puede introducir sesgo si
+la ausencia no es completamente aleatoria [@littlerubin1987missing]. Las
+estrategias más simples son:
+
+- **Eliminación**: descartar las observaciones incompletas, razonable solo
+  si son muy pocas en relación con el total.
+- **Imputación simple**: sustituir el valor ausente por la media o la
+  mediana de la variable, que no sesga la tendencia central pero sí reduce
+  artificialmente la dispersión observada.
+
+Trataremos estrategias de imputación más elaboradas (basadas en modelos o en
+vecinos más cercanos) cuando abordemos regresión en el repositorio de
+Machine Learning.
+
+## Estadística y minería de datos
+
+A medida que el volumen de datos crece, han surgido enfoques computacionales
+—minería de datos, aprendizaje automático— que comparten objetivo con la
+estadística pero parten de una lógica distinta. Simplificando mucho:
+la estadística clásica suele partir de una hipótesis que se quiere contrastar
+contra los datos, mientras que los algoritmos de minería de datos exploran
+los datos en busca de patrones sin una hipótesis previa concreta
+[@hankamber2001datamining]. En la práctica, ambos enfoques se solapan cada
+vez más y comparten técnicas [@wittenfrankhall2011datamining]; profundizaremos
+en esta conexión en el repositorio de Machine Learning.
 
 ## Cierre
 
-Con estos conceptos ya puedes describir cuantitativamente cualquier variable numérica. En `practica.ipynb` aplicaremos cada fórmula sobre el dataset de salarios, comparando el cálculo manual con las funciones de `pandas` y `scipy`, y usando las utilidades de `src/stats_toolkit/descriptive.py`.
+Con tipos de variables, medidas de tendencia central, dispersión, forma y
+el tratamiento de valores atípicos, ya tienes las herramientas para describir
+cuantitativamente cualquier variable numérica. En `practica.ipynb` se aplica
+todo esto sobre el dataset de salarios por departamento. El Módulo 2
+introduce la probabilidad, el lenguaje necesario para dar el salto de
+"describir una muestra" a "generalizar a una población".
+
+## Material de referencia adicional
+
+Este módulo se preparó como apoyo didáctico junto a dos textos de la UOC que
+cubren temas afines con mayor detalle: introducción general a la estadística
+[@bernado2017introduccion] y preprocesamiento de datos [@vegas2020preprocesamiento].

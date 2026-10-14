@@ -9,7 +9,7 @@ book:
   author: "Julio Úbeda Quesada"
   date: today
   page-navigation: true
-  repo-url: "https://github.com/TU-USUARIO/estadistica-basica"
+  repo-url: "https://github.com/JulioUQ/Curso-de-Estadistica-Basica"
   repo-actions: [edit, issue]
   chapters:
     - index.qmd
@@ -17,6 +17,8 @@ book:
       chapters:
         - notebooks/01_estadistica_descriptiva/teoria.qmd
         - notebooks/01_estadistica_descriptiva/practica.ipynb
+        - notebooks/01_estadistica_descriptiva/practica_preprocesamiento.ipynb
+
     - part: "Módulo 2 — Probabilidad Básica"
       chapters:
         - notebooks/02_probabilidad/teoria.qmd
