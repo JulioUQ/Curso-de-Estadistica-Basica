@@ -283,7 +283,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Actividad práctica: análisis descriptivo e inferencial de la salud del sueño</span></span></a>
   </div>
 </li>
       </ul>
@@ -416,7 +416,7 @@ r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(-1\)</span>: relación lineal negativa fuerte.</li>
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(0\)</span>: poca o ninguna relación lineal (¡ojo! podría haber una relación no lineal fuerte y aun así <span class="math inline">\(r \approx 0\)</span>).</li>
 </ul>
-<div id="a56d1135" class="cell" data-execution_count="2">
+<div id="102c28de" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> regression <span class="im">as</span> reg</span>
@@ -450,7 +450,7 @@ Y = \beta_0 + \beta_1 X + \varepsilon
 <p><span class="math display">\[
 \hat{\beta}_1 = \frac{\text{Cov}(X, Y)}{\text{Var}(X)} \qquad \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
 \]</span></p>
-<div id="f405b8b2" class="cell" data-execution_count="3">
+<div id="07d0f6a6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(horas_estudio, nota_examen)</span>
@@ -464,7 +464,7 @@ Pendiente (β1): 0.655
 Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el examen</code></pre>
 </div>
 </div>
-<div id="8117a593" class="cell" data-execution_count="4">
+<div id="15c648b4" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -497,7 +497,7 @@ Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el exa
 R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}
 \]</span></p>
 <p><span class="math inline">\(R^2\)</span> va de 0 (el modelo no explica nada) a 1 (el modelo explica toda la variabilidad). En regresión lineal simple, <span class="math inline">\(R^2\)</span> es exactamente el cuadrado del coeficiente de correlación de Pearson: <span class="math inline">\(R^2 = r^2\)</span>.</p>
-<div id="e6b16d6f" class="cell" data-execution_count="5">
+<div id="d26a3123" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(horas_estudio, nota_examen, beta0, beta1)</span>
@@ -520,7 +520,7 @@ H_0: \beta_1 = 0 \quad \text{(no hay relación lineal real)} \qquad H_1: \beta_1
 <p><span class="math display">\[
 t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)}
 \]</span></p>
-<div id="bca170bb" class="cell" data-execution_count="6">
+<div id="c0b0f532" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(horas_estudio, nota_examen, beta0, beta1)</span>
@@ -537,7 +537,7 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 </div>
 <p>Y, como en el Módulo 4, también podemos construir un intervalo de confianza para <span class="math inline">\(\beta_1\)</span> en vez de limitarnos a un sí/no:</p>
-<div id="7c78c982" class="cell" data-execution_count="7">
+<div id="e8e0c36e" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(horas_estudio, nota_examen, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
@@ -959,8 +959,8 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/04_inferencia/practica.html" class="pagination-link" aria-label="Práctica: Inferencia Estadística">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span>
+      <a href="../../notebooks/04_inferencia/practica.html" class="pagination-link" aria-label="Actividad práctica: análisis descriptivo e inferencial de la salud del sueño">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Actividad práctica: análisis descriptivo e inferencial de la salud del sueño</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

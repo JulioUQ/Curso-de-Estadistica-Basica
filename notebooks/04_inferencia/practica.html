@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Práctica: Inferencia Estadística – Estadística Básica</title>
+<title>10&nbsp; Actividad práctica: análisis descriptivo e inferencial de la salud del sueño – Estadística Básica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Actividad práctica: análisis descriptivo e inferencial de la salud del sueño</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -280,7 +280,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Actividad práctica: análisis descriptivo e inferencial de la salud del sueño</span></span></a>
   </div>
 </li>
       </ul>
@@ -341,21 +341,53 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#intervalo-de-confianza-para-una-media" id="toc-intervalo-de-confianza-para-una-media" class="nav-link active" data-scroll-target="#intervalo-de-confianza-para-una-media"><span class="header-section-number">10.1</span> 1. Intervalo de confianza para una media</a></li>
-  <li><a href="#intervalo-de-confianza-para-una-proporción" id="toc-intervalo-de-confianza-para-una-proporción" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-una-proporción"><span class="header-section-number">10.2</span> 2. Intervalo de confianza para una proporción</a></li>
-  <li><a href="#contraste-de-hipótesis-test-t-de-una-muestra" id="toc-contraste-de-hipótesis-test-t-de-una-muestra" class="nav-link" data-scroll-target="#contraste-de-hipótesis-test-t-de-una-muestra"><span class="header-section-number">10.3</span> 3. Contraste de hipótesis: test t de una muestra</a></li>
-  <li><a href="#contraste-de-hipótesis-ab-test-de-dos-proporciones" id="toc-contraste-de-hipótesis-ab-test-de-dos-proporciones" class="nav-link" data-scroll-target="#contraste-de-hipótesis-ab-test-de-dos-proporciones"><span class="header-section-number">10.4</span> 4. Contraste de hipótesis: A/B test de dos proporciones</a></li>
-  <li><a href="#qué-significa-un-intervalo-de-confianza-del-95" id="toc-qué-significa-un-intervalo-de-confianza-del-95" class="nav-link" data-scroll-target="#qué-significa-un-intervalo-de-confianza-del-95"><span class="header-section-number">10.5</span> 5. ¿Qué significa un intervalo de confianza del 95%?</a></li>
-  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">10.6</span> Ejercicios propuestos</a></li>
+  <li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link active" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">10.1</span> Objetivos de aprendizaje</a></li>
+  <li><a href="#importación-de-bibliotecas-y-carga-de-datos" id="toc-importación-de-bibliotecas-y-carga-de-datos" class="nav-link" data-scroll-target="#importación-de-bibliotecas-y-carga-de-datos"><span class="header-section-number">10.2</span> 0. Importación de bibliotecas y carga de datos</a>
+  <ul class="collapse">
+  <li><a href="#adaptación-de-nombres-de-variables" id="toc-adaptación-de-nombres-de-variables" class="nav-link" data-scroll-target="#adaptación-de-nombres-de-variables"><span class="header-section-number">10.2.1</span> Adaptación de nombres de variables</a></li>
+  </ul></li>
+  <li><a href="#análisis-visual-exploratorio" id="toc-análisis-visual-exploratorio" class="nav-link" data-scroll-target="#análisis-visual-exploratorio"><span class="header-section-number">10.3</span> 1. Análisis visual exploratorio</a>
+  <ul class="collapse">
+  <li><a href="#pr1-la-media-de-horas-de-sueño-es-inferior-a-75-horas" id="toc-pr1-la-media-de-horas-de-sueño-es-inferior-a-75-horas" class="nav-link" data-scroll-target="#pr1-la-media-de-horas-de-sueño-es-inferior-a-75-horas"><span class="header-section-number">10.3.1</span> 1.1 PR1 — ¿La media de horas de sueño es inferior a 7,5 horas?</a></li>
+  <li><a href="#pr2-difiere-la-calidad-del-sueño-entre-géneros" id="toc-pr2-difiere-la-calidad-del-sueño-entre-géneros" class="nav-link" data-scroll-target="#pr2-difiere-la-calidad-del-sueño-entre-géneros"><span class="header-section-number">10.3.2</span> 1.2 PR2 — ¿Difiere la calidad del sueño entre géneros?</a></li>
+  <li><a href="#pr3-es-mayor-la-proporción-de-trastornos-del-sueño-con-estrés-alto" id="toc-pr3-es-mayor-la-proporción-de-trastornos-del-sueño-con-estrés-alto" class="nav-link" data-scroll-target="#pr3-es-mayor-la-proporción-de-trastornos-del-sueño-con-estrés-alto"><span class="header-section-number">10.3.3</span> 1.3 PR3 — ¿Es mayor la proporción de trastornos del sueño con estrés alto?</a></li>
+  <li><a href="#pr4-existe-asociación-entre-la-categoría-de-bmi-y-los-trastornos-del-sueño" id="toc-pr4-existe-asociación-entre-la-categoría-de-bmi-y-los-trastornos-del-sueño" class="nav-link" data-scroll-target="#pr4-existe-asociación-entre-la-categoría-de-bmi-y-los-trastornos-del-sueño"><span class="header-section-number">10.3.4</span> 1.4 PR4 — ¿Existe asociación entre la categoría de BMI y los trastornos del sueño?</a></li>
+  </ul></li>
+  <li><a href="#pr1-contraste-de-una-media" id="toc-pr1-contraste-de-una-media" class="nav-link" data-scroll-target="#pr1-contraste-de-una-media"><span class="header-section-number">10.4</span> 2. PR1 — Contraste de una media</a>
+  <ul class="collapse">
+  <li><a href="#hipótesis" id="toc-hipótesis" class="nav-link" data-scroll-target="#hipótesis"><span class="header-section-number">10.4.1</span> 2.1 Hipótesis</a></li>
+  <li><a href="#interpretación" id="toc-interpretación" class="nav-link" data-scroll-target="#interpretación"><span class="header-section-number">10.4.2</span> 2.2 Interpretación</a></li>
+  </ul></li>
+  <li><a href="#pr2-comparación-de-dos-medias-independientes" id="toc-pr2-comparación-de-dos-medias-independientes" class="nav-link" data-scroll-target="#pr2-comparación-de-dos-medias-independientes"><span class="header-section-number">10.5</span> 3. PR2 — Comparación de dos medias independientes</a>
+  <ul class="collapse">
+  <li><a href="#interpretación-1" id="toc-interpretación-1" class="nav-link" data-scroll-target="#interpretación-1"><span class="header-section-number">10.5.1</span> 3.1 Interpretación</a></li>
+  </ul></li>
+  <li><a href="#pr3-comparación-unilateral-de-dos-proporciones" id="toc-pr3-comparación-unilateral-de-dos-proporciones" class="nav-link" data-scroll-target="#pr3-comparación-unilateral-de-dos-proporciones"><span class="header-section-number">10.6</span> 4. PR3 — Comparación unilateral de dos proporciones</a>
+  <ul class="collapse">
+  <li><a href="#intervalo-de-confianza-de-la-diferencia" id="toc-intervalo-de-confianza-de-la-diferencia" class="nav-link" data-scroll-target="#intervalo-de-confianza-de-la-diferencia"><span class="header-section-number">10.6.1</span> 4.1 Intervalo de confianza de la diferencia</a></li>
+  <li><a href="#interpretación-2" id="toc-interpretación-2" class="nav-link" data-scroll-target="#interpretación-2"><span class="header-section-number">10.6.2</span> 4.2 Interpretación</a></li>
+  </ul></li>
+  <li><a href="#pr4-asociación-entre-bmi-y-trastornos-del-sueño" id="toc-pr4-asociación-entre-bmi-y-trastornos-del-sueño" class="nav-link" data-scroll-target="#pr4-asociación-entre-bmi-y-trastornos-del-sueño"><span class="header-section-number">10.7</span> 5. PR4 — Asociación entre BMI y trastornos del sueño</a>
+  <ul class="collapse">
+  <li><a href="#comprobación-manual-y-tamaño-de-efecto" id="toc-comprobación-manual-y-tamaño-de-efecto" class="nav-link" data-scroll-target="#comprobación-manual-y-tamaño-de-efecto"><span class="header-section-number">10.7.1</span> 5.1 Comprobación manual y tamaño de efecto</a></li>
+  <li><a href="#prueba-exacta-de-fisher-consideraciones-de-implementación" id="toc-prueba-exacta-de-fisher-consideraciones-de-implementación" class="nav-link" data-scroll-target="#prueba-exacta-de-fisher-consideraciones-de-implementación"><span class="header-section-number">10.7.2</span> 5.2 Prueba exacta de Fisher: consideraciones de implementación</a></li>
+  <li><a href="#interpretación-3" id="toc-interpretación-3" class="nav-link" data-scroll-target="#interpretación-3"><span class="header-section-number">10.7.3</span> 5.3 Interpretación</a></li>
+  </ul></li>
+  <li><a href="#tabla-resumen-de-resultados" id="toc-tabla-resumen-de-resultados" class="nav-link" data-scroll-target="#tabla-resumen-de-resultados"><span class="header-section-number">10.8</span> 6. Tabla resumen de resultados</a></li>
+  <li><a href="#conclusiones-y-límites-del-análisis" id="toc-conclusiones-y-límites-del-análisis" class="nav-link" data-scroll-target="#conclusiones-y-límites-del-análisis"><span class="header-section-number">10.9</span> 7. Conclusiones y límites del análisis</a></li>
+  <li><a href="#equivalencias-entre-r-y-python" id="toc-equivalencias-entre-r-y-python" class="nav-link" data-scroll-target="#equivalencias-entre-r-y-python"><span class="header-section-number">10.10</span> 8. Equivalencias entre R y Python</a>
+  <ul class="collapse">
+  <li><a href="#diferencias-y-precauciones" id="toc-diferencias-y-precauciones" class="nav-link" data-scroll-target="#diferencias-y-precauciones"><span class="header-section-number">10.10.1</span> Diferencias y precauciones</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/04_inferencia/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/practica.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Actividad práctica: análisis descriptivo e inferencial de la salud del sueño</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Actividad práctica: análisis descriptivo e inferencial de la salud del sueño</span></h1>
 </div>
 
 
@@ -372,135 +404,522 @@ window.Quarto = {
 </header>
 
 
-<p>En este cuaderno construimos intervalos de confianza, realizamos contrastes de hipótesis sobre medias y proporciones, y verificamos por simulación qué significa realmente un nivel de confianza del 95%.</p>
-<div id="cell-1" class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> inference <span class="im">as</span> inf</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<section id="intervalo-de-confianza-para-una-media" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-media"><span class="header-section-number">10.1</span> 1. Intervalo de confianza para una media</h2>
-<p>Simulamos una muestra de 40 tiempos de respuesta de una API (población Normal con μ=120ms, σ=15ms) y construimos su IC al 95%, sabiendo σ (caso z) y sin saberlo (caso t, estimando s a partir de la propia muestra).</p>
-<div id="cell-3" class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">120</span>, scale<span class="op">=</span><span class="dv">15</span>, size<span class="op">=</span><span class="dv">40</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x_bar <span class="op">=</span> muestra.mean()</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> muestra.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media muestral: </span><span class="sc">{</span>x_bar<span class="sc">:.2f}</span><span class="ss"> ms | Desviación muestral: </span><span class="sc">{</span>s<span class="sc">:.2f}</span><span class="ss"> ms"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ic_z <span class="op">=</span> inf.confidence_interval_mean_z(x_bar, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ic_t <span class="op">=</span> inf.confidence_interval_mean_t(x_bar, sample_std<span class="op">=</span>s, n<span class="op">=</span><span class="dv">40</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% (sigma conocida, z): (</span><span class="sc">{</span>ic_z[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ic_z[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% (sigma desconocida, t): (</span><span class="sc">{</span>ic_t[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ic_t[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>Observa que el intervalo basado en la t es ligeramente más ancho: refleja la incertidumbre extra de tener que estimar σ desde la propia muestra.</p>
+<p><strong>Autor:</strong> Julio Úbeda Quesada<br>
+<strong>Tema:</strong> contrastes de hipótesis con Python<br>
+<strong>Nivel de significación de referencia:</strong> <span class="math inline">\(\alpha=0.05\)</span></p>
+<section id="objetivos-de-aprendizaje" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="objetivos-de-aprendizaje"><span class="header-section-number">10.1</span> Objetivos de aprendizaje</h2>
+<ul>
+<li>Describir y visualizar variables relacionadas con el sueño y el estilo de vida.</li>
+<li>Formular hipótesis nulas y alternativas acordes con cuatro preguntas de investigación.</li>
+<li>Aplicar pruebas paramétricas y para variables categóricas mediante <code>scipy.stats</code> y <code>statsmodels</code>.</li>
+<li>Comparar cálculos manuales con funciones de biblioteca y explicar las diferencias metodológicas.</li>
+<li>Interpretar los resultados sin confundir significación estadística, importancia práctica y causalidad.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Datos necesarios.</strong> La práctica original utiliza <code>sleephealth_processed.xlsx</code> (374 filas y 15 columnas). Ese archivo no forma parte de los adjuntos de esta conversación. Coloca el Excel procesado en <code>notebooks/04_inferencia/data/</code> o actualiza <code>DATA_PATH</code>. Si tu repositorio contiene <code>notebooks/01_estadistica_descriptiva/data/sleephealth.xlsx</code>, el código también intentará utilizarlo y reconocerá nombres de columnas habituales del conjunto Sleep Health and Lifestyle. Las conclusiones numéricas del documento R solo deben considerarse reproducidas después de ejecutar el notebook con los datos correspondientes.</p>
+</blockquote>
 </section>
-<section id="intervalo-de-confianza-para-una-proporción" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-proporción"><span class="header-section-number">10.2</span> 2. Intervalo de confianza para una proporción</h2>
-<p>Retomamos el ejemplo de conversión del Módulo 3: 15 conversiones sobre 50 clientes.</p>
-<div id="cell-6" class="cell">
+<section id="importación-de-bibliotecas-y-carga-de-datos" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="importación-de-bibliotecas-y-carga-de-datos"><span class="header-section-number">10.2</span> 0. Importación de bibliotecas y carga de datos</h2>
+<div id="5d7ead40" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_hat <span class="op">=</span> <span class="dv">15</span> <span class="op">/</span> <span class="dv">50</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> inf.confidence_interval_proportion(p_hat, n<span class="op">=</span><span class="dv">50</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tasa de conversión observada: </span><span class="sc">{</span>p_hat<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95%: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.proportion <span class="im">import</span> proportions_ztest</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>, context<span class="op">=</span><span class="st">"notebook"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ALPHA <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>SEED <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajusta esta ruta si el archivo está en otra ubicación.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>possible_paths <span class="op">=</span> [</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    Path(<span class="st">"data/sleephealth_processed.xlsx"</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    Path(<span class="st">"notebooks/04_inferencia/data/sleephealth_processed.xlsx"</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    Path(<span class="st">"notebooks/01_estadistica_descriptiva/data/sleephealth.xlsx"</span>),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    Path(<span class="st">"../01_estadistica_descriptiva/data/sleephealth.xlsx"</span>),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>DATA_PATH <span class="op">=</span> <span class="bu">next</span>((p <span class="cf">for</span> p <span class="kw">in</span> possible_paths <span class="cf">if</span> p.exists()), <span class="va">None</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> DATA_PATH <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">FileNotFoundError</span>(</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"No se encontró el Excel. Coloca sleephealth_processed.xlsx en data/ "</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"o modifica DATA_PATH para apuntar al archivo disponible."</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>uoc_df <span class="op">=</span> pd.read_excel(DATA_PATH)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Archivo: </span><span class="sc">{</span>DATA_PATH<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dimensiones: </span><span class="sc">{</span>uoc_df<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> filas × </span><span class="sc">{</span>uoc_df<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columnas"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>display(uoc_df.head())</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({<span class="st">"tipo"</span>: uoc_df.dtypes.astype(<span class="bu">str</span>), <span class="st">"faltantes"</span>: uoc_df.isna().<span class="bu">sum</span>()}))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="adaptación-de-nombres-de-variables" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="adaptación-de-nombres-de-variables"><span class="header-section-number">10.2.1</span> Adaptación de nombres de variables</h3>
+<p>El R Markdown emplea las columnas abreviadas <code>SH</code>, <code>SQ</code>, <code>Stress</code>, <code>SD</code>, <code>BMI</code> y <code>Gender</code>. Algunas versiones del conjunto original usan nombres como <code>Sleep Duration</code>, <code>Quality of Sleep</code>, <code>Stress Level</code>, <code>Sleep Disorder</code> y <code>BMI Category</code>. Esta celda normaliza esos nombres a las abreviaturas utilizadas en la actividad; no modifica los valores.</p>
+<div id="7d7a39ae" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalizamos nombres de columnas de forma tolerante a mayúsculas, espacios y guiones.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>canonical_aliases <span class="op">=</span> {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SH"</span>: [<span class="st">"SH"</span>, <span class="st">"Sleep Duration"</span>, <span class="st">"Sleep_Duration"</span>, <span class="st">"sleep duration"</span>],</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SQ"</span>: [<span class="st">"SQ"</span>, <span class="st">"Quality of Sleep"</span>, <span class="st">"Quality_of_Sleep"</span>, <span class="st">"sleep quality"</span>],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Stress"</span>: [<span class="st">"Stress"</span>, <span class="st">"Stress Level"</span>, <span class="st">"Stress_Level"</span>, <span class="st">"stress level"</span>],</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SD"</span>: [<span class="st">"SD"</span>, <span class="st">"Sleep Disorder"</span>, <span class="st">"Sleep_Disorder"</span>, <span class="st">"sleep disorder"</span>],</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"BMI"</span>: [<span class="st">"BMI"</span>, <span class="st">"BMI Category"</span>, <span class="st">"BMI_Category"</span>, <span class="st">"bmi category"</span>],</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gender"</span>: [<span class="st">"Gender"</span>, <span class="st">"Sex"</span>, <span class="st">"gender"</span>],</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>lookup <span class="op">=</span> {<span class="bu">str</span>(c).strip().casefold(): c <span class="cf">for</span> c <span class="kw">in</span> uoc_df.columns}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>rename <span class="op">=</span> {}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> target, aliases <span class="kw">in</span> canonical_aliases.items():</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    found <span class="op">=</span> <span class="bu">next</span>((lookup[a.casefold()] <span class="cf">for</span> a <span class="kw">in</span> aliases <span class="cf">if</span> a.casefold() <span class="kw">in</span> lookup), <span class="va">None</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> found <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> found <span class="op">!=</span> target:</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        rename[found] <span class="op">=</span> target</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>uoc_df <span class="op">=</span> uoc_df.rename(columns<span class="op">=</span>rename)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>required <span class="op">=</span> [<span class="st">"SH"</span>, <span class="st">"SQ"</span>, <span class="st">"Stress"</span>, <span class="st">"SD"</span>, <span class="st">"BMI"</span>, <span class="st">"Gender"</span>]</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> required <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> uoc_df.columns]</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> missing:</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Faltan columnas requeridas: </span><span class="sc">{</span>missing<span class="sc">}</span><span class="ss">. Columnas disponibles: </span><span class="sc">{</span><span class="bu">list</span>(uoc_df.columns)<span class="sc">}</span><span class="ss">. "</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Revisa que hayas cargado el archivo procesado adecuado."</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Conversión numérica explícita; los valores no convertibles pasan a NaN.</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"SH"</span>, <span class="st">"SQ"</span>, <span class="st">"Stress"</span>]:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    uoc_df[col] <span class="op">=</span> pd.to_numeric(uoc_df[col], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Columnas utilizadas:"</span>, required)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Valores ausentes en variables de análisis:"</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>display(uoc_df[required].isna().<span class="bu">sum</span>().rename(<span class="st">"faltantes"</span>).to_frame())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="contraste-de-hipótesis-test-t-de-una-muestra" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="contraste-de-hipótesis-test-t-de-una-muestra"><span class="header-section-number">10.3</span> 3. Contraste de hipótesis: test t de una muestra</h2>
-<p>¿El salario medio de un departamento de 10 empleados es distinto de los 2400€ que afirma la dirección?</p>
-<div id="cell-8" class="cell">
+</section>
+<section id="análisis-visual-exploratorio" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="análisis-visual-exploratorio"><span class="header-section-number">10.3</span> 1. Análisis visual exploratorio</h2>
+<p>Los gráficos ayudan a describir los datos y detectar patrones, pero no sustituyen los contrastes. Los valores ausentes se excluyen de cada gráfico y análisis cuando corresponda.</p>
+<section id="pr1-la-media-de-horas-de-sueño-es-inferior-a-75-horas" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="pr1-la-media-de-horas-de-sueño-es-inferior-a-75-horas"><span class="header-section-number">10.3.1</span> 1.1 PR1 — ¿La media de horas de sueño es inferior a 7,5 horas?</h3>
+<div id="1809fbe2" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salarios <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> inf.t_test_mean(salarios, mu0<span class="op">=</span><span class="dv">2400</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">: rechazamos H0, hay evidencia de que el salario medio difiere de 2400€"</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">: no hay evidencia suficiente para rechazar H0"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sh <span class="op">=</span> uoc_df[<span class="st">"SH"</span>].dropna()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>media_real <span class="op">=</span> sh.mean()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>sns.histplot(sh, bins<span class="op">=</span><span class="dv">20</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="fl">7.5</span>, color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Media hipotética = 7,5 h"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ax.axvline(media_real, color<span class="op">=</span><span class="st">"green"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"Media muestral = </span><span class="sc">{</span>media_real<span class="sc">:.2f}</span><span class="ss"> h"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Distribución de las horas de sueño"</span>, xlabel<span class="op">=</span><span class="st">"Horas de sueño (SH)"</span>, ylabel<span class="op">=</span><span class="st">"Frecuencia"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"n válido = </span><span class="sc">{</span>sh<span class="sc">.</span>size<span class="sc">}</span><span class="ss">; media = </span><span class="sc">{</span>sh<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">; desviación típica = </span><span class="sc">{</span>sh<span class="sc">.</span>std(ddof<span class="op">=</span><span class="dv">1</span>)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="contraste-de-hipótesis-ab-test-de-dos-proporciones" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="contraste-de-hipótesis-ab-test-de-dos-proporciones"><span class="header-section-number">10.4</span> 4. Contraste de hipótesis: A/B test de dos proporciones</h2>
-<p>Comparamos dos variantes de una landing page: variante A (15/50 conversiones) vs.&nbsp;variante B (27/60 conversiones).</p>
-<div id="cell-10" class="cell">
+<section id="pr2-difiere-la-calidad-del-sueño-entre-géneros" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="pr2-difiere-la-calidad-del-sueño-entre-géneros"><span class="header-section-number">10.3.2</span> 1.2 PR2 — ¿Difiere la calidad del sueño entre géneros?</h3>
+<div id="a63f0fb2" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>z_stat, p_value <span class="op">=</span> inf.two_proportion_z_test(x1<span class="op">=</span><span class="dv">15</span>, n1<span class="op">=</span><span class="dv">50</span>, x2<span class="op">=</span><span class="dv">27</span>, n2<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p_a, p_b <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">50</span>, <span class="dv">27</span><span class="op">/</span><span class="dv">60</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tasa A: </span><span class="sc">{</span>p_a<span class="sc">:.3f}</span><span class="ss"> | Tasa B: </span><span class="sc">{</span>p_b<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"La diferencia entre variantes es estadísticamente significativa (p &lt; 0.05)."</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de diferencia real entre variantes."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gender_sq <span class="op">=</span> uoc_df[[<span class="st">"Gender"</span>, <span class="st">"SQ"</span>]].dropna().copy()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>summary_gender <span class="op">=</span> gender_sq.groupby(<span class="st">"Gender"</span>)[<span class="st">"SQ"</span>].agg(n<span class="op">=</span><span class="st">"size"</span>, media<span class="op">=</span><span class="st">"mean"</span>, sd<span class="op">=</span><span class="st">"std"</span>, mediana<span class="op">=</span><span class="st">"median"</span>, q1<span class="op">=</span><span class="kw">lambda</span> x: x.quantile(<span class="fl">.25</span>), q3<span class="op">=</span><span class="kw">lambda</span> x: x.quantile(<span class="fl">.75</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>display(summary_gender)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>gender_sq, x<span class="op">=</span><span class="st">"Gender"</span>, y<span class="op">=</span><span class="st">"SQ"</span>, showmeans<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            meanprops<span class="op">=</span>{<span class="st">"marker"</span>:<span class="st">"o"</span>, <span class="st">"markerfacecolor"</span>:<span class="st">"red"</span>, <span class="st">"markeredgecolor"</span>:<span class="st">"red"</span>}, ax<span class="op">=</span>ax)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Calidad del sueño por género"</span>, xlabel<span class="op">=</span><span class="st">"Género"</span>, ylabel<span class="op">=</span><span class="st">"Calidad del sueño (SQ)"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="qué-significa-un-intervalo-de-confianza-del-95" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="qué-significa-un-intervalo-de-confianza-del-95"><span class="header-section-number">10.5</span> 5. ¿Qué significa un intervalo de confianza del 95%?</h2>
-<p>Simulamos 5000 muestras distintas de una población Normal(μ=100, σ=15), construimos un IC al 95% para cada una, y visualizamos cuántos contienen realmente μ=100. Dibujamos los primeros 100 para verlo de forma intuitiva.</p>
-<div id="cell-12" class="cell">
+<section id="pr3-es-mayor-la-proporción-de-trastornos-del-sueño-con-estrés-alto" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="pr3-es-mayor-la-proporción-de-trastornos-del-sueño-con-estrés-alto"><span class="header-section-number">10.3.3</span> 1.3 PR3 — ¿Es mayor la proporción de trastornos del sueño con estrés alto?</h3>
+<p>Se define estrés alto como <code>Stress &gt; 6</code> y se considera trastorno del sueño cuando <code>SD</code> es <code>Sleep Apnea</code> o <code>Insomnia</code>, de acuerdo con el R Markdown original.</p>
+<div id="eb8b6e54" class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>true_mu <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n_intervals <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">8</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>uoc_df[<span class="st">"trastorno_sueno"</span>] <span class="op">=</span> uoc_df[<span class="st">"SD"</span>].isin([<span class="st">"Sleep Apnea"</span>, <span class="st">"Insomnia"</span>])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>uoc_df[<span class="st">"estres_grupo"</span>] <span class="op">=</span> np.where(uoc_df[<span class="st">"Stress"</span>] <span class="op">&gt;</span> <span class="dv">6</span>, <span class="st">"Alto"</span>, <span class="st">"Bajo"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># En este conjunto, SD ausente puede representar "sin trastorno"; igual que en el R original, isin() lo clasifica como False.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>pr3_df <span class="op">=</span> uoc_df.dropna(subset<span class="op">=</span>[<span class="st">"Stress"</span>]).copy()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>pr3_summary <span class="op">=</span> pr3_df.groupby(<span class="st">"estres_grupo"</span>)[<span class="st">"trastorno_sueno"</span>].agg(n<span class="op">=</span><span class="st">"size"</span>, casos<span class="op">=</span><span class="st">"sum"</span>, proporcion<span class="op">=</span><span class="st">"mean"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>display(pr3_summary)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">5</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> pr3_summary.reset_index()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ax.bar(plot_data[<span class="st">"estres_grupo"</span>], plot_data[<span class="st">"proporcion"</span>])</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, row <span class="kw">in</span> plot_data.reset_index(drop<span class="op">=</span><span class="va">True</span>).iterrows():</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    ax.text(i, row[<span class="st">"proporcion"</span>] <span class="op">+</span> <span class="fl">0.02</span>, <span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'proporcion'</span>]<span class="sc">:.1%}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Proporción con trastorno del sueño según estrés"</span>, xlabel<span class="op">=</span><span class="st">"Nivel de estrés"</span>, ylabel<span class="op">=</span><span class="st">"Proporción con trastorno"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="pr4-existe-asociación-entre-la-categoría-de-bmi-y-los-trastornos-del-sueño" class="level3" data-number="10.3.4">
+<h3 data-number="10.3.4" class="anchored" data-anchor-id="pr4-existe-asociación-entre-la-categoría-de-bmi-y-los-trastornos-del-sueño"><span class="header-section-number">10.3.4</span> 1.4 PR4 — ¿Existe asociación entre la categoría de BMI y los trastornos del sueño?</h3>
+<div id="86c55164" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SD ausente representa ausencia de trastorno en el conjunto estándar; no se elimina esa fila.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pr4_df <span class="op">=</span> uoc_df.dropna(subset<span class="op">=</span>[<span class="st">"BMI"</span>]).copy()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pr4_df[<span class="st">"trastorno_etiqueta"</span>] <span class="op">=</span> np.where(pr4_df[<span class="st">"trastorno_sueno"</span>], <span class="st">"Con trastorno"</span>, <span class="st">"Sin trastorno"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>prop_bmi <span class="op">=</span> pd.crosstab(pr4_df[<span class="st">"BMI"</span>], pr4_df[<span class="st">"trastorno_etiqueta"</span>], normalize<span class="op">=</span><span class="st">"index"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>display(prop_bmi)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>contains_mu <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_intervals):</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> rng.normal(true_mu, <span class="dv">15</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    x_bar <span class="op">=</span> sample.mean()</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    lower, upper <span class="op">=</span> inf.confidence_interval_mean_z(x_bar, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> <span class="st">"steelblue"</span> <span class="cf">if</span> lower <span class="op">&lt;=</span> true_mu <span class="op">&lt;=</span> upper <span class="cf">else</span> <span class="st">"crimson"</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lower <span class="op">&lt;=</span> true_mu <span class="op">&lt;=</span> upper:</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        contains_mu <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ax.plot([lower, upper], [i, i], color<span class="op">=</span>color, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>ax.axvline(true_mu, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="ss">f"Verdadera μ = </span><span class="sc">{</span>true_mu<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Valor"</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="ss">f"100 intervalos de confianza al 95% — </span><span class="sc">{</span>contains_mu<span class="sc">}</span><span class="ss"> de 100 contienen μ (línea roja = no la contiene)"</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Ahora con 5000 simulaciones, usando la función del toolkit</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(true_mu<span class="op">=</span><span class="dv">100</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>, n_simulations<span class="op">=</span><span class="dv">5000</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cobertura empírica sobre 5000 simulaciones: </span><span class="sc">{</span>coverage<span class="sc">:.3f}</span><span class="ss"> (esperado ≈ 0.95)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> prop_bmi.plot(kind<span class="op">=</span><span class="st">"bar"</span>, stacked<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>), colormap<span class="op">=</span><span class="st">"Set2"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Proporción de trastornos del sueño por categoría de BMI"</span>, xlabel<span class="op">=</span><span class="st">"Categoría BMI"</span>, ylabel<span class="op">=</span><span class="st">"Proporción"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">"Trastorno del sueño"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.02</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">"upper left"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="ejercicios-propuestos" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">10.6</span> Ejercicios propuestos</h2>
+</section>
+<section id="pr1-contraste-de-una-media" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="pr1-contraste-de-una-media"><span class="header-section-number">10.4</span> 2. PR1 — Contraste de una media</h2>
+<p><strong>Pregunta:</strong> ¿la media de horas de sueño es inferior a 7,5 horas diarias?</p>
+<section id="hipótesis" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="hipótesis"><span class="header-section-number">10.4.1</span> 2.1 Hipótesis</h3>
+<p><span class="math display">\[H_0: \mu=7.5 \qquad H_1: \mu&lt;7.5\]</span></p>
+<p>Es un contraste unilateral izquierdo. Se utiliza la prueba t de una muestra porque la desviación típica poblacional no se conoce. El tamaño muestral por sí solo no garantiza todos los supuestos: revisamos independencia, valores atípicos y la forma de la distribución.</p>
+<p><span class="math display">\[t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}},\quad df=n-1\]</span></p>
+<div id="8e19033e" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Datos válidos y resumen descriptivo.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> uoc_df[<span class="st">"SH"</span>].dropna().to_numpy(dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mu0 <span class="op">=</span> <span class="fl">7.5</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> x.size</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>mean_x <span class="op">=</span> x.mean()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>sd_x <span class="op">=</span> x.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>se_x <span class="op">=</span> sd_x <span class="op">/</span> np.sqrt(n)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>t_stat_manual <span class="op">=</span> (mean_x <span class="op">-</span> mu0) <span class="op">/</span> se_x</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>df_manual <span class="op">=</span> n <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>p_manual <span class="op">=</span> stats.t.cdf(t_stat_manual, df<span class="op">=</span>df_manual)  <span class="co"># cola izquierda</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>critical_t <span class="op">=</span> stats.t.ppf(ALPHA, df<span class="op">=</span>df_manual)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>ci_upper_one_sided <span class="op">=</span> mean_x <span class="op">+</span> stats.t.ppf(<span class="dv">1</span> <span class="op">-</span> ALPHA, df<span class="op">=</span>df_manual) <span class="op">*</span> se_x</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalente principal a R t.test(x, alternative="less", mu=7.5)</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>t_result <span class="op">=</span> stats.ttest_1samp(x, popmean<span class="op">=</span>mu0, alternative<span class="op">=</span><span class="st">"less"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>pr1_results <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Método"</span>: [<span class="st">"Cálculo manual"</span>, <span class="st">"scipy.stats.ttest_1samp"</span>],</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Media muestral"</span>: [mean_x, mean_x],</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"t observado"</span>: [t_stat_manual, t_result.statistic],</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gl"</span>: [df_manual, df_manual],</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Valor p (cola izquierda)"</span>: [p_manual, t_result.pvalue],</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>display(pr1_results.<span class="bu">round</span>(<span class="dv">6</span>))</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t crítico (α=</span><span class="sc">{</span>ALPHA<span class="sc">}</span><span class="ss">, cola izquierda): </span><span class="sc">{</span>critical_t<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Límite superior del IC unilateral del 95 %: </span><span class="sc">{</span>ci_upper_one_sided<span class="sc">:.4f}</span><span class="ss"> h"</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decisión: </span><span class="sc">{</span><span class="st">'rechazar H0'</span> <span class="cf">if</span> t_result<span class="sc">.</span>pvalue <span class="op">&lt;=</span> ALPHA <span class="cf">else</span> <span class="st">'no rechazar H0'</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="interpretación" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="interpretación"><span class="header-section-number">10.4.2</span> 2.2 Interpretación</h3>
+<p>Si el valor p es menor o igual que <span class="math inline">\(0.05\)</span>, rechazamos <span class="math inline">\(H_0\)</span> y concluimos que los datos aportan evidencia de que la media es inferior a 7,5 horas. Si no lo es, no rechazamos <span class="math inline">\(H_0\)</span>; eso no demuestra que la media sea exactamente 7,5 horas.</p>
+<p>El R Markdown original informa un valor p de aproximadamente <span class="math inline">\(9.6451\times10^{-18}\)</span> y una media muestral inferior a 7,5. Esos números solo se reproducirán si el archivo cargado contiene los mismos datos y las mismas observaciones válidas. No se fuerza ese resultado en el notebook.</p>
+</section>
+</section>
+<section id="pr2-comparación-de-dos-medias-independientes" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="pr2-comparación-de-dos-medias-independientes"><span class="header-section-number">10.5</span> 3. PR2 — Comparación de dos medias independientes</h2>
+<p><strong>Pregunta:</strong> ¿difiere la media de calidad del sueño entre mujeres y hombres?</p>
+<p><span class="math display">\[H_0: \mu_F=\mu_M \qquad H_1: \mu_F\ne\mu_M\]</span></p>
+<p>Se utiliza la <strong>prueba t de Welch</strong>, que no requiere asumir igualdad de varianzas. En R, <code>t.test(x, y, var.equal = FALSE)</code> utiliza por defecto Welch. Para evitar confusiones, no es necesario realizar primero una prueba F de igualdad de varianzas para decidir qué prueba t aplicar.</p>
+<p><span class="math display">\[t=\frac{\bar{x}_F-\bar{x}_M}{\sqrt{s_F^2/n_F+s_M^2/n_M}}\]</span></p>
+<div id="a02c1e3c" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>female <span class="op">=</span> uoc_df.loc[uoc_df[<span class="st">"Gender"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.casefold().isin([<span class="st">"female"</span>, <span class="st">"f"</span>, <span class="st">"mujer"</span>, <span class="st">"mujeres"</span>]), <span class="st">"SQ"</span>].dropna().to_numpy(<span class="bu">float</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>male <span class="op">=</span> uoc_df.loc[uoc_df[<span class="st">"Gender"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.casefold().isin([<span class="st">"male"</span>, <span class="st">"m"</span>, <span class="st">"hombre"</span>, <span class="st">"hombres"</span>]), <span class="st">"SQ"</span>].dropna().to_numpy(<span class="bu">float</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> female.size <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> male.size <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"No se identificaron ambos grupos de género. Revisa las etiquetas de la columna Gender."</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo manual de Welch.</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>mean_f, mean_m <span class="op">=</span> female.mean(), male.mean()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>s2_f, s2_m <span class="op">=</span> female.var(ddof<span class="op">=</span><span class="dv">1</span>), male.var(ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>n_f, n_m <span class="op">=</span> female.size, male.size</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>se_diff <span class="op">=</span> np.sqrt(s2_f<span class="op">/</span>n_f <span class="op">+</span> s2_m<span class="op">/</span>n_m)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>t_welch_manual <span class="op">=</span> (mean_f <span class="op">-</span> mean_m) <span class="op">/</span> se_diff</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>df_num <span class="op">=</span> (s2_f<span class="op">/</span>n_f <span class="op">+</span> s2_m<span class="op">/</span>n_m)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>df_den <span class="op">=</span> (s2_f<span class="op">/</span>n_f)<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(n_f<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> (s2_m<span class="op">/</span>n_m)<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(n_m<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>df_welch <span class="op">=</span> df_num <span class="op">/</span> df_den</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>p_welch_manual <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> stats.t.sf(<span class="bu">abs</span>(t_welch_manual), df<span class="op">=</span>df_welch)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>tcrit <span class="op">=</span> stats.t.ppf(<span class="dv">1</span><span class="op">-</span>ALPHA<span class="op">/</span><span class="dv">2</span>, df<span class="op">=</span>df_welch)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>diff_ci <span class="op">=</span> ((mean_f<span class="op">-</span>mean_m) <span class="op">-</span> tcrit<span class="op">*</span>se_diff, (mean_f<span class="op">-</span>mean_m) <span class="op">+</span> tcrit<span class="op">*</span>se_diff)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>welch_result <span class="op">=</span> stats.ttest_ind(female, male, equal_var<span class="op">=</span><span class="va">False</span>, alternative<span class="op">=</span><span class="st">"two-sided"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>comparison_pr2 <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Método"</span>: [<span class="st">"Manual (Welch)"</span>, <span class="st">"scipy.stats.ttest_ind(equal_var=False)"</span>],</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Diferencia media (F − M)"</span>: [mean_f<span class="op">-</span>mean_m, mean_f<span class="op">-</span>mean_m],</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"t observado"</span>: [t_welch_manual, welch_result.statistic],</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gl Welch"</span>: [df_welch, df_welch],</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Valor p bilateral"</span>: [p_welch_manual, welch_result.pvalue],</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>display(comparison_pr2.<span class="bu">round</span>(<span class="dv">6</span>))</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95 % para μ_F − μ_M: (</span><span class="sc">{</span>diff_ci[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">, </span><span class="sc">{</span>diff_ci[<span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">)"</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Medias: mujeres=</span><span class="sc">{</span>mean_f<span class="sc">:.3f}</span><span class="ss">; hombres=</span><span class="sc">{</span>mean_m<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="interpretación-1" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="interpretación-1"><span class="header-section-number">10.5.1</span> 3.1 Interpretación</h3>
+<p>Si <span class="math inline">\(p\leq0.05\)</span>, existe evidencia estadística de una diferencia entre las medias. La dirección se interpreta con la diferencia estimada y el intervalo de confianza: si la diferencia se calculó como mujeres menos hombres, un intervalo completamente positivo indica una media mayor en el grupo de mujeres.</p>
+<p>El documento R informa una diferencia significativa y un intervalo de confianza aproximado de <span class="math inline">\([0.4628, 0.9304]\)</span>. Debe comprobarse con los datos cargados. Una diferencia estadísticamente significativa no determina por sí sola la importancia clínica o práctica.</p>
+</section>
+</section>
+<section id="pr3-comparación-unilateral-de-dos-proporciones" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="pr3-comparación-unilateral-de-dos-proporciones"><span class="header-section-number">10.6</span> 4. PR3 — Comparación unilateral de dos proporciones</h2>
+<p><strong>Pregunta:</strong> ¿es mayor la proporción de trastornos del sueño entre las personas con estrés alto (<code>Stress &gt; 6</code>) que entre las de estrés bajo (<code>Stress ≤ 6</code>)?</p>
+<p><span class="math display">\[H_0:p_{alto}=p_{bajo} \qquad H_1:p_{alto}&gt;p_{bajo}\]</span></p>
+<p>Bajo la hipótesis nula se utiliza una proporción agrupada para el estadístico Z. <code>statsmodels.stats.proportion.proportions_ztest</code> proporciona el contraste de dos proporciones; <code>alternative="larger"</code> significa que la primera proporción del vector es mayor que la segunda, por lo que el orden debe ser alto, bajo.</p>
+<div id="7fb44c1a" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SD ausente representa ausencia de trastorno en este conjunto; isin() lo clasifica como False.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pr3 <span class="op">=</span> uoc_df.dropna(subset<span class="op">=</span>[<span class="st">"Stress"</span>]).copy()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pr3[<span class="st">"alto_estres"</span>] <span class="op">=</span> pr3[<span class="st">"Stress"</span>] <span class="op">&gt;</span> <span class="dv">6</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>pr3[<span class="st">"trastorno"</span>] <span class="op">=</span> pr3[<span class="st">"SD"</span>].isin([<span class="st">"Sleep Apnea"</span>, <span class="st">"Insomnia"</span>])</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pr3.groupby(<span class="st">"alto_estres"</span>)[<span class="st">"trastorno"</span>].agg(n<span class="op">=</span><span class="st">"size"</span>, casos<span class="op">=</span><span class="st">"sum"</span>, proporcion<span class="op">=</span><span class="st">"mean"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>display(summary.rename(index<span class="op">=</span>{<span class="va">False</span>:<span class="st">"Estrés bajo"</span>, <span class="va">True</span>:<span class="st">"Estrés alto"</span>}))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>n_high <span class="op">=</span> <span class="bu">int</span>(summary.loc[<span class="va">True</span>, <span class="st">"n"</span>])</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>x_high <span class="op">=</span> <span class="bu">int</span>(summary.loc[<span class="va">True</span>, <span class="st">"casos"</span>])</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>n_low <span class="op">=</span> <span class="bu">int</span>(summary.loc[<span class="va">False</span>, <span class="st">"n"</span>])</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>x_low <span class="op">=</span> <span class="bu">int</span>(summary.loc[<span class="va">False</span>, <span class="st">"casos"</span>])</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>p_high, p_low <span class="op">=</span> x_high<span class="op">/</span>n_high, x_low<span class="op">/</span>n_low</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>p_pool <span class="op">=</span> (x_high<span class="op">+</span>x_low)<span class="op">/</span>(n_high<span class="op">+</span>n_low)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>se_pool <span class="op">=</span> np.sqrt(p_pool<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p_pool)<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span>n_high<span class="op">+</span><span class="dv">1</span><span class="op">/</span>n_low))</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>z_manual <span class="op">=</span> (p_high<span class="op">-</span>p_low)<span class="op">/</span>se_pool</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>p_manual <span class="op">=</span> stats.norm.sf(z_manual)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>z_sm, p_sm <span class="op">=</span> proportions_ztest(</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    count<span class="op">=</span>np.array([x_high, x_low]),</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    nobs<span class="op">=</span>np.array([n_high, n_low]),</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    alternative<span class="op">=</span><span class="st">"larger"</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>pr3_comparison <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Método"</span>: [<span class="st">"Manual (Z agrupado)"</span>, <span class="st">"statsmodels proportions_ztest"</span>],</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Z"</span>: [z_manual, z_sm],</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Valor p unilateral"</span>: [p_manual, p_sm],</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>display(pr3_comparison)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"p_alto=</span><span class="sc">{</span>p_high<span class="sc">:.3%}</span><span class="ss">; p_bajo=</span><span class="sc">{</span>p_low<span class="sc">:.3%}</span><span class="ss">; diferencia=</span><span class="sc">{</span>p_high<span class="op">-</span>p_low<span class="sc">:.3%}</span><span class="ss">"</span>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decisión: </span><span class="sc">{</span><span class="st">'rechazar H0'</span> <span class="cf">if</span> p_sm <span class="op">&lt;=</span> ALPHA <span class="cf">else</span> <span class="st">'no rechazar H0'</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="intervalo-de-confianza-de-la-diferencia" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="intervalo-de-confianza-de-la-diferencia"><span class="header-section-number">10.6.1</span> 4.1 Intervalo de confianza de la diferencia</h3>
+<p>Para completar el contraste, es útil estimar la diferencia de proporciones y su incertidumbre. El siguiente intervalo de Wald se incluye como aproximación didáctica; con muestras pequeñas o proporciones extremas se prefieren intervalos más robustos.</p>
+<div id="bc1a7c0d" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>se_unpooled <span class="op">=</span> np.sqrt(p_high<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p_high)<span class="op">/</span>n_high <span class="op">+</span> p_low<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p_low)<span class="op">/</span>n_low)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>diff_prop <span class="op">=</span> p_high <span class="op">-</span> p_low</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ci_diff_wald <span class="op">=</span> (diff_prop <span class="op">-</span> stats.norm.ppf(<span class="dv">1</span><span class="op">-</span>ALPHA<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>se_unpooled,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                diff_prop <span class="op">+</span> stats.norm.ppf(<span class="dv">1</span><span class="op">-</span>ALPHA<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>se_unpooled)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Diferencia de proporciones (alto − bajo): </span><span class="sc">{</span>diff_prop<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC aproximado del 95 %: (</span><span class="sc">{</span>ci_diff_wald[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">, </span><span class="sc">{</span>ci_diff_wald[<span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="interpretación-2" class="level3" data-number="10.6.2">
+<h3 data-number="10.6.2" class="anchored" data-anchor-id="interpretación-2"><span class="header-section-number">10.6.2</span> 4.2 Interpretación</h3>
+<p>Si <span class="math inline">\(p\leq0.05\)</span>, los datos aportan evidencia de que la proporción de trastornos es mayor en el grupo de estrés alto. Al tratarse de datos observacionales, el resultado demuestra una asociación estadística, no que el estrés cause por sí solo el trastorno. La clasificación de estrés alto/bajo también depende del umbral escogido (<span class="math inline">\(&gt;6\)</span>).</p>
+</section>
+</section>
+<section id="pr4-asociación-entre-bmi-y-trastornos-del-sueño" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="pr4-asociación-entre-bmi-y-trastornos-del-sueño"><span class="header-section-number">10.7</span> 5. PR4 — Asociación entre BMI y trastornos del sueño</h2>
+<p><strong>Pregunta:</strong> ¿están asociadas la categoría de BMI y la presencia de trastornos del sueño?</p>
+<p><span class="math display">\[H_0:\text{BMI y trastorno del sueño son independientes}\]</span> <span class="math display">\[H_1:\text{BMI y trastorno del sueño están asociados}\]</span></p>
+<p>La prueba chi-cuadrado de independencia compara las frecuencias observadas con las esperadas bajo independencia:</p>
+<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}},\qquad df=(r-1)(c-1).\]</span></p>
+<div id="274ccf68" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SD ausente representa ausencia de trastorno; no se eliminan esas observaciones.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pr4 <span class="op">=</span> uoc_df.dropna(subset<span class="op">=</span>[<span class="st">"BMI"</span>]).copy()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>pr4[<span class="st">"trastorno"</span>] <span class="op">=</span> np.where(pr4[<span class="st">"SD"</span>].isin([<span class="st">"Sleep Apnea"</span>, <span class="st">"Insomnia"</span>]), <span class="st">"Con trastorno"</span>, <span class="st">"Sin trastorno"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>contingency <span class="op">=</span> pd.crosstab(pr4[<span class="st">"BMI"</span>], pr4[<span class="st">"trastorno"</span>])</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Frecuencias observadas:"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>display(contingency)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>chi2_stat, chi2_p, chi2_df, expected <span class="op">=</span> stats.chi2_contingency(contingency, correction<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>expected_df <span class="op">=</span> pd.DataFrame(expected, index<span class="op">=</span>contingency.index, columns<span class="op">=</span>contingency.columns)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Frecuencias esperadas bajo H0:"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>display(expected_df.<span class="bu">round</span>(<span class="dv">3</span>))</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"χ²=</span><span class="sc">{</span>chi2_stat<span class="sc">:.4f}</span><span class="ss">; gl=</span><span class="sc">{</span>chi2_df<span class="sc">}</span><span class="ss">; p-valor=</span><span class="sc">{</span>chi2_p<span class="sc">:.6g}</span><span class="ss">"</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"¿Todas las frecuencias esperadas ≥ 5?: </span><span class="sc">{</span><span class="bu">bool</span>((expected <span class="op">&gt;=</span> <span class="dv">5</span>).<span class="bu">all</span>())<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="comprobación-manual-y-tamaño-de-efecto" class="level3" data-number="10.7.1">
+<h3 data-number="10.7.1" class="anchored" data-anchor-id="comprobación-manual-y-tamaño-de-efecto"><span class="header-section-number">10.7.1</span> 5.1 Comprobación manual y tamaño de efecto</h3>
+<p>La siguiente celda reproduce el estadístico de Pearson con las frecuencias observadas y esperadas. Para tablas mayores que 2×2 se informa también <span class="math inline">\(V\)</span> de Cramér como medida descriptiva de asociación.</p>
+<div id="fad9d05c" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> contingency.to_numpy(dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>row_totals <span class="op">=</span> observed.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>col_totals <span class="op">=</span> observed.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>expected_manual <span class="op">=</span> row_totals <span class="op">@</span> col_totals <span class="op">/</span> observed.<span class="bu">sum</span>()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>chi2_manual <span class="op">=</span> np.<span class="bu">sum</span>((observed <span class="op">-</span> expected_manual)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> expected_manual)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>df_manual <span class="op">=</span> (observed.shape[<span class="dv">0</span>]<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>(observed.shape[<span class="dv">1</span>]<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>p_manual <span class="op">=</span> stats.chi2.sf(chi2_manual, df_manual)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>n_total <span class="op">=</span> observed.<span class="bu">sum</span>()</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>min_dim <span class="op">=</span> <span class="bu">min</span>(observed.shape[<span class="dv">0</span>]<span class="op">-</span><span class="dv">1</span>, observed.shape[<span class="dv">1</span>]<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>cramers_v <span class="op">=</span> np.sqrt(chi2_stat <span class="op">/</span> (n_total <span class="op">*</span> min_dim)) <span class="cf">if</span> min_dim <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> np.nan</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>comparison_pr4 <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Método"</span>: [<span class="st">"Manual"</span>, <span class="st">"scipy.stats.chi2_contingency"</span>],</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"χ²"</span>: [chi2_manual, chi2_stat],</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gl"</span>: [df_manual, chi2_df],</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Valor p"</span>: [p_manual, chi2_p],</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>display(comparison_pr4.<span class="bu">round</span>(<span class="dv">8</span>))</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"V de Cramér = </span><span class="sc">{</span>cramers_v<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="prueba-exacta-de-fisher-consideraciones-de-implementación" class="level3" data-number="10.7.2">
+<h3 data-number="10.7.2" class="anchored" data-anchor-id="prueba-exacta-de-fisher-consideraciones-de-implementación"><span class="header-section-number">10.7.2</span> 5.2 Prueba exacta de Fisher: consideraciones de implementación</h3>
+<p>El R Markdown original aplica <code>fisher.test()</code> a la tabla de contingencia de BMI (3 categorías) por trastorno (2 categorías). En Python, <code>scipy.stats.fisher_exact</code> admite tablas de tamaño arbitrario en versiones recientes de SciPy (a partir de 1.15); versiones anteriores solo aceptan tablas 2×2. La celda intenta el cálculo exacto y, si la versión instalada no admite la tabla 3×2, deja constancia y conserva el contraste chi-cuadrado, mostrando las frecuencias esperadas para valorar la aproximación. No se sustituye silenciosamente una prueba por otra.</p>
+<div id="821cd321" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    fisher_result <span class="op">=</span> stats.fisher_exact(contingency.to_numpy())</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Prueba exacta de Fisher (tabla RxC):"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Estadístico reportado por SciPy = </span><span class="sc">{</span>fisher_result<span class="sc">.</span>statistic<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"p-valor exacto = </span><span class="sc">{</span>fisher_result<span class="sc">.</span>pvalue<span class="sc">:.8g}</span><span class="ss">"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">TypeError</span>) <span class="im">as</span> exc:</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"La versión instalada de SciPy no admite esta tabla en fisher_exact."</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Actualiza SciPy a una versión compatible o utiliza un procedimiento exacto/Monte Carlo validado para tablas RxC."</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Detalle técnico: </span><span class="sc">{</span>exc<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="interpretación-3" class="level3" data-number="10.7.3">
+<h3 data-number="10.7.3" class="anchored" data-anchor-id="interpretación-3"><span class="header-section-number">10.7.3</span> 5.3 Interpretación</h3>
+<p>Si el valor p del contraste de independencia es menor o igual que <span class="math inline">\(0.05\)</span>, rechazamos la hipótesis de independencia y concluimos que existe evidencia de asociación entre la categoría de BMI y el trastorno del sueño. Esto no identifica automáticamente qué categorías difieren ni demuestra causalidad. Hay que inspeccionar las proporciones y frecuencias esperadas; si estas son escasas, el valor p asintótico de chi-cuadrado puede no ser fiable.</p>
+</section>
+</section>
+<section id="tabla-resumen-de-resultados" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="tabla-resumen-de-resultados"><span class="header-section-number">10.8</span> 6. Tabla resumen de resultados</h2>
+<p>La tabla se construye a partir de los cálculos del notebook, no de valores escritos a mano. Las conclusiones se generan de acuerdo con el nivel de significación seleccionado.</p>
+<div id="4d464b33" class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> decision(p, alpha<span class="op">=</span>ALPHA):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Rechazar H₀"</span> <span class="cf">if</span> p <span class="op">&lt;=</span> alpha <span class="cf">else</span> <span class="st">"No rechazar H₀"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>summary_results <span class="op">=</span> pd.DataFrame([</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"Pregunta"</span>: <span class="st">"PR1 — media de sueño &lt; 7,5 h"</span>, <span class="st">"Prueba"</span>: <span class="st">"t de una muestra, unilateral"</span>, <span class="st">"Estadístico"</span>: t_result.statistic, <span class="st">"gl"</span>: n<span class="op">-</span><span class="dv">1</span>, <span class="st">"p-valor"</span>: t_result.pvalue, <span class="st">"Decisión"</span>: decision(t_result.pvalue)},</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"Pregunta"</span>: <span class="st">"PR2 — diferencia de calidad por género"</span>, <span class="st">"Prueba"</span>: <span class="st">"t de Welch, bilateral"</span>, <span class="st">"Estadístico"</span>: welch_result.statistic, <span class="st">"gl"</span>: df_welch, <span class="st">"p-valor"</span>: welch_result.pvalue, <span class="st">"Decisión"</span>: decision(welch_result.pvalue)},</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"Pregunta"</span>: <span class="st">"PR3 — proporción mayor con estrés alto"</span>, <span class="st">"Prueba"</span>: <span class="st">"Z de dos proporciones, unilateral"</span>, <span class="st">"Estadístico"</span>: z_sm, <span class="st">"gl"</span>: np.nan, <span class="st">"p-valor"</span>: p_sm, <span class="st">"Decisión"</span>: decision(p_sm)},</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"Pregunta"</span>: <span class="st">"PR4 — asociación BMI y trastorno"</span>, <span class="st">"Prueba"</span>: <span class="st">"Chi-cuadrado de independencia"</span>, <span class="st">"Estadístico"</span>: chi2_stat, <span class="st">"gl"</span>: chi2_df, <span class="st">"p-valor"</span>: chi2_p, <span class="st">"Decisión"</span>: decision(chi2_p)},</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>display(summary_results)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Interpretación global:"</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> summary_results.iterrows():</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>row[<span class="st">'Pregunta'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>row[<span class="st">'Decisión'</span>]<span class="sc">}</span><span class="ss"> (p=</span><span class="sc">{</span>row[<span class="st">'p-valor'</span>]<span class="sc">:.4g}</span><span class="ss">)."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="conclusiones-y-límites-del-análisis" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="conclusiones-y-límites-del-análisis"><span class="header-section-number">10.9</span> 7. Conclusiones y límites del análisis</h2>
+<p>Redacta las conclusiones finales con la evidencia calculada al ejecutar las celdas anteriores. Para cada pregunta, informa:</p>
 <ol type="1">
-<li>Repite la simulación de la sección 5 con un nivel de confianza del 90% y del 99%. ¿Cómo cambia el ancho de los intervalos y la proporción que contiene a μ?</li>
-<li>Una muestra de 12 tiempos de entrega (en días) tiene media 5.4 y desviación muestral 1.2. Construye un IC al 95% para la media poblacional usando <code>confidence_interval_mean_t</code>, y contrasta si la media real podría ser de 6 días con <code>t_test_mean</code> (necesitarás generar o simular una muestra con esos estadísticos, o adaptar la función a partir de <code>sample_mean</code>/<code>sample_std</code> directamente).</li>
-<li>En el A/B test de la sección 4, calcula también el intervalo de confianza para la diferencia de proporciones (<span class="math inline">\(\hat{p}_B - \hat{p}_A\)</span>) en vez de solo el contraste de hipótesis. ¿Qué información adicional aporta el intervalo frente al p-valor?</li>
+<li>La estimación descriptiva principal (media, diferencia de medias o proporción por grupo).</li>
+<li>El contraste aplicado, el estadístico, los grados de libertad cuando correspondan y el valor p.</li>
+<li>La decisión respecto a <span class="math inline">\(H_0\)</span> para <span class="math inline">\(\alpha=0.05\)</span>.</li>
+<li>La incertidumbre y el tamaño del efecto, además de cualquier supuesto problemático.</li>
+<li>Una interpretación contextual que no exceda lo que permite el diseño del estudio.</li>
 </ol>
+<p><strong>No concluyas que se ha demostrado la hipótesis nula</strong> cuando el valor p sea mayor que <span class="math inline">\(\alpha\)</span>; la conclusión es que no se ha encontrado evidencia suficiente para rechazarla. Tampoco interpretes asociaciones observacionales como relaciones causales.</p>
+</section>
+<section id="equivalencias-entre-r-y-python" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="equivalencias-entre-r-y-python"><span class="header-section-number">10.10</span> 8. Equivalencias entre R y Python</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R</th>
+<th>Python</th>
+<th>Observación metodológica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>readxl::read_excel()</code></td>
+<td><code>pandas.read_excel()</code></td>
+<td>Puede requerir <code>openpyxl</code> para archivos <code>.xlsx</code>.</td>
+</tr>
+<tr class="even">
+<td><code>mean()</code>, <code>sd()</code></td>
+<td><code>numpy.mean()</code>, <code>numpy.std(ddof=1)</code> / <code>Series.mean()</code>, <code>Series.std()</code></td>
+<td>R <code>sd()</code> y pandas <code>std()</code> usan desviación típica muestral; en NumPy hay que especificar <code>ddof=1</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>t.test(x, mu=..., alternative="less")</code></td>
+<td><code>scipy.stats.ttest_1samp(..., alternative="less")</code></td>
+<td>Ambas implementan la t de una muestra; comprueba versiones de SciPy para el argumento <code>alternative</code>.</td>
+</tr>
+<tr class="even">
+<td><code>t.test(x, y, var.equal=FALSE)</code></td>
+<td><code>scipy.stats.ttest_ind(x, y, equal_var=False)</code></td>
+<td>Ambas utilizan Welch cuando no se asumen varianzas iguales.</td>
+</tr>
+<tr class="odd">
+<td><code>prop.test(..., correct=FALSE)</code></td>
+<td><code>statsmodels.stats.proportion.proportions_ztest()</code></td>
+<td>Aproximación normal sin corrección de continuidad; pueden diferir intervalos y detalles de implementación.</td>
+</tr>
+<tr class="even">
+<td><code>chisq.test()</code></td>
+<td><code>scipy.stats.chi2_contingency()</code></td>
+<td>El parámetro <code>correction</code> debe especificarse para controlar la corrección de Yates en tablas 2×2.</td>
+</tr>
+<tr class="odd">
+<td><code>fisher.test()</code></td>
+<td><code>scipy.stats.fisher_exact()</code></td>
+<td>El soporte de tablas RxC depende de la versión de SciPy; revisar el resultado y el método exacto.</td>
+</tr>
+<tr class="even">
+<td><code>ggplot2</code></td>
+<td><code>seaborn</code> / <code>matplotlib</code></td>
+<td>Las figuras se recrean de forma equivalente, aunque no idéntica en estética.</td>
+</tr>
+</tbody>
+</table>
+<section id="diferencias-y-precauciones" class="level3" data-number="10.10.1">
+<h3 data-number="10.10.1" class="anchored" data-anchor-id="diferencias-y-precauciones"><span class="header-section-number">10.10.1</span> Diferencias y precauciones</h3>
+<ul>
+<li>Los valores p y los intervalos pueden variar ligeramente si se aplican correcciones de continuidad, definiciones distintas del intervalo o versiones diferentes de las bibliotecas.</li>
+<li>En Python, los valores ausentes se deben gestionar explícitamente para que los tamaños muestrales usados en fórmulas manuales coincidan con los de las funciones estadísticas.</li>
+<li>Las salidas del notebook se dejan sin resultados precalculados para que se obtengan del archivo de datos real. Las cifras comunicadas en el R Markdown son referencias de la ejecución original, no resultados garantizados para otro archivo.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

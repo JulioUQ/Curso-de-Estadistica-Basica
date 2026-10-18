@@ -283,7 +283,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/practica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Práctica: Inferencia Estadística</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Actividad práctica: análisis descriptivo e inferencial de la salud del sueño</span></span></a>
   </div>
 </li>
       </ul>
@@ -434,7 +434,7 @@ H_0: \mu_1 = \mu_2 = \dots = \mu_k \qquad H_1: \text{al menos una media es disti
 F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-1)}{SS_{\text{dentro}} / (n-k)}
 \]</span></p>
 <p>donde <span class="math inline">\(k\)</span> es el número de grupos y <span class="math inline">\(n\)</span> el número total de observaciones. Bajo <span class="math inline">\(H_0\)</span>, este estadístico sigue una <strong>distribución F</strong> con <span class="math inline">\((k-1, n-k)\)</span> grados de libertad.</p>
-<div id="295b75d9" class="cell" data-execution_count="2">
+<div id="c164dde5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> group_comparisons <span class="im">as</span> gc</span>
@@ -465,7 +465,7 @@ H_0: \text{las dos variables son independientes} \qquad H_1: \text{existe asocia
 \chi^2 = \sum_{i,j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
 \]</span></p>
 <p>donde <span class="math inline">\(E_{ij}\)</span> es la frecuencia esperada bajo independencia, calculada a partir de los totales de fila y columna. Sigue una distribución Chi-cuadrado con <span class="math inline">\((filas-1)(columnas-1)\)</span> grados de libertad.</p>
-<div id="d7d52233" class="cell" data-execution_count="3">
+<div id="a147ab16" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -485,7 +485,7 @@ Joven        40      10
 Senior       15      35</code></pre>
 </div>
 </div>
-<div id="9b1b96e0" class="cell" data-execution_count="4">
+<div id="06c145ed" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value, dof, esperadas <span class="op">=</span> gc.chi2_test_independence(tabla)</span>
@@ -510,7 +510,7 @@ Hay evidencia de asociación entre segmento de cliente y producto preferido</cod
 <p><span class="math display">\[
 H_0: \text{ambas distribuciones son iguales} \qquad H_1: \text{una tiende a tomar valores mayores que la otra}
 \]</span></p>
-<div id="9c8d75af" class="cell" data-execution_count="5">
+<div id="b88c995c" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valoraciones de satisfacción (escala 1-10) de dos versiones de una app,</span></span>
