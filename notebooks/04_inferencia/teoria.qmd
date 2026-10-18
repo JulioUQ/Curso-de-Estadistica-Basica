@@ -8,160 +8,318 @@ import sys, os
 sys.path.append(os.path.abspath("../../src"))
 ```
 
-## 4.1 Introducción
+## 4.1 Introducción a la inferencia estadística
 
-En el Módulo 3 vimos que, gracias al Teorema Central del Límite, la media muestral $\bar{X}$ se comporta como una Normal aunque la población original no lo sea. Ese resultado, que hasta ahora era una curiosidad teórica, es exactamente lo que necesitamos para dar el paso central de este módulo: **la inferencia estadística**, es decir, usar una muestra para decir algo con fundamento sobre una población que no podemos observar por completo.
+La **inferencia estadística** utiliza una muestra para obtener conclusiones sobre una población cuyo comportamiento completo no podemos observar. Como la muestra es solo una parte de la población, las conclusiones incorporan incertidumbre y dependen del diseño del muestreo, la calidad de las mediciones y los supuestos del método utilizado.
+
+Distinguiremos dos objetivos complementarios:
+
+- **Estimación:** aproximar un parámetro poblacional, por ejemplo la media $\mu$ o la proporción $p$, mediante una estimación puntual o un intervalo de confianza.
+- **Contraste de hipótesis:** evaluar si los datos ofrecen evidencia suficiente contra una afirmación concreta acerca de uno o varios parámetros.
 
 ```{mermaid}
 %%| label: fig-proceso-inferencia
 %%| fig-cap: "Del parámetro poblacional desconocido a la conclusión inferencial"
 flowchart LR
-    A["Población<br/>(parámetro μ desconocido)"] --> B["Muestra aleatoria<br/>de tamaño n"]
-    B --> C["Estadístico muestral<br/>(x̄, p̂, s)"]
-    C --> D["Intervalo de Confianza<br/>¿en qué rango está μ?"]
-    C --> E["Contraste de Hipótesis<br/>¿es μ = valor propuesto?"]
+    A["Población<br/>parámetro desconocido"] --> B["Muestra aleatoria"]
+    B --> C["Estadístico muestral<br/>x̄, p̂, s"]
+    C --> D["Estimación<br/>intervalo de confianza"]
+    C --> E["Contraste<br/>estadístico y valor p"]
+    D --> F["Interpretación con incertidumbre"]
+    E --> F
 ```
 
-Trabajaremos dos herramientas complementarias:
+Una muestra grande no garantiza por sí sola una inferencia válida: también importa cómo se seleccionó. Una muestra sesgada puede producir estimaciones precisas de una población equivocada. Siempre que sea posible, se requiere un muestreo adecuado, independencia entre observaciones y una definición clara de la población objetivo.
 
-- **Estimación por intervalo de confianza**: en vez de dar un único número como estimación de un parámetro, damos un rango que probablemente lo contiene.
-- **Contraste de hipótesis**: planteamos una afirmación sobre el parámetro y usamos los datos para decidir si la evidencia la respalda o la contradice.
+## 4.2 Estimación puntual y error estándar
 
-## 4.2 Estimación Puntual y Error Estándar
+Un **estimador puntual** es un estadístico que se utiliza para estimar un parámetro poblacional. Por ejemplo, la media muestral $\bar{X}$ estima la media poblacional $\mu$, y la proporción muestral $\hat{p}$ estima la proporción poblacional $p$.
 
-Un **estimador puntual** es un único valor calculado a partir de la muestra que usamos como "mejor apuesta" del parámetro poblacional: la media muestral $\bar{X}$ estima $\mu$, la proporción muestral $\hat{p}$ estima $p$.
-
-Pero un solo número no dice nada sobre su fiabilidad. Para eso usamos el **error estándar**, que mide cuánto varía el estimador de muestra a muestra:
+La variabilidad de un estimador entre muestras se expresa mediante su error estándar. Para la media muestral:
 
 $$
 SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 $$
 
-Es la misma cantidad que apareció como la varianza de $\bar{X}$ en el TCL del Módulo 3 ($\text{Var}(\bar{X}) = \sigma^2/n$), solo que en su forma de desviación típica. Cuanto mayor es $n$, menor es el error estándar: muestras más grandes dan estimaciones más precisas.
-
-## 4.3 Intervalos de Confianza
-
-Un intervalo de confianza al $(1-\alpha)\cdot 100\%$ es un rango $[\bar{X} - m, \bar{X} + m]$ construido de forma que, si repitiéramos el muestreo muchas veces, el intervalo contendría el verdadero parámetro en el $(1-\alpha)\cdot 100\%$ de las repeticiones.
-
-### Intervalo para la media, con $\sigma$ conocida
-
-Cuando conocemos la desviación típica poblacional $\sigma$ (poco frecuente en la práctica, pero es el caso base), usamos el valor crítico de la Normal estándar:
+cuando la desviación típica poblacional $\sigma$ es conocida. Si no se conoce, se estima mediante la desviación típica muestral $s$:
 
 $$
-\bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
+\widehat{SE}(\bar{X}) = \frac{s}{\sqrt{n}}.
 $$
+
+El error estándar disminuye al aumentar $n$, aunque la mejora sigue una relación proporcional a $1/\sqrt{n}$: cuadruplicar el tamaño muestral reduce el error estándar aproximadamente a la mitad. El error estándar no debe confundirse con la desviación típica de los datos, que describe la dispersión individual.
+
+## 4.3 Intervalos de confianza
+
+Un intervalo de confianza del nivel $1-\alpha$ se obtiene mediante un procedimiento que, bajo sus supuestos, contiene el verdadero parámetro en una proporción $1-\alpha$ de las muestras repetidas. Para un intervalo del 95 %, $\alpha=0.05$.
+
+La interpretación frecuentista se refiere al **procedimiento**, no a una probabilidad posterior de que el parámetro fijo esté dentro del intervalo ya calculado. Una vez observado el intervalo, el parámetro poblacional no se considera aleatorio en este marco.
+
+### 4.3.1 Media con desviación típica poblacional conocida
+
+Si la población es normal, o el tamaño muestral permite una aproximación adecuada para la media, y se conoce $\sigma$, el intervalo es:
+
+$$
+\bar{x} \pm z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},
+$$
+
+donde $z_{1-\alpha/2}$ es el cuantil de la normal estándar. Para un intervalo bilateral del 95 %, el valor crítico es aproximadamente $1.96$.
 
 ```{python}
 from stats_toolkit import inference as inf
 
-# Tiempo medio de respuesta de una API: muestra de n=40, sigma poblacional conocida = 15ms
-lower, upper = inf.confidence_interval_mean_z(sample_mean=122.5, sigma=15, n=40, confidence=0.95)
-print(f"IC 95% para μ: ({lower:.2f}, {upper:.2f}) ms")
+# Ejemplo ilustrativo: tiempo medio de respuesta de una API.
+lower, upper = inf.confidence_interval_mean_z(
+    sample_mean=122.5, sigma=15, n=40, confidence=0.95
+)
+print(f"IC 95 % para μ: ({lower:.2f}, {upper:.2f}) ms")
 ```
 
-### Intervalo para la media, con $\sigma$ desconocida (caso habitual)
+### 4.3.2 Media con desviación típica poblacional desconocida
 
-Cuando no conocemos $\sigma$ y la estimamos con la desviación típica muestral $s$, el intervalo se ensancha ligeramente porque hay una fuente extra de incertidumbre. Usamos la **distribución t de Student** con $n-1$ grados de libertad en vez de la Normal:
+En la práctica, $\sigma$ suele ser desconocida y se sustituye por $s$. Si las observaciones son independientes y la población es normal (o la aproximación es razonable), se utiliza la distribución $t$ de Student con $n-1$ grados de libertad:
 
 $$
-\bar{X} \pm t_{\alpha/2,\, n-1} \cdot \frac{s}{\sqrt{n}}
+\bar{x} \pm t_{1-\alpha/2,\,n-1}\frac{s}{\sqrt{n}}.
 $$
 
-La t de Student tiene colas más pesadas que la Normal — refleja que, con muestras pequeñas, estimar $\sigma$ a partir de los propios datos añade incertidumbre. A medida que $n$ crece, la t converge a la Normal.
+La distribución $t$ tiene colas más pesadas que la normal estándar, especialmente con pocos grados de libertad, y por ello refleja la incertidumbre adicional asociada a estimar la desviación típica. A medida que $n$ aumenta, se aproxima a la normal.
 
 ```{python}
-# Salario mensual de una muestra de 25 empleados (sigma poblacional desconocida)
-lower, upper = inf.confidence_interval_mean_t(sample_mean=2450, sample_std=310, n=25, confidence=0.95)
-print(f"IC 95% para μ: ({lower:.2f}, {upper:.2f}) €")
+# Ejemplo ilustrativo: salario mensual en una muestra de 25 empleados.
+lower, upper = inf.confidence_interval_mean_t(
+    sample_mean=2450, sample_std=310, n=25, confidence=0.95
+)
+print(f"IC 95 % para μ: ({lower:.2f}, {upper:.2f}) €")
 ```
 
-### Intervalo para una proporción
+### 4.3.3 Proporción poblacional
 
-Para una proporción muestral $\hat{p}$ (por ejemplo, una tasa de conversión):
+Para una proporción muestral $\hat{p}=x/n$, una aproximación normal habitual es:
 
 $$
-\hat{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\hat{p} \pm z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.
 $$
+
+Esta aproximación puede ser deficiente en muestras pequeñas o cuando la proporción está cerca de 0 o 1. En esas situaciones conviene considerar intervalos como Wilson o métodos exactos, en vez de confiar automáticamente en el intervalo normal.
 
 ```{python}
-# Retomamos el ejemplo del Módulo 3: 15 conversiones de 50 clientes observados
-lower, upper = inf.confidence_interval_proportion(p_hat=15/50, n=50, confidence=0.95)
-print(f"IC 95% para la tasa de conversión: ({lower:.3f}, {upper:.3f})")
+# Ejemplo ilustrativo: 15 conversiones entre 50 clientes.
+lower, upper = inf.confidence_interval_proportion(
+    p_hat=15/50, n=50, confidence=0.95
+)
+print(f"IC aproximado del 95 %: ({lower:.3f}, {upper:.3f})")
 ```
 
-## 4.4 Contraste de Hipótesis
+## 4.4 Contrastes de hipótesis: conceptos esenciales
 
-Un contraste de hipótesis formaliza una pregunta de sí/no sobre un parámetro:
+Un contraste compara dos afirmaciones sobre la población:
 
-- **Hipótesis nula $H_0$**: la afirmación por defecto, normalmente "no hay efecto" o "no hay diferencia" (ej. $\mu = \mu_0$).
-- **Hipótesis alternativa $H_1$**: lo que queremos comprobar si los datos respaldan (ej. $\mu \neq \mu_0$).
+- **Hipótesis nula ($H_0$):** afirmación de referencia, habitualmente de igualdad o ausencia de diferencia.
+- **Hipótesis alternativa ($H_1$ o $H_a$):** afirmación compatible con la pregunta de investigación.
 
-El procedimiento calcula un **estadístico de prueba** a partir de la muestra y lo compara con lo que esperaríamos si $H_0$ fuera cierta. El resultado se resume en el **p-valor**: la probabilidad de observar un estadístico tan extremo (o más) que el obtenido, asumiendo que $H_0$ es cierta. Un p-valor pequeño (por debajo del nivel de significancia $\alpha$, típicamente 0.05) es evidencia en contra de $H_0$.
+Por ejemplo, para evaluar si una media difiere de un valor de referencia $\mu_0$:
 
-### Dos tipos de error
+$$
+H_0: \mu=\mu_0, \qquad H_1: \mu\ne\mu_0.
+$$
 
-| | $H_0$ es cierta | $H_0$ es falsa |
+La igualdad se incluye en la hipótesis nula. La alternativa debe establecerse antes de examinar los resultados; elegirla después de observar los datos altera las propiedades del contraste.
+
+### 4.4.1 Contrastes bilaterales y unilaterales
+
+La forma de $H_1$ determina dónde se encuentra la evidencia relevante:
+
+| Tipo | Hipótesis alternativa | Interpretación |
 |---|---|---|
-| **Rechazamos $H_0$** | Error Tipo I (falso positivo), probabilidad $\alpha$ | Decisión correcta |
-| **No rechazamos $H_0$** | Decisión correcta | Error Tipo II (falso negativo), probabilidad $\beta$ |
+| Bilateral | $H_1: \theta\ne\theta_0$ | Se buscan diferencias en ambos sentidos. |
+| Unilateral derecha | $H_1: \theta>\theta_0$ | Se busca evidencia de un valor mayor. |
+| Unilateral izquierda | $H_1: \theta<\theta_0$ | Se busca evidencia de un valor menor. |
 
-$\alpha$ lo fijamos nosotros de antemano (nivel de significancia); $\beta$ depende del tamaño del efecto real, del tamaño muestral y de la variabilidad — por eso muestras más grandes también ayudan a detectar efectos reales con más fiabilidad (mayor **potencia** del test, $1-\beta$).
+No debe elegirse un contraste unilateral solo porque el resultado observado tenga la dirección esperada. La dirección debe justificarse por la pregunta científica antes del análisis.
 
-### Test z para la media ($\sigma$ conocida)
+### 4.4.2 Estadístico de contraste, región crítica y valor p
+
+El **estadístico de contraste** resume la discrepancia entre los datos y lo que cabría esperar si $H_0$ fuera cierta. Para la media con desviación poblacional conocida:
 
 $$
-z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}
+z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}.
 $$
 
-```{python}
-# H0: el tiempo medio de respuesta es 120ms. Observamos x̄=122.5 en n=40, sigma=15
-z_stat, p_value = inf.z_test_mean(sample_mean=122.5, mu0=120, sigma=15, n=40)
-print(f"z = {z_stat:.3f}, p-valor = {p_value:.4f}")
-```
+Cuando $\sigma$ es desconocida, se usa el estadístico:
 
-Con un p-valor por encima de 0.05, no hay evidencia suficiente para rechazar $H_0$: el tiempo de respuesta observado es compatible con una media real de 120ms.
+$$
+t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}, \qquad df=n-1.
+$$
 
-### Test t para la media ($\sigma$ desconocida)
+El **nivel de significación** $\alpha$ se fija antes de analizar los datos. En un contraste bilateral, la región crítica para $z$ es $|z|>z_{1-\alpha/2}$; en uno unilateral izquierdo es $z<z_{\alpha}$. La decisión equivalente basada en el valor p es rechazar $H_0$ cuando $p\text{-valor}\leq\alpha$.
+
+El **valor p** es la probabilidad, suponiendo cierta $H_0$ y los supuestos del modelo, de obtener un estadístico tan extremo o más que el observado en la dirección o direcciones establecidas por $H_1$. **No** es la probabilidad de que $H_0$ sea cierta, ni mide por sí solo el tamaño o la importancia práctica del efecto.
+
+Si $p>\alpha$, la conclusión correcta es **no rechazar $H_0$**: no se ha obtenido evidencia suficiente contra ella. Esto no demuestra que $H_0$ sea verdadera ni que las dos condiciones sean equivalentes.
+
+### 4.4.3 Procedimiento recomendado
+
+1. Formular la pregunta y definir la población y el parámetro de interés.
+2. Especificar $H_0$ y $H_1$ antes de examinar el resultado.
+3. Fijar $\alpha$ y decidir si el contraste es bilateral o unilateral.
+4. Seleccionar la prueba adecuada según el diseño, el tipo de variable y los supuestos.
+5. Revisar calidad de datos, independencia, valores ausentes y supuestos relevantes.
+6. Calcular el estadístico, los grados de libertad y el valor p; obtener un intervalo de confianza cuando proceda.
+7. Informar del resultado en el contexto del problema, incluyendo tamaño del efecto e incertidumbre cuando sea posible.
+
+### 4.4.4 Errores de tipo I y II y potencia
+
+| Decisión | $H_0$ cierta | $H_0$ falsa |
+|---|---|---|
+| Rechazar $H_0$ | Error de tipo I, probabilidad $\alpha$ | Decisión correcta; potencia $1-\beta$ |
+| No rechazar $H_0$ | Decisión correcta | Error de tipo II, probabilidad $\beta$ |
+
+- **Error de tipo I:** rechazar una hipótesis nula que en realidad es cierta.
+- **Error de tipo II:** no rechazar una hipótesis nula falsa.
+- **Potencia ($1-\beta$):** probabilidad de rechazar $H_0$ cuando existe el efecto especificado por la alternativa.
+
+La potencia depende, entre otros factores, del tamaño del efecto, la variabilidad, el tamaño muestral y el nivel $\alpha$. Un resultado no significativo puede reflejar ausencia de efecto, pero también falta de precisión o potencia.
+
+## 4.5 Contrastes de una muestra
+
+### 4.5.1 Media con desviación típica desconocida: prueba t
+
+La prueba t de una muestra contrasta $H_0:\mu=\mu_0$ usando:
+
+$$
+t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}},\qquad df=n-1.
+$$
+
+La prueba presupone observaciones independientes y, para muestras pequeñas, una distribución aproximadamente normal de la variable. En muestras grandes, la inferencia sobre la media puede ser robusta frente a desviaciones moderadas de normalidad, pero los valores atípicos graves, la dependencia o una distribución muy asimétrica requieren atención.
 
 ```{python}
 salarios_muestra = [2340, 2510, 2280, 2600, 2455, 2390, 2470, 2530, 2410, 2380]
-
-# H0: el salario medio del departamento es 2400€
 t_stat, p_value = inf.t_test_mean(sample=salarios_muestra, mu0=2400)
 print(f"t = {t_stat:.3f}, p-valor = {p_value:.4f}")
 ```
 
-### Test para dos proporciones (A/B testing)
+### 4.5.2 Proporción de una muestra
 
-Un caso extremadamente común en la práctica: comparar la tasa de conversión de dos variantes de un mismo experimento.
+Para contrastar $H_0:p=p_0$, una aproximación normal usa:
 
 $$
-z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}, \qquad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}
+z=\frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}.
 $$
 
+Debe comprobarse que la aproximación sea razonable. Para muestras pequeñas, conteos escasos o probabilidades próximas a los extremos, se consideran pruebas binomiales exactas u otros métodos apropiados.
+
+### 4.5.3 Varianza de una población
+
+Si la población es normal, puede contrastarse $H_0:\sigma^2=\sigma_0^2$ mediante:
+
+$$
+\chi^2=\frac{(n-1)s^2}{\sigma_0^2},\qquad df=n-1.
+$$
+
+Este contraste es sensible a desviaciones de la normalidad; no debe aplicarse mecánicamente a datos muy asimétricos o con valores atípicos.
+
+## 4.6 Comparación de dos muestras
+
+Antes de escoger una prueba hay que determinar si las muestras son independientes o emparejadas. Las mediciones antes y después en las mismas personas, por ejemplo, son emparejadas; dos grupos de participantes distintos suelen ser independientes.
+
+### 4.6.1 Dos medias independientes: t de Welch
+
+Cuando no se desea asumir igualdad de varianzas, la prueba de Welch utiliza:
+
+$$
+t=\frac{\bar{x}_1-\bar{x}_2}{\sqrt{s_1^2/n_1+s_2^2/n_2}}.
+$$
+
+Los grados de libertad se aproximan mediante la fórmula de Welch–Satterthwaite. Es una opción general recomendable para comparar medias independientes, incluso cuando las varianzas son similares.
+
+La prueba t agrupada tradicional presupone varianzas poblacionales iguales y estima una varianza común. No es necesario decidir automáticamente entre ambas mediante una prueba preliminar de igualdad de varianzas: esa estrategia puede alterar las propiedades del análisis. La elección debe atender al diseño y a los supuestos, y Welch suele ser una opción robusta.
+
+### 4.6.2 Datos emparejados
+
+Para cada pareja se calcula una diferencia $D_i=X_i-Y_i$ y se contrasta la media de esas diferencias:
+
+$$
+t=\frac{\bar{D}-\mu_{D,0}}{s_D/\sqrt{n}},\qquad df=n-1.
+$$
+
+La unidad de análisis es la diferencia dentro de cada pareja. No se deben tratar las mediciones emparejadas como dos muestras independientes.
+
+### 4.6.3 Dos proporciones independientes
+
+Para contrastar igualdad de proporciones, bajo $H_0:p_1=p_2$ se utiliza a menudo la proporción agrupada:
+
+$$
+\hat{p}=\frac{x_1+x_2}{n_1+n_2},
+$$
+
+$$
+z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1+1/n_2)}}.
+$$
+
+Esta aproximación requiere tamaños y conteos adecuados. En tablas pequeñas pueden ser preferibles métodos exactos. Si las proporciones provienen de observaciones emparejadas, debe usarse una prueba para datos pareados, no una prueba de dos proporciones independientes.
+
+## 4.7 Normalidad y elección de métodos no paramétricos
+
+La normalidad relevante depende de la prueba: para la prueba t de una muestra se considera la distribución de la variable; para la t emparejada, la distribución de las diferencias; y para la comparación de medias independientes, las distribuciones dentro de cada grupo. El teorema central del límite justifica ciertas aproximaciones de la media muestral bajo condiciones, pero no corrige el sesgo de muestreo ni la dependencia entre observaciones.
+
+La normalidad puede examinarse con histogramas, gráficos Q–Q y, como complemento, pruebas como Shapiro–Wilk. Una prueba de normalidad no debe ser el único criterio: con muestras grandes puede detectar desviaciones triviales y con muestras pequeñas puede no detectar desviaciones importantes.
+
+Cuando los supuestos paramétricos no son adecuados, se pueden considerar métodos no paramétricos:
+
+- **Prueba de signos:** evalúa la dirección de las diferencias respecto a un valor de referencia; no utiliza la magnitud de las diferencias.
+- **Wilcoxon de rangos con signo:** para una muestra o datos emparejados; analiza los rangos de las diferencias no nulas y requiere condiciones adicionales para interpretarlo como contraste de localización/mediana.
+- **Mann–Whitney U:** compara dos grupos independientes a partir de rangos. No es, en general, una prueba de igualdad de medias ni equivale siempre a una prueba de medianas; la interpretación como diferencia de localización requiere supuestos sobre las distribuciones.
+
+Las pruebas no paramétricas no son automáticamente válidas ante cualquier problema: también tienen supuestos, y la selección debe corresponder al diseño y a la pregunta.
+
+## 4.8 Variables categóricas: chi-cuadrado y Fisher
+
+Para estudiar la asociación entre dos variables categóricas se construye una tabla de contingencia. La prueba de independencia de Pearson compara las frecuencias observadas $O_{ij}$ con las esperadas $E_{ij}$ bajo independencia:
+
+$$
+\chi^2=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(O_{ij}-E_{ij})^2}{E_{ij}},
+$$
+
+con $(r-1)(c-1)$ grados de libertad. Las frecuencias esperadas se calculan como:
+
+$$
+E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
+$$
+
+La aproximación chi-cuadrado puede ser inadecuada si las frecuencias esperadas son pequeñas. En tablas 2×2 puede utilizarse la prueba exacta de Fisher; para tablas mayores, la disponibilidad de un cálculo exacto depende del software y del tamaño de la tabla. Deben inspeccionarse las frecuencias esperadas y documentarse el método utilizado.
+
+La prueba chi-cuadrado detecta asociación, pero no identifica por sí sola qué celdas contribuyen más ni demuestra causalidad. Para interpretar el resultado conviene examinar proporciones por grupo y, cuando corresponda, medidas de tamaño de efecto como $V$ de Cramér.
+
+## 4.9 Significación estadística y relevancia práctica
+
+Un valor p pequeño no implica necesariamente un efecto importante: con muestras muy grandes, diferencias pequeñas pueden resultar estadísticamente significativas. Del mismo modo, un valor p superior a $\alpha$ no prueba la ausencia de efecto. Por ello, junto al valor p deben presentarse, cuando sea posible:
+
+- la estimación del efecto (diferencia de medias, diferencia de proporciones, razón de riesgos u otra medida apropiada);
+- un intervalo de confianza;
+- el tamaño de muestra y los supuestos relevantes;
+- la relevancia clínica, científica o práctica en el contexto del problema.
+
+La interpretación también debe distinguir **asociación** de **causalidad**. Un estudio observacional puede identificar asociaciones, pero por sí solo no demuestra que una variable cause otra.
+
+## 4.10 Simulación: cobertura de intervalos de confianza
+
+Podemos ilustrar la interpretación de un intervalo del 95 % simulando muestras de una población con media conocida y contando cuántos intervalos contienen el valor real. La proporción observada variará de una simulación a otra, pero debería aproximarse al nivel nominal si se cumplen los supuestos y se simulan suficientes repeticiones.
+
 ```{python}
-# Variante A: 15 conversiones de 50. Variante B: 27 conversiones de 60.
-z_stat, p_value = inf.two_proportion_z_test(x1=15, n1=50, x2=27, n2=60)
-print(f"z = {z_stat:.3f}, p-valor = {p_value:.4f}")
-```
-
-Un p-valor por debajo de 0.05 aquí indicaría que la diferencia observada entre variantes es poco probable que se deba solo al azar, y respaldaría adoptar la variante con mejor tasa de conversión.
-
-## 4.5 Qué significa realmente un intervalo de confianza
-
-Una confusión muy frecuente: un intervalo de confianza al 95% **no** significa "hay un 95% de probabilidad de que $\mu$ esté en este intervalo concreto". $\mu$ no es aleatorio, es fijo (aunque desconocido); lo aleatorio es el intervalo, que cambia de una muestra a otra. La interpretación correcta es sobre el **procedimiento**: si repitiéramos el muestreo muchas veces y construyéramos un intervalo cada vez, aproximadamente el 95% de esos intervalos contendrían el verdadero $\mu$.
-
-Podemos comprobarlo por simulación, construyendo miles de intervalos a partir de muestras distintas de una población con $\mu$ conocido, y contando en cuántos cae realmente $\mu$:
-
-```{python}
-coverage = inf.simulate_ci_coverage(true_mu=100, sigma=15, n=30, confidence=0.95, n_simulations=5000, seed=42)
+coverage = inf.simulate_ci_coverage(
+    true_mu=100, sigma=15, n=30, confidence=0.95,
+    n_simulations=5000, seed=42
+)
 print(f"Proporción de intervalos que contienen la verdadera μ: {coverage:.3f}")
 ```
 
-El resultado debería rondar 0.95, confirmando la interpretación correcta del nivel de confianza.
+## 4.11 Cierre
 
-## 4.6 Cierre
-
-Con este módulo cerramos el ciclo que empezamos en el Módulo 2: de la probabilidad de sucesos individuales, pasando por las distribuciones que describen variables aleatorias completas (Módulo 3), hasta usar esas distribuciones para estimar parámetros poblacionales y contrastar afirmaciones concretas a partir de una muestra. Estas son las herramientas que sustentan cualquier experimento de A/B testing, estudio de mercado o validación de un modelo con datos reales.
+En este módulo conectamos las distribuciones estudiadas anteriormente con la estimación de parámetros y la evaluación de hipótesis. La elección de una prueba debe partir de la pregunta científica, el diseño y el tipo de variable; la conclusión debe basarse en el valor p, la incertidumbre y el tamaño del efecto, sin convertir la significación estadística en una afirmación causal automática.
 
 Continúa con el cuaderno práctico (`practica.ipynb`).
+
+### Material complementario
+
+Parte de los conceptos de este módulo se ha ampliado a partir del material docente *Contrastes de hipótesis*, de Ester Bernadó Mansilla (FUOC, 2020). Se han integrado sus contenidos estadísticos relevantes y se han adaptado las explicaciones al nivel y la estructura del curso.

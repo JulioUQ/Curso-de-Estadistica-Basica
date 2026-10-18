@@ -82,7 +82,11 @@ quarto preview
 
 ## Flujo de trabajo del proyecto
 
-El repositorio sigue un flujo de **rama de desarrollo → Pull Request → producción**, pensado para validar cada cambio antes de que llegue al sitio publicado:
+El repositorio sigue un flujo de **rama de desarrollo → Pull Request → producción**, pensado para validar cada cambio antes de que llegue al sitio publicado. Esta es la rutina para cada módulo nuevo:
+
+1º Trabajar en `test`, commit y `git push origin test`.
+2º Abrir el PR a `main` en GitHub, esperar a que `render-check` salga en verde y hacer el merge (merge commit).
+3º Sincronizar en local: `git checkout main`, `git pull origin main`, `git checkout test`, `git merge origin/main`, `git push origin test`.
 
 ```
 test (rama de trabajo)
