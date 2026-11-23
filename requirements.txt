@@ -1,9 +1,24 @@
-pandas
-numpy
-matplotlib
-seaborn
-scipy
-statsmodels
+# Dependencias de ejecución del curso (render de Quarto, stats_toolkit y notebooks).
+# Las de desarrollo (pytest) están en requirements-dev.txt.
+#
+# Versiones mínimas: son las versiones más antiguas verificadas con Python
+# 3.12 (CI) y 3.13 (local), ejecutando la suite de pytest y comprobando las APIs
+# que usa el proyecto. No se fijan máximos: el entorno de referencia usa las
+# versiones actuales.
+
+# Cálculo y datos
+numpy>=2.1.3
+pandas>=2.2.3
+scipy>=1.15.3           # fisher_exact con tablas RxC (práctica M4) desde 1.15
+statsmodels>=0.14.6     # proportions_ztest, DescrStatsW (práctica M4)
+scikit-learn>=1.5.2     # KNNImputer (práctica de preprocesamiento, M1)
+openpyxl>=3.1.5         # motor de pandas.read_excel para los .xlsx de sleephealth
+
+# Visualización
+matplotlib>=3.9.4       # boxplot(tick_labels=) existe desde 3.9; `labels=` se eliminó en 3.11
+seaborn>=0.13.2
+
+# Ejecución de código en Quarto / Jupyter
 jupyter
 ipykernel
 nbclient

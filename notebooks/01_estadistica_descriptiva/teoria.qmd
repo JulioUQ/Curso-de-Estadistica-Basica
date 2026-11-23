@@ -1,13 +1,15 @@
 ---
 title: "Teoría: Fundamentos y Estadística Descriptiva"
-subtitle: "Estadística Básica — Repositorio 1"
-format:
-  html:
-    toc: true
-    number-sections: true
-    code-fold: true
-bibliography: ../../references.bib
 ---
+
+::: {.callout-note appearance="simple"}
+## Objetivos del módulo
+
+- Distinguir los tipos de variables y elegir las medidas adecuadas para cada uno.
+- Calcular e interpretar medidas de tendencia central, dispersión y forma.
+- Construir e interpretar el resumen de cinco números y el diagrama de caja.
+- Identificar valores atípicos y valores perdidos, y valorar cómo tratarlos.
+:::
 
 ## Introducción
 
@@ -24,7 +26,8 @@ de técnicas para resumir, organizar y visualizar un conjunto de datos, sin
 todavía intentar generalizar conclusiones más allá de la muestra observada
 (eso es tarea de la estadística *inferencial*, que veremos en módulos
 posteriores). Usaremos como hilo conductor un dataset simulado de salarios de
-empleados por departamento, el mismo que se retoma en `practica.ipynb`.
+empleados por departamento, el mismo que se retoma en la
+[práctica](practica.ipynb).
 
 ## ¿Qué es la estadística?
 
@@ -63,7 +66,7 @@ flowchart TD
 |---|---|---|---|
 | Cualitativa | Nominal | Departamento (Ventas, IT, RRHH) | `object` / `category` |
 | Cualitativa | Ordinal | Nivel (Junior, Semi-Senior, Senior) | `CategoricalDtype(ordered=True)` |
-| Cuantitativa | Discreta | Años de antigüedad | `int64` |
+| Cuantitativa | Discreta | Número de proyectos asignados | `int64` |
 | Cuantitativa | Continua | Salario mensual | `float64` |
 
 Una variable cuantitativa continua registrada sin decimales (por ejemplo, el
@@ -97,12 +100,64 @@ x_{\left(\frac{n+1}{2}\right)} & \text{si } n \text{ es impar} \\[6pt]
 $$
 
 A diferencia de la media, es **robusta** ante outliers, lo que la hace
-preferible en distribuciones asimétricas como suelen ser los salarios.
+preferible en distribuciones asimétricas como suelen ser los salarios cuando
+se quiere describir el valor típico. La elección depende del objetivo: si
+interesa el total (por ejemplo, la masa salarial de un departamento), la
+medida relevante es la media, porque media × n = total.
 
 ### Moda
 
-El valor (o categoría) más frecuente. Es la única medida de tendencia central
-aplicable a variables nominales.
+La moda responde a la pregunta "¿qué valor aparece más veces?": la talla de
+camiseta más vendida, el número de hijos más habitual en una encuesta o el
+departamento con más empleados. Es la **única medida de tendencia central
+aplicable a variables nominales** (no tiene sentido calcular la media de unos
+departamentos) y resulta especialmente útil con variables discretas que toman
+pocos valores.
+
+**Una moda, varias o ninguna.** Al contar cuántas veces aparece cada valor
+pueden darse tres situaciones:
+
+- **Moda única**: un valor aparece más veces que cualquier otro. En las
+  valoraciones 4, 5, 3, 5, 5, 2, 4, la moda es 5 (tres veces).
+- **Varias modas**: dos o más valores comparten la frecuencia máxima y superan
+  al resto. En 1, 1, 2, 3, 3, 4 hay dos modas, 1 y 3: la distribución es
+  *bimodal* (con más modas, *multimodal*).
+- **Ninguna moda destacada**: todos los valores distintos aparecen el mismo
+  número de veces, como en 1, 1, 2, 2, 3, 3, o en una empresa con cuatro
+  departamentos de 75 empleados cada uno. Ningún valor destaca, y en este
+  curso diremos que **no hay moda**.
+
+Esta última regla es una **convención**, no una definición universal: algunos
+textos y programas (por ejemplo, `Series.mode()` de pandas o
+`statistics.multimode()` de Python) consideran en ese caso que todos los
+valores son modas. La función `modes()` de `stats_toolkit.descriptive` sigue
+la convención del curso.
+
+**Variables continuas.** Una variable continua, como un salario o una
+estatura, puede tomar cualquier valor dentro de un intervalo, así que en una
+muestra los valores casi nunca coinciden exactamente; cuando lo hacen, suele
+ser por el redondeo al registrarlos. Si los salarios se anotan en céntimos,
+lo normal es que todos sean distintos y no haya moda; si se anotaran en miles
+de euros, se repetirían mucho. La moda de los valores tal como se registraron
+depende, por tanto, de la precisión de la medida, y dice poco sobre dónde se
+concentran los datos. Basta con que dos observaciones coincidan por
+casualidad al redondear para que aparezca una moda: tenerla no significa que
+sea una medida útil.
+
+**Clase modal.** Con datos continuos es más informativo agruparlos en
+intervalos, como hace un histograma, y fijarse en el intervalo con más
+observaciones: la **clase modal**. Indica dónde se acumulan los datos, pero
+depende de cómo se agrupen: cambiar la anchura de los intervalos o el punto
+donde empiezan puede cambiar la clase modal. Además, solo tiene sentido
+comparar las frecuencias de intervalos de la misma anchura: un intervalo más
+ancho puede reunir más observaciones simplemente porque abarca un rango
+mayor. Por eso conviene indicar siempre los intervalos utilizados.
+
+**Moda de una distribución teórica.** Cuando describimos una población
+mediante un modelo de probabilidad (lo veremos en el Módulo 3), la moda es el
+valor en el que la función de probabilidad o de densidad alcanza su máximo:
+el "pico" de la curva. Por ejemplo, la moda de una distribución normal
+coincide con su media.
 
 ## Medidas de dispersión
 
@@ -137,26 +192,121 @@ Por ejemplo, para comparar la variabilidad salarial de un departamento junior
 (sueldos bajos) frente a uno directivo (sueldos altos), el CV es más
 informativo que la desviación estándar absoluta.
 
+Su interpretación es apropiada principalmente para variables medidas en una
+escala de razón, es decir, con un cero significativo que indica ausencia de la
+magnitud (salarios, pesos, tiempos), y con media distinta de cero. Si la media
+se acerca a 0, el CV se dispara y deja de ser informativo. En escalas sin cero
+absoluto, como la temperatura en grados Celsius, su valor depende del origen
+elegido: los mismos datos dan un CV distinto en °C y en °F.
+
 ## Medidas de forma
+
+La tendencia central y la dispersión no lo dicen todo: dos variables pueden
+tener la misma media y la misma desviación estándar y, sin embargo, una ser
+simétrica y la otra tener una cola larga hacia un lado. La **asimetría** y la
+**curtosis** resumen la forma de la distribución en un solo número cada una.
+
+Ambas se construyen con los **momentos centrales** de la muestra: el promedio
+de las desviaciones respecto de la media elevadas a una potencia $k$,
+
+$$
+m_k = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^k .
+$$
+
+$m_2$ es la varianza con divisor $n$; para describir la forma nos interesan
+$m_3$ y $m_4$.
 
 ### Asimetría (skewness)
 
+Al elevar al cubo, cada desviación conserva su signo y las grandes pesan mucho
+más que las pequeñas. Si hay una cola larga a la derecha, unas pocas
+desviaciones positivas muy grandes dominan la suma y $m_3 > 0$; si la cola
+está a la izquierda, $m_3 < 0$. Para que el resultado no dependa de las
+unidades de medida, se divide por la desviación estándar (con divisor $n$)
+al cubo:
+
 $$
-g_1 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^3}{s^3}
+g_1 = \frac{m_3}{m_2^{3/2}}
 $$
 
-$g_1 \approx 0$ indica simetría; $g_1 > 0$ indica cola larga hacia la derecha
-(típico en salarios: pocos sueldos muy altos "estiran" la distribución).
+$g_1 \approx 0$ es compatible con una distribución simétrica (aunque no la
+garantiza); $g_1 > 0$ indica cola larga hacia la derecha
+(típico en salarios: pocos sueldos muy altos "estiran" la distribución), y
+$g_1 < 0$, cola larga hacia la izquierda.
 
 ### Curtosis (exceso)
 
+Con la cuarta potencia, las desviaciones grandes pesan todavía más, así que
+$m_4$ refleja sobre todo cuánto peso tienen los valores alejados del centro,
+es decir, las **colas** de la distribución. Dividiendo por $m_2^2$ se obtiene
+una medida sin unidades, y se resta 3 para que la distribución normal tenga
+curtosis de referencia 0:
+
 $$
-g_2 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^4}{s^4} - 3
+g_2 = \frac{m_4}{m_2^{2}} - 3
 $$
 
-Se resta 3 para que la distribución normal tenga curtosis de referencia 0.
 $g_2 > 0$ (leptocúrtica) indica colas más pesadas que la normal; $g_2 < 0$
 (platicúrtica) indica colas más ligeras.
+
+### Estimadores corregidos: $G_1$ y $G_2$
+
+$g_1$ y $g_2$ describen la muestra que tenemos delante, pero normalmente los
+usamos para hacernos una idea de la forma de la **población** de la que
+procede. Con muestras pequeñas no siempre aciertan en promedio. El caso más
+claro es la curtosis: en muestras de una población normal, cuya curtosis de
+exceso es 0, $g_2$ sale en promedio negativo (su media es $-6/(n+1)$, es
+decir, $-0{,}55$ con $n = 10$). Por eso se suele aplicar una corrección que
+solo depende de $n$: en la asimetría, un factor que multiplica a $g_1$; en la
+curtosis, además de multiplicar, se suma una constante
+[@joanes1998comparing]:
+
+$$
+G_1 = \frac{\sqrt{n(n-1)}}{n-2}\; g_1 \qquad (n \ge 3)
+$$
+
+$$
+G_2 = \frac{n-1}{(n-2)(n-3)} \Big[ (n+1)\, g_2 + 6 \Big] \qquad (n \ge 4)
+$$
+
+Estas son las versiones que calculan pandas (`.skew()` y `.kurt()`), Excel,
+SPSS y la función `shape()` de `stats_toolkit.descriptive`, y las que usaremos
+en el resto del curso. Se interpretan igual que $g_1$ y $g_2$.[^forma-software]
+
+::: {.callout-note}
+## ¿Por qué dos versiones?
+
+Si la población es normal, $G_2$ acierta en promedio (es *insesgado*),
+mientras que $g_2$ se queda corto; en la asimetría de datos normales no hay
+nada que corregir, porque $g_1$ y $G_1$ valen 0 en promedio. Fuera de la
+normalidad, las correcciones no garantizan eliminar el sesgo ni mejorar el
+estimador en todos los casos: con
+distribuciones muy asimétricas, todas las versiones dan valores más próximos
+a 0 que los de la población. Además, la corrección tiene un precio: $G_1$ y
+$G_2$ varían más de una muestra a otra que $g_1$ y $g_2$, de modo que ninguna
+versión es mejor en todos los casos. Usamos $G_1$ y $G_2$ porque son las que
+calculan pandas, Excel y SPSS. Como $G_2$ suma una constante, en muestras
+pequeñas puede tener distinto signo que $g_2$.
+
+La diferencia entre ambas versiones se diluye al crecer $n$, pero no al mismo
+ritmo. En la asimetría es pequeña enseguida: el factor que multiplica a $g_1$
+vale 1,053 con $n = 30$ y 1,005 con $n = 300$. En la curtosis tarda más en
+desaparecer: con $n = 30$, $G_2 \approx 1{,}19\, g_2 + 0{,}23$, y hace falta
+llegar a unos cientos de observaciones para que ambas casi coincidan (con
+$n = 300$, $G_2 \approx 1{,}02\, g_2 + 0{,}02$).
+
+Más importante que elegir una versión es recordar que, con pocas
+observaciones, estas medidas son muy **inestables**, y la curtosis todavía
+más, porque depende de unos pocos valores extremos: una sola observación
+puede cambiarla mucho. Con muestras pequeñas, interprétalas siempre junto a
+un histograma o un diagrama de caja.
+:::
+
+[^forma-software]: Algunos programas, como Minitab o la función `skewness()`
+    del paquete `e1071` de R en su opción por defecto, dividen por la
+    desviación estándar muestral $s$ (con divisor $n-1$):
+    $m_3 / s^3$ y $m_4 / s^4 - 3$. Por eso sus resultados difieren
+    ligeramente de los de pandas o `stats_toolkit`.
 
 ## Resumen de cinco números y diagrama de caja
 
@@ -167,7 +317,7 @@ $$
 $$
 
 donde $Q_1$ y $Q_3$ son el primer y tercer cuartil, y el **rango
-intercuartílico** es $IQR = Q_3 - Q_1$. Esta idea, junto con el diagrama de
+intercuartílico** es $\text{RIC} = Q_3 - Q_1$. Esta idea, junto con el diagrama de
 caja que la visualiza, se debe originalmente a Tukey
 [-@tukey1977exploratory] y sigue siendo la herramienta exploratoria de
 referencia:
@@ -183,18 +333,27 @@ referencia:
   <line x1="380" y1="90" x2="480" y2="90" stroke="#333" stroke-width="2"/>
   <line x1="480" y1="60" x2="480" y2="120" stroke="#333" stroke-width="2"/>
   <circle cx="560" cy="90" r="6" fill="#E74C3C"/>
-  <text x="80" y="145" font-size="13" text-anchor="middle">Mínimo</text>
+  <text x="80" y="145" font-size="13" text-anchor="middle">Mín. dentro de 1,5·RIC</text>
   <text x="180" y="145" font-size="13" text-anchor="middle">Q1</text>
   <text x="280" y="145" font-size="13" text-anchor="middle" font-weight="bold">Mediana</text>
   <text x="380" y="145" font-size="13" text-anchor="middle">Q3</text>
-  <text x="480" y="165" font-size="13" text-anchor="middle">Máximo (dentro de 1.5·RIC)</text>
+  <text x="480" y="165" font-size="13" text-anchor="middle">Máx. dentro de 1,5·RIC</text>
   <text x="560" y="145" font-size="13" text-anchor="middle" fill="#E74C3C">Valor atípico</text>
 </svg>
 </div>
 ```
 
 Un valor se considera atípico por esta regla si cae fuera de
-$[Q_1 - 1.5 \cdot IQR,\ Q_3 + 1.5 \cdot IQR]$.
+$[Q_1 - 1{,}5 \cdot \text{RIC},\ Q_3 + 1{,}5 \cdot \text{RIC}]$.
+Los bigotes llegan hasta el dato más extremo que no es atípico; por eso,
+cuando hay atípicos, no coinciden con el mínimo y el máximo del resumen de
+cinco números.
+
+Hay varias formas de calcular los cuartiles, que pueden dar valores algo
+distintos con pocos datos. `five_number_summary()` de `stats_toolkit` usa la
+interpolación lineal de `np.percentile` (la misma que `pandas.quantile` por
+defecto), que no siempre coincide con las "bisagras" que propuso Tukey para el
+diagrama de caja. Con muestras grandes las diferencias son despreciables.
 
 ## Valores atípicos y estadística robusta
 
@@ -222,27 +381,47 @@ $$
 \text{MAD}(x) = \text{mediana}\big(|x_i - \text{mediana}(x)|\big)
 $$
 
-En `practica.ipynb` ya se usa la función `detect_outliers()` de
+En la [práctica](practica.ipynb) ya se usa la función `detect_outliers()` de
 `stats_toolkit.descriptive` para aplicar la regla del RIC sobre el dataset de
 salarios — esta sección le da el fundamento teórico a ese cálculo.
 
 ## Valores perdidos (missing data)
 
 En datos reales, es habitual que falten valores en algunas observaciones
-(una encuesta sin responder, un sensor que falla un día). Ignorar esas filas
-sin más reduce el tamaño efectivo de la muestra y puede introducir sesgo si
-la ausencia no es completamente aleatoria [@littlerubin1987missing]. Las
+(una encuesta sin responder, un sensor que falla un día). Cómo tratarlos
+depende de **por qué** faltan. Si la ausencia es completamente aleatoria, no
+guarda relación con ningún valor de los datos. En cambio, si por ejemplo los
+ingresos altos se dejan sin contestar con más frecuencia, los datos que sí
+tenemos ya no representan bien a la población [@littlerubin1987missing]. Las
 estrategias más simples son:
 
-- **Eliminación**: descartar las observaciones incompletas, razonable solo
-  si son muy pocas en relación con el total.
-- **Imputación simple**: sustituir el valor ausente por la media o la
-  mediana de la variable, que no sesga la tendencia central pero sí reduce
-  artificialmente la dispersión observada.
+- **Eliminación**: descartar las observaciones incompletas. Reduce el tamaño
+  de la muestra y solo evita sesgos si la ausencia es completamente
+  aleatoria; por eso es más defendible cuando los casos eliminados son pocos
+  y no hay motivos para pensar que difieren del resto.
+- **Imputación simple**: sustituir cada valor ausente por la media (o la
+  mediana) de los valores observados de esa variable.
 
-Trataremos estrategias de imputación más elaboradas (basadas en modelos o en
-vecinos más cercanos) cuando abordemos regresión en el repositorio de
-Machine Learning.
+Conviene distinguir tres medias: la de los **casos observados**, la del
+**conjunto completado** tras imputar y la **media real de la población**.
+Imputar por la media hace que las dos primeras coincidan, pero no garantiza
+acercarse a la tercera: si los valores que faltan tienden a ser distintos de
+los observados, la media observada ya está sesgada y la imputación no lo
+corrige. Imputar por la mediana, además, desplaza la media del conjunto
+completado cuando la variable es asimétrica. En ambos casos, muchos valores
+pasan a ser idénticos, así que la dispersión se reduce artificialmente y las
+relaciones con otras variables (por ejemplo, la correlación) pueden quedar
+distorsionadas.
+
+Además, si después se calculan intervalos de confianza o contrastes
+(Módulo 4) tratando los valores imputados como si se hubieran observado, se
+ignora la incertidumbre sobre lo que realmente faltaba: los errores estándar
+pueden quedar subestimados, haciendo que las conclusiones parezcan más
+precisas de lo que realmente son.
+
+Existen estrategias más elaboradas, basadas en modelos o en vecinos más
+cercanos, como la imputación KNN que se aplica en
+`practica_preprocesamiento.ipynb`.
 
 ## Estadística y minería de datos
 
@@ -253,15 +432,72 @@ la estadística clásica suele partir de una hipótesis que se quiere contrastar
 contra los datos, mientras que los algoritmos de minería de datos exploran
 los datos en busca de patrones sin una hipótesis previa concreta
 [@hankamber2001datamining]. En la práctica, ambos enfoques se solapan cada
-vez más y comparten técnicas [@wittenfrankhall2011datamining]; profundizaremos
-en esta conexión en el repositorio de Machine Learning.
+vez más y comparten técnicas [@wittenfrankhall2011datamining]: muchos
+algoritmos de aprendizaje automático, como la regresión lineal (Módulo 5) o
+Naive Bayes (Módulo 2), son también modelos estadísticos.
+
+::: {.callout-tip}
+## Ideas clave
+
+- El tipo de variable decide qué medidas tienen sentido: la moda es la única para variables nominales.
+- La media y la desviación típica son sensibles a los valores extremos; la mediana y el RIC son robustos.
+- La asimetría y la curtosis describen la forma, pero con pocos datos son muy inestables.
+- Un valor atípico no es necesariamente un error, y tratar los valores perdidos tiene un coste: la imputación simple reduce la variabilidad.
+:::
+
+## Autoevaluación
+
+Intenta responder cada pregunta antes de desplegar la respuesta.
+
+**1.** En una empresa, el salario medio es 3200 € y el mediano, 2400 €. ¿Qué indica esta diferencia y qué medida describe mejor el salario típico?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+La media es mucho mayor que la mediana: la distribución es asimétrica a la derecha, con unos pocos salarios muy altos que arrastran la media hacia arriba. La mediana (la mitad cobra menos de 2400 €) describe mejor el salario típico, porque es robusta frente a esos valores extremos.
+:::
+
+**2.** Clasifica estas variables: código postal, número de hijos, satisfacción en una escala de 1 a 5 y temperatura corporal.
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+Código postal: cualitativa nominal (aunque se escriba con números, no tiene sentido sumarlo ni promediarlo). Número de hijos: cuantitativa discreta. Satisfacción de 1 a 5: cualitativa ordinal (hay orden, pero la distancia entre categorías no es necesariamente la misma). Temperatura: cuantitativa continua.
+:::
+
+**3.** Un conjunto de datos tiene $Q_1 = 20$ y $Q_3 = 30$. ¿A partir de qué valores se considera atípica una observación según la regla de Tukey?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+$\text{RIC} = 30 - 20 = 10$. Los límites son $Q_1 - 1{,}5 \cdot 10 = 5$ y $Q_3 + 1{,}5 \cdot 10 = 45$: los valores menores que 5 o mayores que 45 se señalan como posibles atípicos. Señalarlos no significa que sean errores: hay que investigar su origen antes de decidir qué hacer con ellos.
+:::
+
+**4.** Quieres comparar la dispersión de la altura (en cm) y del peso (en kg) de un mismo grupo. ¿Puedes comparar directamente sus desviaciones típicas?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+No: están en unidades distintas. El coeficiente de variación, $CV = s/\bar{x}$, no tiene unidades y permite compararlas, siempre que las variables sean positivas y con un cero real (no tendría sentido, por ejemplo, con temperaturas en grados Celsius).
+:::
+
+**5.** Faltan el 20 % de los valores de una variable y los sustituyes por la media observada. ¿Qué efectos tiene sobre el análisis posterior?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+La media observada no cambia, pero la variabilidad se reduce artificialmente (todos los valores imputados son iguales), se pueden distorsionar las relaciones con otras variables y los errores estándar quedan subestimados. Además, si los datos no faltan al azar, la media observada puede no representar a la población.
+:::
 
 ## Cierre
 
 Con tipos de variables, medidas de tendencia central, dispersión, forma y
 el tratamiento de valores atípicos, ya tienes las herramientas para describir
-cuantitativamente cualquier variable numérica. En `practica.ipynb` se aplica
-todo esto sobre el dataset de salarios por departamento. El Módulo 2
+cuantitativamente cualquier variable numérica. En la
+[práctica de estadística descriptiva](practica.ipynb) se aplica todo esto sobre
+el dataset de salarios por departamento, y en la
+[práctica de preprocesamiento](practica_preprocesamiento.ipynb) se limpia y se
+prepara un conjunto de datos real con errores. El Módulo 2
 introduce la probabilidad, el lenguaje necesario para dar el salto de
 "describir una muestra" a "generalizar a una población".
 

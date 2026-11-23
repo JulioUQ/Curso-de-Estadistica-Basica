@@ -2,7 +2,17 @@
 title: "Distribuciones de Probabilidad"
 ---
 
-## 3.1 Introducción
+::: {.callout-note appearance="simple"}
+## Objetivos del módulo
+
+- Distinguir variables aleatorias discretas y continuas y sus funciones de masa, de densidad y de distribución.
+- Reconocer las distribuciones Bernoulli, Binomial, Poisson, Uniforme, Normal y Exponencial y sus parámetros.
+- Calcular probabilidades y cuantiles, y tipificar valores de una Normal.
+- Entender la distribución muestral de la media y el Teorema Central del Límite.
+- Conocer las distribuciones t, χ² y F que se usan en los módulos de inferencia.
+:::
+
+## Introducción
 
 En el Módulo 2 definimos la probabilidad de sucesos individuales y vimos cómo actualizar nuestras creencias con el teorema de Bayes. Ahora damos un paso más: en vez de asignar probabilidades a sucesos sueltos, queremos describir **el comportamiento completo de una variable aleatoria** — todos sus valores posibles y la probabilidad asociada a cada uno.
 
@@ -10,7 +20,7 @@ Esto es lo que hace una **distribución de probabilidad**: un modelo matemático
 
 Como en los módulos anteriores, cerraremos con el puente hacia lo que viene después: el **Teorema Central del Límite**, la pieza que conecta las distribuciones de este módulo con la inferencia estadística (intervalos de confianza y contraste de hipótesis) del próximo módulo.
 
-## 3.2 Variables Aleatorias: Discretas vs. Continuas
+## Variables Aleatorias: Discretas vs. Continuas
 
 Recuperamos la distinción del Módulo 1 entre variables discretas y continuas, pero ahora aplicada a variables *aleatorias* — variables cuyo valor depende del resultado de un experimento aleatorio.
 
@@ -43,7 +53,7 @@ $$
 \text{Var}(X) = \sigma^2 = E[(X-\mu)^2] \qquad \text{(varianza)}
 $$
 
-## 3.3 Distribuciones Discretas
+## Distribuciones Discretas
 
 ### Bernoulli
 
@@ -57,7 +67,7 @@ $$
 E[X] = p \qquad \text{Var}(X) = p(1-p)
 $$
 
-**Ejemplo**: si $p = 0.3$ es la probabilidad de que un cliente convierta tras ver un anuncio, $X$ es la variable que vale 1 si convierte y 0 si no.
+**Ejemplo**: si $p = 0{,}3$ es la probabilidad de que un cliente convierta tras ver un anuncio, $X$ es la variable que vale 1 si convierte y 0 si no.
 
 ### Binomial
 
@@ -71,7 +81,7 @@ $$
 E[X] = np \qquad \text{Var}(X) = np(1-p)
 $$
 
-**Ejemplo**: de 50 clientes que ven el anuncio, ¿cuántos convertirán? $X \sim \text{Binomial}(n=50, p=0.3)$.
+**Ejemplo**: de 50 clientes que ven el anuncio, ¿cuántos convertirán? $X \sim \text{Binomial}(n=50, p=0{,}3)$.
 
 ```{python}
 #| echo: false
@@ -108,11 +118,11 @@ print(f"P(X = 6) = {p_6:.4f}")
 
 La Poisson es, de hecho, el límite de la Binomial cuando $n \to \infty$, $p \to 0$ y $np = \lambda$ se mantiene constante — útil cuando hay muchas oportunidades de que ocurra un evento raro.
 
-## 3.4 Distribuciones Continuas
+## Distribuciones Continuas
 
 ### Uniforme
 
-Todos los valores en un intervalo $[a, b]$ son igual de probables.
+La probabilidad se reparte de forma homogénea en un intervalo $[a, b]$: subintervalos de la misma longitud tienen la misma probabilidad.
 
 $$
 f(x) = \frac{1}{b-a}, \quad a \le x \le b
@@ -124,7 +134,7 @@ $$
 
 ### Normal (Gaussiana)
 
-La distribución continua más importante en estadística, por su papel central en el Teorema Central del Límite (sección 3.5).
+La distribución continua más importante en estadística, por su papel central en el Teorema Central del Límite (lo vemos al final de este módulo).
 
 $$
 f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
@@ -134,7 +144,7 @@ $$
 E[X] = \mu \qquad \text{Var}(X) = \sigma^2
 $$
 
-Es simétrica alrededor de $\mu$, y la conocida "regla 68-95-99.7" indica que aproximadamente el 68% de la probabilidad cae dentro de $\pm 1\sigma$, el 95% dentro de $\pm 2\sigma$, y el 99.7% dentro de $\pm 3\sigma$.
+Es simétrica alrededor de $\mu$, y la conocida "regla 68-95-99,7" indica que aproximadamente el 68% de la probabilidad cae dentro de $\pm 1\sigma$, el 95% dentro de $\pm 2\sigma$, y el 99,7% dentro de $\pm 3\sigma$.
 
 ```{python}
 # Probabilidad acumulada P(X <= 1.96) para una Normal estándar
@@ -156,22 +166,107 @@ $$
 
 **Ejemplo**: si los tickets de soporte llegan a una tasa de $\lambda = 4$ por hora (Poisson), el tiempo entre tickets consecutivos sigue una Exponencial con $E[X] = 1/4$ horas = 15 minutos.
 
-## 3.5 El Teorema Central del Límite
+## Función de distribución, cuantiles y tipificación
+
+### Función de distribución
+
+La **función de distribución** (o función de distribución acumulada, cdf) de
+cualquier variable aleatoria es
+
+$$
+F(x) = P(X \le x).
+$$
+
+Crece de 0 a 1 a medida que $x$ aumenta y sirve para calcular la probabilidad
+de cualquier intervalo: $P(a < X \le b) = F(b) - F(a)$. En una variable
+discreta, $F(x)$ suma las probabilidades de los valores menores o iguales que
+$x$; en una continua, es el área bajo la densidad a la izquierda de $x$.
+
+### Cuantiles
+
+El **cuantil** de orden $p$ es el valor $q_p$ que deja por debajo una
+probabilidad $p$: $F(q_p) = p$ (en las distribuciones continuas). La mediana es
+$q_{0{,}5}$. En inferencia usaremos mucho los cuantiles de la Normal estándar:
+por ejemplo, $z_{0{,}975} \approx 1{,}96$ deja un 2,5 % de probabilidad en la
+cola derecha y, por simetría, otro 2,5 % por debajo de $-1{,}96$.
+
+```{python}
+from scipy import stats
+
+print(f"P(Z <= 1,96)      = {dist.normal_cdf(1.96):.4f}")
+print(f"Cuantil 0,975     = {stats.norm.ppf(0.975):.4f}")
+print(f"P(-1,96 < Z <= 1,96) = {dist.normal_cdf(1.96) - dist.normal_cdf(-1.96):.4f}")
+```
+
+La función de distribución y la función cuantil son inversas: `normal_cdf`
+convierte un valor en probabilidad, y `stats.norm.ppf` convierte una
+probabilidad en valor.
+
+### Tipificación
+
+Si $X \sim \mathcal{N}(\mu, \sigma^2)$, la variable **tipificada**
+
+$$
+Z = \frac{X - \mu}{\sigma}
+$$
+
+sigue una Normal estándar, $\mathcal{N}(0, 1)$. Tipificar expresa cada valor
+como "a cuántas desviaciones típicas está de la media", lo que permite usar una
+sola tabla (o una sola función) para cualquier Normal. Por ejemplo, si la
+estatura de una población sigue una $\mathcal{N}(170, 8^2)$ en centímetros,
+medir 186 cm equivale a $z = (186 - 170)/8 = 2$:
+
+```{python}
+z = (186 - 170) / 8
+print(f"z = {z:.1f}")
+print(f"P(X > 186) = P(Z > 2) = {1 - dist.normal_cdf(z):.4f}")
+print(f"Directamente:            {1 - dist.normal_cdf(186, mu=170, sigma=8):.4f}")
+```
+
+## Distribución muestral de la media
+
+En inferencia no nos interesa una sola observación, sino un resumen de la
+muestra, como la media $\bar{X}$. Como la muestra es aleatoria, $\bar{X}$
+también lo es: cada muestra da una media distinta. Su distribución se llama
+**distribución muestral** de la media. Si $X_1, \dots, X_n$ son independientes
+y proceden de una población con media $\mu$ y varianza $\sigma^2$, entonces
+
+$$
+E[\bar{X}] = \mu, \qquad \text{Var}(\bar{X}) = \frac{\sigma^2}{n}, \qquad
+\text{desviación típica de } \bar{X} = \frac{\sigma}{\sqrt{n}}.
+$$
+
+Es decir, la media muestral se centra en la media poblacional y su dispersión
+disminuye al crecer $n$. A esa desviación típica, $\sigma/\sqrt{n}$, la
+llamaremos **error estándar** en el Módulo 4. Si además la población es Normal,
+$\bar{X}$ sigue exactamente una $\mathcal{N}(\mu, \sigma^2/n)$ para cualquier
+$n$. Si no lo es, el resultado de la sección siguiente nos dice qué ocurre
+cuando $n$ es grande.
+
+## El Teorema Central del Límite
 
 Este es, posiblemente, el resultado más importante de toda la estadística inferencial, y el motivo por el que la distribución Normal aparece constantemente incluso cuando los datos originales no son normales.
 
-> **Teorema Central del Límite (TCL)**: si tomamos muestras aleatorias de tamaño $n$ (suficientemente grande) de *cualquier* población con media $\mu$ y varianza $\sigma^2$ finita, la distribución de la **media muestral** $\bar{X}$ se aproxima a una distribución Normal:
+La idea intuitiva es esta: cada observación puede quedar lejos de la media de la población, pero al promediar muchas, los valores altos y bajos tienden a compensarse. Por eso las medias muestrales se agrupan alrededor de $\mu$, con una dispersión que disminuye al crecer $n$ (su desviación típica es $\sigma/\sqrt{n}$) y con una forma cada vez más parecida a la de una Normal.
+
+> **Teorema Central del Límite (TCL)**: sean $X_1, \dots, X_n$ observaciones independientes e idénticamente distribuidas (i.i.d.) de una población con media $\mu$ y varianza $\sigma^2$ finita y positiva ($0 < \sigma^2 < \infty$). Entonces, la media muestral **tipificada** converge en distribución a una Normal estándar:
 >
 > $$
-> \bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \quad \text{cuando } n \to \infty
+> Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(0, 1) \quad \text{cuando } n \to \infty.
 > $$
+>
+> En la práctica, para $n$ suficientemente grande, la distribución de $\bar{X}$ puede aproximarse por $\mathcal{N}\left(\mu, \sigma^2/n\right)$ [@moore2012introduction].
 
-Lo notable es que esto es cierto **sin importar la forma de la distribución original** — puede ser una Exponencial muy asimétrica, una Uniforme, o cualquier otra cosa. Al promediar muchas observaciones, ese promedio tiende a comportarse como una Normal.
+Hay que tipificar porque $\bar{X}$, por sí sola, no tiende a una Normal: al crecer $n$ se concentra cada vez más en torno a $\mu$. Lo que se estabiliza es su forma una vez centrada y reescalada. Las condiciones i.i.d. y varianza finita y positiva son *suficientes* para que el resultado se cumpla, pero no las únicas posibles: hay versiones del teorema que las relajan y que quedan fuera de este curso.
+
+Lo notable es que el límite no depende de la forma de la población: puede ser una Exponencial muy asimétrica, una Uniforme o cualquier otra con varianza finita. Lo que sí depende de la forma es qué significa «suficientemente grande»: con poblaciones simétricas la aproximación es buena con pocas observaciones, y con poblaciones muy asimétricas o con valores extremos hacen falta muestras mayores. La regla habitual $n \ge 30$ es solo orientativa.
 
 Podemos verlo empíricamente simulando muchas muestras de una población muy asimétrica (una Exponencial) y observando cómo se distribuyen sus medias muestrales:
 
 ```{python}
+#| fig-alt: "Histograma de 2000 medias muestrales de tamaño 30 de una población Exponencial con media 2, con forma de campana ligeramente asimétrica a la derecha, y superpuesta la curva Normal con media 2 y desviación típica 2 dividida por la raíz de 30, que se ajusta bien al histograma."
 import matplotlib.pyplot as plt
+import numpy as np
 
 sample_means = dist.simulate_clt(
     population="exponential",
@@ -181,17 +276,181 @@ sample_means = dist.simulate_clt(
     seed=42,
 )
 
-plt.hist(sample_means, bins=40, edgecolor="black")
-plt.title("Distribución de medias muestrales (n=30) de una población Exponencial")
+# La población Exponencial(λ = 0,5) tiene μ = 1/λ = 2 y σ = 1/λ = 2
+mu, sigma, n = 2, 2, 30
+xs = np.linspace(sample_means.min(), sample_means.max(), 200)
+
+plt.figure(figsize=(8, 4))
+plt.hist(sample_means, bins=40, density=True, edgecolor="black", alpha=0.6,
+         label="Medias simuladas")
+plt.plot(xs, [dist.normal_pdf(x, mu, sigma / np.sqrt(n)) for x in xs],
+         color="crimson", linewidth=2, label="Aproximación Normal del TCL")
+plt.title("Medias muestrales (n = 30) de una población Exponencial")
 plt.xlabel("Media muestral")
-plt.ylabel("Frecuencia")
+plt.ylabel("Densidad")
+plt.legend()
 plt.show()
 ```
 
-Aunque la población original (Exponencial) es muy asimétrica, la distribución de las medias muestrales ya tiene la forma característica de campana de la Normal. Esto es lo que hace posible, en el próximo módulo, construir intervalos de confianza y contrastes de hipótesis sobre la media de casi cualquier población, apoyándonos únicamente en el tamaño de la muestra.
+Aunque la población original (Exponencial) es muy asimétrica, la distribución de las medias muestrales ya tiene una forma de campana cercana a la Normal, aunque con $n = 30$ todavía conserva una ligera asimetría a la derecha. Esto es lo que hace posible, en el próximo módulo, construir intervalos de confianza y contrastes de hipótesis sobre la media de muchas poblaciones no normales, siempre que las observaciones sean independientes y la muestra sea lo bastante grande.
 
-## 3.6 Cierre
+### Explora: la aproximación Normal a la Binomial
+
+Una Binomial$(n, p)$ es la suma de $n$ variables Bernoulli independientes, así
+que, por el TCL, para $n$ grande se parece a una Normal con la misma media,
+$np$, y la misma varianza, $np(1-p)$. Mueve los controles para ver cuándo la
+aproximación es buena: mejora al aumentar $n$ y empeora cuando $p$ se acerca a
+0 o a 1, porque la Binomial se vuelve asimétrica. Una regla práctica habitual
+pide que $np$ y $n(1-p)$ sean al menos 10 (algunos textos se conforman con 5).
+
+::: {#aviso-widget-binomial .callout-warning appearance="simple"}
+## Gráfico interactivo
+Este gráfico se genera en el navegador y necesita JavaScript y conexión a
+internet para cargar sus bibliotecas. Si este aviso no desaparece en unos
+segundos, no se han podido cargar: el resto del capítulo no depende del
+gráfico, y los mismos cálculos aparecen en el texto y en el código de la sección.
+:::
+
+```{ojs}
+//| echo: false
+viewof nb = Inputs.range([1, 200], {value: 20, step: 1, label: "Número de ensayos n"})
+viewof pb = Inputs.range([0.01, 0.99], {value: 0.3, step: 0.01, label: "Probabilidad de éxito p"})
+```
+
+```{ojs}
+//| echo: false
+binomial = {
+  // Función de probabilidad calculada en escala logarítmica (sin desbordamiento)
+  const out = [];
+  let lp = nb * Math.log(1 - pb);
+  for (let k = 0; k <= nb; k++) {
+    out.push({k, prob: Math.exp(lp)});
+    lp += Math.log((nb - k) / (k + 1)) + Math.log(pb / (1 - pb));
+  }
+  return out;
+}
+mediaB = nb * pb
+sdB = Math.sqrt(nb * pb * (1 - pb))
+normalB = d3.range(Math.max(-0.5, mediaB - 4 * sdB), Math.min(nb + 0.5, mediaB + 4 * sdB), sdB / 25)
+  .map(x => ({x, dens: Math.exp(-((x - mediaB) ** 2) / (2 * sdB ** 2)) / (sdB * Math.sqrt(2 * Math.PI))}))
+Plot.plot({
+  height: 300,
+  x: {label: "k (número de éxitos)"},
+  y: {label: "Probabilidad / densidad", grid: true},
+  color: {legend: true, domain: ["Binomial(n, p)", "Normal(np, np(1−p))"], range: ["steelblue", "crimson"]},
+  marks: [
+    Plot.ruleX(binomial, {x: "k", y: "prob", stroke: "steelblue", strokeWidth: 3}),
+    Plot.line(normalB, {x: "x", y: "dens", stroke: "crimson", strokeWidth: 2}),
+    Plot.ruleY([0])
+  ],
+  ariaLabel: "Función de probabilidad de la Binomial con los valores elegidos de n y p, como barras verticales, y la densidad de la Normal con la misma media y varianza como curva roja."
+})
+```
+
+```{ojs}
+//| echo: false
+md`Con *n* = ${nb} y *p* = ${pb.toFixed(2).replace(".", ",")}: *np* = ${mediaB.toFixed(1).replace(".", ",")} y *n*(1 − *p*) = ${(nb - mediaB).toFixed(1).replace(".", ",")}. ${Math.min(mediaB, nb - mediaB) >= 10 ? "Se cumple la regla práctica: la aproximación Normal debería ser buena." : "No se cumple la regla práctica: la aproximación Normal puede ser pobre."}`
+```
+
+```{ojs}
+//| echo: false
+// Solo llega a ejecutarse si se han cargado las bibliotecas: entonces retira el aviso.
+avisoBinomial = {
+  Plot; Inputs;
+  document.getElementById("aviso-widget-binomial")?.remove();
+  return html``;
+}
+```
+
+## Distribuciones derivadas de la Normal: t, χ² y F
+
+Los métodos de los módulos siguientes usan tres distribuciones que se
+construyen a partir de variables normales. No hace falta memorizar sus
+fórmulas; basta con saber de dónde salen, qué forma tienen y para qué se usan.
+
+- **Chi-cuadrado con $k$ grados de libertad, $\chi^2_k$**: la suma de los
+  cuadrados de $k$ variables $\mathcal{N}(0,1)$ independientes. Solo toma
+  valores positivos y es asimétrica a la derecha. Aparece en el contraste de
+  una varianza (Módulo 4) y en los contrastes chi-cuadrado (Módulo 6).
+- **t de Student con $k$ grados de libertad, $t_k$**: el cociente
+  $Z / \sqrt{\chi^2_k / k}$, con $Z$ y $\chi^2_k$ independientes. Es simétrica
+  como la Normal, pero con colas más pesadas, y se parece cada vez más a ella
+  al crecer $k$. Se usa para las medias cuando $\sigma$ es desconocida
+  (Módulo 4) y para la pendiente de una regresión (Módulo 5).
+- **F de Snedecor con $(k_1, k_2)$ grados de libertad**: el cociente de dos
+  chi-cuadrado independientes divididas por sus grados de libertad. Solo toma
+  valores positivos. Es la distribución del estadístico del ANOVA (Módulo 6).
+
+```{python}
+#| fig-alt: "Densidades de la t de Student con 2, 5 y 30 grados de libertad comparadas con la Normal estándar: todas son simétricas en torno a 0, las de pocos grados de libertad tienen colas más altas y la de 30 grados de libertad casi coincide con la Normal."
+xs = np.linspace(-4, 4, 400)
+plt.figure(figsize=(8, 4))
+plt.plot(xs, stats.norm.pdf(xs), color="black", linewidth=2, label="Normal estándar")
+for k, color in [(2, "crimson"), (5, "darkorange"), (30, "steelblue")]:
+    plt.plot(xs, stats.t.pdf(xs, k), color=color, linestyle="--", label=f"t con {k} g.l.")
+plt.title("La t de Student se acerca a la Normal al aumentar los grados de libertad")
+plt.xlabel("x")
+plt.ylabel("Densidad")
+plt.legend()
+plt.show()
+```
+
+::: {.callout-tip}
+## Ideas clave
+
+- Una distribución de probabilidad describe todos los valores de una variable aleatoria y sus probabilidades.
+- La función de distribución $F(x) = P(X \le x)$ da probabilidades de intervalos; los cuantiles son su inversa.
+- Tipificar, $Z = (X-\mu)/\sigma$, reduce cualquier Normal a la Normal estándar.
+- La media muestral tiene media $\mu$ y desviación típica $\sigma/\sqrt{n}$; por el TCL, para $n$ grande es aproximadamente Normal.
+- Las distribuciones t, χ² y F se construyen a partir de la Normal y son la base de los contrastes de los módulos 4 a 6.
+:::
+
+## Autoevaluación
+
+Intenta responder cada pregunta antes de desplegar la respuesta.
+
+**1.** Una centralita recibe de media 3 llamadas por hora, de forma independiente. ¿Qué distribución modela el número de llamadas en una hora y cuál es la probabilidad de que no llegue ninguna?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+Una Poisson con $\lambda = 3$. $P(X = 0) = e^{-3} \approx 0{,}050$.
+:::
+
+**2.** $X \sim \mathcal{N}(100, 15^2)$. ¿Cuánto vale aproximadamente $P(X > 130)$?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+Tipificando, $z = (130 - 100)/15 = 2$, y $P(Z > 2) \approx 0{,}023$: algo más del 2 % de los valores supera 130.
+:::
+
+**3.** Si $X \sim \text{Binomial}(20;\ 0{,}5)$, ¿cuáles son su media y su varianza?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+$E[X] = np = 10$ y $\text{Var}(X) = np(1-p) = 5$ (desviación típica $\sqrt{5} \approx 2{,}24$).
+:::
+
+**4.** ¿Dice el Teorema Central del Límite que, con una muestra grande, los datos siguen una distribución Normal?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+No. Los datos conservan la distribución de la población, sea cual sea. Lo que se aproxima a una Normal es la distribución de la **media muestral** (tipificada) cuando el tamaño de la muestra crece.
+:::
+
+**5.** Los tickets de soporte llegan en promedio cada 15 minutos (proceso de Poisson). ¿Cuál es la tasa $\lambda$ por hora y la probabilidad de esperar más de media hora hasta el siguiente?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+$\lambda = 4$ tickets por hora. El tiempo de espera es Exponencial y $P(T > 0{,}5) = e^{-4 \cdot 0{,}5} = e^{-2} \approx 0{,}135$.
+:::
+
+## Cierre
 
 En este módulo hemos pasado de sucesos individuales (Módulo 2) a variables aleatorias completas: sus distribuciones discretas (Bernoulli, Binomial, Poisson) y continuas (Uniforme, Normal, Exponencial), junto con sus medidas resumen ($E[X]$, $\text{Var}(X)$). El Teorema Central del Límite cierra el módulo como puente formal hacia el Módulo 4, donde usaremos estas herramientas para hacer inferencia sobre poblaciones a partir de muestras.
 
-Continúa con el cuaderno práctico (`practica.ipynb`).
+Continúa con la [práctica del módulo](practica.ipynb).

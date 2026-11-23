@@ -1,0 +1,78 @@
+---
+title: "Notación"
+---
+
+El curso sigue una convención habitual: los **parámetros** de la población se
+escriben con letras griegas y los **estadísticos** calculados con la muestra,
+con letras latinas o con un acento circunflejo («gorro») sobre el parámetro
+que estiman.
+
+## Población y muestra
+
+| Concepto | Población (parámetro) | Muestra (estadístico) | Módulo |
+|---|---|---|---|
+| Tamaño | $N$ | $n$ | 1 |
+| Media | $\mu$ | $\bar{x}$ | 1, 4 |
+| Varianza | $\sigma^2$ | $s^2 = \frac{1}{n-1}\sum (x_i-\bar{x})^2$ | 1, 4 |
+| Desviación típica | $\sigma$ | $s$ | 1, 4 |
+| Proporción | $p$ | $\hat{p}$ | 4 |
+| Correlación de Pearson | $\rho$ | $r$ | 5 |
+| Correlación de Spearman | — | $\rho_s$ | 5 |
+| Coeficientes de regresión | $\beta_0,\ \beta_1$ | $\hat{\beta}_0,\ \hat{\beta}_1$ | 5 |
+
+Salvo que se indique lo contrario, la varianza y la desviación típica
+muestrales se calculan con $n-1$ en el denominador.
+
+## Estadística descriptiva
+
+| Símbolo | Significado | Módulo |
+|---|---|---|
+| $Q_1,\ Q_3$ | Primer y tercer cuartil | 1 |
+| $\text{RIC} = Q_3 - Q_1$ | Rango intercuartílico | 1 |
+| $CV = s/\bar{x}$ | Coeficiente de variación | 1 |
+| $g_1,\ g_2$ | Coeficientes de asimetría y de curtosis (exceso) basados en los momentos | 1 |
+| $G_1,\ G_2$ | Versiones corregidas de $g_1$ y $g_2$ (las que se calculan) | 1 |
+
+## Probabilidad y variables aleatorias
+
+| Símbolo | Significado | Módulo |
+|---|---|---|
+| $\Omega$ | Espacio muestral | 2 |
+| $P(A)$ | Probabilidad del suceso $A$ | 2 |
+| $A^c$ | Complementario de $A$ | 2 |
+| $A \cap B$, $A \cup B$ | Intersección y unión | 2 |
+| $P(A \mid B)$ | Probabilidad de $A$ condicionada a $B$ | 2 |
+| $X \sim \text{Binomial}(n, p)$ | $X$ sigue la distribución indicada | 3 |
+| $f(x)$ | Función de probabilidad o de densidad | 3 |
+| $F(x) = P(X \le x)$ | Función de distribución | 3 |
+| $E[X]$, $\text{Var}(X)$ | Esperanza y varianza de una variable aleatoria | 3 |
+| $\mathcal{N}(\mu, \sigma^2)$ | Normal de media $\mu$ y varianza $\sigma^2$ | 3 |
+| $Z = (X-\mu)/\sigma$ | Variable tipificada | 3 |
+| $\lambda$ | Tasa de una Poisson o de una Exponencial | 3 |
+
+## Inferencia
+
+| Símbolo | Significado | Módulo |
+|---|---|---|
+| $H_0$, $H_1$ | Hipótesis nula y alternativa | 4 |
+| $\alpha$ | Nivel de significación (probabilidad de error de tipo I) | 4 |
+| $\beta$, $1-\beta$ | Probabilidad de error de tipo II y potencia | 4 |
+| $SE$ | Error estándar de un estimador | 4 |
+| $z_{1-\alpha/2}$ | Cuantil $1-\alpha/2$ de la Normal estándar (1,96 para $\alpha = 0{,}05$) | 4 |
+| $t_{1-\alpha/2,\,n-1}$ | Cuantil de la t de Student con $n-1$ grados de libertad | 4 |
+| $\delta$ | Diferencia real supuesta en el cálculo de la potencia | 4 |
+| $\chi^2$, $F$ | Estadísticos (y distribuciones) chi-cuadrado y F | 3, 6 |
+| $U$, $H$, $W$ | Estadísticos de Mann-Whitney, Kruskal-Wallis y Wilcoxon | 6 |
+| $\eta^2$ | Tamaño del efecto en el ANOVA | 6 |
+| $V$ | V de Cramér (fuerza de la asociación entre categóricas) | 6 |
+| $R^2$ | Coeficiente de determinación | 5 |
+| gl | Grados de libertad | 3–6 |
+
+## Convenciones de escritura
+
+- Los decimales se escriben con coma en el texto (0,05) y con punto en el
+  código y en sus salidas, que siguen el formato de Python.
+- Los p-valores muy pequeños se muestran en notación científica (por ejemplo,
+  `4.53e-12`) o como $p < 0{,}001$; nunca se redondean a 0.
+- En el código, los nombres de funciones y parámetros están en inglés
+  (`alternative="two-sided"`), como en `scipy`.

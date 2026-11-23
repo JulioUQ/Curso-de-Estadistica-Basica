@@ -39,6 +39,13 @@ book:
       chapters:
         - notebooks/06_anova_chi2/teoria.qmd
         - notebooks/06_anova_chi2/practica.ipynb
+    - part: "Proyecto integrador"
+      chapters:
+        - notebooks/07_proyecto_integrador/practica.ipynb
+  appendices:
+    - apendices/que_prueba_usar.qmd
+    - apendices/notacion.qmd
+    - apendices/glosario.qmd
 format:
   html:
     theme: cosmo

@@ -23,7 +23,38 @@ jobs:
           python-version: '3.12'
 
       - name: Instalar dependencias
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Tests de stats_toolkit
+        run: python -m pytest
+
+      # Ejecuta todas las prácticas (incluido el proyecto integrador) de
+      # principio a fin. Los notebooks ejecutados se escriben fuera del
+      # repositorio, así que las salidas guardadas no cambian. Si alguna celda
+      # lanza un error, el paso falla y el check queda en rojo. Los datos
+      # procesados (sleephealth_processed.csv) están versionados, así que
+      # ninguna práctica depende del orden; el preprocesamiento los regenera y
+      # el paso siguiente comprueba que coinciden con los versionados.
+      - name: Ejecutar los notebooks de prácticas
+        run: >-
+          python -m jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=600
+          --ExecutePreprocessor.kernel_name=python3
+          --output-dir "$RUNNER_TEMP/notebooks-ejecutados"
+          notebooks/*/practica*.ipynb
+
+      - name: Comprobar que el CSV versionado coincide con el regenerado
+        run: |
+          git show HEAD:notebooks/01_estadistica_descriptiva/data/sleephealth_processed.csv > "$RUNNER_TEMP/versionado.csv"
+          python - <<'PY'
+          import os
+          import pandas as pd
+          leer = lambda p: pd.read_csv(p, keep_default_na=False, na_values=[""])
+          versionado = leer(os.path.join(os.environ["RUNNER_TEMP"], "versionado.csv"))
+          regenerado = leer("notebooks/01_estadistica_descriptiva/data/sleephealth_processed.csv")
+          pd.testing.assert_frame_equal(versionado, regenerado, check_exact=False, rtol=1e-9)
+          print("El CSV versionado coincide con el regenerado por el preprocesamiento.")
+          PY
 
       - name: Renderizar el sitio (solo validación, sin publicar)
         run: quarto render

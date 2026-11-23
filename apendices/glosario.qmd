@@ -1,0 +1,140 @@
+---
+title: "Glosario"
+---
+
+Definiciones breves de los términos principales del curso. Entre paréntesis,
+el módulo donde se desarrollan: [M1](../notebooks/01_estadistica_descriptiva/teoria.qmd),
+[M2](../notebooks/02_probabilidad/teoria.qmd),
+[M3](../notebooks/03_distribuciones/teoria.qmd),
+[M4](../notebooks/04_inferencia/teoria.qmd),
+[M5](../notebooks/05_regresion/teoria.qmd) y
+[M6](../notebooks/06_anova_chi2/teoria.qmd).
+
+**Asimetría.** Falta de simetría de una distribución. Es positiva (a la
+derecha) cuando la cola derecha es más larga. (M1)
+
+**Bootstrap.** Método que aproxima la distribución muestral de un estadístico
+remuestreando con reemplazamiento la muestra observada. (M4)
+
+**Coeficiente de determinación ($R^2$).** Proporción de la variabilidad de
+$Y$ asociada al modelo de regresión. En regresión simple, $R^2 = r^2$. (M5)
+
+**Coeficiente de variación.** Desviación típica dividida entre la media; mide
+la dispersión relativa y no tiene unidades. (M1)
+
+**Contraste de hipótesis.** Procedimiento para decidir, con los datos, si hay
+evidencia contra una hipótesis nula $H_0$. (M4)
+
+**Correlación de Pearson ($r$).** Medida, entre −1 y 1, de la fuerza y el
+sentido de la relación **lineal** entre dos variables cuantitativas. (M5)
+
+**Correlación de Spearman ($\rho_s$).** Correlación de Pearson calculada sobre
+los rangos; mide relaciones monótonas. (M5)
+
+**Cuantil.** Valor que deja por debajo una proporción dada de la
+distribución; los cuartiles y la mediana son casos particulares. (M1, M3)
+
+**Curtosis.** Medida de la forma de una distribución relacionada con el peso
+de sus colas; el curso usa el exceso respecto a la Normal. (M1)
+
+**Desviación típica.** Raíz cuadrada de la varianza; mide la dispersión en
+las mismas unidades que los datos. (M1)
+
+**Distribución muestral.** Distribución de un estadístico (por ejemplo, la
+media) a lo largo de todas las muestras posibles del mismo tamaño. (M3, M4)
+
+**Error de tipo I.** Rechazar $H_0$ cuando es cierta; su probabilidad es
+$\alpha$. (M4)
+
+**Error de tipo II.** No rechazar $H_0$ cuando es falsa; su probabilidad es
+$\beta$. (M4)
+
+**Error estándar.** Desviación típica de la distribución muestral de un
+estimador; para la media, $\sigma/\sqrt{n}$. (M3, M4)
+
+**Estadístico.** Cantidad calculada a partir de la muestra, como $\bar{x}$ o
+$s$. Un estadístico usado para aproximar un parámetro es un **estimador**. (M4)
+
+**Frecuencia esperada.** En una tabla de contingencia, la frecuencia que
+cabría esperar en una celda si las variables fueran independientes. (M6)
+
+**Grados de libertad.** Número de valores que pueden variar libremente al
+calcular un estadístico; determina la forma de las distribuciones t, χ² y F.
+(M3–M6)
+
+**Hipótesis nula ($H_0$) y alternativa ($H_1$).** Afirmación de referencia
+que se contrasta y afirmación que se acepta como alternativa si hay evidencia
+contra ella. (M4)
+
+**Imputación.** Sustitución de valores ausentes por valores estimados. La
+imputación simple reduce la variabilidad y puede distorsionar las relaciones.
+(M1)
+
+**Independencia.** Dos sucesos son independientes si
+$P(A \cap B) = P(A)P(B)$: saber que ocurre uno no cambia la probabilidad del
+otro. (M2)
+
+**Intervalo de confianza.** Intervalo construido con un procedimiento que, en
+muestras repetidas, contiene el parámetro en una proporción fijada (por
+ejemplo, el 95 %) de los casos. (M4)
+
+**Mediana.** Valor central de los datos ordenados; deja la mitad por debajo y
+la mitad por encima. Es robusta frente a valores extremos. (M1)
+
+**Moda.** Valor más frecuente. En este curso, si todos los valores distintos
+tienen la misma frecuencia, se considera que no hay moda. (M1)
+
+**Nivel de significación ($\alpha$).** Probabilidad máxima de error de tipo I
+que se acepta al contrastar; habitualmente 0,05. (M4)
+
+**p-valor.** Probabilidad de obtener un resultado al menos tan extremo como el
+observado si $H_0$ fuera cierta. No es la probabilidad de que $H_0$ sea
+cierta. (M4)
+
+**Parámetro.** Característica numérica de la población, como $\mu$ o $p$;
+normalmente desconocida. (M4)
+
+**Potencia ($1-\beta$).** Probabilidad de rechazar $H_0$ cuando existe el
+efecto supuesto por la alternativa. (M4)
+
+**Probabilidad condicionada.** $P(A \mid B) = P(A \cap B)/P(B)$: probabilidad de
+$A$ sabiendo que ha ocurrido $B$. (M2)
+
+**Prueba no paramétrica.** Prueba que no supone una distribución concreta
+(como la Normal) para la población; suele basarse en rangos o signos. También
+tiene supuestos. (M6)
+
+**Rango intercuartílico (RIC).** $Q_3 - Q_1$: amplitud del 50 % central de los
+datos. (M1)
+
+**Regresión lineal simple.** Modelo $Y = \beta_0 + \beta_1 X + \varepsilon$
+que describe cómo varía en promedio $Y$ con $X$. (M5)
+
+**Residuo.** Diferencia entre el valor observado y el predicho por el modelo.
+(M5)
+
+**Tamaño del efecto.** Medida de la magnitud de una diferencia o asociación,
+independiente del tamaño muestral: diferencia de medias, $\eta^2$, $V$ de
+Cramér, $r$… (M4–M6)
+
+**Tamaño muestral.** Número de observaciones; se planifica antes del estudio
+según la precisión o la potencia deseadas. (M4)
+
+**Teorema Central del Límite.** Para observaciones independientes con
+varianza finita, la media muestral tipificada se aproxima a una Normal
+estándar cuando $n$ crece. (M3)
+
+**Teorema de Bayes.** Regla para invertir probabilidades condicionadas:
+$P(A \mid B) = P(B \mid A)P(A)/P(B)$. (M2)
+
+**Tipificación.** Transformación $Z = (X-\mu)/\sigma$, que expresa un valor en
+desviaciones típicas respecto a la media. (M3)
+
+**Valor atípico.** Observación muy alejada del resto. No es necesariamente un
+error: hay que investigar su origen. (M1)
+
+**Variable aleatoria.** Variable cuyo valor depende del resultado de un
+experimento aleatorio; puede ser discreta o continua. (M3)
+
+**Varianza.** Media de los cuadrados de las desviaciones respecto a la media
+(con $n-1$ en el denominador en la muestra). (M1)

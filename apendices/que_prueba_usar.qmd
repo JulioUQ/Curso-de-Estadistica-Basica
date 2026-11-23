@@ -1,0 +1,82 @@
+---
+title: "¿Qué prueba usar?"
+---
+
+Esta guía resume las técnicas del curso según la pregunta que se quiere
+responder. No sustituye a la teoría de cada módulo: sirve para orientarse y
+para encontrar la función correspondiente de `stats_toolkit` (alias `inf`,
+`reg` y `gc`, como en los capítulos).
+
+## Antes de elegir
+
+1. **¿Qué tipo de variables hay?** Cuantitativas (medias, correlaciones) o
+   categóricas (proporciones, tablas de contingencia). Ver
+   [tipos de variables](../notebooks/01_estadistica_descriptiva/teoria.qmd).
+2. **¿Cuál es el diseño?** Una muestra, dos muestras independientes, datos
+   emparejados (las mismas unidades medidas dos veces) o tres o más grupos.
+3. **¿Se cumplen los supuestos?** Independencia (depende del diseño),
+   normalidad (o una muestra grande, por el Teorema Central del Límite),
+   varianzas parecidas, frecuencias esperadas suficientes.
+4. **¿Qué se va a informar?** Además del p-valor: la estimación del efecto,
+   su intervalo de confianza y su importancia práctica.
+
+## Diagrama de decisión
+
+```{mermaid}
+%%| fig-cap: "Elección orientativa de la prueba según el tipo de variable y el diseño"
+flowchart LR
+    A["¿Qué quieres estudiar?"] --> B["Una variable cuantitativa"]
+    A --> C["Una variable categórica"]
+    A --> D["Relación entre dos<br/>variables cuantitativas"]
+    B --> B1["Una muestra:<br/>t de una muestra"]
+    B --> B2["Dos grupos independientes:<br/>t de Welch"]
+    B --> B3["Datos emparejados:<br/>t emparejada"]
+    B --> B4["Tres o más grupos:<br/>ANOVA + Tukey"]
+    B1 -. "sin normalidad<br/>y n pequeño" .-> N1["Wilcoxon / signos"]
+    B2 -. "sin normalidad<br/>y n pequeño" .-> N2["Mann-Whitney U"]
+    B3 -. "sin normalidad<br/>y n pequeño" .-> N1
+    B4 -. "sin normalidad o<br/>varianzas distintas" .-> N3["Kruskal-Wallis"]
+    C --> C1["Una proporción:<br/>z de una proporción"]
+    C --> C2["Dos proporciones:<br/>z de dos proporciones"]
+    C --> C3["Dos variables categóricas:<br/>chi-cuadrado + V de Cramér"]
+    C3 -. "frecuencias<br/>esperadas < 5" .-> N4["Fisher"]
+    D --> D1["Relación lineal:<br/>Pearson + regresión"]
+    D1 -. "monótona, ordinal<br/>o con atípicos" .-> N5["Spearman"]
+```
+
+## Tabla de referencia
+
+Entre paréntesis, el módulo donde se explica cada método.
+
+| Pregunta | Método y función | Alternativa |
+|---|---|---|
+| Estimar una media (Módulo [4](../notebooks/04_inferencia/teoria.qmd)) | IC t ($\sigma$ desconocida): `inf.confidence_interval_mean_t` | IC bootstrap: `inf.bootstrap_ci` |
+| Estimar una proporción (Módulo [4](../notebooks/04_inferencia/teoria.qmd)) | IC de Wilson: `inf.confidence_interval_proportion_wilson` | IC de Wald: `inf.confidence_interval_proportion` (solo muestras grandes) |
+| Media frente a un valor (Módulo [4](../notebooks/04_inferencia/teoria.qmd)) | t de una muestra: `inf.t_test_mean` | Test z con $\sigma$ conocida: `inf.z_test_mean`; Wilcoxon: `gc.wilcoxon_signed_rank` |
+| Proporción frente a un valor (Módulo [4](../notebooks/04_inferencia/teoria.qmd)) | z de una proporción: `inf.one_proportion_z_test` | Binomial exacta: `scipy.stats.binomtest` |
+| Varianza frente a un valor (Módulo [4](../notebooks/04_inferencia/teoria.qmd)) | χ² de una varianza: `inf.chi2_test_variance` | — (muy sensible a la falta de normalidad) |
+| Dos medias independientes (Módulo [4](../notebooks/04_inferencia/teoria.qmd), [6](../notebooks/06_anova_chi2/teoria.qmd)) | t de Welch: `inf.welch_t_test` | Mann-Whitney U: `gc.mann_whitney_u` |
+| Dos medidas de las mismas unidades (Módulo [4](../notebooks/04_inferencia/teoria.qmd), [6](../notebooks/06_anova_chi2/teoria.qmd)) | t emparejada: `inf.paired_t_test` | Wilcoxon: `gc.wilcoxon_signed_rank`; signos: `gc.sign_test` |
+| Dos proporciones (Módulo [4](../notebooks/04_inferencia/teoria.qmd)) | z de dos proporciones: `inf.two_proportion_z_test` | Fisher (2×2): `scipy.stats.fisher_exact` |
+| Tres o más medias (Módulo [6](../notebooks/06_anova_chi2/teoria.qmd)) | ANOVA de un factor: `gc.anova_one_way`, `gc.eta_squared`, `gc.tukey_hsd` | Kruskal-Wallis: `gc.kruskal_wallis` |
+| Asociación entre dos variables categóricas (Módulo [6](../notebooks/06_anova_chi2/teoria.qmd)) | χ² de independencia: `gc.chi2_test_independence`, `gc.cramers_v` | Fisher: `scipy.stats.fisher_exact` |
+| Ajuste a unas frecuencias teóricas (Módulo [6](../notebooks/06_anova_chi2/teoria.qmd)) | χ² de bondad de ajuste: `gc.chi2_goodness_of_fit` | — |
+| Relación entre dos variables cuantitativas (Módulo [5](../notebooks/05_regresion/teoria.qmd)) | Pearson y contraste de la pendiente: `reg.correlation`, `reg.t_test_slope` | Spearman: `reg.spearman_test` |
+| Predecir una variable a partir de otra (Módulo [5](../notebooks/05_regresion/teoria.qmd)) | Regresión lineal simple: `reg.simple_linear_regression`, `reg.confidence_interval_slope` | — (revisar los residuos) |
+| Planificar el tamaño de un estudio (Módulo [4](../notebooks/04_inferencia/teoria.qmd)) | Potencia y tamaño muestral: `inf.power_z_test_mean`, `inf.sample_size_z_test_mean`, `inf.sample_size_mean_ci`, `inf.sample_size_proportion_ci` | Test t: `statsmodels.stats.power.TTestPower` |
+
+## Recordatorios
+
+- Las pruebas no paramétricas **también tienen supuestos** (por ejemplo,
+  independencia) y no contrastan exactamente lo mismo que su versión
+  paramétrica: Mann-Whitney detecta sobre todo que un grupo tienda a dar valores
+  mayores que otro, no necesariamente una diferencia de medias.
+- Con muestras grandes, los métodos basados en la t son robustos frente a la
+  falta de normalidad (Teorema Central del Límite); la alternativa no
+  paramétrica es más importante con muestras pequeñas y datos muy asimétricos
+  o con atípicos.
+- Hacer muchas pruebas sobre los mismos datos aumenta la probabilidad de algún
+  falso positivo: planifica las comparaciones de antemano o usa métodos que
+  lo controlen, como Tukey.
+- Un p-valor grande no demuestra que no haya efecto, y un p-valor pequeño no
+  mide su importancia: informa siempre del tamaño del efecto y de su intervalo.

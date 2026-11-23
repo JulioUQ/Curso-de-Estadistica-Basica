@@ -1,0 +1,5 @@
+# Dependencias solo de desarrollo (no las necesita el render del curso).
+# Instalar además de las de ejecución:
+#   pip install -r requirements.txt
+#   pip install -r requirements-dev.txt
+pytest>=8

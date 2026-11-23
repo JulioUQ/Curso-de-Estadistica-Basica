@@ -4,13 +4,52 @@ title: "Inicio"
 
 # Bienvenida
 
-Este es un curso de estadística básica orientado a la práctica, combinando teoría
-formal con ejercicios en Python. Cada módulo incluye un capítulo teórico y un
-cuaderno práctico correspondiente.
+Este es un curso de estadística básica orientado a la práctica, en español. No
+presupone conocimientos previos de estadística: basta con álgebra básica y
+cierta familiaridad con Python. Cada concepto se presenta primero de forma
+intuitiva, después con su definición formal y, por último, con un ejemplo
+calculado en Python.
+
+## Cómo está organizado
+
+Cada módulo tiene un capítulo de **teoría** y uno o dos cuadernos de
+**práctica** (Jupyter). Cada teoría termina con unas preguntas de
+**autoevaluación**, y las prácticas, con ejercicios propuestos y sus
+soluciones desarrolladas, plegadas para que puedas intentarlos primero. Algunos
+capítulos incluyen gráficos **interactivos** que se manipulan directamente en
+el navegador. Cada práctica puede abrirse en Google Colab o descargarse para
+ejecutarla en tu ordenador. Los
+cálculos se apoyan en `stats_toolkit`, una pequeña librería del curso (en
+`src/`) que implementa a mano los métodos con valor didáctico y compara sus
+resultados con `scipy` y `statsmodels`.
 
 ## Contenido
 
-- **Módulo 1 — Estadística Descriptiva**: variables, medidas de tendencia central,
-  dispersión y forma.
-- **Módulo 2 — Probabilidad Básica**: espacio muestral, teorema de Bayes y una
-  primera aproximación a Naive Bayes.
+- **Módulo 1 — Estadística descriptiva**: tipos de variables, tendencia
+  central, dispersión, forma, valores atípicos y valores perdidos; práctica de
+  preprocesamiento de datos reales con errores.
+- **Módulo 2 — Probabilidad básica**: espacio muestral, probabilidad
+  condicionada, independencia, teorema de Bayes y una primera aproximación al
+  clasificador Naive Bayes.
+- **Módulo 3 — Distribuciones de probabilidad**: Bernoulli, Binomial, Poisson,
+  Uniforme, Normal y Exponencial; función de distribución, cuantiles,
+  tipificación, distribución muestral de la media y Teorema Central del Límite.
+- **Módulo 4 — Inferencia estadística**: estimación, intervalos de confianza y
+  contrastes de hipótesis para medias, proporciones y varianzas; potencia,
+  tamaño muestral e intervalos bootstrap.
+- **Módulo 5 — Correlación y regresión lineal**: covarianza, correlación de
+  Pearson y de Spearman, regresión lineal simple, $R^2$, supuestos e
+  inferencia sobre la pendiente.
+- **Módulo 6 — ANOVA, chi-cuadrado y pruebas no paramétricas**: comparación de
+  varias medias, tamaño del efecto, comparaciones post-hoc, asociación entre
+  variables categóricas y pruebas basadas en rangos y en signos.
+- **Proyecto integrador**: un análisis completo de los datos de sueño que
+  combina las herramientas de los seis módulos.
+- **Apéndices**: guía para elegir la prueba adecuada, notación y glosario.
+
+## Datos
+
+Además de datos simulados, el curso usa como caso recurrente un conjunto de
+datos sobre **salud del sueño y estilo de vida** (`sleephealth`). Sus datos son
+sintéticos, creados con fines ilustrativos: sirven para practicar los métodos,
+no para extraer conclusiones sobre la salud.
