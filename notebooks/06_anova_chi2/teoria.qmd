@@ -2,13 +2,22 @@
 title: "ANOVA, Chi-cuadrado y Pruebas No Paramétricas"
 ---
 
+::: {.callout-note appearance="simple"}
+## Objetivos del módulo
+
+- Comparar las medias de tres o más grupos con el ANOVA de un factor y medir el tamaño del efecto.
+- Identificar qué grupos difieren mediante comparaciones post-hoc.
+- Contrastar la asociación entre variables categóricas y medirla con la $V$ de Cramér.
+- Elegir y aplicar pruebas basadas en rangos (Mann-Whitney, Kruskal-Wallis, Wilcoxon) conociendo sus hipótesis y supuestos.
+:::
+
 ```{python}
 #| echo: false
 import sys, os
 sys.path.append(os.path.abspath("../../src"))
 ```
 
-## 6.1 Introducción
+## Introducción
 
 En el Módulo 4 aprendimos a comparar **dos** grupos (un test t o z), y en el Módulo 5 a estudiar la relación entre **dos variables numéricas**. Pero en la práctica surgen preguntas que esas herramientas no cubren:
 
@@ -16,27 +25,31 @@ En el Módulo 4 aprendimos a comparar **dos** grupos (un test t o z), y en el M�
 - ¿Y si mis variables no son numéricas, sino **categóricas** (sexo, segmento de cliente, tipo de producto)?
 - ¿Y si mis datos claramente **no siguen una distribución Normal** y no puedo asumir las condiciones de un t-test?
 
-Este módulo cierra esos tres huecos, y de paso conecta con el mundo del *machine learning*: comparar grupos, tablas de contingencia y pruebas robustas frente a la normalidad son herramientas que reaparecen constantemente en la validación de modelos y en la selección de variables.
+Este módulo cierra esos tres huecos. Son herramientas que reaparecen en muchos análisis aplicados, por ejemplo al comparar varios grupos de clientes o de tratamientos, o al explorar la relación entre variables antes de construir un modelo predictivo.
 
 ```{mermaid}
 %%| label: fig-decision-test
 %%| fig-cap: "Qué prueba usar según lo que quieras comparar"
-flowchart TD
+flowchart LR
     A["¿Qué quiero comparar?"] --> B["Medias de 2 grupos"]
     A --> C["Medias de 3+ grupos"]
     A --> D["Dos variables categóricas"]
-    A --> E["Datos que no siguen una Normal"]
+    A --> E["2 grupos independientes:<br/>datos ordinales o no normales"]
+    A --> F["3+ grupos:<br/>datos ordinales o no normales"]
+    A --> G["Datos emparejados:<br/>diferencias no normales"]
     B --> B1["t-test (Módulo 4)"]
-    C --> C1["ANOVA de un factor"]
-    D --> D1["Test Chi-cuadrado"]
+    C --> C1["ANOVA de un factor<br/>+ Tukey"]
+    D --> D1["Test Chi-cuadrado<br/>(Fisher si hay pocos datos)"]
     E --> E1["Mann-Whitney U"]
+    F --> F1["Kruskal-Wallis"]
+    G --> G1["Wilcoxon de rangos con signo"]
 ```
 
-## 6.2 ANOVA de un Factor
+## ANOVA de un Factor
 
 ### El problema de comparar 3+ grupos con t-tests repetidos
 
-Si quisiéramos comparar tres tratamientos médicos, una tentación es hacer tres t-tests por pares (A vs B, A vs C, B vs C). El problema es que cada test individual tiene un 5% de probabilidad de un falso positivo (error Tipo I), y al repetir tests esa probabilidad se **acumula**: con tres comparaciones, la probabilidad de al menos un falso positivo sube por encima del 5% nominal. El **ANOVA** (Análisis de la Varianza) resuelve esto con un único test que compara los tres grupos a la vez.
+Si quisiéramos comparar tres tratamientos médicos, una tentación es hacer tres t-tests por pares (A vs B, A vs C, B vs C). El problema es que cada test individual, con $\alpha = 0{,}05$, tiene un 5% de probabilidad de dar un falso positivo (error de tipo I) cuando no hay diferencias reales, y al repetir tests esa probabilidad se **acumula**: con tres comparaciones, la probabilidad de al menos un falso positivo sube por encima del 5% nominal: si las tres comparaciones fueran independientes, sería $1 - 0{,}95^3 \approx 0{,}143$, es decir, un 14,3 %. El **ANOVA** (Análisis de la Varianza) resuelve esto con un único test que compara los tres grupos a la vez.
 
 ### Hipótesis e idea central
 
@@ -55,7 +68,7 @@ $$
 F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-1)}{SS_{\text{dentro}} / (n-k)}
 $$
 
-donde $k$ es el número de grupos y $n$ el número total de observaciones. Bajo $H_0$, este estadístico sigue una **distribución F** con $(k-1, n-k)$ grados de libertad.
+donde $k$ es el número de grupos y $n$ el número total de observaciones. Bajo $H_0$, y si las observaciones son independientes y, dentro de cada grupo, se distribuyen de forma Normal con la misma varianza en todos los grupos, este estadístico sigue una **distribución F** con $(k-1, n-k)$ grados de libertad. No se exige que el conjunto de todos los datos parezca Normal: si las medias de los grupos son distintas, los datos mezclados pueden no parecerlo aunque cada grupo sí lo sea.
 
 ```{python}
 from stats_toolkit import group_comparisons as gc
@@ -66,12 +79,56 @@ tratamiento_b = [8, 9, 7, 10, 8, 9, 9]
 tratamiento_c = [4, 5, 4, 6, 5, 5, 4]
 
 f_stat, p_value = gc.anova_one_way(tratamiento_a, tratamiento_b, tratamiento_c)
-print(f"F = {f_stat:.3f}, p-valor = {p_value:.6f}")
+print(f"F = {f_stat:.3f}, p-valor = {p_value:.3g}")
 ```
 
-Un p-valor por debajo de 0.05 indica que al menos un tratamiento difiere significativamente de los demás en tiempo de recuperación — aunque el ANOVA por sí solo **no dice cuál**; para eso harían falta comparaciones post-hoc (fuera del alcance de este módulo introductorio).
+Un p-valor por debajo de 0,05 indica que hay evidencia de que no todas las medias del tiempo de recuperación son iguales, aunque el ANOVA por sí solo **no dice cuáles difieren**; para eso están las comparaciones post-hoc, que vemos a continuación.
 
-## 6.3 Test Chi-cuadrado de Independencia
+### Tamaño del efecto: $\eta^2$
+
+El p-valor dice si hay evidencia de diferencias, pero no lo grandes que son.
+Una medida sencilla del tamaño del efecto es
+
+$$
+\eta^2 = \frac{SS_{\text{entre}}}{SS_{\text{total}}},
+$$
+
+la proporción de la variabilidad total de los datos que se asocia a las
+diferencias entre grupos (entre 0 y 1). Como orientación muy general, valores
+en torno a 0,01, 0,06 y 0,14 se suelen considerar pequeños, medianos y grandes,
+aunque lo importante es interpretarlo en el contexto del problema.
+
+```{python}
+eta2 = gc.eta_squared(tratamiento_a, tratamiento_b, tratamiento_c)
+print(f"η² = {eta2:.3f}: el {eta2 * 100:.1f} % de la variabilidad se asocia al tratamiento")
+```
+
+### Comparaciones post-hoc: Tukey
+
+Si el ANOVA es significativo, el siguiente paso es averiguar **qué** grupos
+difieren. Hacer todos los t-tests por pares vuelve a acumular falsos positivos;
+el método de **Tukey** (HSD) compara todas las parejas controlando la
+probabilidad de cometer al menos un error de tipo I en el conjunto. Para cada
+pareja da la diferencia de medias, un p-valor ajustado y un intervalo de
+confianza simultáneo:
+
+```{python}
+tukey = gc.tukey_hsd(tratamiento_a, tratamiento_b, tratamiento_c, labels=["A", "B", "C"])
+tukey["p_valor"] = tukey["p_valor"].map(lambda p: f"{p:.3g}")  # sin redondear a 0
+print(tukey.round(4).to_string(index=False))
+```
+
+Una pareja difiere significativamente si su p-valor ajustado es menor que
+0,05, o, de forma equivalente, si su intervalo no contiene el 0.
+
+**Comprobar los supuestos.** La independencia depende del diseño. La normalidad
+dentro de cada grupo y la igualdad de varianzas se examinan con gráficos de
+caja, histogramas o gráficos Q-Q de cada grupo. Si las varianzas son muy
+distintas, existe una versión del ANOVA que no las supone iguales (ANOVA de
+Welch); si la normalidad no es razonable con muestras pequeñas, la alternativa
+basada en rangos es Kruskal-Wallis, que vemos más abajo.
+
+## Test Chi-cuadrado de Independencia
 
 Cuando ambas variables son **categóricas** (por ejemplo, segmento de cliente y producto preferido), no tiene sentido hablar de medias. En su lugar, organizamos los datos en una **tabla de contingencia** (frecuencias observadas cruzando ambas variables) y contrastamos si existe asociación entre ellas.
 
@@ -85,7 +142,7 @@ $$
 \chi^2 = \sum_{i,j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
 $$
 
-donde $E_{ij}$ es la frecuencia esperada bajo independencia, calculada a partir de los totales de fila y columna. Sigue una distribución Chi-cuadrado con $(filas-1)(columnas-1)$ grados de libertad.
+donde $E_{ij}$ es la frecuencia esperada bajo independencia, calculada a partir de los totales de fila y columna. Bajo $H_0$, el estadístico sigue **aproximadamente** una distribución Chi-cuadrado con $(filas-1)(columnas-1)$ grados de libertad; la aproximación es fiable cuando las frecuencias esperadas no son pequeñas (una regla habitual es que todas sean al menos 5). En tablas 2×2 existe además la **corrección de Yates**, que resta 0,5 a cada $|O_{ij}-E_{ij}|$ y hace el contraste más conservador; `scipy.stats.chi2_contingency` la aplica por defecto en esas tablas. `chi2_test_independence()` calcula el estadístico de la fórmula anterior, sin corrección, salvo que se indique `correction=True`.
 
 ```{python}
 import pandas as pd
@@ -100,7 +157,7 @@ print(tabla)
 
 ```{python}
 chi2_stat, p_value, dof, esperadas = gc.chi2_test_independence(tabla)
-print(f"\nChi² = {chi2_stat:.3f}, p-valor = {p_value:.6f}, g.l. = {dof}")
+print(f"\nChi² = {chi2_stat:.3f}, p-valor = {p_value:.3g}, g.l. = {dof}")
 
 if p_value < 0.05:
     print("Hay evidencia de asociación entre segmento de cliente y producto preferido")
@@ -108,15 +165,54 @@ else:
     print("No hay evidencia suficiente de asociación entre ambas variables")
 ```
 
-## 6.4 Pruebas No Paramétricas: Mann-Whitney U
+Las frecuencias esperadas bajo independencia se calculan a partir de los
+totales:
 
-Tanto el t-test como el ANOVA asumen que los datos siguen (aproximadamente) una distribución Normal dentro de cada grupo. Cuando esa suposición no se sostiene — muestras muy pequeñas, datos claramente asimétricos, escalas ordinales (por ejemplo, valoraciones de 1 a 5) — recurrimos a **pruebas no paramétricas**, que no hacen ninguna suposición sobre la forma de la distribución.
+$$
+E_{ij}=\frac{(\text{total de la fila }i)\,(\text{total de la columna }j)}{n}.
+$$
+
+**Tamaño del efecto: $V$ de Cramér.** Con muestras grandes, asociaciones
+débiles pueden ser significativas. La $V$ de Cramér,
+
+$$
+V = \sqrt{\frac{\chi^2}{n\,(\min(\text{filas}, \text{columnas}) - 1)}},
+$$
+
+vale 0 si no hay asociación en la muestra y 1 si la asociación es perfecta:
+
+```{python}
+print(f"V de Cramér = {gc.cramers_v(tabla):.3f}")
+```
+
+**Frecuencias esperadas pequeñas: prueba de Fisher.** Si alguna frecuencia
+esperada es pequeña, la aproximación chi-cuadrado no es fiable. En tablas 2×2
+se usa la prueba exacta de Fisher (`scipy.stats.fisher_exact`), que compara la
+tabla observada con todas las tablas posibles con los mismos totales; en tablas
+mayores, SciPy estima su p-valor por simulación (como en la práctica del
+Módulo 4). Además, un resultado significativo indica que hay asociación, pero
+no qué celdas la producen ni que una variable cause la otra: conviene examinar
+las proporciones por fila o por columna.
+
+## Pruebas No Paramétricas: Mann-Whitney U
+
+Tanto el t-test como el ANOVA suponen que los datos siguen, al menos de forma aproximada, una distribución Normal dentro de cada grupo. Cuando ese supuesto no es razonable y la muestra no es lo bastante grande para confiar en la robustez de estas pruebas, o cuando la variable es ordinal (por ejemplo, valoraciones de 1 a 5), podemos recurrir a **pruebas no paramétricas**. No exigen que la distribución tenga una forma concreta, como la Normal, pero **sí tienen supuestos** (ver la sección *Normalidad y elección de métodos no paramétricos* del Módulo 4).
 
 El **test de Mann-Whitney U** es la alternativa no paramétrica al t-test de dos muestras independientes. En vez de comparar medias, compara si los valores de un grupo tienden a ser sistemáticamente mayores (o menores) que los del otro, trabajando con los **rangos** de los datos combinados en vez de con sus valores originales.
 
 $$
-H_0: \text{ambas distribuciones son iguales} \qquad H_1: \text{una tiende a tomar valores mayores que la otra}
+\begin{aligned}
+H_0 &: \text{las dos poblaciones tienen la misma distribución} \\
+H_1 &: \text{las dos distribuciones no son iguales}
+\end{aligned}
 $$
+
+Esta es la formulación bilateral general. Sin embargo, el estadístico $U$ no es igual de sensible a cualquier diferencia entre distribuciones. Como se construye con los rangos, refleja sobre todo si los valores de un grupo tienden a superar a los del otro, es decir, si $P(X > Y)$ se aleja de $P(Y > X)$. Conviene distinguir:
+
+- **Supuestos del contraste:** las observaciones son independientes, dentro de cada grupo y entre grupos, y la variable es al menos ordinal (sus valores se pueden ordenar).
+- **Qué detecta bien:** diferencias de posición, es decir, que un grupo tienda a tomar valores mayores que el otro. Puede tener poca sensibilidad para detectar diferencias de dispersión o de forma cuando no existe una tendencia clara a que los valores de un grupo sean mayores que los del otro.
+- **Cuándo es una prueba de medianas:** solo si se supone, además, que las dos distribuciones tienen la misma forma y dispersión y difieren únicamente en un desplazamiento. Sin ese supuesto adicional, un resultado significativo no permite afirmar que las medianas (ni las medias) sean distintas.
+- **Qué no permite concluir:** un p-valor mayor que 0,05 no demuestra que las distribuciones sean iguales. Solo indica que no hay evidencia suficiente de una diferencia, y puede deberse a una muestra pequeña o a diferencias que el estadístico apenas detecta.
 
 ```{python}
 # Valoraciones de satisfacción (escala 1-10) de dos versiones de una app,
@@ -125,7 +221,7 @@ valoraciones_v1 = [2, 3, 2, 9, 3, 2, 8, 3, 2, 9]
 valoraciones_v2 = [5, 6, 7, 6, 5, 7, 6, 5, 6, 7]
 
 u_stat, p_value = gc.mann_whitney_u(valoraciones_v1, valoraciones_v2)
-print(f"U = {u_stat:.3f}, p-valor = {p_value:.6f}")
+print(f"U = {u_stat:.3f}, p-valor = {p_value:.3g}")
 
 if p_value < 0.05:
     print("Hay diferencia significativa entre las distribuciones de valoraciones de ambas versiones")
@@ -133,8 +229,129 @@ else:
     print("No hay evidencia suficiente de diferencia entre versiones")
 ```
 
-Este tipo de pruebas basadas en rangos, robustas frente a la forma de la distribución, son la razón por la que muchos algoritmos de *machine learning* (árboles de decisión, bosques aleatorios, tests de importancia de variables) prefieren criterios no paramétricos: no dependen de que los datos reales del mundo se comporten como una Normal perfecta.
+En estas dos muestras, las valoraciones de la v1 se concentran en los extremos y las de la v2 en el centro. Es una diferencia descriptiva de forma, de las que Mann-Whitney detecta mal. El p-valor obtenido no permite concluir que las dos versiones tengan la misma distribución de valoraciones, ni tampoco que una tienda a recibir valoraciones más altas que la otra.
 
-## 6.5 Cierre
+## Otras pruebas no paramétricas
 
-Este módulo amplía el curso más allá de los cinco módulos iniciales, cubriendo tres herramientas que aparecen constantemente en análisis con más de dos grupos o con variables categóricas: el **ANOVA** para comparar varias medias a la vez, el **test Chi-cuadrado** para relaciones entre variables categóricas, y el **Mann-Whitney U** como alternativa robusta cuando no se cumplen los supuestos de normalidad. Con esto, el conjunto de pruebas de hipótesis del curso queda prácticamente completo para cualquier análisis exploratorio o experimento aplicado — y sienta las bases para dar el salto hacia modelos predictivos más flexibles (regresión múltiple, clasificación) si decides continuar el curso en esa dirección.
+### Kruskal-Wallis: tres o más grupos
+
+El **test de Kruskal-Wallis** generaliza Mann-Whitney a tres o más grupos
+independientes, como alternativa al ANOVA de un factor. Ordena todos los datos
+juntos, sustituye cada valor por su rango y compara los rangos medios de los
+grupos:
+
+$$
+H_0: \text{todos los grupos proceden de la misma distribución} \qquad
+H_1: \text{no todas las distribuciones son iguales}
+$$
+
+Como Mann-Whitney, supone observaciones independientes y una variable al menos
+ordinal, y es sensible sobre todo a que unos grupos tiendan a tomar valores
+mayores que otros. Si es significativo, también hacen falta comparaciones
+posteriores para saber qué grupos difieren. Aplicado a los tratamientos del
+ANOVA:
+
+```{python}
+h_stat, p_value = gc.kruskal_wallis(tratamiento_a, tratamiento_b, tratamiento_c)
+print(f"H = {h_stat:.3f}, p-valor = {p_value:.3g}")
+```
+
+### Datos emparejados: prueba de signos y Wilcoxon
+
+Con datos emparejados (por ejemplo, antes y después en las mismas personas) se
+analizan las diferencias de cada pareja, como en la t emparejada del Módulo 4:
+
+- La **prueba de signos** solo usa el signo de cada diferencia: bajo $H_0$, la
+  mitad de las diferencias no nulas deberían ser positivas. Necesita muy pocos
+  supuestos, pero ignora la magnitud de las diferencias, así que tiene poca
+  potencia.
+- La **prueba de Wilcoxon de rangos con signo** ordena las diferencias no nulas
+  por su valor absoluto y compara la suma de los rangos de las positivas con la
+  de las negativas. Usa más información que la prueba de signos. Para
+  interpretarla como un contraste sobre la mediana de las diferencias hace
+  falta suponer que estas se distribuyen de forma simétrica.
+
+```{python}
+# Presión sistólica antes y después de un programa de ejercicio (datos ilustrativos)
+antes = [142, 150, 138, 160, 155, 147, 152, 149]
+despues = [138, 145, 139, 151, 150, 140, 149, 147]
+w_stat, p_value = gc.wilcoxon_signed_rank(antes, despues)
+print(f"W = {w_stat:.1f}, p-valor = {p_value:.3g}")
+```
+
+Con los mismos datos, la prueba de signos solo cuenta cuántas diferencias son
+positivas (bajó la presión) y calcula el p-valor exacto con una
+Binomial$(m;\ 0{,}5)$, donde $m$ es el número de diferencias no nulas:
+
+```{python}
+k, p_signos = gc.sign_test(antes, despues)
+print(f"Diferencias positivas: {k} de {len(antes)}, p-valor = {p_signos:.3g}")
+```
+
+Al ignorar la magnitud de las diferencias, la prueba de signos tiene menos
+potencia que la de Wilcoxon: aquí su p-valor es mayor con los mismos datos.
+
+::: {.callout-tip}
+## Ideas clave
+
+- El ANOVA contrasta a la vez la igualdad de varias medias; si es significativo, Tukey indica qué parejas difieren y $\eta^2$ cuánto pesan las diferencias.
+- La prueba chi-cuadrado contrasta la independencia de dos variables categóricas; es aproximada, y la $V$ de Cramér mide la fuerza de la asociación.
+- Las pruebas basadas en rangos no exigen normalidad, pero tienen supuestos; detectan sobre todo que unos grupos tiendan a tomar valores mayores que otros.
+- Un p-valor grande no demuestra igualdad, y un p-valor pequeño no mide la importancia práctica del efecto.
+:::
+
+## Autoevaluación
+
+Intenta responder cada pregunta antes de desplegar la respuesta.
+
+**1.** ¿Por qué no comparar tres grupos con tres pruebas t por parejas en lugar de un ANOVA?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+Porque la probabilidad de cometer al menos un error de tipo I crece con el número de comparaciones: con tres pruebas independientes al 5 % sería $1 - 0{,}95^3 \approx 0{,}143$. El ANOVA contrasta todas las medias a la vez con un $\alpha$ global del 5 %.
+:::
+
+**2.** Un ANOVA de un factor es significativo. ¿Sabes ya qué grupos difieren entre sí?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+No. Solo indica que no todas las medias son iguales. Para saber qué parejas difieren se usa una prueba post-hoc, como la de Tukey, que controla el error de tipo I del conjunto de comparaciones.
+:::
+
+**3.** En una tabla 2×2, una de las frecuencias esperadas es 2,1. ¿Es fiable el test chi-cuadrado?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+Es dudoso: la distribución chi-cuadrado es una aproximación que requiere frecuencias esperadas suficientemente grandes (la regla habitual pide al menos 5). En este caso es mejor la prueba exacta de Fisher.
+:::
+
+**4.** Una prueba de Mann-Whitney da $p = 0{,}6$. ¿Demuestra que las dos distribuciones son iguales?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+No. Un p-valor grande solo indica que no hay evidencia suficiente de diferencia. Además, Mann-Whitney es sensible sobre todo a que una población tienda a dar valores mayores que la otra: dos distribuciones muy distintas en forma pueden dar un p-valor grande.
+:::
+
+**5.** Con 3000 personas, un ANOVA da $p < 0{,}001$ y $\eta^2 = 0{,}02$. ¿Cómo lo interpretarías?
+
+::: {.callout-tip collapse="true"}
+## Respuesta
+
+La diferencia entre grupos es estadísticamente significativa, pero el factor solo se asocia con el 2 % de la variabilidad de la respuesta: un efecto pequeño. Con muestras grandes, diferencias pequeñas resultan significativas; su importancia práctica depende del contexto.
+:::
+
+## Cierre
+
+Este módulo ha cubierto tres herramientas que aparecen constantemente en el análisis de datos: el **ANOVA** para comparar las medias de tres o más grupos, el **test Chi-cuadrado** para estudiar la asociación entre variables categóricas y el **Mann-Whitney U** como alternativa basada en rangos cuando no es razonable suponer normalidad. Todas tienen supuestos, y su resultado debe interpretarse junto con el tamaño del efecto y el contexto.
+
+### Cierre del curso
+
+Con este módulo completamos el recorrido de **Estadística Básica**: describir datos (Módulo 1), modelar la incertidumbre de sucesos (Módulo 2) y de variables aleatorias (Módulo 3), estimar y contrastar parámetros poblacionales (Módulo 4), estudiar la relación entre dos variables numéricas (Módulo 5) y comparar varios grupos o variables categóricas (Módulo 6).
+
+Estas piezas son la base de prácticamente cualquier análisis de datos aplicado, desde un experimento A/B hasta un modelo predictivo; de hecho, la regresión lineal del Módulo 5 y el Naive Bayes del Módulo 2 son dos algoritmos de aprendizaje automático muy utilizados. El siguiente paso natural es la regresión múltiple, la clasificación y otros modelos predictivos.
+
+Continúa con la [práctica del módulo](practica.ipynb).

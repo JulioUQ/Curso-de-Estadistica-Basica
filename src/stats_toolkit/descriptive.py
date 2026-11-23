@@ -23,11 +23,13 @@ despliegue del sitio.
 
 from __future__ import annotations
 
+from collections import Counter
+from fractions import Fraction
+from numbers import Number
 from typing import Iterable, Sequence, Union
 
 import numpy as np
 import pandas as pd
-from scipy import stats as sp_stats
 
 ArrayLike = Union[Iterable[float], np.ndarray]
 
@@ -43,6 +45,100 @@ def _to_array(data: ArrayLike) -> np.ndarray:
     return arr[~np.isnan(arr)]
 
 
+def _require_n(arr: np.ndarray, minimum: int = 1) -> None:
+    """Lanza ValueError si, tras quitar los NaN, quedan menos de ``minimum`` datos."""
+    if arr.size < minimum:
+        raise ValueError(
+            f"Se necesitan al menos {minimum} valores no ausentes (hay {arr.size})."
+        )
+
+
+def modes(data: Iterable) -> list:
+    """
+    Devuelve las modas (valores más frecuentes) de un conjunto de datos
+    numéricos o categóricos.
+
+    Reglas:
+
+    - Una moda: lista con ese valor.
+    - Varias modas: si varios valores comparten la frecuencia máxima y esa
+      frecuencia es mayor que la de algún otro valor, se devuelven todos.
+    - Sin moda destacada: si todos los valores distintos aparecen el mismo
+      número de veces (por ejemplo, todos son distintos, o 1, 1, 2, 2), se
+      devuelve una lista vacía. Unos datos constantes sí tienen moda.
+    - Sin observaciones válidas: lista vacía.
+
+    Considerar que no hay moda cuando todos los valores tienen la misma
+    frecuencia es una **convención didáctica del curso**, no una definición
+    universal: ``pandas.Series.mode()`` y ``statistics.multimode()`` siguen
+    otra convención y, en ese caso, devuelven todos los valores.
+
+    Los valores se comparan por igualdad exacta de Python, sin agrupar,
+    redondear ni convertir tipos antes de contar: ``1`` y ``1.0`` son el
+    mismo valor, pero ``2**53`` y ``2**53 + 1``, o ``Fraction(1, 3)`` y
+    ``1/3``, son distintos. Con datos continuos el resultado depende de la
+    precisión con que se registraron (por ejemplo, salarios en céntimos
+    suelen ser todos distintos). Para describir dónde se concentran unos
+    datos continuos conviene agrupar en intervalos y buscar la clase modal.
+
+    Parameters
+    ----------
+    data : Iterable
+        Valores numéricos o categóricos (texto), homogéneos. Los valores
+        ausentes (None, NaN, ``pd.NA``) se descartan.
+
+    Returns
+    -------
+    list
+        Modas en orden ascendente, con su tipo original (``int``,
+        ``float``, ``Fraction``, ``str``…). Los escalares de NumPy se
+        convierten al tipo equivalente de Python sin perder precisión
+        (``np.int64`` → ``int``, ``np.float64`` → ``float``). Si se cuentan
+        juntos valores iguales de tipos distintos (``1`` y ``1.0``), se
+        devuelve el de tipo más exacto (``int``, luego ``Fraction``, luego
+        ``float``), de modo que el resultado no depende del orden.
+
+    Raises
+    ------
+    TypeError
+        Si se mezclan valores numéricos y no numéricos.
+    """
+    valid = [v.item() if isinstance(v, np.generic) else v for v in data if not pd.isna(v)]
+    if not valid:
+        return []
+
+    numeric = [isinstance(v, Number) and not isinstance(v, bool) for v in valid]
+    if any(numeric) and not all(numeric):
+        raise TypeError("modes() necesita datos homogéneos: todos numéricos o todos categóricos.")
+
+    # Se cuenta con los valores originales (igualdad y hash de Python).
+    counts = Counter(valid)
+
+    # Representante de cada valor: si coinciden valores iguales de tipos
+    # distintos (1 y 1.0), se elige el de tipo más exacto, sin depender del
+    # orden de aparición.
+    representative: dict = {}
+    for v in valid:
+        if v not in representative or _type_rank(v) < _type_rank(representative[v]):
+            representative[v] = v
+
+    if len(counts) == 1:
+        return [representative[next(iter(counts))]]
+
+    max_count = max(counts.values())
+    if min(counts.values()) == max_count:
+        return []  # todos los valores distintos tienen la misma frecuencia
+    return sorted(representative[v] for v, c in counts.items() if c == max_count)
+
+
+def _type_rank(value) -> int:
+    """Prioridad de tipo para elegir representante entre valores iguales."""
+    for rank, kind in enumerate((int, Fraction, float)):
+        if type(value) is kind:
+            return rank
+    return 3
+
+
 def central_tendency(data: ArrayLike) -> dict:
     """
     Calcula media, mediana y moda de un conjunto de datos numéricos.
@@ -50,19 +146,25 @@ def central_tendency(data: ArrayLike) -> dict:
     Parameters
     ----------
     data : ArrayLike
-        Datos numéricos (lista, array o Serie de pandas).
+        Datos numéricos (lista, array o Serie de pandas). Los NaN se
+        descartan.
 
     Returns
     -------
     dict
         {'mean': float, 'median': float, 'mode': float}
+
+        ``mode`` es la moda cuando es única y NaN cuando no existe una moda
+        única (varias modas o ninguna destacada; véase :func:`modes`, que
+        devuelve todas las modas y explica la convención).
     """
     arr = _to_array(data)
-    mode_result = sp_stats.mode(arr, keepdims=False)
+    _require_n(arr)
+    found = modes(arr)
     return {
         "mean": float(np.mean(arr)),
         "median": float(np.median(arr)),
-        "mode": float(mode_result.mode),
+        "mode": float(found[0]) if len(found) == 1 else float("nan"),
     }
 
 
@@ -85,6 +187,7 @@ def dispersion(data: ArrayLike, ddof: int = 1) -> dict:
         {'range': float, 'variance': float, 'std': float, 'cv_pct': float}
     """
     arr = _to_array(data)
+    _require_n(arr, ddof + 1)
     variance = float(np.var(arr, ddof=ddof))
     std = float(np.std(arr, ddof=ddof))
     mean = float(np.mean(arr))
@@ -100,18 +203,78 @@ def dispersion(data: ArrayLike, ddof: int = 1) -> dict:
 
 def shape(data: ArrayLike) -> dict:
     """
-    Calcula asimetría (skewness) y curtosis de exceso de un conjunto
-    de datos numéricos.
+    Calcula la asimetría (skewness) y la curtosis de exceso con los
+    estimadores corregidos G1 y G2 (tipo 2 de Joanes y Gill, 1998).
+
+    A partir de los momentos centrales muestrales
+    ``m_k = (1/n) * sum((x_i - media)**k)`` se definen los coeficientes
+    de momentos::
+
+        g1 = m3 / m2**(3/2)
+        g2 = m4 / m2**2 - 3
+
+    y, sobre ellos, los estimadores corregidos que se devuelven::
+
+        G1 = sqrt(n * (n - 1)) / (n - 2) * g1                 (n >= 3)
+        G2 = (n - 1) / ((n - 2) * (n - 3)) * ((n + 1) * g2 + 6)  (n >= 4)
+
+    La corrección depende solo de n. En G1 es un factor multiplicativo; en
+    G2 se multiplica y además se suma una constante, por lo que con
+    muestras pequeñas G2 puede tener distinto signo que g2.
+
+    Propiedades: si la población es normal, G2 es insesgado (g2 tiene media
+    -6/(n+1)) y en la asimetría no hay sesgo que corregir (g1 y G1 tienen
+    media 0). Fuera de la normalidad, las correcciones no garantizan
+    eliminar el sesgo ni mejorar el estimador en todos los casos; además,
+    G1 y G2 tienen más variabilidad que g1 y g2. La diferencia entre ambas
+    versiones desaparece al crecer n, más despacio en la curtosis.
+
+    Son los mismos valores que calculan ``pandas.Series.skew()`` /
+    ``.kurt()``, Excel, SPSS y ``scipy.stats.skew/kurtosis`` con
+    ``bias=False``.
+
+    Parameters
+    ----------
+    data : ArrayLike
+        Datos numéricos. Los NaN se descartan antes de calcular, y n es
+        el número de observaciones válidas.
 
     Returns
     -------
     dict
         {'skewness': float, 'kurtosis_excess': float}
+
+        Cada medida vale NaN cuando no está definida, de forma
+        independiente: la asimetría si n < 3 y la curtosis si n < 4.
+        Con datos constantes (dispersión nula) ninguna está definida.
+
+    References
+    ----------
+    Joanes, D. N. y Gill, C. A. (1998). Comparing measures of sample
+    skewness and kurtosis. *The Statistician*, 47(1), 183-189.
     """
     arr = _to_array(data)
+    n = arr.size
+    nan = float("nan")
+
+    # Sin datos o con datos constantes, m2 = 0 y ambos cocientes son 0/0.
+    if n == 0 or np.all(arr == arr[0]):
+        return {"skewness": nan, "kurtosis_excess": nan}
+
+    dev = arr - arr.mean()
+    m2 = np.mean(dev**2)
+    m3 = np.mean(dev**3)
+    m4 = np.mean(dev**4)
+
+    g1 = m3 / m2**1.5
+    g2 = m4 / m2**2 - 3
+
+    skewness = g1 * np.sqrt(n * (n - 1)) / (n - 2) if n >= 3 else nan
+    kurtosis_excess = (n - 1) / ((n - 2) * (n - 3)) * ((n + 1) * g2 + 6) if n >= 4 else nan
+
     return {
-        "skewness": float(sp_stats.skew(arr)),
-        "kurtosis_excess": float(sp_stats.kurtosis(arr, fisher=True)),
+        "skewness": float(skewness),
+        "kurtosis_excess": float(kurtosis_excess),
     }
 
 
@@ -127,6 +290,7 @@ def five_number_summary(data: ArrayLike) -> dict:
          'max': float, 'iqr': float}
     """
     arr = _to_array(data)
+    _require_n(arr)
     q1, median, q3 = np.percentile(arr, [25, 50, 75])
     return {
         "min": float(np.min(arr)),
@@ -148,6 +312,7 @@ def detect_outliers(data: ArrayLike) -> np.ndarray:
         Subconjunto de `data` considerado atípico.
     """
     arr = _to_array(data)
+    _require_n(arr)
     summary = five_number_summary(arr)
     lower_bound = summary["q1"] - 1.5 * summary["iqr"]
     upper_bound = summary["q3"] + 1.5 * summary["iqr"]
@@ -164,7 +329,9 @@ def summary_statistics(data: ArrayLike, ddof: int = 1) -> dict:
     data : ArrayLike
         Datos numéricos.
     ddof : int, default 1
-        Grados de libertad para varianza/desviación estándar.
+        Grados de libertad para la varianza, la desviación estándar y el
+        coeficiente de variación (``dispersion``). No afecta a las medidas
+        de forma: ``shape`` usa siempre los estimadores corregidos G1 y G2.
 
     Returns
     -------
@@ -172,6 +339,7 @@ def summary_statistics(data: ArrayLike, ddof: int = 1) -> dict:
         Diccionario anidado con todas las métricas descriptivas.
     """
     arr = _to_array(data)
+    _require_n(arr)
     return {
         "n": int(arr.size),
         "central_tendency": central_tendency(arr),

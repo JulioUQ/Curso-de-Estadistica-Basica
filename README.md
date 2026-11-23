@@ -1,6 +1,6 @@
 # Estadística Básica
 
-Curso interactivo de estadística básica orientado a la práctica, construido con [Quarto](https://quarto.org/) y publicado como libro web. Cada módulo combina teoría formal con un cuaderno de ejercicios en Python, y todo el contenido se apoya en una librería propia (`stats_toolkit`) con las funciones estadísticas implementadas desde cero.
+Curso interactivo de estadística básica orientado a la práctica, construido con [Quarto](https://quarto.org/) y publicado como libro web. Cada módulo combina teoría formal con un cuaderno de ejercicios en Python, y todo el contenido se apoya en una librería propia (`stats_toolkit`): implementa a mano los métodos con valor didáctico (intervalos, contrastes z y t, regresión, ANOVA…) y envuelve `scipy.stats` en los demás, comparando siempre sus resultados con `scipy` y `statsmodels`.
 
 🔗 **Sitio en vivo:** https://juliouq.github.io/Curso-de-Estadistica-Basica/
 
@@ -10,19 +10,21 @@ Curso interactivo de estadística básica orientado a la práctica, construido c
 
 | Módulo | Título | Temas | Caso de uso |
 |---|---|---|---|
-| 1 | Fundamentos y Estadística Descriptiva | Tipos de variables, medidas de tendencia central, dispersión y forma | Análisis exploratorio de un dataset de salarios/ventas |
+| 1 | Fundamentos y Estadística Descriptiva | Tipos de variables, medidas de tendencia central, dispersión y forma | Salarios simulados por departamento; preprocesamiento del dataset `sleephealth` |
 | 2 | Probabilidad Básica | Espacio muestral, probabilidad condicional, Teorema de Bayes, Naive Bayes intuitivo | Filtro de spam simplificado |
 | 3 | Distribuciones de Probabilidad | Bernoulli, Binomial, Poisson, Uniforme, Normal, Exponencial, Teorema Central del Límite | Modelado de tiempos de espera / conversión |
-| 4 | Inferencia Estadística | Estimación puntual, intervalos de confianza, contraste de hipótesis (z-test, t-test, dos proporciones) | A/B testing de tasas de conversión |
-| 5 | Correlación y Regresión Lineal | Covarianza, correlación de Pearson, regresión lineal simple (OLS), R², inferencia sobre la pendiente | Relación entre inversión en publicidad y ventas |
-| 6 | ANOVA, Chi-cuadrado y Pruebas No Paramétricas | ANOVA de un factor, test Chi-cuadrado de independencia, Mann-Whitney U | Comparación de tratamientos médicos / segmentos de clientes |
+| 4 | Inferencia Estadística | Estimación puntual, intervalos de confianza, contrastes de hipótesis (z, t, Welch, emparejados, proporciones), potencia y tamaño muestral, bootstrap | Cuatro preguntas de investigación sobre `sleephealth` |
+| 5 | Correlación y Regresión Lineal | Covarianza, correlación de Pearson y de Spearman, regresión lineal simple (OLS), R², inferencia sobre la pendiente | Publicidad y ventas; sueño y estrés en `sleephealth` |
+| 6 | ANOVA, Chi-cuadrado y Pruebas No Paramétricas | ANOVA de un factor, tamaño del efecto, Tukey, Chi-cuadrado, Mann-Whitney U, Kruskal-Wallis, Wilcoxon, prueba de signos | Tratamientos, segmentos de clientes y `sleephealth` |
 
 > **Nota sobre la numeración:** los Módulos 4, 5 y 6 de este repositorio agrupan de forma distinta algunos temas respecto a otros temarios de referencia (por ejemplo, Muestreo/TLC, Estimación e IC, y Contraste de Hipótesis aparecen aquí unificados dentro del Módulo 4 — *Inferencia Estadística*). Es una decisión deliberada para mantener el curso compacto; el contenido cubierto es equivalente.
 
 Cada módulo incluye:
-- **`teoria.qmd`** — desarrollo teórico con fórmulas, ejemplos y, en varios casos, un diagrama Mermaid a modo de mapa conceptual.
-- **`practica.ipynb`** — cuaderno Jupyter con simulaciones, visualizaciones y ejercicios propuestos.
-- Un módulo Python correspondiente en `src/stats_toolkit/` con las funciones usadas en la teoría y la práctica.
+- **`teoria.qmd`** — desarrollo teórico con fórmulas, ejemplos, preguntas de autoevaluación y, en varios casos, un diagrama Mermaid o un gráfico interactivo (Observable JS, integrado en Quarto).
+- **`practica.ipynb`** — cuaderno Jupyter con simulaciones, visualizaciones, ejercicios propuestos y sus soluciones plegadas. Cada práctica enlaza a Google Colab y a su descarga.
+- Un módulo Python correspondiente en `src/stats_toolkit/` con las funciones usadas en la teoría y, en la mayoría de los módulos, también en la práctica (la práctica del Módulo 4 trabaja sobre todo con `scipy` y `statsmodels`, y sus ejercicios usan `stats_toolkit`).
+
+Además, el curso incluye un **proyecto integrador** (`notebooks/07_proyecto_integrador/`) que aplica todos los módulos a los datos de sueño, y tres **apéndices** (`apendices/`): qué prueba usar, notación y glosario.
 
 ## Estructura del repositorio
 
@@ -33,15 +35,19 @@ Estadistica-Basica/
 ├── styles.css                 # Estilos personalizados (sidebar, tablas, citas...)
 ├── references.bib             # Bibliografía citable desde los .qmd
 ├── requirements.txt           # Dependencias Python del proyecto
+├── requirements-dev.txt       # Dependencias de desarrollo (pytest)
+├── tests/                     # Tests de stats_toolkit (pytest)
 ├── notebooks/
 │   ├── 01_estadistica_descriptiva/
 │   ├── 02_probabilidad/
 │   ├── 03_distribuciones/
 │   ├── 04_inferencia/
 │   ├── 05_regresion/
-│   └── 06_anova_chi2/
-│       ├── teoria.qmd
-│       └── practica.ipynb
+│   ├── 06_anova_chi2/
+│   │   ├── teoria.qmd
+│   │   └── practica.ipynb
+│   └── 07_proyecto_integrador/  # Proyecto final (practica.ipynb)
+├── apendices/                 # Qué prueba usar, notación y glosario
 ├── src/
 │   └── stats_toolkit/         # Librería Python del curso
 │       ├── __init__.py
@@ -51,10 +57,9 @@ Estadistica-Basica/
 │       ├── inference.py
 │       ├── regression.py
 │       └── group_comparisons.py
-├── images/                    # Recursos gráficos
 └── .github/workflows/
     ├── deploy.yml              # Publica el libro en GitHub Pages (push a main)
-    └── ci-check.yml            # Valida el render en cada Pull Request (sin publicar)
+    └── ci-check.yml            # En cada Pull Request: pytest, ejecución de las prácticas y render (sin publicar)
 ```
 
 ## Cómo ejecutarlo en local
@@ -79,6 +84,16 @@ quarto preview
 ```
 
 `quarto preview` abre el libro en el navegador y se actualiza automáticamente al guardar cambios. Para generar el sitio estático sin servirlo (equivalente a lo que hace el despliegue), usa `quarto render`.
+
+## Uso en Google Colab
+
+Cada práctica empieza con un enlace **Abrir en Google Colab**. Su primera celda de código solo actúa en Colab: clona este repositorio en `/content`, instala las bibliotecas de cálculo de `requirements.txt` que falten (si instala o actualiza alguna, pide reiniciar la sesión) y se sitúa en la carpeta del cuaderno, de modo que `stats_toolkit` y los datos se cargan con las mismas rutas relativas que en local. Los enlaces apuntan a la rama `main`.
+
+Los datos procesados que usan varias prácticas (`notebooks/01_estadistica_descriptiva/data/sleephealth_processed.csv`) están versionados: ninguna práctica necesita ejecutar antes otra. La práctica de preprocesamiento muestra cómo se generan, y el CI comprueba que el archivo regenerado coincide con el versionado.
+
+## Uso sin conexión
+
+El libro publicado carga desde CDN MathJax (fórmulas) y las bibliotecas de los dos gráficos interactivos (Observable). Sin conexión, el texto, el código, las figuras y los diagramas se siguen viendo; las fórmulas aparecen en LaTeX sin formatear y, en lugar de los gráficos interactivos, se muestra un aviso explicativo.
 
 ## Flujo de trabajo del proyecto
 
