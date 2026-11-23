@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,14 +75,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../notebooks/01_estadistica_descriptiva/teoria.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,21 +115,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/practica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/practica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -139,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Sitio web">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
@@ -163,13 +193,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 1 — Estadística Descriptiva</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Módulo 1 — Estadística Descriptiva</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
@@ -192,13 +219,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 2 — Probabilidad Básica</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Módulo 2 — Probabilidad Básica</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
@@ -215,13 +239,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 3 — Distribuciones de Probabilidad</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Módulo 3 — Distribuciones de Probabilidad</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
@@ -238,13 +259,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 4 — Inferencia Estadística</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Módulo 4 — Inferencia Estadística</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
@@ -261,13 +279,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 5 — Correlación y Regresión Lineal</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Módulo 5 — Correlación y Regresión Lineal</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
@@ -284,13 +299,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
@@ -305,31 +317,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">Proyecto integrador</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/07_proyecto_integrador/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Proyecto integrador: ¿qué se asocia con la calidad del sueño?</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">Apéndices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/que_prueba_usar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">¿Qué prueba usar?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Notación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Glosario</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#generación-del-dataset-simulado" id="toc-generación-del-dataset-simulado" class="nav-link active" data-scroll-target="#generación-del-dataset-simulado"><span class="header-section-number">3.1</span> 1. Generación del dataset simulado</a></li>
-  <li><a href="#exploración-inicial" id="toc-exploración-inicial" class="nav-link" data-scroll-target="#exploración-inicial"><span class="header-section-number">3.2</span> 2. Exploración inicial</a></li>
-  <li><a href="#medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit" id="toc-medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit" class="nav-link" data-scroll-target="#medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit"><span class="header-section-number">3.3</span> 3. Medidas de tendencia central: manual vs.&nbsp;<code>pandas</code> vs.&nbsp;<code>stats_toolkit</code></a></li>
-  <li><a href="#medidas-de-dispersión" id="toc-medidas-de-dispersión" class="nav-link" data-scroll-target="#medidas-de-dispersión"><span class="header-section-number">3.4</span> 4. Medidas de dispersión</a></li>
-  <li><a href="#visualización-de-la-distribución" id="toc-visualización-de-la-distribución" class="nav-link" data-scroll-target="#visualización-de-la-distribución"><span class="header-section-number">3.5</span> 5. Visualización de la distribución</a></li>
-  <li><a href="#asimetría-curtosis-y-detección-de-outliers" id="toc-asimetría-curtosis-y-detección-de-outliers" class="nav-link" data-scroll-target="#asimetría-curtosis-y-detección-de-outliers"><span class="header-section-number">3.6</span> 6. Asimetría, curtosis y detección de outliers</a></li>
-  <li><a href="#resumen-completo-con-stats_toolkit.summary_statistics" id="toc-resumen-completo-con-stats_toolkit.summary_statistics" class="nav-link" data-scroll-target="#resumen-completo-con-stats_toolkit.summary_statistics"><span class="header-section-number">3.7</span> 7. Resumen completo con <code>stats_toolkit.summary_statistics</code></a></li>
-  <li><a href="#ejercicio-propuesto" id="toc-ejercicio-propuesto" class="nav-link" data-scroll-target="#ejercicio-propuesto"><span class="header-section-number">3.8</span> 8. Ejercicio propuesto</a></li>
+  <li><a href="#generación-del-dataset-simulado" id="toc-generación-del-dataset-simulado" class="nav-link active" data-scroll-target="#generación-del-dataset-simulado"><span class="header-section-number">3.1</span> Generación del dataset simulado</a></li>
+  <li><a href="#exploración-inicial" id="toc-exploración-inicial" class="nav-link" data-scroll-target="#exploración-inicial"><span class="header-section-number">3.2</span> Exploración inicial</a></li>
+  <li><a href="#medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit" id="toc-medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit" class="nav-link" data-scroll-target="#medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit"><span class="header-section-number">3.3</span> Medidas de tendencia central: manual vs.&nbsp;<code>pandas</code> vs.&nbsp;<code>stats_toolkit</code></a>
+  <ul class="collapse">
+  <li><a href="#y-la-moda" id="toc-y-la-moda" class="nav-link" data-scroll-target="#y-la-moda"><span class="header-section-number">3.3.1</span> ¿Y la moda?</a></li>
+  <li><a href="#moda-única-varias-modas-y-ninguna" id="toc-moda-única-varias-modas-y-ninguna" class="nav-link" data-scroll-target="#moda-única-varias-modas-y-ninguna"><span class="header-section-number">3.3.2</span> Moda única, varias modas y ninguna</a></li>
+  </ul></li>
+  <li><a href="#medidas-de-dispersión" id="toc-medidas-de-dispersión" class="nav-link" data-scroll-target="#medidas-de-dispersión"><span class="header-section-number">3.4</span> Medidas de dispersión</a></li>
+  <li><a href="#visualización-de-la-distribución" id="toc-visualización-de-la-distribución" class="nav-link" data-scroll-target="#visualización-de-la-distribución"><span class="header-section-number">3.5</span> Visualización de la distribución</a>
+  <ul class="collapse">
+  <li><a href="#clase-modal" id="toc-clase-modal" class="nav-link" data-scroll-target="#clase-modal"><span class="header-section-number">3.5.1</span> Clase modal</a></li>
+  </ul></li>
+  <li><a href="#asimetría-curtosis-y-detección-de-outliers" id="toc-asimetría-curtosis-y-detección-de-outliers" class="nav-link" data-scroll-target="#asimetría-curtosis-y-detección-de-outliers"><span class="header-section-number">3.6</span> Asimetría, curtosis y detección de outliers</a>
+  <ul class="collapse">
+  <li><a href="#momentos-frente-a-estimadores-corregidos" id="toc-momentos-frente-a-estimadores-corregidos" class="nav-link" data-scroll-target="#momentos-frente-a-estimadores-corregidos"><span class="header-section-number">3.6.1</span> Momentos frente a estimadores corregidos</a></li>
+  </ul></li>
+  <li><a href="#resumen-completo-con-stats_toolkit.summary_statistics" id="toc-resumen-completo-con-stats_toolkit.summary_statistics" class="nav-link" data-scroll-target="#resumen-completo-con-stats_toolkit.summary_statistics"><span class="header-section-number">3.7</span> Resumen completo con <code>stats_toolkit.summary_statistics</code></a></li>
+  <li><a href="#ejercicio-propuesto" id="toc-ejercicio-propuesto" class="nav-link" data-scroll-target="#ejercicio-propuesto"><span class="header-section-number">3.8</span> Ejercicio propuesto</a></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones"><span class="header-section-number">3.9</span> Soluciones</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/01_estadistica_descriptiva/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/practica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/teoria.html">Módulo 1 — Estadística Descriptiva</a></li><li class="breadcrumb-item"><a href="../../notebooks/01_estadistica_descriptiva/practica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Práctica: Estadística Descriptiva</span></h1>
 </div>
@@ -357,45 +420,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>Requisitos: <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, <code>seaborn</code>, <code>scipy</code></p>
 </blockquote>
-<div id="cc3fb9aa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:41.671781Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:41.671614Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.525908Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.524710Z&quot;}}" data-execution_count="1">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ejecutar este cuaderno
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://colab.research.google.com/github/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/01_estadistica_descriptiva/practica.ipynb">Abrir en Google Colab</a></li>
+<li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/01_estadistica_descriptiva/practica.ipynb">Ver o descargar el cuaderno en GitHub</a> (botón <em>Download raw file</em>)</li>
+<li>Para trabajar en tu ordenador, descarga el <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/archive/refs/heads/main.zip">repositorio completo</a>: el cuaderno necesita la librería <code>src/stats_toolkit</code> y los datos del curso. Las instrucciones de instalación están en el archivo <code>README.md</code>.</li>
+</ul>
+<p>La celda siguiente solo actúa en Google Colab: descarga el repositorio del curso, instala las bibliotecas que falten y se sitúa en la carpeta de este cuaderno. Si instala o actualiza alguna, te pedirá que reinicies la sesión y vuelvas a ejecutar el cuaderno. En tu ordenador no hace nada.</p>
+</div>
+</div>
+<div id="65482906" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)  <span class="co"># permite importar stats_toolkit desde notebooks/</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> descriptive <span class="im">as</span> desc</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solo en Google Colab: descarga el repositorio del curso (stats_toolkit y datos),</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># instala las bibliotecas que falten y se sitúa en la carpeta de este cuaderno.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># En otro entorno (tu ordenador, la web del curso) no hace nada.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> importlib.metadata <span class="im">import</span> PackageNotFoundError, version</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    repo <span class="op">=</span> <span class="st">"/content/Curso-de-Estadistica-Basica"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(repo):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        subprocess.run([<span class="st">"git"</span>, <span class="st">"clone"</span>, <span class="st">"--depth"</span>, <span class="st">"1"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"https://github.com/JulioUQ/Curso-de-Estadistica-Basica.git"</span>, repo], check<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bibliotecas de cálculo de requirements.txt (Jupyter ya viene con Colab).</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f"</span><span class="sc">{</span>repo<span class="sc">}</span><span class="ss">/requirements.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        requisitos <span class="op">=</span> [linea.split(<span class="st">"#"</span>)[<span class="dv">0</span>].strip() <span class="cf">for</span> linea <span class="kw">in</span> f]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    requisitos <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> requisitos <span class="cf">if</span> r <span class="kw">and</span> r <span class="kw">not</span> <span class="kw">in</span> (<span class="st">"jupyter"</span>, <span class="st">"ipykernel"</span>, <span class="st">"nbclient"</span>, <span class="st">"nbformat"</span>)]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    nombres <span class="op">=</span> [r.split(<span class="st">"&gt;="</span>)[<span class="dv">0</span>] <span class="cf">for</span> r <span class="kw">in</span> requisitos]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> versiones():</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> {}</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> n <span class="kw">in</span> nombres:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                res[n] <span class="op">=</span> version(n)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> PackageNotFoundError:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                res[n] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    antes <span class="op">=</span> versiones()</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    subprocess.run([sys.executable, <span class="st">"-m"</span>, <span class="st">"pip"</span>, <span class="st">"install"</span>, <span class="st">"-q"</span>, <span class="op">*</span>requisitos], check<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    cambiadas <span class="op">=</span> [n <span class="cf">for</span> n, v <span class="kw">in</span> versiones().items() <span class="cf">if</span> v <span class="op">!=</span> antes[n]]</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> cambiadas:</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Se han instalado o actualizado:"</span>, <span class="st">", "</span>.join(cambiadas))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Reinicia la sesión (menú «Entorno de ejecución») y vuelve a ejecutar el cuaderno."</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    os.chdir(<span class="ss">f"</span><span class="sc">{</span>repo<span class="sc">}</span><span class="ss">/notebooks/01_estadistica_descriptiva"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="cc3fb9aa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:41.671781Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:41.671614Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.525908Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.524710Z&quot;}}" data-execution_count="2">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)  <span class="co"># permite importar stats_toolkit desde notebooks/</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> descriptive <span class="im">as</span> desc</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> (<span class="dv">8</span>, <span class="fl">4.5</span>)  <span class="co"># tamaño común de las figuras de una sola gráfica</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <section id="generación-del-dataset-simulado" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="generación-del-dataset-simulado"><span class="header-section-number">3.1</span> 1. Generación del dataset simulado</h2>
+<h2 data-number="3.1" class="anchored" data-anchor-id="generación-del-dataset-simulado"><span class="header-section-number">3.1</span> Generación del dataset simulado</h2>
 <p>Simulamos 300 empleados distribuidos en 4 departamentos. Los salarios siguen una distribución log-normal (común en datos salariales reales: asimétrica hacia la derecha, con pocos sueldos muy altos).</p>
-<div id="8ca264d5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.528240Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.527536Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.541801Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.540931Z&quot;}}" data-execution_count="2">
+<div id="8ca264d5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.528240Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.527536Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.541801Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.540931Z&quot;}}" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>departamentos <span class="op">=</span> [<span class="st">"Ventas"</span>, <span class="st">"IT"</span>, <span class="st">"RRHH"</span>, <span class="st">"Direccion"</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_por_depto <span class="op">=</span> <span class="dv">75</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>medias_log <span class="op">=</span> {<span class="st">"Ventas"</span>: <span class="fl">7.2</span>, <span class="st">"IT"</span>: <span class="fl">7.5</span>, <span class="st">"RRHH"</span>: <span class="fl">7.1</span>, <span class="st">"Direccion"</span>: <span class="fl">8.0</span>}</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depto <span class="kw">in</span> departamentos:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    salarios <span class="op">=</span> np.random.lognormal(mean<span class="op">=</span>medias_log[depto], sigma<span class="op">=</span><span class="fl">0.3</span>, size<span class="op">=</span>n_por_depto)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> salarios:</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        data.append({<span class="st">"departamento"</span>: depto, <span class="st">"salario"</span>: <span class="bu">round</span>(s, <span class="dv">2</span>)})</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>departamentos <span class="op">=</span> [<span class="st">"Ventas"</span>, <span class="st">"IT"</span>, <span class="st">"RRHH"</span>, <span class="st">"Direccion"</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n_por_depto <span class="op">=</span> <span class="dv">75</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>medias_log <span class="op">=</span> {<span class="st">"Ventas"</span>: <span class="fl">7.2</span>, <span class="st">"IT"</span>: <span class="fl">7.5</span>, <span class="st">"RRHH"</span>: <span class="fl">7.1</span>, <span class="st">"Direccion"</span>: <span class="fl">8.0</span>}</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depto <span class="kw">in</span> departamentos:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    salarios <span class="op">=</span> np.random.lognormal(mean<span class="op">=</span>medias_log[depto], sigma<span class="op">=</span><span class="fl">0.3</span>, size<span class="op">=</span>n_por_depto)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> salarios:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        data.append({<span class="st">"departamento"</span>: depto, <span class="st">"salario"</span>: <span class="bu">round</span>(s, <span class="dv">2</span>)})</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -441,13 +565,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="exploración-inicial" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="exploración-inicial"><span class="header-section-number">3.2</span> 2. Exploración inicial</h2>
+<h2 data-number="3.2" class="anchored" data-anchor-id="exploración-inicial"><span class="header-section-number">3.2</span> Exploración inicial</h2>
 <p>Antes de calcular cualquier estadístico, revisamos la estructura general del dataset.</p>
-<div id="e2176f22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.543996Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.543371Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.551601Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.550682Z&quot;}}" data-execution_count="3">
+<div id="e2176f22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.543996Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.543371Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.551601Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.550682Z&quot;}}" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.shape)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.shape)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>(300, 2)
@@ -462,12 +586,12 @@ dtypes: float64(1), str(1)
 memory usage: 4.8 KB</code></pre>
 </div>
 </div>
-<div id="1b77b756" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.553488Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.552945Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.568598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.567821Z&quot;}}" data-execution_count="4">
+<div id="1b77b756" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.553488Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.552945Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.568598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.567821Z&quot;}}" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">"departamento"</span>)[<span class="st">"salario"</span>].describe()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">"departamento"</span>)[<span class="st">"salario"</span>].describe()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -549,46 +673,117 @@ memory usage: 4.8 KB</code></pre>
 </div>
 </section>
 <section id="medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit"><span class="header-section-number">3.3</span> 3. Medidas de tendencia central: manual vs.&nbsp;<code>pandas</code> vs.&nbsp;<code>stats_toolkit</code></h2>
-<p>Calculamos media, mediana y moda del salario global de tres formas distintas para verificar consistencia.</p>
-<div id="af4fcdc1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.570269Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.570104Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.576380Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.575646Z&quot;}}" data-execution_count="5">
+<h2 data-number="3.3" class="anchored" data-anchor-id="medidas-de-tendencia-central-manual-vs.-pandas-vs.-stats_toolkit"><span class="header-section-number">3.3</span> Medidas de tendencia central: manual vs.&nbsp;<code>pandas</code> vs.&nbsp;<code>stats_toolkit</code></h2>
+<p>Calculamos la media y la mediana del salario global de tres formas distintas para verificar consistencia. La moda merece un apartado propio (3.1).</p>
+<div id="af4fcdc1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.570269Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.570104Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.576380Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.575646Z&quot;}}" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>salarios <span class="op">=</span> df[<span class="st">"salario"</span>].values</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Manual con NumPy</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>media_manual <span class="op">=</span> np.<span class="bu">sum</span>(salarios) <span class="op">/</span> <span class="bu">len</span>(salarios)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mediana_manual <span class="op">=</span> np.median(salarios)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Con pandas</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>media_pandas <span class="op">=</span> df[<span class="st">"salario"</span>].mean()</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>mediana_pandas <span class="op">=</span> df[<span class="st">"salario"</span>].median()</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Con nuestro módulo</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>resultado_desc <span class="op">=</span> desc.central_tendency(salarios)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media    -&gt; manual: </span><span class="sc">{</span>media_manual<span class="sc">:.2f}</span><span class="ss"> | pandas: </span><span class="sc">{</span>media_pandas<span class="sc">:.2f}</span><span class="ss"> | stats_toolkit: </span><span class="sc">{</span>resultado_desc[<span class="st">'mean'</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mediana  -&gt; manual: </span><span class="sc">{</span>mediana_manual<span class="sc">:.2f}</span><span class="ss"> | pandas: </span><span class="sc">{</span>mediana_pandas<span class="sc">:.2f}</span><span class="ss"> | stats_toolkit: </span><span class="sc">{</span>resultado_desc[<span class="st">'median'</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Moda (stats_toolkit): </span><span class="sc">{</span>resultado_desc[<span class="st">'mode'</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>salarios <span class="op">=</span> df[<span class="st">"salario"</span>].values</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Manual con NumPy</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>media_manual <span class="op">=</span> np.<span class="bu">sum</span>(salarios) <span class="op">/</span> <span class="bu">len</span>(salarios)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>mediana_manual <span class="op">=</span> np.median(salarios)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Con pandas</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>media_pandas <span class="op">=</span> df[<span class="st">"salario"</span>].mean()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>mediana_pandas <span class="op">=</span> df[<span class="st">"salario"</span>].median()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Con nuestro módulo</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>resultado_desc <span class="op">=</span> desc.central_tendency(salarios)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media    -&gt; manual: </span><span class="sc">{</span>media_manual<span class="sc">:.2f}</span><span class="ss"> | pandas: </span><span class="sc">{</span>media_pandas<span class="sc">:.2f}</span><span class="ss"> | stats_toolkit: </span><span class="sc">{</span>resultado_desc[<span class="st">'mean'</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mediana  -&gt; manual: </span><span class="sc">{</span>mediana_manual<span class="sc">:.2f}</span><span class="ss"> | pandas: </span><span class="sc">{</span>mediana_pandas<span class="sc">:.2f}</span><span class="ss"> | stats_toolkit: </span><span class="sc">{</span>resultado_desc[<span class="st">'median'</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Media    -&gt; manual: 1911.08 | pandas: 1911.08 | stats_toolkit: 1911.08
-Mediana  -&gt; manual: 1620.90 | pandas: 1620.90 | stats_toolkit: 1620.90
-Moda (stats_toolkit): 610.38</code></pre>
+Mediana  -&gt; manual: 1620.90 | pandas: 1620.90 | stats_toolkit: 1620.90</code></pre>
 </div>
 </div>
 <p><strong>Observación:</strong> los tres métodos coinciden, como es de esperar. La ventaja de <code>stats_toolkit</code> es que centraliza la lógica y evita repetir código en cada notebook del curso.</p>
-</section>
-<section id="medidas-de-dispersión" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="medidas-de-dispersión"><span class="header-section-number">3.4</span> 4. Medidas de dispersión</h2>
-<p>Comparamos la dispersión salarial entre departamentos usando el coeficiente de variación, que nos permite comparar variabilidad relativa aunque los promedios sean distintos.</p>
-<div id="b2eff8d2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.577974Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.577684Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.584423Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.583696Z&quot;}}" data-execution_count="6">
+<section id="y-la-moda" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="y-la-moda"><span class="header-section-number">3.3.1</span> ¿Y la moda?</h3>
+<p>La moda es el valor que más se repite. Antes de calcularla, comprobemos cuántas veces aparece cada salario:</p>
+<div id="e8066a44" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depto <span class="kw">in</span> departamentos:</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    salarios_depto <span class="op">=</span> df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> depto, <span class="st">"salario"</span>].values</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    disp <span class="op">=</span> desc.dispersion(salarios_depto)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>depto<span class="sc">:12s}</span><span class="ss"> | media: </span><span class="sc">{</span>salarios_depto<span class="sc">.</span>mean()<span class="sc">:8.2f}</span><span class="ss"> | std: </span><span class="sc">{</span>disp[<span class="st">'std'</span>]<span class="sc">:7.2f}</span><span class="ss"> | CV: </span><span class="sc">{</span>disp[<span class="st">'cv_pct'</span>]<span class="sc">:5.2f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>frecuencias <span class="op">=</span> df[<span class="st">"salario"</span>].value_counts()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Salarios observados: </span><span class="sc">{</span><span class="bu">len</span>(salarios)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Valores distintos:   </span><span class="sc">{</span>df[<span class="st">'salario'</span>]<span class="sc">.</span>nunique()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Frecuencia máxima:   </span><span class="sc">{</span>frecuencias<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Salarios observados: 300
+Valores distintos:   300
+Frecuencia máxima:   1</code></pre>
+</div>
+</div>
+<p>Los 300 salarios son <strong>todos distintos</strong>: como el salario es una variable continua y se registra en céntimos, es muy raro que dos coincidan exactamente. Ningún salario es “el más habitual”. Y si dos coincidieran por casualidad al redondear, ese salario sería técnicamente la moda, pero seguiría sin describir dónde se concentran los datos. Veamos qué responde cada herramienta ante esta situación:</p>
+<div id="520d30c7" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>moda_scipy <span class="op">=</span> stats.mode(salarios, keepdims<span class="op">=</span><span class="va">False</span>).mode</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>modas_pandas <span class="op">=</span> df[<span class="st">"salario"</span>].mode()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SciPy  (stats.mode):              </span><span class="sc">{</span>moda_scipy<span class="sc">:.2f}</span><span class="ss">   (salario mínimo: </span><span class="sc">{</span>salarios<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"pandas (Series.mode):             </span><span class="sc">{</span><span class="bu">len</span>(modas_pandas)<span class="sc">}</span><span class="ss"> valores, uno por cada salario"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"stats_toolkit (desc.modes):       </span><span class="sc">{</span>desc<span class="sc">.</span>modes(salarios)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"stats_toolkit (central_tendency): </span><span class="sc">{</span>resultado_desc[<span class="st">'mode'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>SciPy  (stats.mode):              610.38   (salario mínimo: 610.38)
+pandas (Series.mode):             300 valores, uno por cada salario
+stats_toolkit (desc.modes):       []
+stats_toolkit (central_tendency): nan</code></pre>
+</div>
+</div>
+<p>Las tres herramientas aplican <strong>convenciones distintas</strong> ante un empate en la frecuencia máxima (aquí, los 300 salarios empatan con frecuencia 1):</p>
+<ul>
+<li><strong>SciPy</strong> devuelve un único valor y, en la práctica, elige el más pequeño. Por eso obtenemos el salario mínimo, que no es un salario habitual sino el extremo inferior de la distribución.</li>
+<li><strong>pandas</strong> devuelve todos los valores empatados: 300 “modas”.</li>
+<li><strong><code>stats_toolkit</code></strong> sigue la convención del curso: si todos los valores tienen la misma frecuencia, no hay moda destacada. <code>desc.modes()</code> devuelve una lista vacía y <code>central_tendency()</code> indica <code>nan</code> en la clave <code>mode</code>.</li>
+</ul>
+<p>Ninguna de las tres está mal programada, pero ninguna nos dice dónde se concentran los salarios. Para eso, con datos continuos, se agrupa en intervalos y se busca la <strong>clase modal</strong> (lo haremos en la sección «Visualización de la distribución», junto al histograma).</p>
+</section>
+<section id="moda-única-varias-modas-y-ninguna" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="moda-única-varias-modas-y-ninguna"><span class="header-section-number">3.3.2</span> Moda única, varias modas y ninguna</h3>
+<p>La moda resulta más útil con variables discretas o categóricas, donde los valores sí se repiten. Comparamos <code>desc.modes()</code> con <code>Series.mode()</code> de pandas en unos ejemplos sencillos:</p>
+<div id="300d856f" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ejemplos <span class="op">=</span> {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Moda única"</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>],</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bimodal"</span>: [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sin moda destacada"</span>: [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>],</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Departamentos"</span>: df[<span class="st">"departamento"</span>],</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre, datos <span class="kw">in</span> ejemplos.items():</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>nombre<span class="sc">:19s}</span><span class="ss"> -&gt; stats_toolkit: </span><span class="sc">{</span>desc<span class="sc">.</span>modes(datos)<span class="sc">}</span><span class="ss"> | pandas: </span><span class="sc">{</span>pd<span class="sc">.</span>Series(datos)<span class="sc">.</span>mode()<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Moda única          -&gt; stats_toolkit: [5] | pandas: [5]
+Bimodal             -&gt; stats_toolkit: [1, 3] | pandas: [1, 3]
+Sin moda destacada  -&gt; stats_toolkit: [] | pandas: [1, 2, 3]
+Departamentos       -&gt; stats_toolkit: [] | pandas: ['Direccion', 'IT', 'RRHH', 'Ventas']</code></pre>
+</div>
+</div>
+<ul>
+<li>En el primer caso el 5 aparece tres veces y es la única moda.</li>
+<li>En el segundo, 1 y 3 empatan en la frecuencia máxima y superan al resto: la distribución es <strong>bimodal</strong> y ambas herramientas coinciden.</li>
+<li>En los dos últimos, todos los valores aparecen el mismo número de veces (cada departamento tiene 75 empleados). Según la convención del curso <strong>no hay moda destacada</strong>, mientras que pandas considera modas a todos los valores. Es una diferencia de convención, no un error de ninguna de las dos.</li>
+</ul>
+</section>
+</section>
+<section id="medidas-de-dispersión" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="medidas-de-dispersión"><span class="header-section-number">3.4</span> Medidas de dispersión</h2>
+<p>Comparamos la dispersión salarial entre departamentos usando el coeficiente de variación, que nos permite comparar variabilidad relativa aunque los promedios sean distintos.</p>
+<div id="b2eff8d2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.577974Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.577684Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.584423Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.583696Z&quot;}}" data-execution_count="10">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depto <span class="kw">in</span> departamentos:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    salarios_depto <span class="op">=</span> df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> depto, <span class="st">"salario"</span>].values</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    disp <span class="op">=</span> desc.dispersion(salarios_depto)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>depto<span class="sc">:12s}</span><span class="ss"> | media: </span><span class="sc">{</span>salarios_depto<span class="sc">.</span>mean()<span class="sc">:8.2f}</span><span class="ss"> | std: </span><span class="sc">{</span>disp[<span class="st">'std'</span>]<span class="sc">:7.2f}</span><span class="ss"> | CV: </span><span class="sc">{</span>disp[<span class="st">'cv_pct'</span>]<span class="sc">:5.2f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ventas       | media:  1347.06 | std:  384.23 | CV: 28.52%
@@ -599,83 +794,182 @@ Direccion    | media:  3110.42 | std:  964.05 | CV: 30.99%</code></pre>
 </div>
 </section>
 <section id="visualización-de-la-distribución" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="visualización-de-la-distribución"><span class="header-section-number">3.5</span> 5. Visualización de la distribución</h2>
+<h2 data-number="3.5" class="anchored" data-anchor-id="visualización-de-la-distribución"><span class="header-section-number">3.5</span> Visualización de la distribución</h2>
 <p>Un histograma y un boxplot revelan lo que los números por sí solos no siempre muestran: la forma de la distribución y la presencia de outliers.</p>
-<div id="ad483b26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.586309Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.585693Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.849289Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.848347Z&quot;}}" data-execution_count="7">
+<div id="ad483b26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.586309Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.585693Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.849289Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.848347Z&quot;}}" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="fl">4.5</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">"salario"</span>], kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Distribución global de salarios"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Salario"</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"departamento"</span>, y<span class="op">=</span><span class="st">"salario"</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>], palette<span class="op">=</span><span class="st">"Set2"</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Salario por departamento"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="fl">4.5</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">"salario"</span>], kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Distribución global de salarios"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Salario"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Frecuencia"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagrama de caja con matplotlib (seaborn 0.13 emite avisos de obsolescencia)</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>deptos <span class="op">=</span> <span class="bu">list</span>(df[<span class="st">"departamento"</span>].unique())</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>cajas <span class="op">=</span> axes[<span class="dv">1</span>].boxplot([df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> d, <span class="st">"salario"</span>] <span class="cf">for</span> d <span class="kw">in</span> deptos],</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                        tick_labels<span class="op">=</span>deptos, patch_artist<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> caja, color <span class="kw">in</span> <span class="bu">zip</span>(cajas[<span class="st">"boxes"</span>], sns.color_palette(<span class="st">"Set2"</span>, <span class="bu">len</span>(deptos))):</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    caja.set_facecolor(color)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Salario por departamento"</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Departamento"</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">"Salario"</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_140/495683293.py:7: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.boxplot(data=df, x="departamento", y="salario", ax=axes[1], palette="Set2")</code></pre>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="practica_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="practica_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img" alt="Dos gráficos. A la izquierda, histograma con curva de densidad de los salarios simulados: distribución asimétrica a la derecha, con pocos salarios muy altos. A la derecha, diagramas de caja del salario para cada uno de los cuatro departamentos, que permiten comparar sus medianas, dispersiones y atípicos."></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="asimetría-curtosis-y-detección-de-outliers" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="asimetría-curtosis-y-detección-de-outliers"><span class="header-section-number">3.6</span> 6. Asimetría, curtosis y detección de outliers</h2>
-<div id="ccdea9c5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.851401Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.850798Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.857577Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.856880Z&quot;}}" data-execution_count="8">
+<section id="clase-modal" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="clase-modal"><span class="header-section-number">3.5.1</span> Clase modal</h3>
+<p>El histograma muestra dónde se acumulan los salarios. La <strong>clase modal</strong> es el intervalo con más observaciones. La calculamos con los mismos intervalos que usa el histograma anterior (<code>bins="auto"</code>, el valor por defecto de seaborn) y con dos agrupaciones alternativas:</p>
+<div id="5cdaf123" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>forma <span class="op">=</span> desc.shape(salarios)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Asimetría (skewness): </span><span class="sc">{</span>forma[<span class="st">'skewness'</span>]<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Curtosis de exceso:   </span><span class="sc">{</span>forma[<span class="st">'kurtosis_excess'</span>]<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> desc.detect_outliers(salarios)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Número de outliers detectados (regla 1.5*IQR): </span><span class="sc">{</span><span class="bu">len</span>(outliers)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Valores: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(outliers, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clase_modal(datos, bordes):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Intervalo [inicio, fin) con más observaciones y su frecuencia."""</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    conteos, bordes <span class="op">=</span> np.histogram(datos, bins<span class="op">=</span>bordes)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> conteos.argmax()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> bordes[k], bordes[k <span class="op">+</span> <span class="dv">1</span>], conteos[k]</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>agrupaciones <span class="op">=</span> {</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Intervalos del histograma (bins='auto')"</span>: np.histogram_bin_edges(salarios, bins<span class="op">=</span><span class="st">"auto"</span>),</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Intervalos de 250 € (desde 500 €)"</span>: np.arange(<span class="dv">500</span>, <span class="dv">6001</span>, <span class="dv">250</span>),</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Intervalos de 500 € (desde 500 €)"</span>: np.arange(<span class="dv">500</span>, <span class="dv">6001</span>, <span class="dv">500</span>),</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre, bordes <span class="kw">in</span> agrupaciones.items():</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    inicio, fin, n <span class="op">=</span> clase_modal(salarios, bordes)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>nombre<span class="sc">:40s}</span><span class="ss"> -&gt; clase modal [</span><span class="sc">{</span>inicio<span class="sc">:7.1f}</span><span class="ss">, </span><span class="sc">{</span>fin<span class="sc">:7.1f}</span><span class="ss">) con </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> salarios"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Asimetría (skewness): 1.442
-Curtosis de exceso:   2.105
+<pre><code>Intervalos del histograma (bins='auto')  -&gt; clase modal [ 1243.0,  1559.3) con 68 salarios
+Intervalos de 250 € (desde 500 €)        -&gt; clase modal [ 1250.0,  1500.0) con 53 salarios
+Intervalos de 500 € (desde 500 €)        -&gt; clase modal [ 1000.0,  1500.0) con 96 salarios</code></pre>
+</div>
+</div>
+<p>Las tres agrupaciones coinciden en que los salarios se concentran alrededor de 1.250–1.500 €, que es donde está el pico del histograma: esa es la información que buscábamos con la moda. Pero la clase modal exacta <strong>depende de los intervalos elegidos</strong>: cambia su posición, su anchura y su frecuencia. Por eso, al informar de una clase modal hay que indicar siempre cómo se agruparon los datos.</p>
+<p>Las frecuencias de las distintas agrupaciones (68, 53 y 96) no son directamente comparables, porque los intervalos tienen diferentes anchuras. Un intervalo más ancho puede reunir más salarios simplemente por abarcar un rango mayor. Dentro de cada agrupación, los intervalos tienen la misma anchura, por lo que sí podemos comparar sus frecuencias para identificar la clase modal.</p>
+</section>
+</section>
+<section id="asimetría-curtosis-y-detección-de-outliers" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="asimetría-curtosis-y-detección-de-outliers"><span class="header-section-number">3.6</span> Asimetría, curtosis y detección de outliers</h2>
+<div id="ccdea9c5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.851401Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.850798Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.857577Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.856880Z&quot;}}" data-execution_count="13">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>forma <span class="op">=</span> desc.shape(salarios)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Asimetría (skewness): </span><span class="sc">{</span>forma[<span class="st">'skewness'</span>]<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Curtosis de exceso:   </span><span class="sc">{</span>forma[<span class="st">'kurtosis_excess'</span>]<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> desc.detect_outliers(salarios)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Número de outliers detectados (regla 1.5*IQR): </span><span class="sc">{</span><span class="bu">len</span>(outliers)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Valores: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(outliers, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Asimetría (skewness): 1.449
+Curtosis de exceso:   2.161
 
 Número de outliers detectados (regla 1.5*IQR): 11
 Valores: [4132.7  5671.35 5062.6  5634.41 4063.25 4359.33 4864.52 4593.43 4225.74
  4797.28 5652.82]</code></pre>
 </div>
 </div>
-<p><strong>Interpretación esperada:</strong> al provenir de una distribución log-normal, la asimetría debería ser positiva (cola derecha), consistente con lo discutido en la teoría sobre distribuciones salariales.</p>
-</section>
-<section id="resumen-completo-con-stats_toolkit.summary_statistics" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="resumen-completo-con-stats_toolkit.summary_statistics"><span class="header-section-number">3.7</span> 7. Resumen completo con <code>stats_toolkit.summary_statistics</code></h2>
-<p>En lugar de llamar función por función, <code>summary_statistics</code> devuelve todo en un solo diccionario — útil para generar reportes automáticos.</p>
-<div id="5fb82901" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.859138Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.858991Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.865494Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.864709Z&quot;}}" data-execution_count="9">
+<p><strong>Interpretación:</strong> la asimetría es claramente positiva (cola larga hacia la derecha) y la curtosis de exceso también es positiva (colas más pesadas que las de una normal).</p>
+<p>Ojo con el origen de esa forma: <code>salarios</code> reúne los cuatro departamentos, así que no procede de una única distribución log-normal, sino de una <strong>mezcla de cuatro log-normales</strong> con medias distintas. Cada una de ellas, con <span class="math inline">\(\sigma = 0{,}3\)</span>, tiene una asimetría teórica de solo 0,95; la asimetría global es mayor porque los salarios de Dirección, mucho más altos que los del resto, alargan la cola derecha del conjunto. De hecho, todos los valores atípicos detectados con la regla del RIC pertenecen a Dirección. Es un buen recordatorio de que, antes de interpretar la forma de una variable, conviene mirar si mezcla grupos distintos.</p>
+<section id="momentos-frente-a-estimadores-corregidos" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="momentos-frente-a-estimadores-corregidos"><span class="header-section-number">3.6.1</span> Momentos frente a estimadores corregidos</h3>
+<p>La teoría presenta dos versiones de cada medida: los coeficientes de momentos <span class="math inline">\(g_1\)</span> y <span class="math inline">\(g_2\)</span> y los estimadores corregidos <span class="math inline">\(G_1\)</span> y <span class="math inline">\(G_2\)</span>, que son los que devuelven <code>stats_toolkit</code> y pandas. Calculamos ambas a partir de los momentos centrales y las comparamos con las dos bibliotecas.</p>
+<div id="35729cc5" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>resumen_completo <span class="op">=</span> desc.summary_statistics(salarios)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>resumen_completo</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span>(salarios)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>desv <span class="op">=</span> salarios <span class="op">-</span> salarios.mean()</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>m2, m3, m4 <span class="op">=</span> (np.mean(desv<span class="op">**</span>k) <span class="cf">for</span> k <span class="kw">in</span> (<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))  <span class="co"># momentos centrales</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Coeficientes de momentos (sin corregir)</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>g1 <span class="op">=</span> m3 <span class="op">/</span> m2<span class="op">**</span><span class="fl">1.5</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>g2 <span class="op">=</span> m4 <span class="op">/</span> m2<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">3</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimadores corregidos (los que usa el curso)</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>G1 <span class="op">=</span> np.sqrt(n <span class="op">*</span> (n <span class="op">-</span> <span class="dv">1</span>)) <span class="op">/</span> (n <span class="op">-</span> <span class="dv">2</span>) <span class="op">*</span> g1</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>G2 <span class="op">=</span> (n <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> ((n <span class="op">-</span> <span class="dv">2</span>) <span class="op">*</span> (n <span class="op">-</span> <span class="dv">3</span>)) <span class="op">*</span> ((n <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> g2 <span class="op">+</span> <span class="dv">6</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>comparacion <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"g (momentos)"</span>: [g1, g2],</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"G (manual)"</span>: [G1, G2],</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"pandas"</span>: [df[<span class="st">"salario"</span>].skew(), df[<span class="st">"salario"</span>].kurt()],</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"stats_toolkit"</span>: [forma[<span class="st">"skewness"</span>], forma[<span class="st">"kurtosis_excess"</span>]],</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"Asimetría"</span>, <span class="st">"Curtosis de exceso"</span>],</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>comparacion.<span class="bu">round</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">g (momentos)</th>
+<th data-quarto-table-cell-role="th">G (manual)</th>
+<th data-quarto-table-cell-role="th">pandas</th>
+<th data-quarto-table-cell-role="th">stats_toolkit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Asimetría</th>
+<td>1.4422</td>
+<td>1.4494</td>
+<td>1.4494</td>
+<td>1.4494</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Curtosis de exceso</th>
+<td>2.1051</td>
+<td>2.1609</td>
+<td>2.1609</td>
+<td>2.1609</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Las tres últimas columnas coinciden: <code>stats_toolkit</code> y pandas calculan <span class="math inline">\(G_1\)</span> y <span class="math inline">\(G_2\)</span>. Con <span class="math inline">\(n = 300\)</span> la corrección apenas cambia el resultado (alrededor de un 0,5 % en la asimetría y un 3 % en la curtosis). Con muestras pequeñas la diferencia sería mucho mayor, y ambas medidas, sobre todo la curtosis, serían muy inestables.</p>
+</section>
+</section>
+<section id="resumen-completo-con-stats_toolkit.summary_statistics" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="resumen-completo-con-stats_toolkit.summary_statistics"><span class="header-section-number">3.7</span> Resumen completo con <code>stats_toolkit.summary_statistics</code></h2>
+<p>En lugar de llamar función por función, <code>summary_statistics</code> devuelve todo en un solo diccionario — útil para generar reportes automáticos.</p>
+<div id="5fb82901" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-24T11:37:43.859138Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-24T11:37:43.858991Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-24T11:37:43.865494Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-24T11:37:43.864709Z&quot;}}" data-execution_count="15">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>resumen_completo <span class="op">=</span> desc.summary_statistics(salarios)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>resumen_completo</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>{'n': 300,
  'central_tendency': {'mean': 1911.0813999999998,
   'median': 1620.9,
-  'mode': 610.38},
+  'mode': nan},
  'dispersion': {'range': 5060.97,
   'variance': 921481.9622160936,
   'std': 959.9385200189091,
   'cv_pct': 50.230122066956916},
- 'shape': {'skewness': 1.4421799362239542,
-  'kurtosis_excess': 2.1050969630474077},
+ 'shape': {'skewness': 1.449437211366316,
+  'kurtosis_excess': 2.1608774724572757},
  'five_number_summary': {'min': 610.38,
   'q1': 1246.165,
   'median': 1620.9,
@@ -684,17 +978,121 @@ Valores: [4132.7  5671.35 5062.6  5634.41 4063.25 4359.33 4864.52 4593.43 4225.7
   'iqr': 1072.75}}</code></pre>
 </div>
 </div>
+<p><strong>Cómo leer este resumen:</strong> <code>'mode': nan</code> no es un error. Indica que no hay una moda única: aquí, como vimos en la sección «¿Y la moda?», ningún salario se repite. Si hubiera varias modas, también aparecería <code>nan</code>; para verlas todas se usa <code>desc.modes()</code>. El resto de medidas (media, mediana, dispersión, forma y cinco números) se calculan con normalidad.</p>
 </section>
 <section id="ejercicio-propuesto" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="ejercicio-propuesto"><span class="header-section-number">3.8</span> 8. Ejercicio propuesto</h2>
+<h2 data-number="3.8" class="anchored" data-anchor-id="ejercicio-propuesto"><span class="header-section-number">3.8</span> Ejercicio propuesto</h2>
 <blockquote class="blockquote">
-<p><strong>Tu turno:</strong> usando <code>stats_toolkit.descriptive</code>, calcula el resumen estadístico completo <strong>solo para el departamento de Dirección</strong> y compáralo con el de Ventas. ¿Qué diferencias observas en el coeficiente de variación y en la asimetría? ¿Tiene sentido de negocio ese resultado?</p>
+<p><strong>Tu turno:</strong> usando <code>stats_toolkit.descriptive</code>, calcula el resumen estadístico completo <strong>solo para el departamento de Dirección</strong> y compáralo con el de Ventas. ¿Qué diferencias observas en el coeficiente de variación y en la asimetría? ¿Tiene sentido de negocio ese resultado? ¿Qué valor aparece como moda y por qué?</p>
 </blockquote>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escribe tu solución aquí</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>salarios_direccion <span class="op">=</span> df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> <span class="st">"Direccion"</span>, <span class="st">"salario"</span>].values</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>salarios_ventas <span class="op">=</span> df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> <span class="st">"Ventas"</span>, <span class="st">"salario"</span>].values</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># desc.summary_statistics(...)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Escribe tu solución aquí</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>salarios_direccion <span class="op">=</span> df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> <span class="st">"Direccion"</span>, <span class="st">"salario"</span>].values</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>salarios_ventas <span class="op">=</span> df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> <span class="st">"Ventas"</span>, <span class="st">"salario"</span>].values</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># desc.summary_statistics(...)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="soluciones" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="soluciones"><span class="header-section-number">3.9</span> Soluciones</h2>
+<p>Intenta resolver los ejercicios antes de desplegar cada solución. Las soluciones se ejecutan con los mismos datos y semillas que el resto del cuaderno.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución del ejercicio 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Filtramos los salarios de cada departamento y aplicamos <code>summary_statistics()</code> y <code>modes()</code> a ambos.</p>
+<div id="e69d941b" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>salarios_direccion <span class="op">=</span> df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> <span class="st">"Direccion"</span>, <span class="st">"salario"</span>].values</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>salarios_ventas <span class="op">=</span> df.loc[df[<span class="st">"departamento"</span>] <span class="op">==</span> <span class="st">"Ventas"</span>, <span class="st">"salario"</span>].values</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>filas <span class="op">=</span> {}</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre, datos <span class="kw">in</span> [(<span class="st">"Dirección"</span>, salarios_direccion), (<span class="st">"Ventas"</span>, salarios_ventas)]:</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    centro <span class="op">=</span> desc.central_tendency(datos)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    dispersion <span class="op">=</span> desc.dispersion(datos)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    forma <span class="op">=</span> desc.shape(datos)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    filas[nombre] <span class="op">=</span> {</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"media"</span>: centro[<span class="st">"mean"</span>],</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mediana"</span>: centro[<span class="st">"median"</span>],</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"desv. típica"</span>: dispersion[<span class="st">"std"</span>],</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"CV (%)"</span>: dispersion[<span class="st">"cv_pct"</span>],</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"asimetría (G1)"</span>: forma[<span class="st">"skewness"</span>],</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"curtosis (G2)"</span>: forma[<span class="st">"kurtosis_excess"</span>],</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(filas).<span class="bu">round</span>(<span class="dv">2</span>))</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Modas en Dirección:"</span>, desc.modes(salarios_direccion))</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Modas en Ventas:   "</span>, desc.modes(salarios_ventas))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Dirección</th>
+<th data-quarto-table-cell-role="th">Ventas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">media</th>
+<td>3110.42</td>
+<td>1347.06</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mediana</th>
+<td>3021.99</td>
+<td>1285.01</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">desv. típica</th>
+<td>964.05</td>
+<td>384.23</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">CV (%)</th>
+<td>30.99</td>
+<td>28.52</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">asimetría (G1)</th>
+<td>0.74</td>
+<td>0.54</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">curtosis (G2)</th>
+<td>0.47</td>
+<td>-0.17</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Modas en Dirección: []
+Modas en Ventas:    []</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Coeficiente de variación</strong>: los salarios de los dos departamentos se generaron con la misma dispersión <em>relativa</em> (log-normales con <span class="math inline">\(\sigma = 0{,}3\)</span>), así que sus CV son parecidos, aunque la desviación típica de Dirección es mucho mayor en euros. Es justo el caso en que el CV es más informativo que la desviación típica.</li>
+<li><strong>Asimetría</strong>: ambas son positivas, como corresponde a una distribución log-normal (pocos salarios altos que alargan la cola derecha). Con 75 datos por grupo, la diferencia entre departamentos puede deberse en gran parte al azar de la muestra.</li>
+<li><strong>Sentido de negocio</strong>: que la dispersión crezca en proporción al nivel salarial es razonable (las diferencias entre directivos se miden en cientos o miles de euros).</li>
+<li><strong>Moda</strong>: <code>modes()</code> devuelve una lista vacía porque ningún salario se repite: con datos continuos anotados en céntimos no hay moda, como vimos en la sección «¿Y la moda?».</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -778,7 +1176,8 @@ Valores: [4132.7  5671.35 5062.6  5634.41 4063.25 4359.33 4864.52 4593.43 4225.7
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -787,8 +1186,69 @@ Valores: [4132.7  5671.35 5062.6  5634.41 4063.25 4359.33 4864.52 4593.43 4225.7
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -802,6 +1262,7 @@ Valores: [4132.7  5671.35 5062.6  5634.41 4063.25 4359.33 4864.52 4593.43 4225.7
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -964,44 +1425,54 @@ Valores: [4132.7  5671.35 5062.6  5634.41 4063.25 4359.33 4864.52 4593.43 4225.7
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1100,7 +1571,10 @@ Valores: [4132.7  5671.35 5062.6  5634.41 4063.25 4359.33 4864.52 4593.43 4225.7
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation" aria-label="Página">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="pagination-link" aria-label="Teoría: Fundamentos y Estadística Descriptiva">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría: Fundamentos y Estadística Descriptiva</span></span>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,14 +75,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../notebooks/03_distribuciones/practica.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,6 +111,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -147,17 +150,17 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -168,7 +171,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Sitio web">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
@@ -192,13 +195,10 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 1 — Estadística Descriptiva</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Módulo 1 — Estadística Descriptiva</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
@@ -221,13 +221,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 2 — Probabilidad Básica</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Módulo 2 — Probabilidad Básica</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
@@ -244,13 +241,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 3 — Distribuciones de Probabilidad</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Módulo 3 — Distribuciones de Probabilidad</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
@@ -267,13 +261,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 4 — Inferencia Estadística</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Módulo 4 — Inferencia Estadística</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link active">
@@ -290,13 +281,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 5 — Correlación y Regresión Lineal</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Módulo 5 — Correlación y Regresión Lineal</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
@@ -313,13 +301,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
@@ -334,58 +319,101 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">Proyecto integrador</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/07_proyecto_integrador/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Proyecto integrador: ¿qué se asocia con la calidad del sueño?</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">Apéndices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/que_prueba_usar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">¿Qué prueba usar?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Notación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Glosario</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción-a-la-inferencia-estadística" id="toc-introducción-a-la-inferencia-estadística" class="nav-link active" data-scroll-target="#introducción-a-la-inferencia-estadística"><span class="header-section-number">9.1</span> 4.1 Introducción a la inferencia estadística</a></li>
-  <li><a href="#estimación-puntual-y-error-estándar" id="toc-estimación-puntual-y-error-estándar" class="nav-link" data-scroll-target="#estimación-puntual-y-error-estándar"><span class="header-section-number">9.2</span> 4.2 Estimación puntual y error estándar</a></li>
-  <li><a href="#intervalos-de-confianza" id="toc-intervalos-de-confianza" class="nav-link" data-scroll-target="#intervalos-de-confianza"><span class="header-section-number">9.3</span> 4.3 Intervalos de confianza</a>
+  <li><a href="#introducción-a-la-inferencia-estadística" id="toc-introducción-a-la-inferencia-estadística" class="nav-link active" data-scroll-target="#introducción-a-la-inferencia-estadística"><span class="header-section-number">9.1</span> Introducción a la inferencia estadística</a></li>
+  <li><a href="#estimación-puntual-y-error-estándar" id="toc-estimación-puntual-y-error-estándar" class="nav-link" data-scroll-target="#estimación-puntual-y-error-estándar"><span class="header-section-number">9.2</span> Estimación puntual y error estándar</a></li>
+  <li><a href="#intervalos-de-confianza" id="toc-intervalos-de-confianza" class="nav-link" data-scroll-target="#intervalos-de-confianza"><span class="header-section-number">9.3</span> Intervalos de confianza</a>
   <ul class="collapse">
-  <li><a href="#media-con-desviación-típica-poblacional-conocida" id="toc-media-con-desviación-típica-poblacional-conocida" class="nav-link" data-scroll-target="#media-con-desviación-típica-poblacional-conocida"><span class="header-section-number">9.3.1</span> 4.3.1 Media con desviación típica poblacional conocida</a></li>
-  <li><a href="#media-con-desviación-típica-poblacional-desconocida" id="toc-media-con-desviación-típica-poblacional-desconocida" class="nav-link" data-scroll-target="#media-con-desviación-típica-poblacional-desconocida"><span class="header-section-number">9.3.2</span> 4.3.2 Media con desviación típica poblacional desconocida</a></li>
-  <li><a href="#proporción-poblacional" id="toc-proporción-poblacional" class="nav-link" data-scroll-target="#proporción-poblacional"><span class="header-section-number">9.3.3</span> 4.3.3 Proporción poblacional</a></li>
+  <li><a href="#media-con-desviación-típica-poblacional-conocida" id="toc-media-con-desviación-típica-poblacional-conocida" class="nav-link" data-scroll-target="#media-con-desviación-típica-poblacional-conocida"><span class="header-section-number">9.3.1</span> Media con desviación típica poblacional conocida</a></li>
+  <li><a href="#media-con-desviación-típica-poblacional-desconocida" id="toc-media-con-desviación-típica-poblacional-desconocida" class="nav-link" data-scroll-target="#media-con-desviación-típica-poblacional-desconocida"><span class="header-section-number">9.3.2</span> Media con desviación típica poblacional desconocida</a></li>
+  <li><a href="#proporción-poblacional" id="toc-proporción-poblacional" class="nav-link" data-scroll-target="#proporción-poblacional"><span class="header-section-number">9.3.3</span> Proporción poblacional</a></li>
   </ul></li>
-  <li><a href="#contrastes-de-hipótesis-conceptos-esenciales" id="toc-contrastes-de-hipótesis-conceptos-esenciales" class="nav-link" data-scroll-target="#contrastes-de-hipótesis-conceptos-esenciales"><span class="header-section-number">9.4</span> 4.4 Contrastes de hipótesis: conceptos esenciales</a>
+  <li><a href="#contrastes-de-hipótesis-conceptos-esenciales" id="toc-contrastes-de-hipótesis-conceptos-esenciales" class="nav-link" data-scroll-target="#contrastes-de-hipótesis-conceptos-esenciales"><span class="header-section-number">9.4</span> Contrastes de hipótesis: conceptos esenciales</a>
   <ul class="collapse">
-  <li><a href="#contrastes-bilaterales-y-unilaterales" id="toc-contrastes-bilaterales-y-unilaterales" class="nav-link" data-scroll-target="#contrastes-bilaterales-y-unilaterales"><span class="header-section-number">9.4.1</span> 4.4.1 Contrastes bilaterales y unilaterales</a></li>
-  <li><a href="#estadístico-de-contraste-región-crítica-y-valor-p" id="toc-estadístico-de-contraste-región-crítica-y-valor-p" class="nav-link" data-scroll-target="#estadístico-de-contraste-región-crítica-y-valor-p"><span class="header-section-number">9.4.2</span> 4.4.2 Estadístico de contraste, región crítica y valor p</a></li>
-  <li><a href="#procedimiento-recomendado" id="toc-procedimiento-recomendado" class="nav-link" data-scroll-target="#procedimiento-recomendado"><span class="header-section-number">9.4.3</span> 4.4.3 Procedimiento recomendado</a></li>
-  <li><a href="#errores-de-tipo-i-y-ii-y-potencia" id="toc-errores-de-tipo-i-y-ii-y-potencia" class="nav-link" data-scroll-target="#errores-de-tipo-i-y-ii-y-potencia"><span class="header-section-number">9.4.4</span> 4.4.4 Errores de tipo I y II y potencia</a></li>
+  <li><a href="#contrastes-bilaterales-y-unilaterales" id="toc-contrastes-bilaterales-y-unilaterales" class="nav-link" data-scroll-target="#contrastes-bilaterales-y-unilaterales"><span class="header-section-number">9.4.1</span> Contrastes bilaterales y unilaterales</a></li>
+  <li><a href="#estadístico-de-contraste-región-crítica-y-valor-p" id="toc-estadístico-de-contraste-región-crítica-y-valor-p" class="nav-link" data-scroll-target="#estadístico-de-contraste-región-crítica-y-valor-p"><span class="header-section-number">9.4.2</span> Estadístico de contraste, región crítica y valor p</a></li>
+  <li><a href="#procedimiento-recomendado" id="toc-procedimiento-recomendado" class="nav-link" data-scroll-target="#procedimiento-recomendado"><span class="header-section-number">9.4.3</span> Procedimiento recomendado</a></li>
+  <li><a href="#errores-de-tipo-i-y-ii-y-potencia" id="toc-errores-de-tipo-i-y-ii-y-potencia" class="nav-link" data-scroll-target="#errores-de-tipo-i-y-ii-y-potencia"><span class="header-section-number">9.4.4</span> Errores de tipo I y II y potencia</a></li>
+  <li><a href="#cálculo-de-la-potencia-y-del-tamaño-muestral" id="toc-cálculo-de-la-potencia-y-del-tamaño-muestral" class="nav-link" data-scroll-target="#cálculo-de-la-potencia-y-del-tamaño-muestral"><span class="header-section-number">9.4.5</span> Cálculo de la potencia y del tamaño muestral</a></li>
   </ul></li>
-  <li><a href="#contrastes-de-una-muestra" id="toc-contrastes-de-una-muestra" class="nav-link" data-scroll-target="#contrastes-de-una-muestra"><span class="header-section-number">9.5</span> 4.5 Contrastes de una muestra</a>
+  <li><a href="#contrastes-de-una-muestra" id="toc-contrastes-de-una-muestra" class="nav-link" data-scroll-target="#contrastes-de-una-muestra"><span class="header-section-number">9.5</span> Contrastes de una muestra</a>
   <ul class="collapse">
-  <li><a href="#media-con-desviación-típica-desconocida-prueba-t" id="toc-media-con-desviación-típica-desconocida-prueba-t" class="nav-link" data-scroll-target="#media-con-desviación-típica-desconocida-prueba-t"><span class="header-section-number">9.5.1</span> 4.5.1 Media con desviación típica desconocida: prueba t</a></li>
-  <li><a href="#proporción-de-una-muestra" id="toc-proporción-de-una-muestra" class="nav-link" data-scroll-target="#proporción-de-una-muestra"><span class="header-section-number">9.5.2</span> 4.5.2 Proporción de una muestra</a></li>
-  <li><a href="#varianza-de-una-población" id="toc-varianza-de-una-población" class="nav-link" data-scroll-target="#varianza-de-una-población"><span class="header-section-number">9.5.3</span> 4.5.3 Varianza de una población</a></li>
+  <li><a href="#media-con-desviación-típica-desconocida-prueba-t" id="toc-media-con-desviación-típica-desconocida-prueba-t" class="nav-link" data-scroll-target="#media-con-desviación-típica-desconocida-prueba-t"><span class="header-section-number">9.5.1</span> Media con desviación típica desconocida: prueba t</a></li>
+  <li><a href="#proporción-de-una-muestra" id="toc-proporción-de-una-muestra" class="nav-link" data-scroll-target="#proporción-de-una-muestra"><span class="header-section-number">9.5.2</span> Proporción de una muestra</a></li>
+  <li><a href="#varianza-de-una-población" id="toc-varianza-de-una-población" class="nav-link" data-scroll-target="#varianza-de-una-población"><span class="header-section-number">9.5.3</span> Varianza de una población</a></li>
   </ul></li>
-  <li><a href="#comparación-de-dos-muestras" id="toc-comparación-de-dos-muestras" class="nav-link" data-scroll-target="#comparación-de-dos-muestras"><span class="header-section-number">9.6</span> 4.6 Comparación de dos muestras</a>
+  <li><a href="#comparación-de-dos-muestras" id="toc-comparación-de-dos-muestras" class="nav-link" data-scroll-target="#comparación-de-dos-muestras"><span class="header-section-number">9.6</span> Comparación de dos muestras</a>
   <ul class="collapse">
-  <li><a href="#dos-medias-independientes-t-de-welch" id="toc-dos-medias-independientes-t-de-welch" class="nav-link" data-scroll-target="#dos-medias-independientes-t-de-welch"><span class="header-section-number">9.6.1</span> 4.6.1 Dos medias independientes: t de Welch</a></li>
-  <li><a href="#datos-emparejados" id="toc-datos-emparejados" class="nav-link" data-scroll-target="#datos-emparejados"><span class="header-section-number">9.6.2</span> 4.6.2 Datos emparejados</a></li>
-  <li><a href="#dos-proporciones-independientes" id="toc-dos-proporciones-independientes" class="nav-link" data-scroll-target="#dos-proporciones-independientes"><span class="header-section-number">9.6.3</span> 4.6.3 Dos proporciones independientes</a></li>
+  <li><a href="#dos-medias-independientes-t-de-welch" id="toc-dos-medias-independientes-t-de-welch" class="nav-link" data-scroll-target="#dos-medias-independientes-t-de-welch"><span class="header-section-number">9.6.1</span> Dos medias independientes: t de Welch</a></li>
+  <li><a href="#datos-emparejados" id="toc-datos-emparejados" class="nav-link" data-scroll-target="#datos-emparejados"><span class="header-section-number">9.6.2</span> Datos emparejados</a></li>
+  <li><a href="#dos-proporciones-independientes" id="toc-dos-proporciones-independientes" class="nav-link" data-scroll-target="#dos-proporciones-independientes"><span class="header-section-number">9.6.3</span> Dos proporciones independientes</a></li>
   </ul></li>
-  <li><a href="#normalidad-y-elección-de-métodos-no-paramétricos" id="toc-normalidad-y-elección-de-métodos-no-paramétricos" class="nav-link" data-scroll-target="#normalidad-y-elección-de-métodos-no-paramétricos"><span class="header-section-number">9.7</span> 4.7 Normalidad y elección de métodos no paramétricos</a></li>
-  <li><a href="#variables-categóricas-chi-cuadrado-y-fisher" id="toc-variables-categóricas-chi-cuadrado-y-fisher" class="nav-link" data-scroll-target="#variables-categóricas-chi-cuadrado-y-fisher"><span class="header-section-number">9.8</span> 4.8 Variables categóricas: chi-cuadrado y Fisher</a></li>
-  <li><a href="#significación-estadística-y-relevancia-práctica" id="toc-significación-estadística-y-relevancia-práctica" class="nav-link" data-scroll-target="#significación-estadística-y-relevancia-práctica"><span class="header-section-number">9.9</span> 4.9 Significación estadística y relevancia práctica</a></li>
-  <li><a href="#simulación-cobertura-de-intervalos-de-confianza" id="toc-simulación-cobertura-de-intervalos-de-confianza" class="nav-link" data-scroll-target="#simulación-cobertura-de-intervalos-de-confianza"><span class="header-section-number">9.10</span> 4.10 Simulación: cobertura de intervalos de confianza</a></li>
-  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">9.11</span> 4.11 Cierre</a>
+  <li><a href="#normalidad-y-elección-de-métodos-no-paramétricos" id="toc-normalidad-y-elección-de-métodos-no-paramétricos" class="nav-link" data-scroll-target="#normalidad-y-elección-de-métodos-no-paramétricos"><span class="header-section-number">9.7</span> Normalidad y elección de métodos no paramétricos</a></li>
+  <li><a href="#variables-categóricas-chi-cuadrado-y-fisher" id="toc-variables-categóricas-chi-cuadrado-y-fisher" class="nav-link" data-scroll-target="#variables-categóricas-chi-cuadrado-y-fisher"><span class="header-section-number">9.8</span> Variables categóricas: chi-cuadrado y Fisher</a></li>
+  <li><a href="#significación-estadística-y-relevancia-práctica" id="toc-significación-estadística-y-relevancia-práctica" class="nav-link" data-scroll-target="#significación-estadística-y-relevancia-práctica"><span class="header-section-number">9.9</span> Significación estadística y relevancia práctica</a></li>
+  <li><a href="#simulación-cobertura-de-intervalos-de-confianza" id="toc-simulación-cobertura-de-intervalos-de-confianza" class="nav-link" data-scroll-target="#simulación-cobertura-de-intervalos-de-confianza"><span class="header-section-number">9.10</span> Simulación: cobertura de intervalos de confianza</a></li>
+  <li><a href="#intervalos-bootstrap" id="toc-intervalos-bootstrap" class="nav-link" data-scroll-target="#intervalos-bootstrap"><span class="header-section-number">9.11</span> Intervalos bootstrap</a></li>
+  <li><a href="#autoevaluación" id="toc-autoevaluación" class="nav-link" data-scroll-target="#autoevaluación"><span class="header-section-number">9.12</span> Autoevaluación</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">9.13</span> Cierre</a>
   <ul class="collapse">
-  <li><a href="#material-complementario" id="toc-material-complementario" class="nav-link" data-scroll-target="#material-complementario"><span class="header-section-number">9.11.1</span> Material complementario</a></li>
+  <li><a href="#material-complementario" id="toc-material-complementario" class="nav-link" data-scroll-target="#material-complementario"><span class="header-section-number">9.13.1</span> Material complementario</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/04_inferencia/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html">Módulo 4 — Inferencia Estadística</a></li><li class="breadcrumb-item"><a href="../../notebooks/04_inferencia/teoria.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></h1>
 </div>
@@ -404,8 +432,29 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Objetivos del módulo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Distinguir parámetro, estimador y error estándar.</li>
+<li>Construir e interpretar intervalos de confianza para medias y proporciones.</li>
+<li>Plantear contrastes de hipótesis bilaterales y unilaterales, e interpretar correctamente el p-valor.</li>
+<li>Elegir la prueba adecuada para una o dos muestras, independientes o emparejadas.</li>
+<li>Calcular la potencia de un contraste y el tamaño muestral necesario.</li>
+<li>Construir e interpretar intervalos de confianza bootstrap.</li>
+<li>Distinguir significación estadística, relevancia práctica y causalidad.</li>
+</ul>
+</div>
+</div>
 <section id="introducción-a-la-inferencia-estadística" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="introducción-a-la-inferencia-estadística"><span class="header-section-number">9.1</span> 4.1 Introducción a la inferencia estadística</h2>
+<h2 data-number="9.1" class="anchored" data-anchor-id="introducción-a-la-inferencia-estadística"><span class="header-section-number">9.1</span> Introducción a la inferencia estadística</h2>
 <p>La <strong>inferencia estadística</strong> utiliza una muestra para obtener conclusiones sobre una población cuyo comportamiento completo no podemos observar. Como la muestra es solo una parte de la población, las conclusiones incorporan incertidumbre y dependen del diseño del muestreo, la calidad de las mediciones y los supuestos del método utilizado.</p>
 <p>Distinguiremos dos objetivos complementarios:</p>
 <ul>
@@ -418,6 +467,7 @@ window.Quarto = {
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-proceso-inferencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
+
 <pre class="mermaid mermaid-js" data-label="fig-proceso-inferencia">flowchart LR
     A["Población&lt;br/&gt;parámetro desconocido"] --&gt; B["Muestra aleatoria"]
     B --&gt; C["Estadístico muestral&lt;br/&gt;x̄, p̂, s"]
@@ -438,7 +488,7 @@ Figura&nbsp;9.1: Del parámetro poblacional desconocido a la conclusión inferen
 <p>Una muestra grande no garantiza por sí sola una inferencia válida: también importa cómo se seleccionó. Una muestra sesgada puede producir estimaciones precisas de una población equivocada. Siempre que sea posible, se requiere un muestreo adecuado, independencia entre observaciones y una definición clara de la población objetivo.</p>
 </section>
 <section id="estimación-puntual-y-error-estándar" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="estimación-puntual-y-error-estándar"><span class="header-section-number">9.2</span> 4.2 Estimación puntual y error estándar</h2>
+<h2 data-number="9.2" class="anchored" data-anchor-id="estimación-puntual-y-error-estándar"><span class="header-section-number">9.2</span> Estimación puntual y error estándar</h2>
 <p>Un <strong>estimador puntual</strong> es un estadístico que se utiliza para estimar un parámetro poblacional. Por ejemplo, la media muestral <span class="math inline">\(\bar{X}\)</span> estima la media poblacional <span class="math inline">\(\mu\)</span>, y la proporción muestral <span class="math inline">\(\hat{p}\)</span> estima la proporción poblacional <span class="math inline">\(p\)</span>.</p>
 <p>La variabilidad de un estimador entre muestras se expresa mediante su error estándar. Para la media muestral:</p>
 <p><span class="math display">\[
@@ -451,17 +501,17 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 <p>El error estándar disminuye al aumentar <span class="math inline">\(n\)</span>, aunque la mejora sigue una relación proporcional a <span class="math inline">\(1/\sqrt{n}\)</span>: cuadruplicar el tamaño muestral reduce el error estándar aproximadamente a la mitad. El error estándar no debe confundirse con la desviación típica de los datos, que describe la dispersión individual.</p>
 </section>
 <section id="intervalos-de-confianza" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="intervalos-de-confianza"><span class="header-section-number">9.3</span> 4.3 Intervalos de confianza</h2>
-<p>Un intervalo de confianza del nivel <span class="math inline">\(1-\alpha\)</span> se obtiene mediante un procedimiento que, bajo sus supuestos, contiene el verdadero parámetro en una proporción <span class="math inline">\(1-\alpha\)</span> de las muestras repetidas. Para un intervalo del 95 %, <span class="math inline">\(\alpha=0.05\)</span>.</p>
+<h2 data-number="9.3" class="anchored" data-anchor-id="intervalos-de-confianza"><span class="header-section-number">9.3</span> Intervalos de confianza</h2>
+<p>Un intervalo de confianza del nivel <span class="math inline">\(1-\alpha\)</span> se obtiene mediante un procedimiento que, bajo sus supuestos, contiene el verdadero parámetro en una proporción <span class="math inline">\(1-\alpha\)</span> de las muestras repetidas. Para un intervalo del 95 %, <span class="math inline">\(\alpha=0{,}05\)</span>.</p>
 <p>La interpretación frecuentista se refiere al <strong>procedimiento</strong>, no a una probabilidad posterior de que el parámetro fijo esté dentro del intervalo ya calculado. Una vez observado el intervalo, el parámetro poblacional no se considera aleatorio en este marco.</p>
 <section id="media-con-desviación-típica-poblacional-conocida" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="media-con-desviación-típica-poblacional-conocida"><span class="header-section-number">9.3.1</span> 4.3.1 Media con desviación típica poblacional conocida</h3>
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="media-con-desviación-típica-poblacional-conocida"><span class="header-section-number">9.3.1</span> Media con desviación típica poblacional conocida</h3>
 <p>Si la población es normal, o el tamaño muestral permite una aproximación adecuada para la media, y se conoce <span class="math inline">\(\sigma\)</span>, el intervalo es:</p>
 <p><span class="math display">\[
 \bar{x} \pm z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},
 \]</span></p>
-<p>donde <span class="math inline">\(z_{1-\alpha/2}\)</span> es el cuantil de la normal estándar. Para un intervalo bilateral del 95 %, el valor crítico es aproximadamente <span class="math inline">\(1.96\)</span>.</p>
-<div id="0bbbe9f5" class="cell" data-execution_count="2">
+<p>donde <span class="math inline">\(z_{1-\alpha/2}\)</span> es el cuantil de la normal estándar. Para un intervalo bilateral del 95 %, el valor crítico es aproximadamente <span class="math inline">\(1{,}96\)</span>.</p>
+<div id="e8232f8f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> inference <span class="im">as</span> inf</span>
@@ -478,13 +528,13 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 </div>
 </section>
 <section id="media-con-desviación-típica-poblacional-desconocida" class="level3" data-number="9.3.2">
-<h3 data-number="9.3.2" class="anchored" data-anchor-id="media-con-desviación-típica-poblacional-desconocida"><span class="header-section-number">9.3.2</span> 4.3.2 Media con desviación típica poblacional desconocida</h3>
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="media-con-desviación-típica-poblacional-desconocida"><span class="header-section-number">9.3.2</span> Media con desviación típica poblacional desconocida</h3>
 <p>En la práctica, <span class="math inline">\(\sigma\)</span> suele ser desconocida y se sustituye por <span class="math inline">\(s\)</span>. Si las observaciones son independientes y la población es normal (o la aproximación es razonable), se utiliza la distribución <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n-1\)</span> grados de libertad:</p>
 <p><span class="math display">\[
 \bar{x} \pm t_{1-\alpha/2,\,n-1}\frac{s}{\sqrt{n}}.
 \]</span></p>
 <p>La distribución <span class="math inline">\(t\)</span> tiene colas más pesadas que la normal estándar, especialmente con pocos grados de libertad, y por ello refleja la incertidumbre adicional asociada a estimar la desviación típica. A medida que <span class="math inline">\(n\)</span> aumenta, se aproxima a la normal.</p>
-<div id="c996180e" class="cell" data-execution_count="3">
+<div id="2ee4dc68" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: salario mensual en una muestra de 25 empleados.</span></span>
@@ -499,13 +549,13 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 </div>
 </section>
 <section id="proporción-poblacional" class="level3" data-number="9.3.3">
-<h3 data-number="9.3.3" class="anchored" data-anchor-id="proporción-poblacional"><span class="header-section-number">9.3.3</span> 4.3.3 Proporción poblacional</h3>
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="proporción-poblacional"><span class="header-section-number">9.3.3</span> Proporción poblacional</h3>
 <p>Para una proporción muestral <span class="math inline">\(\hat{p}=x/n\)</span>, una aproximación normal habitual es:</p>
 <p><span class="math display">\[
 \hat{p} \pm z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.
 \]</span></p>
 <p>Esta aproximación puede ser deficiente en muestras pequeñas o cuando la proporción está cerca de 0 o 1. En esas situaciones conviene considerar intervalos como Wilson o métodos exactos, en vez de confiar automáticamente en el intervalo normal.</p>
-<div id="7de85bc4" class="cell" data-execution_count="4">
+<div id="f3de16e8" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: 15 conversiones entre 50 clientes.</span></span>
@@ -518,10 +568,24 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 <pre><code>IC aproximado del 95 %: (0.173, 0.427)</code></pre>
 </div>
 </div>
+<p>El <strong>intervalo de Wilson</strong> corrige estos problemas: calcula la incertidumbre con cada valor posible de <span class="math inline">\(p\)</span>, en lugar de con <span class="math inline">\(\hat{p}\)</span>, y nunca se sale de <span class="math inline">\([0, 1]\)</span>. Con 15 éxitos de 50 los dos intervalos se parecen; con 0 éxitos de 20, el de Wald se reduce a un punto, como si no hubiera incertidumbre, mientras que el de Wilson sigue siendo informativo:</p>
+<div id="ff5aae2c" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"15 de 50 -&gt; Wilson:"</span>, <span class="bu">tuple</span>(<span class="bu">round</span>(v, <span class="dv">3</span>) <span class="cf">for</span> v <span class="kw">in</span> inf.confidence_interval_proportion_wilson(<span class="dv">15</span>, <span class="dv">50</span>)))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"0 de 20  -&gt; Wald:  "</span>, inf.confidence_interval_proportion(p_hat<span class="op">=</span><span class="dv">0</span>, n<span class="op">=</span><span class="dv">20</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"0 de 20  -&gt; Wilson:"</span>, <span class="bu">tuple</span>(<span class="bu">round</span>(v, <span class="dv">3</span>) <span class="cf">for</span> v <span class="kw">in</span> inf.confidence_interval_proportion_wilson(<span class="dv">0</span>, <span class="dv">20</span>)))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>15 de 50 -&gt; Wilson: (0.191, 0.438)
+0 de 20  -&gt; Wald:   (0.0, np.float64(0.0))
+0 de 20  -&gt; Wilson: (0.0, 0.161)</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="contrastes-de-hipótesis-conceptos-esenciales" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="contrastes-de-hipótesis-conceptos-esenciales"><span class="header-section-number">9.4</span> 4.4 Contrastes de hipótesis: conceptos esenciales</h2>
+<h2 data-number="9.4" class="anchored" data-anchor-id="contrastes-de-hipótesis-conceptos-esenciales"><span class="header-section-number">9.4</span> Contrastes de hipótesis: conceptos esenciales</h2>
 <p>Un contraste compara dos afirmaciones sobre la población:</p>
 <ul>
 <li><strong>Hipótesis nula (<span class="math inline">\(H_0\)</span>):</strong> afirmación de referencia, habitualmente de igualdad o ausencia de diferencia.</li>
@@ -533,7 +597,7 @@ H_0: \mu=\mu_0, \qquad H_1: \mu\ne\mu_0.
 \]</span></p>
 <p>La igualdad se incluye en la hipótesis nula. La alternativa debe establecerse antes de examinar los resultados; elegirla después de observar los datos altera las propiedades del contraste.</p>
 <section id="contrastes-bilaterales-y-unilaterales" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="contrastes-bilaterales-y-unilaterales"><span class="header-section-number">9.4.1</span> 4.4.1 Contrastes bilaterales y unilaterales</h3>
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="contrastes-bilaterales-y-unilaterales"><span class="header-section-number">9.4.1</span> Contrastes bilaterales y unilaterales</h3>
 <p>La forma de <span class="math inline">\(H_1\)</span> determina dónde se encuentra la evidencia relevante:</p>
 <table class="caption-top table">
 <colgroup>
@@ -569,7 +633,7 @@ H_0: \mu=\mu_0, \qquad H_1: \mu\ne\mu_0.
 <p>No debe elegirse un contraste unilateral solo porque el resultado observado tenga la dirección esperada. La dirección debe justificarse por la pregunta científica antes del análisis.</p>
 </section>
 <section id="estadístico-de-contraste-región-crítica-y-valor-p" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="estadístico-de-contraste-región-crítica-y-valor-p"><span class="header-section-number">9.4.2</span> 4.4.2 Estadístico de contraste, región crítica y valor p</h3>
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="estadístico-de-contraste-región-crítica-y-valor-p"><span class="header-section-number">9.4.2</span> Estadístico de contraste, región crítica y valor p</h3>
 <p>El <strong>estadístico de contraste</strong> resume la discrepancia entre los datos y lo que cabría esperar si <span class="math inline">\(H_0\)</span> fuera cierta. Para la media con desviación poblacional conocida:</p>
 <p><span class="math display">\[
 z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}.
@@ -579,11 +643,53 @@ z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}.
 t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}, \qquad df=n-1.
 \]</span></p>
 <p>El <strong>nivel de significación</strong> <span class="math inline">\(\alpha\)</span> se fija antes de analizar los datos. En un contraste bilateral, la región crítica para <span class="math inline">\(z\)</span> es <span class="math inline">\(|z|&gt;z_{1-\alpha/2}\)</span>; en uno unilateral izquierdo es <span class="math inline">\(z&lt;z_{\alpha}\)</span>. La decisión equivalente basada en el valor p es rechazar <span class="math inline">\(H_0\)</span> cuando <span class="math inline">\(p\text{-valor}\leq\alpha\)</span>.</p>
+<div id="9620d766" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>z_crit <span class="op">=</span> stats.norm.ppf(<span class="dv">1</span> <span class="op">-</span> alpha <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">400</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.plot(xs, stats.norm.pdf(xs), color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cola <span class="kw">in</span> (xs <span class="op">&lt;=</span> <span class="op">-</span>z_crit, xs <span class="op">&gt;=</span> z_crit):</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    plt.fill_between(xs[cola], stats.norm.pdf(xs[cola]), color<span class="op">=</span><span class="st">"crimson"</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="op">-</span>z_crit, color<span class="op">=</span><span class="st">"crimson"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.axvline(z_crit, color<span class="op">=</span><span class="st">"crimson"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Región crítica bilateral con α = 0,05 (|z| &gt; </span><span class="sc">{</span>z_crit<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Estadístico z bajo H0"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Densidad"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria_files/figure-html/cell-7-output-1.png" alt="Densidad de la Normal estándar con las dos colas sombreadas en rojo a partir de -1,96 y 1,96: es la región crítica de un contraste bilateral con alfa igual a 0,05, que acumula un 2,5 % de probabilidad en cada cola." width="673" height="341" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>El <strong>valor p</strong> es la probabilidad, suponiendo cierta <span class="math inline">\(H_0\)</span> y los supuestos del modelo, de obtener un estadístico tan extremo o más que el observado en la dirección o direcciones establecidas por <span class="math inline">\(H_1\)</span>. <strong>No</strong> es la probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta, ni mide por sí solo el tamaño o la importancia práctica del efecto.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un p-valor muy pequeño no es cero
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un p-valor puede ser minúsculo (por ejemplo, <span class="math inline">\(10^{-20}\)</span>) sin ser cero: si <span class="math inline">\(H_0\)</span> fuera cierta, obtener un resultado tan extremo sería rarísimo, pero no imposible. Cuando un programa muestra <code>0.000000</code>, suele deberse al formato (solo se imprimen seis decimales) o, en casos extremos, a que el número es demasiado pequeño para que el ordenador pueda representarlo. Por eso, al comunicar un resultado con un p-valor inferior a 0,001 se escribe <span class="math inline">\(p &lt; 0{,}001\)</span>, y no <span class="math inline">\(p = 0\)</span>. Y un p-valor minúsculo tampoco significa que la probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta sea minúscula: el p-valor se calcula <em>suponiendo</em> que <span class="math inline">\(H_0\)</span> es cierta.</p>
+</div>
+</div>
 <p>Si <span class="math inline">\(p&gt;\alpha\)</span>, la conclusión correcta es <strong>no rechazar <span class="math inline">\(H_0\)</span></strong>: no se ha obtenido evidencia suficiente contra ella. Esto no demuestra que <span class="math inline">\(H_0\)</span> sea verdadera ni que las dos condiciones sean equivalentes.</p>
 </section>
 <section id="procedimiento-recomendado" class="level3" data-number="9.4.3">
-<h3 data-number="9.4.3" class="anchored" data-anchor-id="procedimiento-recomendado"><span class="header-section-number">9.4.3</span> 4.4.3 Procedimiento recomendado</h3>
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="procedimiento-recomendado"><span class="header-section-number">9.4.3</span> Procedimiento recomendado</h3>
 <ol type="1">
 <li>Formular la pregunta y definir la población y el parámetro de interés.</li>
 <li>Especificar <span class="math inline">\(H_0\)</span> y <span class="math inline">\(H_1\)</span> antes de examinar el resultado.</li>
@@ -595,7 +701,7 @@ t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}, \qquad df=n-1.
 </ol>
 </section>
 <section id="errores-de-tipo-i-y-ii-y-potencia" class="level3" data-number="9.4.4">
-<h3 data-number="9.4.4" class="anchored" data-anchor-id="errores-de-tipo-i-y-ii-y-potencia"><span class="header-section-number">9.4.4</span> 4.4.4 Errores de tipo I y II y potencia</h3>
+<h3 data-number="9.4.4" class="anchored" data-anchor-id="errores-de-tipo-i-y-ii-y-potencia"><span class="header-section-number">9.4.4</span> Errores de tipo I y II y potencia</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -629,22 +735,254 @@ t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}, \qquad df=n-1.
 </ul>
 <p>La potencia depende, entre otros factores, del tamaño del efecto, la variabilidad, el tamaño muestral y el nivel <span class="math inline">\(\alpha\)</span>. Un resultado no significativo puede reflejar ausencia de efecto, pero también falta de precisión o potencia.</p>
 </section>
+<section id="cálculo-de-la-potencia-y-del-tamaño-muestral" class="level3" data-number="9.4.5">
+<h3 data-number="9.4.5" class="anchored" data-anchor-id="cálculo-de-la-potencia-y-del-tamaño-muestral"><span class="header-section-number">9.4.5</span> Cálculo de la potencia y del tamaño muestral</h3>
+<p>La potencia se calcula <strong>antes</strong> de recoger los datos, al diseñar el estudio, para decidir cuántas observaciones hacen falta. Veamos el caso más sencillo: el test z para una media con <span class="math inline">\(\sigma\)</span> conocida. Si la media real no es <span class="math inline">\(\mu_0\)</span>, sino <span class="math inline">\(\mu_1 = \mu_0 + \delta\)</span>, el estadístico <span class="math inline">\(Z\)</span> ya no sigue una <span class="math inline">\(\mathcal{N}(0, 1)\)</span>, sino una Normal desplazada <span class="math inline">\(\delta\sqrt{n}/\sigma\)</span> unidades. La potencia es la probabilidad de que, aun así, caiga en la región crítica. Para el contraste unilateral derecho:</p>
+<p><span class="math display">\[
+1 - \beta = P\left(Z &gt; z_{1-\alpha} - \frac{\delta\sqrt{n}}{\sigma}\right),
+\qquad Z \sim \mathcal{N}(0, 1).
+\]</span></p>
+<p>En el bilateral se usa <span class="math inline">\(z_{1-\alpha/2}\)</span> y se suman las dos colas. La potencia aumenta con el tamaño del efecto <span class="math inline">\(\delta\)</span>, con <span class="math inline">\(n\)</span> y con <span class="math inline">\(\alpha\)</span>, y disminuye con la variabilidad <span class="math inline">\(\sigma\)</span>. Despejando <span class="math inline">\(n\)</span> se obtiene el <strong>tamaño muestral</strong> necesario para detectar una diferencia <span class="math inline">\(\delta\)</span> con potencia <span class="math inline">\(1-\beta\)</span>:</p>
+<p><span class="math display">\[
+n = \left(\frac{(z_{1-\alpha/2} + z_{1-\beta})\,\sigma}{\delta}\right)^2,
+\]</span></p>
+<p>redondeado hacia arriba (con <span class="math inline">\(z_{1-\alpha}\)</span> en lugar de <span class="math inline">\(z_{1-\alpha/2}\)</span> si el contraste es unilateral). En el caso bilateral la fórmula ignora la cola opuesta, que solo añade potencia, así que con ese <span class="math inline">\(n\)</span> la potencia es al menos la pedida.</p>
+<div id="05520994" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tiempo de respuesta de una API: σ = 15 ms. ¿Detectaríamos una diferencia de 5 ms?</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Potencia con n = 36: </span><span class="sc">{</span>inf<span class="sc">.</span>power_z_test_mean(effect<span class="op">=</span><span class="dv">5</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">36</span>)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> inf.sample_size_z_test_mean(effect<span class="op">=</span><span class="dv">5</span>, sigma<span class="op">=</span><span class="dv">15</span>, alpha<span class="op">=</span><span class="fl">0.05</span>, power<span class="op">=</span><span class="fl">0.80</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"n necesario para una potencia del 80 %: </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Potencia con n = </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>inf<span class="sc">.</span>power_z_test_mean(effect<span class="op">=</span><span class="dv">5</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span>n)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Potencia con n = 36: 0.516
+n necesario para una potencia del 80 %: 71
+Potencia con n = 71: 0.802</code></pre>
+</div>
+</div>
+<p>Con 36 observaciones, una diferencia real de 5 ms solo se detectaría en algo más de la mitad de los estudios: un resultado no significativo sería poco informativo. El gráfico muestra cómo crece la potencia con <span class="math inline">\(n\)</span> para varios tamaños del efecto.</p>
+<div id="4e7513d4" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ns <span class="op">=</span> np.arange(<span class="dv">2</span>, <span class="dv">201</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">4.5</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> delta <span class="kw">in</span> (<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>):</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    plt.plot(ns, [inf.power_z_test_mean(delta, <span class="dv">15</span>, k) <span class="cf">for</span> k <span class="kw">in</span> ns], label<span class="op">=</span><span class="ss">f"δ = </span><span class="sc">{</span>delta<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="fl">0.8</span>, color<span class="op">=</span><span class="st">"gray"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"Potencia 0,8"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Potencia del test z bilateral (σ = 15, α = 0,05)"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Tamaño muestral n"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Potencia"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria_files/figure-html/cell-9-output-1.png" alt="Curvas de potencia del test z bilateral con sigma igual a 15 y alfa igual a 0,05, frente al tamaño muestral de 2 a 200, para diferencias reales de 3, 5 y 8 unidades. Todas crecen con n; cuanto mayor es la diferencia, antes alcanzan la línea discontinua de potencia 0,8." width="664" height="414" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Si <span class="math inline">\(\sigma\)</span> es desconocida, se usa el test t, cuya potencia se calcula con la distribución t <em>no central</em>; <code>statsmodels</code> lo hace directamente. El tamaño del efecto se expresa entonces en unidades de desviación típica, <span class="math inline">\(d = \delta/\sigma\)</span>, y el <span class="math inline">\(n\)</span> resultante es algo mayor que el del test z:</p>
+<div id="2a8c194e" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.power <span class="im">import</span> TTestPower</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>n_t <span class="op">=</span> TTestPower().solve_power(effect_size<span class="op">=</span><span class="dv">5</span> <span class="op">/</span> <span class="dv">15</span>, alpha<span class="op">=</span><span class="fl">0.05</span>, power<span class="op">=</span><span class="fl">0.80</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test t de una muestra: n = </span><span class="sc">{</span>n_t<span class="sc">:.1f}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(np.ceil(n_t))<span class="sc">}</span><span class="ss"> observaciones"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test t de una muestra: n = 72.6 -&gt; 73 observaciones</code></pre>
+</div>
+</div>
+<p>El mismo razonamiento sirve para fijar el tamaño muestral de un <strong>intervalo de confianza</strong>: para estimar una media con un margen de error <span class="math inline">\(E\)</span> hace falta <span class="math inline">\(n = (z_{1-\alpha/2}\,\sigma/E)^2\)</span>, y para una proporción, <span class="math inline">\(n = z_{1-\alpha/2}^2\,p(1-p)/E^2\)</span>. Si no se conoce <span class="math inline">\(p\)</span>, tomar <span class="math inline">\(p = 0{,}5\)</span> da el tamaño más conservador. Reducir el margen a la mitad exige cuadruplicar <span class="math inline">\(n\)</span>.</p>
+<div id="837bca98" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Media, margen ±2 ms (σ = 15):"</span>, inf.sample_size_mean_ci(margin<span class="op">=</span><span class="dv">2</span>, sigma<span class="op">=</span><span class="dv">15</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proporción, margen ±3 puntos:"</span>, inf.sample_size_proportion_ci(margin<span class="op">=</span><span class="fl">0.03</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proporción, margen ±1,5 puntos:"</span>, inf.sample_size_proportion_ci(margin<span class="op">=</span><span class="fl">0.015</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Media, margen ±2 ms (σ = 15): 217
+Proporción, margen ±3 puntos: 1068
+Proporción, margen ±1,5 puntos: 4269</code></pre>
+</div>
+</div>
+<p>Estas fórmulas suponen muestreo aleatorio simple y observaciones independientes. Un error frecuente es calcular la potencia <strong>después</strong> del estudio usando el efecto observado («potencia observada»): no añade información al p-valor. Para valorar un resultado no significativo es más útil el intervalo de confianza, que muestra qué tamaños del efecto siguen siendo compatibles con los datos.</p>
+<section id="explora-potencia-y-tamaño-muestral" class="level4" data-number="9.4.5.1">
+<h4 data-number="9.4.5.1" class="anchored" data-anchor-id="explora-potencia-y-tamaño-muestral"><span class="header-section-number">9.4.5.1</span> Explora: potencia y tamaño muestral</h4>
+<p>Mueve los controles para ver cómo cambia la potencia del test z bilateral. El punto rojo marca el tamaño muestral elegido.</p>
+<div id="aviso-widget-potencia" class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Gráfico interactivo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este gráfico se genera en el navegador y necesita JavaScript y conexión a internet para cargar sus bibliotecas. Si este aviso no desaparece en unos segundos, no se han podido cargar: el resto del capítulo no depende del gráfico, y los mismos cálculos aparecen en el texto y en el código de la sección.</p>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb17" data-startfrom="338" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 337;"><span id="cb17-338"><a href="#cb17-338" aria-hidden="true" tabindex="-1"></a>viewof efecto <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">15</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Diferencia real δ"</span>})</span>
+<span id="cb17-339"><a href="#cb17-339" aria-hidden="true" tabindex="-1"></a>viewof sigmaP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">40</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Desviación típica σ"</span>})</span>
+<span id="cb17-340"><a href="#cb17-340" aria-hidden="true" tabindex="-1"></a>viewof nP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">2</span><span class="op">,</span> <span class="dv">300</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">36</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Tamaño muestral n"</span>})</span>
+<span id="cb17-341"><a href="#cb17-341" aria-hidden="true" tabindex="-1"></a>viewof alfaP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"0,01"</span><span class="op">,</span> <span class="fl">0.01</span>]<span class="op">,</span> [<span class="st">"0,05"</span><span class="op">,</span> <span class="fl">0.05</span>]<span class="op">,</span> [<span class="st">"0,10"</span><span class="op">,</span> <span class="fl">0.10</span>]])<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Nivel α"</span>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb18" data-startfrom="347" data-source-offset="-78"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 346;"><span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a>Phi <span class="op">=</span> x <span class="kw">=&gt;</span> {</span>
+<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> t <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.3275911</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(x) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">SQRT2</span>)<span class="op">;</span></span>
+<span id="cb18-349"><a href="#cb18-349" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> poly <span class="op">=</span> ((((<span class="fl">1.061405429</span> <span class="op">*</span> t <span class="op">-</span> <span class="fl">1.453152027</span>) <span class="op">*</span> t <span class="op">+</span> <span class="fl">1.421413741</span>) <span class="op">*</span> t <span class="op">-</span> <span class="fl">0.284496736</span>) <span class="op">*</span> t <span class="op">+</span> <span class="fl">0.254829592</span>) <span class="op">*</span> t<span class="op">;</span></span>
+<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> erf <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> poly <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>x <span class="op">*</span> x <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">?</span> (<span class="dv">1</span> <span class="op">+</span> erf) <span class="op">/</span> <span class="dv">2</span> <span class="op">:</span> (<span class="dv">1</span> <span class="op">-</span> erf) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a>zCrit <span class="op">=</span> ({<span class="fl">0.01</span><span class="op">:</span> <span class="fl">2.5758293035489</span><span class="op">,</span> <span class="fl">0.05</span><span class="op">:</span> <span class="fl">1.959963984540054</span><span class="op">,</span> <span class="fl">0.1</span><span class="op">:</span> <span class="fl">1.6448536269514722</span>})[alfaP]</span>
+<span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a>potencia <span class="op">=</span> (d<span class="op">,</span> s<span class="op">,</span> m) <span class="kw">=&gt;</span> {</span>
+<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> desp <span class="op">=</span> d <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(m) <span class="op">/</span> s<span class="op">;</span></span>
+<span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (<span class="dv">1</span> <span class="op">-</span> <span class="fu">Phi</span>(zCrit <span class="op">-</span> desp)) <span class="op">+</span> <span class="fu">Phi</span>(<span class="op">-</span>zCrit <span class="op">-</span> desp)<span class="op">;</span></span>
+<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-358"><a href="#cb18-358" aria-hidden="true" tabindex="-1"></a>potActual <span class="op">=</span> <span class="fu">potencia</span>(efecto<span class="op">,</span> sigmaP<span class="op">,</span> nP)</span>
+<span id="cb18-359"><a href="#cb18-359" aria-hidden="true" tabindex="-1"></a>nNecesario <span class="op">=</span> efecto <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(((zCrit <span class="op">+</span> <span class="fl">0.8416212335729143</span>) <span class="op">*</span> sigmaP <span class="op">/</span> efecto) <span class="op">**</span> <span class="dv">2</span>) <span class="op">:</span> <span class="kw">null</span></span>
+<span id="cb18-360"><a href="#cb18-360" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">280</span><span class="op">,</span></span>
+<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Tamaño muestral n"</span>}<span class="op">,</span></span>
+<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Potencia"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="fl">0.8</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"gray"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,4"</span>})<span class="op">,</span></span>
+<span id="cb18-366"><a href="#cb18-366" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">301</span>)<span class="op">.</span><span class="fu">map</span>(m <span class="kw">=&gt;</span> ({<span class="dt">n</span><span class="op">:</span> m<span class="op">,</span> <span class="dt">pot</span><span class="op">:</span> <span class="fu">potencia</span>(efecto<span class="op">,</span> sigmaP<span class="op">,</span> m)}))<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"pot"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb18-367"><a href="#cb18-367" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>([{<span class="dt">n</span><span class="op">:</span> nP<span class="op">,</span> <span class="dt">pot</span><span class="op">:</span> potActual}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"pot"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"crimson"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">6</span>})</span>
+<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb18-369"><a href="#cb18-369" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaLabel</span><span class="op">:</span> <span class="st">"Curva de potencia del test z bilateral frente al tamaño muestral para los valores elegidos, con una línea discontinua en 0,8 y un punto rojo en el tamaño muestral seleccionado."</span></span>
+<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb19" data-startfrom="374" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 373;"><span id="cb19-374"><a href="#cb19-374" aria-hidden="true" tabindex="-1"></a><span class="fu">md</span><span class="vs">`Con n = </span><span class="sc">${</span>nP<span class="sc">}</span><span class="vs">, la potencia es **</span><span class="sc">${</span>(<span class="dv">100</span> <span class="op">*</span> potActual)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="st">"."</span><span class="op">,</span> <span class="st">","</span>)<span class="sc">}</span><span class="vs"> %**. </span><span class="sc">${</span>nNecesario <span class="op">===</span> <span class="kw">null</span> <span class="op">?</span> <span class="st">"Con δ = 0 no hay diferencia que detectar: la potencia coincide con α."</span> <span class="op">:</span> <span class="vs">`Para alcanzar una potencia del 80 % harían falta **</span><span class="sc">${</span>nNecesario<span class="sc">}</span><span class="vs">** observaciones.`</span><span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb20" data-startfrom="379" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 378;"><span id="cb20-379"><a href="#cb20-379" aria-hidden="true" tabindex="-1"></a><span class="co">// Solo llega a ejecutarse si se han cargado las bibliotecas: entonces retira el aviso.</span></span>
+<span id="cb20-380"><a href="#cb20-380" aria-hidden="true" tabindex="-1"></a>avisoPotencia <span class="op">=</span> {</span>
+<span id="cb20-381"><a href="#cb20-381" aria-hidden="true" tabindex="-1"></a>  Plot<span class="op">;</span> Inputs<span class="op">;</span></span>
+<span id="cb20-382"><a href="#cb20-382" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"aviso-widget-potencia"</span>)<span class="op">?.</span><span class="fu">remove</span>()<span class="op">;</span></span>
+<span id="cb20-383"><a href="#cb20-383" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">``</span><span class="op">;</span></span>
+<span id="cb20-384"><a href="#cb20-384" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="contrastes-de-una-muestra" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="contrastes-de-una-muestra"><span class="header-section-number">9.5</span> 4.5 Contrastes de una muestra</h2>
+<h2 data-number="9.5" class="anchored" data-anchor-id="contrastes-de-una-muestra"><span class="header-section-number">9.5</span> Contrastes de una muestra</h2>
 <section id="media-con-desviación-típica-desconocida-prueba-t" class="level3" data-number="9.5.1">
-<h3 data-number="9.5.1" class="anchored" data-anchor-id="media-con-desviación-típica-desconocida-prueba-t"><span class="header-section-number">9.5.1</span> 4.5.1 Media con desviación típica desconocida: prueba t</h3>
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="media-con-desviación-típica-desconocida-prueba-t"><span class="header-section-number">9.5.1</span> Media con desviación típica desconocida: prueba t</h3>
 <p>La prueba t de una muestra contrasta <span class="math inline">\(H_0:\mu=\mu_0\)</span> usando:</p>
 <p><span class="math display">\[
 t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}},\qquad df=n-1.
 \]</span></p>
 <p>La prueba presupone observaciones independientes y, para muestras pequeñas, una distribución aproximadamente normal de la variable. En muestras grandes, la inferencia sobre la media puede ser robusta frente a desviaciones moderadas de normalidad, pero los valores atípicos graves, la dependencia o una distribución muy asimétrica requieren atención.</p>
-<div id="60dac35b" class="cell" data-execution_count="5">
+<div id="0cf7471d" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>salarios_muestra <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> inf.t_test_mean(sample<span class="op">=</span>salarios_muestra, mu0<span class="op">=</span><span class="dv">2400</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>salarios_muestra <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> inf.t_test_mean(sample<span class="op">=</span>salarios_muestra, mu0<span class="op">=</span><span class="dv">2400</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>t = 1.208, p-valor = 0.2579</code></pre>
@@ -652,44 +990,92 @@ t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}},\qquad df=n-1.
 </div>
 </section>
 <section id="proporción-de-una-muestra" class="level3" data-number="9.5.2">
-<h3 data-number="9.5.2" class="anchored" data-anchor-id="proporción-de-una-muestra"><span class="header-section-number">9.5.2</span> 4.5.2 Proporción de una muestra</h3>
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="proporción-de-una-muestra"><span class="header-section-number">9.5.2</span> Proporción de una muestra</h3>
 <p>Para contrastar <span class="math inline">\(H_0:p=p_0\)</span>, una aproximación normal usa:</p>
 <p><span class="math display">\[
 z=\frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}.
 \]</span></p>
 <p>Debe comprobarse que la aproximación sea razonable. Para muestras pequeñas, conteos escasos o probabilidades próximas a los extremos, se consideran pruebas binomiales exactas u otros métodos apropiados.</p>
+<div id="7e1abca6" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: 62 de 100 clientes prefieren la nueva versión. ¿Difiere de 0,5?</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>z_stat, p_value <span class="op">=</span> inf.one_proportion_z_test(successes<span class="op">=</span><span class="dv">62</span>, n<span class="op">=</span><span class="dv">100</span>, p0<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>z = 2.400, p-valor = 0.0164</code></pre>
+</div>
+</div>
 </section>
 <section id="varianza-de-una-población" class="level3" data-number="9.5.3">
-<h3 data-number="9.5.3" class="anchored" data-anchor-id="varianza-de-una-población"><span class="header-section-number">9.5.3</span> 4.5.3 Varianza de una población</h3>
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="varianza-de-una-población"><span class="header-section-number">9.5.3</span> Varianza de una población</h3>
 <p>Si la población es normal, puede contrastarse <span class="math inline">\(H_0:\sigma^2=\sigma_0^2\)</span> mediante:</p>
 <p><span class="math display">\[
 \chi^2=\frac{(n-1)s^2}{\sigma_0^2},\qquad df=n-1.
 \]</span></p>
 <p>Este contraste es sensible a desviaciones de la normalidad; no debe aplicarse mecánicamente a datos muy asimétricos o con valores atípicos.</p>
+<div id="89fed0bd" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿La desviación típica de los salarios de la muestra anterior difiere de 100 €?</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value <span class="op">=</span> inf.chi2_test_variance(salarios_muestra, sigma0_sq<span class="op">=</span><span class="dv">100</span><span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"χ² = </span><span class="sc">{</span>chi2_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>χ² = 8.220, p-valor = 0.976</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="comparación-de-dos-muestras" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="comparación-de-dos-muestras"><span class="header-section-number">9.6</span> 4.6 Comparación de dos muestras</h2>
+<h2 data-number="9.6" class="anchored" data-anchor-id="comparación-de-dos-muestras"><span class="header-section-number">9.6</span> Comparación de dos muestras</h2>
 <p>Antes de escoger una prueba hay que determinar si las muestras son independientes o emparejadas. Las mediciones antes y después en las mismas personas, por ejemplo, son emparejadas; dos grupos de participantes distintos suelen ser independientes.</p>
 <section id="dos-medias-independientes-t-de-welch" class="level3" data-number="9.6.1">
-<h3 data-number="9.6.1" class="anchored" data-anchor-id="dos-medias-independientes-t-de-welch"><span class="header-section-number">9.6.1</span> 4.6.1 Dos medias independientes: t de Welch</h3>
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="dos-medias-independientes-t-de-welch"><span class="header-section-number">9.6.1</span> Dos medias independientes: t de Welch</h3>
 <p>Cuando no se desea asumir igualdad de varianzas, la prueba de Welch utiliza:</p>
 <p><span class="math display">\[
 t=\frac{\bar{x}_1-\bar{x}_2}{\sqrt{s_1^2/n_1+s_2^2/n_2}}.
 \]</span></p>
 <p>Los grados de libertad se aproximan mediante la fórmula de Welch–Satterthwaite. Es una opción general recomendable para comparar medias independientes, incluso cuando las varianzas son similares.</p>
 <p>La prueba t agrupada tradicional presupone varianzas poblacionales iguales y estima una varianza común. No es necesario decidir automáticamente entre ambas mediante una prueba preliminar de igualdad de varianzas: esa estrategia puede alterar las propiedades del análisis. La elección debe atender al diseño y a los supuestos, y Welch suele ser una opción robusta.</p>
+<div id="ba43e6f4" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: tiempo de carga (s) de dos versiones de una web</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>version_a <span class="op">=</span> [<span class="fl">5.1</span>, <span class="fl">4.8</span>, <span class="fl">6.2</span>, <span class="fl">5.9</span>, <span class="fl">5.5</span>, <span class="fl">6.8</span>, <span class="fl">4.9</span>, <span class="fl">5.7</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>version_b <span class="op">=</span> [<span class="fl">6.0</span>, <span class="fl">6.9</span>, <span class="fl">7.4</span>, <span class="fl">5.8</span>, <span class="fl">7.1</span>, <span class="fl">6.6</span>, <span class="fl">7.9</span>, <span class="fl">6.2</span>, <span class="fl">7.0</span>, <span class="fl">6.4</span>, <span class="fl">8.1</span>]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>t_stat, p_value, df <span class="op">=</span> inf.welch_t_test(version_a, version_b)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, g.l. de Welch = </span><span class="sc">{</span>df<span class="sc">:.1f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>t = -3.756, g.l. de Welch = 16.0, p-valor = 0.00173</code></pre>
+</div>
+</div>
 </section>
 <section id="datos-emparejados" class="level3" data-number="9.6.2">
-<h3 data-number="9.6.2" class="anchored" data-anchor-id="datos-emparejados"><span class="header-section-number">9.6.2</span> 4.6.2 Datos emparejados</h3>
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="datos-emparejados"><span class="header-section-number">9.6.2</span> Datos emparejados</h3>
 <p>Para cada pareja se calcula una diferencia <span class="math inline">\(D_i=X_i-Y_i\)</span> y se contrasta la media de esas diferencias:</p>
 <p><span class="math display">\[
 t=\frac{\bar{D}-\mu_{D,0}}{s_D/\sqrt{n}},\qquad df=n-1.
 \]</span></p>
 <p>La unidad de análisis es la diferencia dentro de cada pareja. No se deben tratar las mediciones emparejadas como dos muestras independientes.</p>
+<div id="1cabc7f6" class="cell" data-execution_count="15">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: presión sistólica de 8 personas antes y después de un programa de ejercicio</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>antes <span class="op">=</span> [<span class="dv">142</span>, <span class="dv">150</span>, <span class="dv">138</span>, <span class="dv">160</span>, <span class="dv">155</span>, <span class="dv">147</span>, <span class="dv">152</span>, <span class="dv">149</span>]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>despues <span class="op">=</span> [<span class="dv">138</span>, <span class="dv">145</span>, <span class="dv">139</span>, <span class="dv">151</span>, <span class="dv">150</span>, <span class="dv">140</span>, <span class="dv">149</span>, <span class="dv">147</span>]</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> inf.paired_t_test(antes, despues)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>t = 3.930, p-valor = 0.00568</code></pre>
+</div>
+</div>
 </section>
 <section id="dos-proporciones-independientes" class="level3" data-number="9.6.3">
-<h3 data-number="9.6.3" class="anchored" data-anchor-id="dos-proporciones-independientes"><span class="header-section-number">9.6.3</span> 4.6.3 Dos proporciones independientes</h3>
+<h3 data-number="9.6.3" class="anchored" data-anchor-id="dos-proporciones-independientes"><span class="header-section-number">9.6.3</span> Dos proporciones independientes</h3>
 <p>Para contrastar igualdad de proporciones, bajo <span class="math inline">\(H_0:p_1=p_2\)</span> se utiliza a menudo la proporción agrupada:</p>
 <p><span class="math display">\[
 \hat{p}=\frac{x_1+x_2}{n_1+n_2},
@@ -698,35 +1084,55 @@ t=\frac{\bar{D}-\mu_{D,0}}{s_D/\sqrt{n}},\qquad df=n-1.
 z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1+1/n_2)}}.
 \]</span></p>
 <p>Esta aproximación requiere tamaños y conteos adecuados. En tablas pequeñas pueden ser preferibles métodos exactos. Si las proporciones provienen de observaciones emparejadas, debe usarse una prueba para datos pareados, no una prueba de dos proporciones independientes.</p>
+<div id="9f92db3f" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo (A/B testing): 30 conversiones de 100 frente a 45 de 110</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>z_stat, p_value <span class="op">=</span> inf.two_proportion_z_test(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">45</span>, <span class="dv">110</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>z = -1.648, p-valor = 0.0994</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="normalidad-y-elección-de-métodos-no-paramétricos" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="normalidad-y-elección-de-métodos-no-paramétricos"><span class="header-section-number">9.7</span> 4.7 Normalidad y elección de métodos no paramétricos</h2>
+<h2 data-number="9.7" class="anchored" data-anchor-id="normalidad-y-elección-de-métodos-no-paramétricos"><span class="header-section-number">9.7</span> Normalidad y elección de métodos no paramétricos</h2>
 <p>La normalidad relevante depende de la prueba: para la prueba t de una muestra se considera la distribución de la variable; para la t emparejada, la distribución de las diferencias; y para la comparación de medias independientes, las distribuciones dentro de cada grupo. El teorema central del límite justifica ciertas aproximaciones de la media muestral bajo condiciones, pero no corrige el sesgo de muestreo ni la dependencia entre observaciones.</p>
 <p>La normalidad puede examinarse con histogramas, gráficos Q–Q y, como complemento, pruebas como Shapiro–Wilk. Una prueba de normalidad no debe ser el único criterio: con muestras grandes puede detectar desviaciones triviales y con muestras pequeñas puede no detectar desviaciones importantes.</p>
-<p>Cuando los supuestos paramétricos no son adecuados, se pueden considerar métodos no paramétricos:</p>
-<ul>
-<li><strong>Prueba de signos:</strong> evalúa la dirección de las diferencias respecto a un valor de referencia; no utiliza la magnitud de las diferencias.</li>
-<li><strong>Wilcoxon de rangos con signo:</strong> para una muestra o datos emparejados; analiza los rangos de las diferencias no nulas y requiere condiciones adicionales para interpretarlo como contraste de localización/mediana.</li>
-<li><strong>Mann–Whitney U:</strong> compara dos grupos independientes a partir de rangos. No es, en general, una prueba de igualdad de medias ni equivale siempre a una prueba de medianas; la interpretación como diferencia de localización requiere supuestos sobre las distribuciones.</li>
-</ul>
+<p>En un <strong>gráfico Q–Q</strong> se comparan los cuantiles de la muestra con los que tendría una Normal: si los datos son aproximadamente normales, los puntos quedan cerca de la recta; las curvaturas sistemáticas indican asimetría o colas distintas de las de la Normal.</p>
+<div id="0b17da75" class="cell" data-execution_count="17">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (titulo, datos) <span class="kw">in</span> <span class="bu">zip</span>(axes, [(<span class="st">"Muestra Normal"</span>, rng.normal(<span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">60</span>)),</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                                       (<span class="st">"Muestra Exponencial (asimétrica)"</span>, rng.exponential(<span class="dv">10</span>, <span class="dv">60</span>))]):</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    stats.probplot(datos, dist<span class="op">=</span><span class="st">"norm"</span>, plot<span class="op">=</span>ax)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    ax.set_title(titulo)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Cuantiles teóricos de la Normal"</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Cuantiles de la muestra"</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria_files/figure-html/cell-18-output-1.png" alt="Dos gráficos Q-Q. A la izquierda, una muestra Normal de 60 valores: los puntos siguen la recta. A la derecha, una muestra Exponencial de 60 valores: los puntos forman una curva que se aleja de la recta en el extremo superior, señal de asimetría a la derecha." width="951" height="374" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cuando los supuestos paramétricos no son adecuados, se pueden considerar métodos no paramétricos: la prueba de signos y la de Wilcoxon de rangos con signo (una muestra o datos emparejados), Mann–Whitney U (dos grupos independientes) y Kruskal–Wallis (tres o más grupos). Se desarrollan en el Módulo 6, junto con sus hipótesis y supuestos.</p>
 <p>Las pruebas no paramétricas no son automáticamente válidas ante cualquier problema: también tienen supuestos, y la selección debe corresponder al diseño y a la pregunta.</p>
 </section>
 <section id="variables-categóricas-chi-cuadrado-y-fisher" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="variables-categóricas-chi-cuadrado-y-fisher"><span class="header-section-number">9.8</span> 4.8 Variables categóricas: chi-cuadrado y Fisher</h2>
-<p>Para estudiar la asociación entre dos variables categóricas se construye una tabla de contingencia. La prueba de independencia de Pearson compara las frecuencias observadas <span class="math inline">\(O_{ij}\)</span> con las esperadas <span class="math inline">\(E_{ij}\)</span> bajo independencia:</p>
-<p><span class="math display">\[
-\chi^2=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(O_{ij}-E_{ij})^2}{E_{ij}},
-\]</span></p>
-<p>con <span class="math inline">\((r-1)(c-1)\)</span> grados de libertad. Las frecuencias esperadas se calculan como:</p>
-<p><span class="math display">\[
-E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
-\]</span></p>
-<p>La aproximación chi-cuadrado puede ser inadecuada si las frecuencias esperadas son pequeñas. En tablas 2×2 puede utilizarse la prueba exacta de Fisher; para tablas mayores, la disponibilidad de un cálculo exacto depende del software y del tamaño de la tabla. Deben inspeccionarse las frecuencias esperadas y documentarse el método utilizado.</p>
-<p>La prueba chi-cuadrado detecta asociación, pero no identifica por sí sola qué celdas contribuyen más ni demuestra causalidad. Para interpretar el resultado conviene examinar proporciones por grupo y, cuando corresponda, medidas de tamaño de efecto como <span class="math inline">\(V\)</span> de Cramér.</p>
+<h2 data-number="9.8" class="anchored" data-anchor-id="variables-categóricas-chi-cuadrado-y-fisher"><span class="header-section-number">9.8</span> Variables categóricas: chi-cuadrado y Fisher</h2>
+<p>Para estudiar la asociación entre dos variables categóricas se organiza una tabla de contingencia y se comparan sus frecuencias observadas con las que cabría esperar si las variables fueran independientes. Es la <strong>prueba chi-cuadrado de independencia</strong>, que se desarrolla en el Módulo 6 junto con la prueba exacta de Fisher, la corrección de Yates y la <span class="math inline">\(V\)</span> de Cramér como medida del tamaño del efecto. La práctica de este módulo ya la aplica a los datos de sueño. Como cualquier contraste, detecta asociación, pero no identifica qué categorías la producen ni demuestra causalidad.</p>
 </section>
 <section id="significación-estadística-y-relevancia-práctica" class="level2" data-number="9.9">
-<h2 data-number="9.9" class="anchored" data-anchor-id="significación-estadística-y-relevancia-práctica"><span class="header-section-number">9.9</span> 4.9 Significación estadística y relevancia práctica</h2>
+<h2 data-number="9.9" class="anchored" data-anchor-id="significación-estadística-y-relevancia-práctica"><span class="header-section-number">9.9</span> Significación estadística y relevancia práctica</h2>
 <p>Un valor p pequeño no implica necesariamente un efecto importante: con muestras muy grandes, diferencias pequeñas pueden resultar estadísticamente significativas. Del mismo modo, un valor p superior a <span class="math inline">\(\alpha\)</span> no prueba la ausencia de efecto. Por ello, junto al valor p deben presentarse, cuando sea posible:</p>
 <ul>
 <li>la estimación del efecto (diferencia de medias, diferencia de proporciones, razón de riesgos u otra medida apropiada);</li>
@@ -737,28 +1143,233 @@ E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
 <p>La interpretación también debe distinguir <strong>asociación</strong> de <strong>causalidad</strong>. Un estudio observacional puede identificar asociaciones, pero por sí solo no demuestra que una variable cause otra.</p>
 </section>
 <section id="simulación-cobertura-de-intervalos-de-confianza" class="level2" data-number="9.10">
-<h2 data-number="9.10" class="anchored" data-anchor-id="simulación-cobertura-de-intervalos-de-confianza"><span class="header-section-number">9.10</span> 4.10 Simulación: cobertura de intervalos de confianza</h2>
+<h2 data-number="9.10" class="anchored" data-anchor-id="simulación-cobertura-de-intervalos-de-confianza"><span class="header-section-number">9.10</span> Simulación: cobertura de intervalos de confianza</h2>
 <p>Podemos ilustrar la interpretación de un intervalo del 95 % simulando muestras de una población con media conocida y contando cuántos intervalos contienen el valor real. La proporción observada variará de una simulación a otra, pero debería aproximarse al nivel nominal si se cumplen los supuestos y se simulan suficientes repeticiones.</p>
-<div id="4d3efc1e" class="cell" data-execution_count="6">
+<div id="de95ae81" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    true_mu<span class="op">=</span><span class="dv">100</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    n_simulations<span class="op">=</span><span class="dv">5000</span>, seed<span class="op">=</span><span class="dv">42</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Proporción de intervalos que contienen la verdadera μ: </span><span class="sc">{</span>coverage<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    true_mu<span class="op">=</span><span class="dv">100</span>, sigma<span class="op">=</span><span class="dv">15</span>, n<span class="op">=</span><span class="dv">30</span>, confidence<span class="op">=</span><span class="fl">0.95</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    n_simulations<span class="op">=</span><span class="dv">5000</span>, seed<span class="op">=</span><span class="dv">42</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Proporción de intervalos que contienen la verdadera μ: </span><span class="sc">{</span>coverage<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Proporción de intervalos que contienen la verdadera μ: 0.947</code></pre>
 </div>
 </div>
+<p>El gráfico muestra 100 de esos intervalos. Cada línea es el intervalo de una muestra distinta; los que no contienen el valor real aparecen en rojo. El parámetro está fijo: lo que varía de una muestra a otra es el intervalo.</p>
+<div id="d8733fa1" class="cell" data-execution_count="19">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>mu, sigma, n <span class="op">=</span> <span class="dv">100</span>, <span class="dv">15</span>, <span class="dv">30</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">7</span>))</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>fallos <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    media <span class="op">=</span> rng.normal(mu, sigma, n).mean()</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    low, up <span class="op">=</span> inf.confidence_interval_mean_z(media, sigma, n, <span class="fl">0.95</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    contiene <span class="op">=</span> low <span class="op">&lt;=</span> mu <span class="op">&lt;=</span> up</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    fallos <span class="op">+=</span> <span class="kw">not</span> contiene</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    plt.plot([low, up], [i, i], color<span class="op">=</span><span class="st">"steelblue"</span> <span class="cf">if</span> contiene <span class="cf">else</span> <span class="st">"crimson"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>plt.axvline(mu, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"μ real = 100"</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"100 intervalos del 95 %: </span><span class="sc">{</span>fallos<span class="sc">}</span><span class="ss"> no contienen μ"</span>)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Valor de la media"</span>)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Muestra"</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>plt.yticks([])</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">"lower right"</span>)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria_files/figure-html/cell-20-output-1.png" alt="Cien intervalos de confianza del 95 % dibujados como segmentos horizontales, uno por muestra, alrededor de una línea vertical en el valor real de la media, 100. La mayoría la cortan; unos pocos, marcados en rojo, quedan completamente a un lado." width="633" height="598" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="cierre" class="level2" data-number="9.11">
-<h2 data-number="9.11" class="anchored" data-anchor-id="cierre"><span class="header-section-number">9.11</span> 4.11 Cierre</h2>
+<section id="intervalos-bootstrap" class="level2" data-number="9.11">
+<h2 data-number="9.11" class="anchored" data-anchor-id="intervalos-bootstrap"><span class="header-section-number">9.11</span> Intervalos bootstrap</h2>
+<p>Los intervalos anteriores se apoyan en una fórmula para el error estándar y en una distribución conocida (Normal o t). Para otros estadísticos, como la mediana, un percentil o un cociente, esa fórmula es complicada o no existe, y con muestras pequeñas de poblaciones muy asimétricas la aproximación Normal puede ser dudosa. El <strong>bootstrap</strong> aproxima la distribución muestral del estadístico usando solo la muestra observada:</p>
+<ol type="1">
+<li>Se extrae de la muestra, <strong>con reemplazamiento</strong>, una remuestra del mismo tamaño <span class="math inline">\(n\)</span> (algunos valores aparecen repetidos y otros no aparecen).</li>
+<li>Se calcula el estadístico en la remuestra.</li>
+<li>Se repite muchas veces (por ejemplo, <span class="math inline">\(B = 10\,000\)</span>).</li>
+<li>El <strong>intervalo percentil</strong> del 95 % está formado por los percentiles 2,5 y 97,5 de los <span class="math inline">\(B\)</span> valores obtenidos.</li>
+</ol>
+<p>La idea es que la muestra hace el papel de la población: la variación del estadístico de una remuestra a otra imita su variación de una muestra a otra. Por ejemplo, para la mediana de unos tiempos de respuesta muy asimétricos:</p>
+<div id="f4742469" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">12</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>tiempos <span class="op">=</span> rng.exponential(scale<span class="op">=</span><span class="dv">120</span>, size<span class="op">=</span><span class="dv">40</span>)  <span class="co"># tiempos simulados (ms), asimétricos</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>boot <span class="op">=</span> inf.bootstrap_distribution(tiempos, np.median, n_resamples<span class="op">=</span><span class="dv">10_000</span>, seed<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>low, high <span class="op">=</span> inf.bootstrap_ci(tiempos, np.median, confidence<span class="op">=</span><span class="fl">0.95</span>, n_resamples<span class="op">=</span><span class="dv">10_000</span>, seed<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mediana muestral: </span><span class="sc">{</span>np<span class="sc">.</span>median(tiempos)<span class="sc">:.1f}</span><span class="ss"> ms"</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC bootstrap del 95 % para la mediana: (</span><span class="sc">{</span>low<span class="sc">:.1f}</span><span class="ss">, </span><span class="sc">{</span>high<span class="sc">:.1f}</span><span class="ss">) ms"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mediana muestral: 83.7 ms
+IC bootstrap del 95 % para la mediana: (41.7, 118.6) ms</code></pre>
+</div>
+</div>
+<div id="7834cbee" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">4.5</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.hist(boot, bins<span class="op">=</span><span class="dv">50</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> (low, high):</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    plt.axvline(v, color<span class="op">=</span><span class="st">"crimson"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>plt.axvline(np.nan, color<span class="op">=</span><span class="st">"crimson"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"Percentiles 2,5 y 97,5"</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribución bootstrap de la mediana (B = 10 000)"</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Mediana de la remuestra (ms)"</span>)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frecuencia"</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria_files/figure-html/cell-22-output-1.png" alt="Histograma de 10 000 medianas bootstrap de una muestra de 40 tiempos de respuesta, con dos líneas verticales discontinuas en los percentiles 2,5 y 97,5, que delimitan el intervalo de confianza del 95 %. La distribución es irregular, con varios picos, porque la mediana de cada remuestra solo puede tomar unos pocos valores de la muestra." width="677" height="415" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>scipy.stats.bootstrap</code> implementa el mismo método y variantes más precisas, como el intervalo <strong>BCa</strong> (corregido por sesgo y asimetría), que es su opción por defecto. Como las remuestras son aleatorias, sus resultados pueden diferir ligeramente de los nuestros; en este ejemplo coinciden, porque la mediana de una remuestra solo puede tomar unos pocos valores de la muestra:</p>
+<div id="74d562f5" class="cell" data-execution_count="22">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> metodo <span class="kw">in</span> (<span class="st">"percentile"</span>, <span class="st">"BCa"</span>):</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    ic <span class="op">=</span> stats.bootstrap((tiempos,), np.median, method<span class="op">=</span>metodo, n_resamples<span class="op">=</span><span class="dv">10_000</span>, rng<span class="op">=</span><span class="dv">1</span>).confidence_interval</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"scipy (</span><span class="sc">{</span>metodo<span class="sc">}</span><span class="ss">): (</span><span class="sc">{</span>ic<span class="sc">.</span>low<span class="sc">:.1f}</span><span class="ss">, </span><span class="sc">{</span>ic<span class="sc">.</span>high<span class="sc">:.1f}</span><span class="ss">) ms"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>scipy (percentile): (41.7, 118.6) ms
+scipy (BCa): (41.7, 118.6) ms</code></pre>
+</div>
+</div>
+<p>El bootstrap no crea información nueva ni elimina los supuestos: exige que la muestra sea representativa y que las observaciones sean independientes. Con muestras pequeñas el intervalo percentil suele ser demasiado estrecho (su cobertura real queda por debajo de la nominal), y no funciona bien con estadísticos que dependen de valores extremos, como el máximo.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ideas clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Un intervalo de confianza del 95 % procede de un método que acierta en el 95 % de las muestras; no es la probabilidad de que el parámetro esté en un intervalo concreto.</li>
+<li>El p-valor mide la compatibilidad de los datos con <span class="math inline">\(H_0\)</span>; no es la probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta. No rechazar <span class="math inline">\(H_0\)</span> no demuestra que sea verdadera.</li>
+<li>La prueba depende del diseño: una o dos muestras, independientes o emparejadas, medias o proporciones.</li>
+<li>Los supuestos (independencia, normalidad, tamaño de la muestra) deben revisarse antes de interpretar el resultado.</li>
+<li>La significación estadística no implica importancia práctica ni causalidad: informa también del efecto y su intervalo.</li>
+<li>La potencia y el tamaño muestral se fijan al diseñar el estudio; reducir el margen de error a la mitad exige cuadruplicar <span class="math inline">\(n\)</span>.</li>
+<li>El bootstrap aproxima la distribución de un estadístico remuestreando los datos; no sustituye a una muestra representativa.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="autoevaluación" class="level2" data-number="9.12">
+<h2 data-number="9.12" class="anchored" data-anchor-id="autoevaluación"><span class="header-section-number">9.12</span> Autoevaluación</h2>
+<p>Intenta responder cada pregunta antes de desplegar la respuesta.</p>
+<p><strong>1.</strong> Un intervalo de confianza del 95 % para <span class="math inline">\(\mu\)</span> es <span class="math inline">\((4{,}2;\ 5{,}8)\)</span>. ¿Es correcto decir que hay un 95 % de probabilidad de que <span class="math inline">\(\mu\)</span> esté entre 4,2 y 5,8?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No.&nbsp;En el enfoque frecuentista <span class="math inline">\(\mu\)</span> es fija: está o no está en ese intervalo. El 95 % describe el <strong>procedimiento</strong>: si repitiéramos el muestreo muchas veces, alrededor del 95 % de los intervalos construidos contendrían a <span class="math inline">\(\mu\)</span>.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Un contraste da <span class="math inline">\(p = 0{,}03\)</span> con <span class="math inline">\(\alpha = 0{,}05\)</span>. ¿Qué se concluye? ¿Hay un 3 % de probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Se rechaza <span class="math inline">\(H_0\)</span> al 5 %. Pero el p-valor no es la probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta: es la probabilidad de obtener un resultado al menos tan extremo como el observado <strong>si</strong> <span class="math inline">\(H_0\)</span> fuera cierta.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Un estudio con 15 personas no encuentra diferencias significativas (<span class="math inline">\(p = 0{,}40\)</span>). ¿Demuestra que no hay efecto?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No.&nbsp;Con una muestra tan pequeña la potencia puede ser baja: un efecto real podría pasar inadvertido. Conviene mirar el intervalo de confianza del efecto: si es muy ancho, los datos son compatibles tanto con ausencia de efecto como con efectos importantes.</p>
+</div>
+</div>
+</div>
+<p><strong>4.</strong> Para estimar una proporción con un margen de error de ±3 puntos hacen falta unas 1068 personas. ¿Cuántas necesitarías para un margen de ±1,5 puntos?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Unas cuatro veces más, alrededor de 4270: el margen es proporcional a <span class="math inline">\(1/\sqrt{n}\)</span>, así que reducirlo a la mitad exige cuadruplicar <span class="math inline">\(n\)</span>.</p>
+</div>
+</div>
+</div>
+<p><strong>5.</strong> Mides la presión arterial de 20 personas antes y después de un programa de ejercicio. ¿Qué prueba usarías para comparar las medias?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Una t para datos <strong>emparejados</strong>, aplicada a las 20 diferencias (o la prueba de Wilcoxon si las diferencias son claramente no normales). No una t de Welch para muestras independientes: las dos medidas proceden de las mismas personas y no son independientes.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cierre" class="level2" data-number="9.13">
+<h2 data-number="9.13" class="anchored" data-anchor-id="cierre"><span class="header-section-number">9.13</span> Cierre</h2>
 <p>En este módulo conectamos las distribuciones estudiadas anteriormente con la estimación de parámetros y la evaluación de hipótesis. La elección de una prueba debe partir de la pregunta científica, el diseño y el tipo de variable; la conclusión debe basarse en el valor p, la incertidumbre y el tamaño del efecto, sin convertir la significación estadística en una afirmación causal automática.</p>
-<p>Continúa con el cuaderno práctico (<code>practica.ipynb</code>).</p>
-<section id="material-complementario" class="level3" data-number="9.11.1">
-<h3 data-number="9.11.1" class="anchored" data-anchor-id="material-complementario"><span class="header-section-number">9.11.1</span> Material complementario</h3>
+<p>Continúa con la <a href="../../notebooks/04_inferencia/practica.html">actividad práctica</a>, que aplica estos contrastes a cuatro preguntas sobre los datos de sueño.</p>
+<section id="material-complementario" class="level3" data-number="9.13.1">
+<h3 data-number="9.13.1" class="anchored" data-anchor-id="material-complementario"><span class="header-section-number">9.13.1</span> Material complementario</h3>
 <p>Parte de los conceptos de este módulo se ha ampliado a partir del material docente <em>Contrastes de hipótesis</em>, de Ester Bernadó Mansilla (FUOC, 2020). Se han integrado sus contenidos estadísticos relevantes y se han adaptado las explicaciones al nivel y la estructura del curso.</p>
 
 
@@ -766,6 +1377,17 @@ E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBlZmVjdG8gPSBJbnB1dHMucmFuZ2UoWzAsIDE1XSwge3ZhbHVlOiA1LCBzdGVwOiAwLjUsIGxhYmVsOiBcIkRpZmVyZW5jaWEgcmVhbCDOtFwifSlcbnZpZXdvZiBzaWdtYVAgPSBJbnB1dHMucmFuZ2UoWzEsIDQwXSwge3ZhbHVlOiAxNSwgc3RlcDogMSwgbGFiZWw6IFwiRGVzdmlhY2nDs24gdMOtcGljYSDPg1wifSlcbnZpZXdvZiBuUCA9IElucHV0cy5yYW5nZShbMiwgMzAwXSwge3ZhbHVlOiAzNiwgc3RlcDogMSwgbGFiZWw6IFwiVGFtYcOxbyBtdWVzdHJhbCBuXCJ9KVxudmlld29mIGFsZmFQID0gSW5wdXRzLnJhZGlvKG5ldyBNYXAoW1tcIjAsMDFcIiwgMC4wMV0sIFtcIjAsMDVcIiwgMC4wNV0sIFtcIjAsMTBcIiwgMC4xMF1dKSwge3ZhbHVlOiAwLjA1LCBsYWJlbDogXCJOaXZlbCDOsVwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIM6mKHgpIGNvbiBsYSBhcHJveGltYWNpw7NuIGRlIEFicmFtb3dpdHogeSBTdGVndW4gKDcuMS4yNiksIGVycm9yIDwgMSw1wrcxMOKBu+KBt1xuUGhpID0geCA9PiB7XG4gIGNvbnN0IHQgPSAxIC8gKDEgKyAwLjMyNzU5MTEgKiBNYXRoLmFicyh4KSAvIE1hdGguU1FSVDIpO1xuICBjb25zdCBwb2x5ID0gKCgoKDEuMDYxNDA1NDI5ICogdCAtIDEuNDUzMTUyMDI3KSAqIHQgKyAxLjQyMTQxMzc0MSkgKiB0IC0gMC4yODQ0OTY3MzYpICogdCArIDAuMjU0ODI5NTkyKSAqIHQ7XG4gIGNvbnN0IGVyZiA9IDEgLSBwb2x5ICogTWF0aC5leHAoLXggKiB4IC8gMik7XG4gIHJldHVybiB4ID49IDAgPyAoMSArIGVyZikgLyAyIDogKDEgLSBlcmYpIC8gMjtcbn1cbnpDcml0ID0gKHswLjAxOiAyLjU3NTgyOTMwMzU0ODksIDAuMDU6IDEuOTU5OTYzOTg0NTQwMDU0LCAwLjE6IDEuNjQ0ODUzNjI2OTUxNDcyMn0pW2FsZmFQXVxucG90ZW5jaWEgPSAoZCwgcywgbSkgPT4ge1xuICBjb25zdCBkZXNwID0gZCAqIE1hdGguc3FydChtKSAvIHM7XG4gIHJldHVybiAoMSAtIFBoaSh6Q3JpdCAtIGRlc3ApKSArIFBoaSgtekNyaXQgLSBkZXNwKTtcbn1cbnBvdEFjdHVhbCA9IHBvdGVuY2lhKGVmZWN0bywgc2lnbWFQLCBuUClcbm5OZWNlc2FyaW8gPSBlZmVjdG8gPiAwID8gTWF0aC5jZWlsKCgoekNyaXQgKyAwLjg0MTYyMTIzMzU3MjkxNDMpICogc2lnbWFQIC8gZWZlY3RvKSAqKiAyKSA6IG51bGxcblBsb3QucGxvdCh7XG4gIGhlaWdodDogMjgwLFxuICB4OiB7bGFiZWw6IFwiVGFtYcOxbyBtdWVzdHJhbCBuXCJ9LFxuICB5OiB7bGFiZWw6IFwiUG90ZW5jaWFcIiwgZG9tYWluOiBbMCwgMV0sIGdyaWQ6IHRydWV9LFxuICBtYXJrczogW1xuICAgIFBsb3QucnVsZVkoWzAuOF0sIHtzdHJva2U6IFwiZ3JheVwiLCBzdHJva2VEYXNoYXJyYXk6IFwiNCw0XCJ9KSxcbiAgICBQbG90LmxpbmUoZDMucmFuZ2UoMiwgMzAxKS5tYXAobSA9PiAoe246IG0sIHBvdDogcG90ZW5jaWEoZWZlY3RvLCBzaWdtYVAsIG0pfSkpLCB7eDogXCJuXCIsIHk6IFwicG90XCIsIHN0cm9rZTogXCJzdGVlbGJsdWVcIiwgc3Ryb2tlV2lkdGg6IDJ9KSxcbiAgICBQbG90LmRvdChbe246IG5QLCBwb3Q6IHBvdEFjdHVhbH1dLCB7eDogXCJuXCIsIHk6IFwicG90XCIsIGZpbGw6IFwiY3JpbXNvblwiLCByOiA2fSlcbiAgXSxcbiAgYXJpYUxhYmVsOiBcIkN1cnZhIGRlIHBvdGVuY2lhIGRlbCB0ZXN0IHogYmlsYXRlcmFsIGZyZW50ZSBhbCB0YW1hw7FvIG11ZXN0cmFsIHBhcmEgbG9zIHZhbG9yZXMgZWxlZ2lkb3MsIGNvbiB1bmEgbMOtbmVhIGRpc2NvbnRpbnVhIGVuIDAsOCB5IHVuIHB1bnRvIHJvam8gZW4gZWwgdGFtYcOxbyBtdWVzdHJhbCBzZWxlY2Npb25hZG8uXCJcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJtZGBDb24gbiA9ICR7blB9LCBsYSBwb3RlbmNpYSBlcyAqKiR7KDEwMCAqIHBvdEFjdHVhbCkudG9GaXhlZCgxKS5yZXBsYWNlKFwiLlwiLCBcIixcIil9ICUqKi4gJHtuTmVjZXNhcmlvID09PSBudWxsID8gXCJDb24gzrQgPSAwIG5vIGhheSBkaWZlcmVuY2lhIHF1ZSBkZXRlY3RhcjogbGEgcG90ZW5jaWEgY29pbmNpZGUgY29uIM6xLlwiIDogYFBhcmEgYWxjYW56YXIgdW5hIHBvdGVuY2lhIGRlbCA4MCAlIGhhcsOtYW4gZmFsdGEgKioke25OZWNlc2FyaW99Kiogb2JzZXJ2YWNpb25lcy5gfWBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFNvbG8gbGxlZ2EgYSBlamVjdXRhcnNlIHNpIHNlIGhhbiBjYXJnYWRvIGxhcyBiaWJsaW90ZWNhczogZW50b25jZXMgcmV0aXJhIGVsIGF2aXNvLlxuYXZpc29Qb3RlbmNpYSA9IHtcbiAgUGxvdDsgSW5wdXRzO1xuICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImF2aXNvLXdpZGdldC1wb3RlbmNpYVwiKT8ucmVtb3ZlKCk7XG4gIHJldHVybiBodG1sYGA7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2VmZWN0bycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzaWdtYVAnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnblAnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYWxmYVAnKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../notebooks/04_inferencia";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -844,7 +1466,8 @@ E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -853,8 +1476,69 @@ E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -868,6 +1552,7 @@ E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1030,44 +1715,54 @@ E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1166,7 +1861,10 @@ E_{ij}=\frac{(\text{total de fila }i)(\text{total de columna }j)}{n}.
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation" aria-label="Página">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/03_distribuciones/practica.html" class="pagination-link" aria-label="Práctica: Distribuciones de Probabilidad">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Práctica: Distribuciones de Probabilidad</span></span>

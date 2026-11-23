@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -61,7 +61,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,14 +94,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../notebooks/02_probabilidad/practica.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,6 +130,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -147,17 +169,17 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -168,7 +190,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Sitio web">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
@@ -192,13 +214,10 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 1 — Estadística Descriptiva</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Módulo 1 — Estadística Descriptiva</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
@@ -221,13 +240,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 2 — Probabilidad Básica</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Módulo 2 — Probabilidad Básica</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
@@ -244,13 +260,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 3 — Distribuciones de Probabilidad</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Módulo 3 — Distribuciones de Probabilidad</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link active">
@@ -267,13 +280,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 4 — Inferencia Estadística</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Módulo 4 — Inferencia Estadística</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
@@ -290,13 +300,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 5 — Correlación y Regresión Lineal</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Módulo 5 — Correlación y Regresión Lineal</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
@@ -313,13 +320,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
@@ -334,39 +338,91 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">Proyecto integrador</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/07_proyecto_integrador/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Proyecto integrador: ¿qué se asocia con la calidad del sueño?</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">Apéndices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/que_prueba_usar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">¿Qué prueba usar?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Notación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Glosario</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">7.1</span> 3.1 Introducción</a></li>
-  <li><a href="#variables-aleatorias-discretas-vs.-continuas" id="toc-variables-aleatorias-discretas-vs.-continuas" class="nav-link" data-scroll-target="#variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">7.2</span> 3.2 Variables Aleatorias: Discretas vs.&nbsp;Continuas</a></li>
-  <li><a href="#distribuciones-discretas" id="toc-distribuciones-discretas" class="nav-link" data-scroll-target="#distribuciones-discretas"><span class="header-section-number">7.3</span> 3.3 Distribuciones Discretas</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">7.1</span> Introducción</a></li>
+  <li><a href="#variables-aleatorias-discretas-vs.-continuas" id="toc-variables-aleatorias-discretas-vs.-continuas" class="nav-link" data-scroll-target="#variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">7.2</span> Variables Aleatorias: Discretas vs.&nbsp;Continuas</a></li>
+  <li><a href="#distribuciones-discretas" id="toc-distribuciones-discretas" class="nav-link" data-scroll-target="#distribuciones-discretas"><span class="header-section-number">7.3</span> Distribuciones Discretas</a>
   <ul class="collapse">
   <li><a href="#bernoulli" id="toc-bernoulli" class="nav-link" data-scroll-target="#bernoulli"><span class="header-section-number">7.3.1</span> Bernoulli</a></li>
   <li><a href="#binomial" id="toc-binomial" class="nav-link" data-scroll-target="#binomial"><span class="header-section-number">7.3.2</span> Binomial</a></li>
   <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson"><span class="header-section-number">7.3.3</span> Poisson</a></li>
   </ul></li>
-  <li><a href="#distribuciones-continuas" id="toc-distribuciones-continuas" class="nav-link" data-scroll-target="#distribuciones-continuas"><span class="header-section-number">7.4</span> 3.4 Distribuciones Continuas</a>
+  <li><a href="#distribuciones-continuas" id="toc-distribuciones-continuas" class="nav-link" data-scroll-target="#distribuciones-continuas"><span class="header-section-number">7.4</span> Distribuciones Continuas</a>
   <ul class="collapse">
   <li><a href="#uniforme" id="toc-uniforme" class="nav-link" data-scroll-target="#uniforme"><span class="header-section-number">7.4.1</span> Uniforme</a></li>
   <li><a href="#normal-gaussiana" id="toc-normal-gaussiana" class="nav-link" data-scroll-target="#normal-gaussiana"><span class="header-section-number">7.4.2</span> Normal (Gaussiana)</a></li>
   <li><a href="#exponencial" id="toc-exponencial" class="nav-link" data-scroll-target="#exponencial"><span class="header-section-number">7.4.3</span> Exponencial</a></li>
   </ul></li>
-  <li><a href="#el-teorema-central-del-límite" id="toc-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#el-teorema-central-del-límite"><span class="header-section-number">7.5</span> 3.5 El Teorema Central del Límite</a></li>
-  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">7.6</span> 3.6 Cierre</a></li>
+  <li><a href="#función-de-distribución-cuantiles-y-tipificación" id="toc-función-de-distribución-cuantiles-y-tipificación" class="nav-link" data-scroll-target="#función-de-distribución-cuantiles-y-tipificación"><span class="header-section-number">7.5</span> Función de distribución, cuantiles y tipificación</a>
+  <ul class="collapse">
+  <li><a href="#función-de-distribución" id="toc-función-de-distribución" class="nav-link" data-scroll-target="#función-de-distribución"><span class="header-section-number">7.5.1</span> Función de distribución</a></li>
+  <li><a href="#cuantiles" id="toc-cuantiles" class="nav-link" data-scroll-target="#cuantiles"><span class="header-section-number">7.5.2</span> Cuantiles</a></li>
+  <li><a href="#tipificación" id="toc-tipificación" class="nav-link" data-scroll-target="#tipificación"><span class="header-section-number">7.5.3</span> Tipificación</a></li>
+  </ul></li>
+  <li><a href="#distribución-muestral-de-la-media" id="toc-distribución-muestral-de-la-media" class="nav-link" data-scroll-target="#distribución-muestral-de-la-media"><span class="header-section-number">7.6</span> Distribución muestral de la media</a></li>
+  <li><a href="#el-teorema-central-del-límite" id="toc-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#el-teorema-central-del-límite"><span class="header-section-number">7.7</span> El Teorema Central del Límite</a>
+  <ul class="collapse">
+  <li><a href="#explora-la-aproximación-normal-a-la-binomial" id="toc-explora-la-aproximación-normal-a-la-binomial" class="nav-link" data-scroll-target="#explora-la-aproximación-normal-a-la-binomial"><span class="header-section-number">7.7.1</span> Explora: la aproximación Normal a la Binomial</a></li>
+  </ul></li>
+  <li><a href="#distribuciones-derivadas-de-la-normal-t-χ²-y-f" id="toc-distribuciones-derivadas-de-la-normal-t-χ²-y-f" class="nav-link" data-scroll-target="#distribuciones-derivadas-de-la-normal-t-χ²-y-f"><span class="header-section-number">7.8</span> Distribuciones derivadas de la Normal: t, χ² y F</a></li>
+  <li><a href="#autoevaluación" id="toc-autoevaluación" class="nav-link" data-scroll-target="#autoevaluación"><span class="header-section-number">7.9</span> Autoevaluación</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">7.10</span> Cierre</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/03_distribuciones/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html">Módulo 3 — Distribuciones de Probabilidad</a></li><li class="breadcrumb-item"><a href="../../notebooks/03_distribuciones/teoria.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Distribuciones de Probabilidad</span></h1>
 </div>
@@ -385,14 +441,33 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Objetivos del módulo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Distinguir variables aleatorias discretas y continuas y sus funciones de masa, de densidad y de distribución.</li>
+<li>Reconocer las distribuciones Bernoulli, Binomial, Poisson, Uniforme, Normal y Exponencial y sus parámetros.</li>
+<li>Calcular probabilidades y cuantiles, y tipificar valores de una Normal.</li>
+<li>Entender la distribución muestral de la media y el Teorema Central del Límite.</li>
+<li>Conocer las distribuciones t, χ² y F que se usan en los módulos de inferencia.</li>
+</ul>
+</div>
+</div>
 <section id="introducción" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">7.1</span> 3.1 Introducción</h2>
+<h2 data-number="7.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">7.1</span> Introducción</h2>
 <p>En el Módulo 2 definimos la probabilidad de sucesos individuales y vimos cómo actualizar nuestras creencias con el teorema de Bayes. Ahora damos un paso más: en vez de asignar probabilidades a sucesos sueltos, queremos describir <strong>el comportamiento completo de una variable aleatoria</strong> — todos sus valores posibles y la probabilidad asociada a cada uno.</p>
 <p>Esto es lo que hace una <strong>distribución de probabilidad</strong>: un modelo matemático que resume de forma compacta cómo se reparte la probabilidad a lo largo de todos los resultados posibles de una variable aleatoria <span class="math inline">\(X\)</span>.</p>
 <p>Como en los módulos anteriores, cerraremos con el puente hacia lo que viene después: el <strong>Teorema Central del Límite</strong>, la pieza que conecta las distribuciones de este módulo con la inferencia estadística (intervalos de confianza y contraste de hipótesis) del próximo módulo.</p>
 </section>
 <section id="variables-aleatorias-discretas-vs.-continuas" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">7.2</span> 3.2 Variables Aleatorias: Discretas vs.&nbsp;Continuas</h2>
+<h2 data-number="7.2" class="anchored" data-anchor-id="variables-aleatorias-discretas-vs.-continuas"><span class="header-section-number">7.2</span> Variables Aleatorias: Discretas vs.&nbsp;Continuas</h2>
 <p>Recuperamos la distinción del Módulo 1 entre variables discretas y continuas, pero ahora aplicada a variables <em>aleatorias</em> — variables cuyo valor depende del resultado de un experimento aleatorio.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -400,6 +475,7 @@ window.Quarto = {
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tipos-variable-aleatoria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
+
 <pre class="mermaid mermaid-js" data-label="fig-tipos-variable-aleatoria">flowchart TD
     A[Variable Aleatoria X] --&gt; B[Discreta]
     A --&gt; C[Continua]
@@ -433,7 +509,7 @@ E[X] = \mu \qquad \text{(esperanza o valor esperado)}
 \]</span></p>
 </section>
 <section id="distribuciones-discretas" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="distribuciones-discretas"><span class="header-section-number">7.3</span> 3.3 Distribuciones Discretas</h2>
+<h2 data-number="7.3" class="anchored" data-anchor-id="distribuciones-discretas"><span class="header-section-number">7.3</span> Distribuciones Discretas</h2>
 <section id="bernoulli" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="bernoulli"><span class="header-section-number">7.3.1</span> Bernoulli</h3>
 <p>Modela un único experimento con dos resultados posibles: éxito (1) o fracaso (0), con probabilidad de éxito <span class="math inline">\(p\)</span>.</p>
@@ -443,7 +519,7 @@ P(X = x) = p^x (1-p)^{1-x}, \quad x \in \{0, 1\}
 <p><span class="math display">\[
 E[X] = p \qquad \text{Var}(X) = p(1-p)
 \]</span></p>
-<p><strong>Ejemplo</strong>: si <span class="math inline">\(p = 0.3\)</span> es la probabilidad de que un cliente convierta tras ver un anuncio, <span class="math inline">\(X\)</span> es la variable que vale 1 si convierte y 0 si no.</p>
+<p><strong>Ejemplo</strong>: si <span class="math inline">\(p = 0{,}3\)</span> es la probabilidad de que un cliente convierta tras ver un anuncio, <span class="math inline">\(X\)</span> es la variable que vale 1 si convierte y 0 si no.</p>
 </section>
 <section id="binomial" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="binomial"><span class="header-section-number">7.3.2</span> Binomial</h3>
@@ -454,8 +530,8 @@ P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n
 <p><span class="math display">\[
 E[X] = np \qquad \text{Var}(X) = np(1-p)
 \]</span></p>
-<p><strong>Ejemplo</strong>: de 50 clientes que ven el anuncio, ¿cuántos convertirán? <span class="math inline">\(X \sim \text{Binomial}(n=50, p=0.3)\)</span>.</p>
-<div id="0874d1f2" class="cell" data-execution_count="2">
+<p><strong>Ejemplo</strong>: de 50 clientes que ven el anuncio, ¿cuántos convertirán? <span class="math inline">\(X \sim \text{Binomial}(n=50, p=0{,}3)\)</span>.</p>
+<div id="10781474" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> distributions <span class="im">as</span> dist</span>
@@ -479,7 +555,7 @@ P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
 E[X] = \lambda \qquad \text{Var}(X) = \lambda
 \]</span></p>
 <p><strong>Ejemplo</strong>: si un servidor recibe en media <span class="math inline">\(\lambda = 4\)</span> peticiones fallidas por minuto, ¿cuál es la probabilidad de que reciba exactamente 6 en el próximo minuto?</p>
-<div id="ae313ca1" class="cell" data-execution_count="3">
+<div id="9afc58b2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_6 <span class="op">=</span> dist.poisson_pmf(k<span class="op">=</span><span class="dv">6</span>, lam<span class="op">=</span><span class="dv">4</span>)</span>
@@ -493,10 +569,10 @@ E[X] = \lambda \qquad \text{Var}(X) = \lambda
 </section>
 </section>
 <section id="distribuciones-continuas" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="distribuciones-continuas"><span class="header-section-number">7.4</span> 3.4 Distribuciones Continuas</h2>
+<h2 data-number="7.4" class="anchored" data-anchor-id="distribuciones-continuas"><span class="header-section-number">7.4</span> Distribuciones Continuas</h2>
 <section id="uniforme" class="level3" data-number="7.4.1">
 <h3 data-number="7.4.1" class="anchored" data-anchor-id="uniforme"><span class="header-section-number">7.4.1</span> Uniforme</h3>
-<p>Todos los valores en un intervalo <span class="math inline">\([a, b]\)</span> son igual de probables.</p>
+<p>La probabilidad se reparte de forma homogénea en un intervalo <span class="math inline">\([a, b]\)</span>: subintervalos de la misma longitud tienen la misma probabilidad.</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{b-a}, \quad a \le x \le b
 \]</span></p>
@@ -506,15 +582,15 @@ E[X] = \frac{a+b}{2} \qquad \text{Var}(X) = \frac{(b-a)^2}{12}
 </section>
 <section id="normal-gaussiana" class="level3" data-number="7.4.2">
 <h3 data-number="7.4.2" class="anchored" data-anchor-id="normal-gaussiana"><span class="header-section-number">7.4.2</span> Normal (Gaussiana)</h3>
-<p>La distribución continua más importante en estadística, por su papel central en el Teorema Central del Límite (sección 3.5).</p>
+<p>La distribución continua más importante en estadística, por su papel central en el Teorema Central del Límite (lo vemos al final de este módulo).</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 \]</span></p>
 <p><span class="math display">\[
 E[X] = \mu \qquad \text{Var}(X) = \sigma^2
 \]</span></p>
-<p>Es simétrica alrededor de <span class="math inline">\(\mu\)</span>, y la conocida “regla 68-95-99.7” indica que aproximadamente el 68% de la probabilidad cae dentro de <span class="math inline">\(\pm 1\sigma\)</span>, el 95% dentro de <span class="math inline">\(\pm 2\sigma\)</span>, y el 99.7% dentro de <span class="math inline">\(\pm 3\sigma\)</span>.</p>
-<div id="4fff5766" class="cell" data-execution_count="4">
+<p>Es simétrica alrededor de <span class="math inline">\(\mu\)</span>, y la conocida “regla 68-95-99,7” indica que aproximadamente el 68% de la probabilidad cae dentro de <span class="math inline">\(\pm 1\sigma\)</span>, el 95% dentro de <span class="math inline">\(\pm 2\sigma\)</span>, y el 99,7% dentro de <span class="math inline">\(\pm 3\sigma\)</span>.</p>
+<div id="beeb6c55" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidad acumulada P(X &lt;= 1.96) para una Normal estándar</span></span>
@@ -538,55 +614,416 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
 <p><strong>Ejemplo</strong>: si los tickets de soporte llegan a una tasa de <span class="math inline">\(\lambda = 4\)</span> por hora (Poisson), el tiempo entre tickets consecutivos sigue una Exponencial con <span class="math inline">\(E[X] = 1/4\)</span> horas = 15 minutos.</p>
 </section>
 </section>
-<section id="el-teorema-central-del-límite" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="el-teorema-central-del-límite"><span class="header-section-number">7.5</span> 3.5 El Teorema Central del Límite</h2>
-<p>Este es, posiblemente, el resultado más importante de toda la estadística inferencial, y el motivo por el que la distribución Normal aparece constantemente incluso cuando los datos originales no son normales.</p>
-<blockquote class="blockquote">
-<p><strong>Teorema Central del Límite (TCL)</strong>: si tomamos muestras aleatorias de tamaño <span class="math inline">\(n\)</span> (suficientemente grande) de <em>cualquier</em> población con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span> finita, la distribución de la <strong>media muestral</strong> <span class="math inline">\(\bar{X}\)</span> se aproxima a una distribución Normal:</p>
+<section id="función-de-distribución-cuantiles-y-tipificación" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="función-de-distribución-cuantiles-y-tipificación"><span class="header-section-number">7.5</span> Función de distribución, cuantiles y tipificación</h2>
+<section id="función-de-distribución" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="función-de-distribución"><span class="header-section-number">7.5.1</span> Función de distribución</h3>
+<p>La <strong>función de distribución</strong> (o función de distribución acumulada, cdf) de cualquier variable aleatoria es</p>
 <p><span class="math display">\[
-\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \quad \text{cuando } n \to \infty
+F(x) = P(X \le x).
 \]</span></p>
-</blockquote>
-<p>Lo notable es que esto es cierto <strong>sin importar la forma de la distribución original</strong> — puede ser una Exponencial muy asimétrica, una Uniforme, o cualquier otra cosa. Al promediar muchas observaciones, ese promedio tiende a comportarse como una Normal.</p>
-<p>Podemos verlo empíricamente simulando muchas muestras de una población muy asimétrica (una Exponencial) y observando cómo se distribuyen sus medias muestrales:</p>
-<div id="797f7a2c" class="cell" data-execution_count="5">
+<p>Crece de 0 a 1 a medida que <span class="math inline">\(x\)</span> aumenta y sirve para calcular la probabilidad de cualquier intervalo: <span class="math inline">\(P(a &lt; X \le b) = F(b) - F(a)\)</span>. En una variable discreta, <span class="math inline">\(F(x)\)</span> suma las probabilidades de los valores menores o iguales que <span class="math inline">\(x\)</span>; en una continua, es el área bajo la densidad a la izquierda de <span class="math inline">\(x\)</span>.</p>
+</section>
+<section id="cuantiles" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="cuantiles"><span class="header-section-number">7.5.2</span> Cuantiles</h3>
+<p>El <strong>cuantil</strong> de orden <span class="math inline">\(p\)</span> es el valor <span class="math inline">\(q_p\)</span> que deja por debajo una probabilidad <span class="math inline">\(p\)</span>: <span class="math inline">\(F(q_p) = p\)</span> (en las distribuciones continuas). La mediana es <span class="math inline">\(q_{0{,}5}\)</span>. En inferencia usaremos mucho los cuantiles de la Normal estándar: por ejemplo, <span class="math inline">\(z_{0{,}975} \approx 1{,}96\)</span> deja un 2,5 % de probabilidad en la cola derecha y, por simetría, otro 2,5 % por debajo de <span class="math inline">\(-1{,}96\)</span>.</p>
+<div id="e57df7b3" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> dist.simulate_clt(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    population<span class="op">=</span><span class="st">"exponential"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    population_params<span class="op">=</span>{<span class="st">"lam"</span>: <span class="fl">0.5</span>},</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    sample_size<span class="op">=</span><span class="dv">30</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    n_samples<span class="op">=</span><span class="dv">2000</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    seed<span class="op">=</span><span class="dv">42</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.hist(sample_means, bins<span class="op">=</span><span class="dv">40</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribución de medias muestrales (n=30) de una población Exponencial"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Media muestral"</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frecuencia"</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(Z &lt;= 1,96)      = </span><span class="sc">{</span>dist<span class="sc">.</span>normal_cdf(<span class="fl">1.96</span>)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cuantil 0,975     = </span><span class="sc">{</span>stats<span class="sc">.</span>norm<span class="sc">.</span>ppf(<span class="fl">0.975</span>)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(-1,96 &lt; Z &lt;= 1,96) = </span><span class="sc">{</span>dist<span class="sc">.</span>normal_cdf(<span class="fl">1.96</span>) <span class="op">-</span> dist<span class="sc">.</span>normal_cdf(<span class="op">-</span><span class="fl">1.96</span>)<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>P(Z &lt;= 1,96)      = 0.9750
+Cuantil 0,975     = 1.9600
+P(-1,96 &lt; Z &lt;= 1,96) = 0.9500</code></pre>
+</div>
+</div>
+<p>La función de distribución y la función cuantil son inversas: <code>normal_cdf</code> convierte un valor en probabilidad, y <code>stats.norm.ppf</code> convierte una probabilidad en valor.</p>
+</section>
+<section id="tipificación" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="tipificación"><span class="header-section-number">7.5.3</span> Tipificación</h3>
+<p>Si <span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span>, la variable <strong>tipificada</strong></p>
+<p><span class="math display">\[
+Z = \frac{X - \mu}{\sigma}
+\]</span></p>
+<p>sigue una Normal estándar, <span class="math inline">\(\mathcal{N}(0, 1)\)</span>. Tipificar expresa cada valor como “a cuántas desviaciones típicas está de la media”, lo que permite usar una sola tabla (o una sola función) para cualquier Normal. Por ejemplo, si la estatura de una población sigue una <span class="math inline">\(\mathcal{N}(170, 8^2)\)</span> en centímetros, medir 186 cm equivale a <span class="math inline">\(z = (186 - 170)/8 = 2\)</span>:</p>
+<div id="a9574038" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> (<span class="dv">186</span> <span class="op">-</span> <span class="dv">170</span>) <span class="op">/</span> <span class="dv">8</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"z = </span><span class="sc">{</span>z<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P(X &gt; 186) = P(Z &gt; 2) = </span><span class="sc">{</span><span class="dv">1</span> <span class="op">-</span> dist<span class="sc">.</span>normal_cdf(z)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Directamente:            </span><span class="sc">{</span><span class="dv">1</span> <span class="op">-</span> dist<span class="sc">.</span>normal_cdf(<span class="dv">186</span>, mu<span class="op">=</span><span class="dv">170</span>, sigma<span class="op">=</span><span class="dv">8</span>)<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>z = 2.0
+P(X &gt; 186) = P(Z &gt; 2) = 0.0228
+Directamente:            0.0228</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="distribución-muestral-de-la-media" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="distribución-muestral-de-la-media"><span class="header-section-number">7.6</span> Distribución muestral de la media</h2>
+<p>En inferencia no nos interesa una sola observación, sino un resumen de la muestra, como la media <span class="math inline">\(\bar{X}\)</span>. Como la muestra es aleatoria, <span class="math inline">\(\bar{X}\)</span> también lo es: cada muestra da una media distinta. Su distribución se llama <strong>distribución muestral</strong> de la media. Si <span class="math inline">\(X_1, \dots, X_n\)</span> son independientes y proceden de una población con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>, entonces</p>
+<p><span class="math display">\[
+E[\bar{X}] = \mu, \qquad \text{Var}(\bar{X}) = \frac{\sigma^2}{n}, \qquad
+\text{desviación típica de } \bar{X} = \frac{\sigma}{\sqrt{n}}.
+\]</span></p>
+<p>Es decir, la media muestral se centra en la media poblacional y su dispersión disminuye al crecer <span class="math inline">\(n\)</span>. A esa desviación típica, <span class="math inline">\(\sigma/\sqrt{n}\)</span>, la llamaremos <strong>error estándar</strong> en el Módulo 4. Si además la población es Normal, <span class="math inline">\(\bar{X}\)</span> sigue exactamente una <span class="math inline">\(\mathcal{N}(\mu, \sigma^2/n)\)</span> para cualquier <span class="math inline">\(n\)</span>. Si no lo es, el resultado de la sección siguiente nos dice qué ocurre cuando <span class="math inline">\(n\)</span> es grande.</p>
+</section>
+<section id="el-teorema-central-del-límite" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="el-teorema-central-del-límite"><span class="header-section-number">7.7</span> El Teorema Central del Límite</h2>
+<p>Este es, posiblemente, el resultado más importante de toda la estadística inferencial, y el motivo por el que la distribución Normal aparece constantemente incluso cuando los datos originales no son normales.</p>
+<p>La idea intuitiva es esta: cada observación puede quedar lejos de la media de la población, pero al promediar muchas, los valores altos y bajos tienden a compensarse. Por eso las medias muestrales se agrupan alrededor de <span class="math inline">\(\mu\)</span>, con una dispersión que disminuye al crecer <span class="math inline">\(n\)</span> (su desviación típica es <span class="math inline">\(\sigma/\sqrt{n}\)</span>) y con una forma cada vez más parecida a la de una Normal.</p>
+<blockquote class="blockquote">
+<p><strong>Teorema Central del Límite (TCL)</strong>: sean <span class="math inline">\(X_1, \dots, X_n\)</span> observaciones independientes e idénticamente distribuidas (i.i.d.) de una población con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span> finita y positiva (<span class="math inline">\(0 &lt; \sigma^2 &lt; \infty\)</span>). Entonces, la media muestral <strong>tipificada</strong> converge en distribución a una Normal estándar:</p>
+<p><span class="math display">\[
+Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(0, 1) \quad \text{cuando } n \to \infty.
+\]</span></p>
+<p>En la práctica, para <span class="math inline">\(n\)</span> suficientemente grande, la distribución de <span class="math inline">\(\bar{X}\)</span> puede aproximarse por <span class="math inline">\(\mathcal{N}\left(\mu, \sigma^2/n\right)\)</span> <span class="citation" data-cites="moore2012introduction">(<a href="#ref-moore2012introduction" role="doc-biblioref">Moore et&nbsp;al. 2012</a>)</span>.</p>
+</blockquote>
+<p>Hay que tipificar porque <span class="math inline">\(\bar{X}\)</span>, por sí sola, no tiende a una Normal: al crecer <span class="math inline">\(n\)</span> se concentra cada vez más en torno a <span class="math inline">\(\mu\)</span>. Lo que se estabiliza es su forma una vez centrada y reescalada. Las condiciones i.i.d. y varianza finita y positiva son <em>suficientes</em> para que el resultado se cumpla, pero no las únicas posibles: hay versiones del teorema que las relajan y que quedan fuera de este curso.</p>
+<p>Lo notable es que el límite no depende de la forma de la población: puede ser una Exponencial muy asimétrica, una Uniforme o cualquier otra con varianza finita. Lo que sí depende de la forma es qué significa «suficientemente grande»: con poblaciones simétricas la aproximación es buena con pocas observaciones, y con poblaciones muy asimétricas o con valores extremos hacen falta muestras mayores. La regla habitual <span class="math inline">\(n \ge 30\)</span> es solo orientativa.</p>
+<p>Podemos verlo empíricamente simulando muchas muestras de una población muy asimétrica (una Exponencial) y observando cómo se distribuyen sus medias muestrales:</p>
+<div id="8ee1cfff" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> dist.simulate_clt(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    population<span class="op">=</span><span class="st">"exponential"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    population_params<span class="op">=</span>{<span class="st">"lam"</span>: <span class="fl">0.5</span>},</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    sample_size<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    n_samples<span class="op">=</span><span class="dv">2000</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    seed<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># La población Exponencial(λ = 0,5) tiene μ = 1/λ = 2 y σ = 1/λ = 2</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>mu, sigma, n <span class="op">=</span> <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">30</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> np.linspace(sample_means.<span class="bu">min</span>(), sample_means.<span class="bu">max</span>(), <span class="dv">200</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>plt.hist(sample_means, bins<span class="op">=</span><span class="dv">40</span>, density<span class="op">=</span><span class="va">True</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.6</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>         label<span class="op">=</span><span class="st">"Medias simuladas"</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>plt.plot(xs, [dist.normal_pdf(x, mu, sigma <span class="op">/</span> np.sqrt(n)) <span class="cf">for</span> x <span class="kw">in</span> xs],</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>         color<span class="op">=</span><span class="st">"crimson"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Aproximación Normal del TCL"</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Medias muestrales (n = 30) de una población Exponencial"</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Media muestral"</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Densidad"</span>)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="teoria_files/figure-html/cell-6-output-1.png" width="626" height="452" class="figure-img"></p>
+<p><img src="teoria_files/figure-html/cell-8-output-1.png" alt="Histograma de 2000 medias muestrales de tamaño 30 de una población Exponencial con media 2, con forma de campana ligeramente asimétrica a la derecha, y superpuesta la curva Normal con media 2 y desviación típica 2 dividida por la raíz de 30, que se ajusta bien al histograma." width="664" height="378" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Aunque la población original (Exponencial) es muy asimétrica, la distribución de las medias muestrales ya tiene la forma característica de campana de la Normal. Esto es lo que hace posible, en el próximo módulo, construir intervalos de confianza y contrastes de hipótesis sobre la media de casi cualquier población, apoyándonos únicamente en el tamaño de la muestra.</p>
+<p>Aunque la población original (Exponencial) es muy asimétrica, la distribución de las medias muestrales ya tiene una forma de campana cercana a la Normal, aunque con <span class="math inline">\(n = 30\)</span> todavía conserva una ligera asimetría a la derecha. Esto es lo que hace posible, en el próximo módulo, construir intervalos de confianza y contrastes de hipótesis sobre la media de muchas poblaciones no normales, siempre que las observaciones sean independientes y la muestra sea lo bastante grande.</p>
+<section id="explora-la-aproximación-normal-a-la-binomial" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="explora-la-aproximación-normal-a-la-binomial"><span class="header-section-number">7.7.1</span> Explora: la aproximación Normal a la Binomial</h3>
+<p>Una Binomial<span class="math inline">\((n, p)\)</span> es la suma de <span class="math inline">\(n\)</span> variables Bernoulli independientes, así que, por el TCL, para <span class="math inline">\(n\)</span> grande se parece a una Normal con la misma media, <span class="math inline">\(np\)</span>, y la misma varianza, <span class="math inline">\(np(1-p)\)</span>. Mueve los controles para ver cuándo la aproximación es buena: mejora al aumentar <span class="math inline">\(n\)</span> y empeora cuando <span class="math inline">\(p\)</span> se acerca a 0 o a 1, porque la Binomial se vuelve asimétrica. Una regla práctica habitual pide que <span class="math inline">\(np\)</span> y <span class="math inline">\(n(1-p)\)</span> sean al menos 10 (algunos textos se conforman con 5).</p>
+<div id="aviso-widget-binomial" class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Gráfico interactivo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este gráfico se genera en el navegador y necesita JavaScript y conexión a internet para cargar sus bibliotecas. Si este aviso no desaparece en unos segundos, no se han podido cargar: el resto del capítulo no depende del gráfico, y los mismos cálculos aparecen en el texto y en el código de la sección.</p>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="316" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 315;"><span id="cb12-316"><a href="#cb12-316" aria-hidden="true" tabindex="-1"></a>viewof nb <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">200</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Número de ensayos n"</span>})</span>
+<span id="cb12-317"><a href="#cb12-317" aria-hidden="true" tabindex="-1"></a>viewof pb <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.01</span><span class="op">,</span> <span class="fl">0.99</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.3</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Probabilidad de éxito p"</span>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="322" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 321;"><span id="cb13-322"><a href="#cb13-322" aria-hidden="true" tabindex="-1"></a>binomial <span class="op">=</span> {</span>
+<span id="cb13-323"><a href="#cb13-323" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Función de probabilidad calculada en escala logarítmica (sin desbordamiento)</span></span>
+<span id="cb13-324"><a href="#cb13-324" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb13-325"><a href="#cb13-325" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> lp <span class="op">=</span> nb <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">-</span> pb)<span class="op">;</span></span>
+<span id="cb13-326"><a href="#cb13-326" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;=</span> nb<span class="op">;</span> k<span class="op">++</span>) {</span>
+<span id="cb13-327"><a href="#cb13-327" aria-hidden="true" tabindex="-1"></a>    out<span class="op">.</span><span class="fu">push</span>({k<span class="op">,</span> <span class="dt">prob</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(lp)})<span class="op">;</span></span>
+<span id="cb13-328"><a href="#cb13-328" aria-hidden="true" tabindex="-1"></a>    lp <span class="op">+=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>((nb <span class="op">-</span> k) <span class="op">/</span> (k <span class="op">+</span> <span class="dv">1</span>)) <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(pb <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> pb))<span class="op">;</span></span>
+<span id="cb13-329"><a href="#cb13-329" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-330"><a href="#cb13-330" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb13-331"><a href="#cb13-331" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-332"><a href="#cb13-332" aria-hidden="true" tabindex="-1"></a>mediaB <span class="op">=</span> nb <span class="op">*</span> pb</span>
+<span id="cb13-333"><a href="#cb13-333" aria-hidden="true" tabindex="-1"></a>sdB <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(nb <span class="op">*</span> pb <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> pb))</span>
+<span id="cb13-334"><a href="#cb13-334" aria-hidden="true" tabindex="-1"></a>normalB <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">,</span> mediaB <span class="op">-</span> <span class="dv">4</span> <span class="op">*</span> sdB)<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(nb <span class="op">+</span> <span class="fl">0.5</span><span class="op">,</span> mediaB <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> sdB)<span class="op">,</span> sdB <span class="op">/</span> <span class="dv">25</span>)</span>
+<span id="cb13-335"><a href="#cb13-335" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">dens</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>((x <span class="op">-</span> mediaB) <span class="op">**</span> <span class="dv">2</span>) <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> sdB <span class="op">**</span> <span class="dv">2</span>)) <span class="op">/</span> (sdB <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>))}))</span>
+<span id="cb13-336"><a href="#cb13-336" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb13-337"><a href="#cb13-337" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span></span>
+<span id="cb13-338"><a href="#cb13-338" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"k (número de éxitos)"</span>}<span class="op">,</span></span>
+<span id="cb13-339"><a href="#cb13-339" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Probabilidad / densidad"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb13-340"><a href="#cb13-340" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Binomial(n, p)"</span><span class="op">,</span> <span class="st">"Normal(np, np(1−p))"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"steelblue"</span><span class="op">,</span> <span class="st">"crimson"</span>]}<span class="op">,</span></span>
+<span id="cb13-341"><a href="#cb13-341" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb13-342"><a href="#cb13-342" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>(binomial<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"prob"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb13-343"><a href="#cb13-343" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(normalB<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"dens"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"crimson"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb13-344"><a href="#cb13-344" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
+<span id="cb13-345"><a href="#cb13-345" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb13-346"><a href="#cb13-346" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaLabel</span><span class="op">:</span> <span class="st">"Función de probabilidad de la Binomial con los valores elegidos de n y p, como barras verticales, y la densidad de la Normal con la misma media y varianza como curva roja."</span></span>
+<span id="cb13-347"><a href="#cb13-347" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="351" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 350;"><span id="cb14-351"><a href="#cb14-351" aria-hidden="true" tabindex="-1"></a><span class="fu">md</span><span class="vs">`Con *n* = </span><span class="sc">${</span>nb<span class="sc">}</span><span class="vs"> y *p* = </span><span class="sc">${</span>pb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="st">"."</span><span class="op">,</span> <span class="st">","</span>)<span class="sc">}</span><span class="vs">: *np* = </span><span class="sc">${</span>mediaB<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="st">"."</span><span class="op">,</span> <span class="st">","</span>)<span class="sc">}</span><span class="vs"> y *n*(1 − *p*) = </span><span class="sc">${</span>(nb <span class="op">-</span> mediaB)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="st">"."</span><span class="op">,</span> <span class="st">","</span>)<span class="sc">}</span><span class="vs">. </span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(mediaB<span class="op">,</span> nb <span class="op">-</span> mediaB) <span class="op">&gt;=</span> <span class="dv">10</span> <span class="op">?</span> <span class="st">"Se cumple la regla práctica: la aproximación Normal debería ser buena."</span> <span class="op">:</span> <span class="st">"No se cumple la regla práctica: la aproximación Normal puede ser pobre."</span><span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="356" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 355;"><span id="cb15-356"><a href="#cb15-356" aria-hidden="true" tabindex="-1"></a><span class="co">// Solo llega a ejecutarse si se han cargado las bibliotecas: entonces retira el aviso.</span></span>
+<span id="cb15-357"><a href="#cb15-357" aria-hidden="true" tabindex="-1"></a>avisoBinomial <span class="op">=</span> {</span>
+<span id="cb15-358"><a href="#cb15-358" aria-hidden="true" tabindex="-1"></a>  Plot<span class="op">;</span> Inputs<span class="op">;</span></span>
+<span id="cb15-359"><a href="#cb15-359" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"aviso-widget-binomial"</span>)<span class="op">?.</span><span class="fu">remove</span>()<span class="op">;</span></span>
+<span id="cb15-360"><a href="#cb15-360" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">``</span><span class="op">;</span></span>
+<span id="cb15-361"><a href="#cb15-361" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 </section>
-<section id="cierre" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="cierre"><span class="header-section-number">7.6</span> 3.6 Cierre</h2>
+</section>
+<section id="distribuciones-derivadas-de-la-normal-t-χ²-y-f" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="distribuciones-derivadas-de-la-normal-t-χ²-y-f"><span class="header-section-number">7.8</span> Distribuciones derivadas de la Normal: t, χ² y F</h2>
+<p>Los métodos de los módulos siguientes usan tres distribuciones que se construyen a partir de variables normales. No hace falta memorizar sus fórmulas; basta con saber de dónde salen, qué forma tienen y para qué se usan.</p>
+<ul>
+<li><strong>Chi-cuadrado con <span class="math inline">\(k\)</span> grados de libertad, <span class="math inline">\(\chi^2_k\)</span></strong>: la suma de los cuadrados de <span class="math inline">\(k\)</span> variables <span class="math inline">\(\mathcal{N}(0,1)\)</span> independientes. Solo toma valores positivos y es asimétrica a la derecha. Aparece en el contraste de una varianza (Módulo 4) y en los contrastes chi-cuadrado (Módulo 6).</li>
+<li><strong>t de Student con <span class="math inline">\(k\)</span> grados de libertad, <span class="math inline">\(t_k\)</span></strong>: el cociente <span class="math inline">\(Z / \sqrt{\chi^2_k / k}\)</span>, con <span class="math inline">\(Z\)</span> y <span class="math inline">\(\chi^2_k\)</span> independientes. Es simétrica como la Normal, pero con colas más pesadas, y se parece cada vez más a ella al crecer <span class="math inline">\(k\)</span>. Se usa para las medias cuando <span class="math inline">\(\sigma\)</span> es desconocida (Módulo 4) y para la pendiente de una regresión (Módulo 5).</li>
+<li><strong>F de Snedecor con <span class="math inline">\((k_1, k_2)\)</span> grados de libertad</strong>: el cociente de dos chi-cuadrado independientes divididas por sus grados de libertad. Solo toma valores positivos. Es la distribución del estadístico del ANOVA (Módulo 6).</li>
+</ul>
+<div id="fda97b0d" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">400</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plt.plot(xs, stats.norm.pdf(xs), color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Normal estándar"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, color <span class="kw">in</span> [(<span class="dv">2</span>, <span class="st">"crimson"</span>), (<span class="dv">5</span>, <span class="st">"darkorange"</span>), (<span class="dv">30</span>, <span class="st">"steelblue"</span>)]:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    plt.plot(xs, stats.t.pdf(xs, k), color<span class="op">=</span>color, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="ss">f"t con </span><span class="sc">{</span>k<span class="sc">}</span><span class="ss"> g.l."</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"La t de Student se acerca a la Normal al aumentar los grados de libertad"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Densidad"</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria_files/figure-html/cell-9-output-1.png" alt="Densidades de la t de Student con 2, 5 y 30 grados de libertad comparadas con la Normal estándar: todas son simétricas en torno a 0, las de pocos grados de libertad tienen colas más altas y la de 30 grados de libertad casi coincide con la Normal." width="673" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ideas clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Una distribución de probabilidad describe todos los valores de una variable aleatoria y sus probabilidades.</li>
+<li>La función de distribución <span class="math inline">\(F(x) = P(X \le x)\)</span> da probabilidades de intervalos; los cuantiles son su inversa.</li>
+<li>Tipificar, <span class="math inline">\(Z = (X-\mu)/\sigma\)</span>, reduce cualquier Normal a la Normal estándar.</li>
+<li>La media muestral tiene media <span class="math inline">\(\mu\)</span> y desviación típica <span class="math inline">\(\sigma/\sqrt{n}\)</span>; por el TCL, para <span class="math inline">\(n\)</span> grande es aproximadamente Normal.</li>
+<li>Las distribuciones t, χ² y F se construyen a partir de la Normal y son la base de los contrastes de los módulos 4 a 6.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="autoevaluación" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="autoevaluación"><span class="header-section-number">7.9</span> Autoevaluación</h2>
+<p>Intenta responder cada pregunta antes de desplegar la respuesta.</p>
+<p><strong>1.</strong> Una centralita recibe de media 3 llamadas por hora, de forma independiente. ¿Qué distribución modela el número de llamadas en una hora y cuál es la probabilidad de que no llegue ninguna?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Una Poisson con <span class="math inline">\(\lambda = 3\)</span>. <span class="math inline">\(P(X = 0) = e^{-3} \approx 0{,}050\)</span>.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> <span class="math inline">\(X \sim \mathcal{N}(100, 15^2)\)</span>. ¿Cuánto vale aproximadamente <span class="math inline">\(P(X &gt; 130)\)</span>?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Tipificando, <span class="math inline">\(z = (130 - 100)/15 = 2\)</span>, y <span class="math inline">\(P(Z &gt; 2) \approx 0{,}023\)</span>: algo más del 2 % de los valores supera 130.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Si <span class="math inline">\(X \sim \text{Binomial}(20;\ 0{,}5)\)</span>, ¿cuáles son su media y su varianza?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(E[X] = np = 10\)</span> y <span class="math inline">\(\text{Var}(X) = np(1-p) = 5\)</span> (desviación típica <span class="math inline">\(\sqrt{5} \approx 2{,}24\)</span>).</p>
+</div>
+</div>
+</div>
+<p><strong>4.</strong> ¿Dice el Teorema Central del Límite que, con una muestra grande, los datos siguen una distribución Normal?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No.&nbsp;Los datos conservan la distribución de la población, sea cual sea. Lo que se aproxima a una Normal es la distribución de la <strong>media muestral</strong> (tipificada) cuando el tamaño de la muestra crece.</p>
+</div>
+</div>
+</div>
+<p><strong>5.</strong> Los tickets de soporte llegan en promedio cada 15 minutos (proceso de Poisson). ¿Cuál es la tasa <span class="math inline">\(\lambda\)</span> por hora y la probabilidad de esperar más de media hora hasta el siguiente?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\lambda = 4\)</span> tickets por hora. El tiempo de espera es Exponencial y <span class="math inline">\(P(T &gt; 0{,}5) = e^{-4 \cdot 0{,}5} = e^{-2} \approx 0{,}135\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cierre" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="cierre"><span class="header-section-number">7.10</span> Cierre</h2>
 <p>En este módulo hemos pasado de sucesos individuales (Módulo 2) a variables aleatorias completas: sus distribuciones discretas (Bernoulli, Binomial, Poisson) y continuas (Uniforme, Normal, Exponencial), junto con sus medidas resumen (<span class="math inline">\(E[X]\)</span>, <span class="math inline">\(\text{Var}(X)\)</span>). El Teorema Central del Límite cierra el módulo como puente formal hacia el Módulo 4, donde usaremos estas herramientas para hacer inferencia sobre poblaciones a partir de muestras.</p>
-<p>Continúa con el cuaderno práctico (<code>practica.ipynb</code>).</p>
+<p>Continúa con la <a href="../../notebooks/03_distribuciones/practica.html">práctica del módulo</a>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-moore2012introduction" class="csl-entry" role="listitem">
+Moore, David S., George P. McCabe, y Bruce A. Craig. 2012. <em>Introduction to the Practice of Statistics</em>. 7.ª ed. W.H. Freeman; Company.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBuYiA9IElucHV0cy5yYW5nZShbMSwgMjAwXSwge3ZhbHVlOiAyMCwgc3RlcDogMSwgbGFiZWw6IFwiTsO6bWVybyBkZSBlbnNheW9zIG5cIn0pXG52aWV3b2YgcGIgPSBJbnB1dHMucmFuZ2UoWzAuMDEsIDAuOTldLCB7dmFsdWU6IDAuMywgc3RlcDogMC4wMSwgbGFiZWw6IFwiUHJvYmFiaWxpZGFkIGRlIMOpeGl0byBwXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYmlub21pYWwgPSB7XG4gIC8vIEZ1bmNpw7NuIGRlIHByb2JhYmlsaWRhZCBjYWxjdWxhZGEgZW4gZXNjYWxhIGxvZ2Fyw610bWljYSAoc2luIGRlc2JvcmRhbWllbnRvKVxuICBjb25zdCBvdXQgPSBbXTtcbiAgbGV0IGxwID0gbmIgKiBNYXRoLmxvZygxIC0gcGIpO1xuICBmb3IgKGxldCBrID0gMDsgayA8PSBuYjsgaysrKSB7XG4gICAgb3V0LnB1c2goe2ssIHByb2I6IE1hdGguZXhwKGxwKX0pO1xuICAgIGxwICs9IE1hdGgubG9nKChuYiAtIGspIC8gKGsgKyAxKSkgKyBNYXRoLmxvZyhwYiAvICgxIC0gcGIpKTtcbiAgfVxuICByZXR1cm4gb3V0O1xufVxubWVkaWFCID0gbmIgKiBwYlxuc2RCID0gTWF0aC5zcXJ0KG5iICogcGIgKiAoMSAtIHBiKSlcbm5vcm1hbEIgPSBkMy5yYW5nZShNYXRoLm1heCgtMC41LCBtZWRpYUIgLSA0ICogc2RCKSwgTWF0aC5taW4obmIgKyAwLjUsIG1lZGlhQiArIDQgKiBzZEIpLCBzZEIgLyAyNSlcbiAgLm1hcCh4ID0+ICh7eCwgZGVuczogTWF0aC5leHAoLSgoeCAtIG1lZGlhQikgKiogMikgLyAoMiAqIHNkQiAqKiAyKSkgLyAoc2RCICogTWF0aC5zcXJ0KDIgKiBNYXRoLlBJKSl9KSlcblBsb3QucGxvdCh7XG4gIGhlaWdodDogMzAwLFxuICB4OiB7bGFiZWw6IFwiayAobsO6bWVybyBkZSDDqXhpdG9zKVwifSxcbiAgeToge2xhYmVsOiBcIlByb2JhYmlsaWRhZCAvIGRlbnNpZGFkXCIsIGdyaWQ6IHRydWV9LFxuICBjb2xvcjoge2xlZ2VuZDogdHJ1ZSwgZG9tYWluOiBbXCJCaW5vbWlhbChuLCBwKVwiLCBcIk5vcm1hbChucCwgbnAoMeKIknApKVwiXSwgcmFuZ2U6IFtcInN0ZWVsYmx1ZVwiLCBcImNyaW1zb25cIl19LFxuICBtYXJrczogW1xuICAgIFBsb3QucnVsZVgoYmlub21pYWwsIHt4OiBcImtcIiwgeTogXCJwcm9iXCIsIHN0cm9rZTogXCJzdGVlbGJsdWVcIiwgc3Ryb2tlV2lkdGg6IDN9KSxcbiAgICBQbG90LmxpbmUobm9ybWFsQiwge3g6IFwieFwiLCB5OiBcImRlbnNcIiwgc3Ryb2tlOiBcImNyaW1zb25cIiwgc3Ryb2tlV2lkdGg6IDJ9KSxcbiAgICBQbG90LnJ1bGVZKFswXSlcbiAgXSxcbiAgYXJpYUxhYmVsOiBcIkZ1bmNpw7NuIGRlIHByb2JhYmlsaWRhZCBkZSBsYSBCaW5vbWlhbCBjb24gbG9zIHZhbG9yZXMgZWxlZ2lkb3MgZGUgbiB5IHAsIGNvbW8gYmFycmFzIHZlcnRpY2FsZXMsIHkgbGEgZGVuc2lkYWQgZGUgbGEgTm9ybWFsIGNvbiBsYSBtaXNtYSBtZWRpYSB5IHZhcmlhbnphIGNvbW8gY3VydmEgcm9qYS5cIlxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYENvbiAqbiogPSAke25ifSB5ICpwKiA9ICR7cGIudG9GaXhlZCgyKS5yZXBsYWNlKFwiLlwiLCBcIixcIil9OiAqbnAqID0gJHttZWRpYUIudG9GaXhlZCgxKS5yZXBsYWNlKFwiLlwiLCBcIixcIil9IHkgKm4qKDEg4oiSICpwKikgPSAkeyhuYiAtIG1lZGlhQikudG9GaXhlZCgxKS5yZXBsYWNlKFwiLlwiLCBcIixcIil9LiAke01hdGgubWluKG1lZGlhQiwgbmIgLSBtZWRpYUIpID49IDEwID8gXCJTZSBjdW1wbGUgbGEgcmVnbGEgcHLDoWN0aWNhOiBsYSBhcHJveGltYWNpw7NuIE5vcm1hbCBkZWJlcsOtYSBzZXIgYnVlbmEuXCIgOiBcIk5vIHNlIGN1bXBsZSBsYSByZWdsYSBwcsOhY3RpY2E6IGxhIGFwcm94aW1hY2nDs24gTm9ybWFsIHB1ZWRlIHNlciBwb2JyZS5cIn1gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBTb2xvIGxsZWdhIGEgZWplY3V0YXJzZSBzaSBzZSBoYW4gY2FyZ2FkbyBsYXMgYmlibGlvdGVjYXM6IGVudG9uY2VzIHJldGlyYSBlbCBhdmlzby5cbmF2aXNvQmlub21pYWwgPSB7XG4gIFBsb3Q7IElucHV0cztcbiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJhdmlzby13aWRnZXQtYmlub21pYWxcIik/LnJlbW92ZSgpO1xuICByZXR1cm4gaHRtbGBgO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduYicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwYicpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../notebooks/03_distribuciones";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -665,7 +1102,8 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -674,8 +1112,69 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -689,6 +1188,7 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -851,44 +1351,54 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -987,7 +1497,10 @@ E[X] = \frac{1}{\lambda} \qquad \text{Var}(X) = \frac{1}{\lambda^2}
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation" aria-label="Página">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/02_probabilidad/practica.html" class="pagination-link" aria-label="Práctica: Probabilidad Básica">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Práctica: Probabilidad Básica</span></span>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,24 +64,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../notebooks/07_proyecto_integrador/practica.html" rel="next">
 <link href="../../notebooks/06_anova_chi2/teoria.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,22 +111,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -135,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Sitio web">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
@@ -159,13 +193,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 1 — Estadística Descriptiva</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Módulo 1 — Estadística Descriptiva</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
@@ -188,13 +219,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 2 — Probabilidad Básica</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Módulo 2 — Probabilidad Básica</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
@@ -211,13 +239,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 3 — Distribuciones de Probabilidad</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Módulo 3 — Distribuciones de Probabilidad</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
@@ -234,13 +259,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 4 — Inferencia Estadística</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Módulo 4 — Inferencia Estadística</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
@@ -257,13 +279,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 5 — Correlación y Regresión Lineal</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Módulo 5 — Correlación y Regresión Lineal</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link">
@@ -280,13 +299,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
@@ -301,27 +317,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">Proyecto integrador</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/07_proyecto_integrador/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Proyecto integrador: ¿qué se asocia con la calidad del sueño?</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">Apéndices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/que_prueba_usar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">¿Qué prueba usar?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Notación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Glosario</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#anova-efectividad-de-3-tratamientos-médicos" id="toc-anova-efectividad-de-3-tratamientos-médicos" class="nav-link active" data-scroll-target="#anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">14.1</span> 1. ANOVA: efectividad de 3 tratamientos médicos</a></li>
-  <li><a href="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" id="toc-chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="nav-link" data-scroll-target="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">14.2</span> 2. Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</a></li>
-  <li><a href="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" id="toc-mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="nav-link" data-scroll-target="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">14.3</span> 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app</a></li>
-  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">14.4</span> Ejercicios propuestos</a></li>
+  <li><a href="#anova-efectividad-de-3-tratamientos-médicos" id="toc-anova-efectividad-de-3-tratamientos-médicos" class="nav-link active" data-scroll-target="#anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">14.1</span> ANOVA: efectividad de 3 tratamientos médicos</a></li>
+  <li><a href="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" id="toc-chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="nav-link" data-scroll-target="#chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">14.2</span> Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</a></li>
+  <li><a href="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" id="toc-mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="nav-link" data-scroll-target="#mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">14.3</span> Mann-Whitney U: valoraciones no normales de dos versiones de una app</a></li>
+  <li><a href="#caso-real-estrés-según-el-tipo-de-trastorno-del-sueño" id="toc-caso-real-estrés-según-el-tipo-de-trastorno-del-sueño" class="nav-link" data-scroll-target="#caso-real-estrés-según-el-tipo-de-trastorno-del-sueño"><span class="header-section-number">14.4</span> Caso real: estrés según el tipo de trastorno del sueño</a></li>
+  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="header-section-number">14.5</span> Ejercicios propuestos</a></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones"><span class="header-section-number">14.6</span> Soluciones</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/06_anova_chi2/practica.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/teoria.html">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</a></li><li class="breadcrumb-item"><a href="../../notebooks/06_anova_chi2/practica.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Práctica: ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></h1>
 </div>
@@ -341,134 +399,562 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>En este cuaderno comparamos tres tratamientos médicos con ANOVA, estudiamos la asociación entre dos variables categóricas con un test Chi-cuadrado sobre una tabla de contingencia, y aplicamos Mann-Whitney U cuando los datos no siguen una distribución Normal.</p>
-<div id="cell-1" class="cell">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ejecutar este cuaderno
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://colab.research.google.com/github/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/06_anova_chi2/practica.ipynb">Abrir en Google Colab</a></li>
+<li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/blob/main/notebooks/06_anova_chi2/practica.ipynb">Ver o descargar el cuaderno en GitHub</a> (botón <em>Download raw file</em>)</li>
+<li>Para trabajar en tu ordenador, descarga el <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/archive/refs/heads/main.zip">repositorio completo</a>: el cuaderno necesita la librería <code>src/stats_toolkit</code> y los datos del curso. Las instrucciones de instalación están en el archivo <code>README.md</code>.</li>
+</ul>
+<p>La celda siguiente solo actúa en Google Colab: descarga el repositorio del curso, instala las bibliotecas que falten y se sitúa en la carpeta de este cuaderno. Si instala o actualiza alguna, te pedirá que reinicies la sesión y vuelvas a ejecutar el cuaderno. En tu ordenador no hace nada.</p>
+</div>
+</div>
+<div id="30c07102" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> group_comparisons <span class="im">as</span> gc</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solo en Google Colab: descarga el repositorio del curso (stats_toolkit y datos),</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># instala las bibliotecas que falten y se sitúa en la carpeta de este cuaderno.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># En otro entorno (tu ordenador, la web del curso) no hace nada.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> importlib.metadata <span class="im">import</span> PackageNotFoundError, version</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    repo <span class="op">=</span> <span class="st">"/content/Curso-de-Estadistica-Basica"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(repo):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        subprocess.run([<span class="st">"git"</span>, <span class="st">"clone"</span>, <span class="st">"--depth"</span>, <span class="st">"1"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"https://github.com/JulioUQ/Curso-de-Estadistica-Basica.git"</span>, repo], check<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bibliotecas de cálculo de requirements.txt (Jupyter ya viene con Colab).</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f"</span><span class="sc">{</span>repo<span class="sc">}</span><span class="ss">/requirements.txt"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        requisitos <span class="op">=</span> [linea.split(<span class="st">"#"</span>)[<span class="dv">0</span>].strip() <span class="cf">for</span> linea <span class="kw">in</span> f]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    requisitos <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> requisitos <span class="cf">if</span> r <span class="kw">and</span> r <span class="kw">not</span> <span class="kw">in</span> (<span class="st">"jupyter"</span>, <span class="st">"ipykernel"</span>, <span class="st">"nbclient"</span>, <span class="st">"nbformat"</span>)]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    nombres <span class="op">=</span> [r.split(<span class="st">"&gt;="</span>)[<span class="dv">0</span>] <span class="cf">for</span> r <span class="kw">in</span> requisitos]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> versiones():</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> {}</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> n <span class="kw">in</span> nombres:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                res[n] <span class="op">=</span> version(n)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> PackageNotFoundError:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                res[n] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    antes <span class="op">=</span> versiones()</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    subprocess.run([sys.executable, <span class="st">"-m"</span>, <span class="st">"pip"</span>, <span class="st">"install"</span>, <span class="st">"-q"</span>, <span class="op">*</span>requisitos], check<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    cambiadas <span class="op">=</span> [n <span class="cf">for</span> n, v <span class="kw">in</span> versiones().items() <span class="cf">if</span> v <span class="op">!=</span> antes[n]]</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> cambiadas:</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Se han instalado o actualizado:"</span>, <span class="st">", "</span>.join(cambiadas))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Reinicia la sesión (menú «Entorno de ejecución») y vuelve a ejecutar el cuaderno."</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    os.chdir(<span class="ss">f"</span><span class="sc">{</span>repo<span class="sc">}</span><span class="ss">/notebooks/06_anova_chi2"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="60478733" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../../src"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> group_comparisons <span class="im">as</span> gc</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> (<span class="dv">8</span>, <span class="fl">4.5</span>)  <span class="co"># tamaño común de las figuras de una sola gráfica</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <section id="anova-efectividad-de-3-tratamientos-médicos" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">14.1</span> 1. ANOVA: efectividad de 3 tratamientos médicos</h2>
+<h2 data-number="14.1" class="anchored" data-anchor-id="anova-efectividad-de-3-tratamientos-médicos"><span class="header-section-number">14.1</span> ANOVA: efectividad de 3 tratamientos médicos</h2>
 <p>Comparamos el tiempo de recuperación (en días) de pacientes bajo tres tratamientos distintos.</p>
-<div id="cell-3" class="cell">
+<div id="ff7ae8db" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">5</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tratamiento_a <span class="op">=</span> rng.normal(<span class="dv">6</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tratamiento_b <span class="op">=</span> rng.normal(<span class="fl">8.5</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>tratamiento_c <span class="op">=</span> rng.normal(<span class="dv">5</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.boxplot([tratamiento_a, tratamiento_b, tratamiento_c], labels<span class="op">=</span>[<span class="st">"Tratamiento A"</span>, <span class="st">"Tratamiento B"</span>, <span class="st">"Tratamiento C"</span>])</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Días de recuperación"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Tiempo de recuperación por tratamiento"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">5</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tratamiento_a <span class="op">=</span> rng.normal(<span class="dv">6</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tratamiento_b <span class="op">=</span> rng.normal(<span class="fl">8.5</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>tratamiento_c <span class="op">=</span> rng.normal(<span class="dv">5</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.boxplot([tratamiento_a, tratamiento_b, tratamiento_c], tick_labels<span class="op">=</span>[<span class="st">"Tratamiento A"</span>, <span class="st">"Tratamiento B"</span>, <span class="st">"Tratamiento C"</span>])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Tratamiento"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Días de recuperación"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Tiempo de recuperación por tratamiento"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img" alt="Diagramas de caja de los días de recuperación con los tratamientos A, B y C: el tratamiento B tiene valores claramente más altos que A y C."></p>
+</figure>
 </div>
-<div id="cell-4" class="cell">
+</div>
+</div>
+<div id="3c5abaff" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>f_stat, p_value <span class="op">=</span> gc.anova_one_way(tratamiento_a, tratamiento_b, tratamiento_c)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"F = </span><span class="sc">{</span>f_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Al menos un tratamiento difiere significativamente de los demás."</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de diferencias entre tratamientos."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>f_stat, p_value <span class="op">=</span> gc.anova_one_way(tratamiento_a, tratamiento_b, tratamiento_c)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"F = </span><span class="sc">{</span>f_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hay evidencia de que no todos los tratamientos tienen la misma media."</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de diferencias entre tratamientos."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>F = 43.341, p-valor = 6.14e-11
+Hay evidencia de que no todos los tratamientos tienen la misma media.</code></pre>
+</div>
 </div>
 </section>
 <section id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">14.2</span> 2. Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</h2>
+<h2 data-number="14.2" class="anchored" data-anchor-id="chi-cuadrado-segmento-de-cliente-vs.-producto-preferido"><span class="header-section-number">14.2</span> Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido</h2>
 <p>Construimos una tabla de contingencia a partir de datos simulados de clientes y comprobamos si el segmento de edad está asociado con el producto que prefieren.</p>
-<div id="cell-6" class="cell">
+<div id="8e443838" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">9</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n_clientes <span class="op">=</span> <span class="dv">300</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>segmento <span class="op">=</span> rng.choice([<span class="st">"Joven"</span>, <span class="st">"Adulto"</span>, <span class="st">"Senior"</span>], size<span class="op">=</span>n_clientes, p<span class="op">=</span>[<span class="fl">0.4</span>, <span class="fl">0.35</span>, <span class="fl">0.25</span>])</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># La preferencia depende del segmento (para que haya una asociación real que detectar)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>prob_digital <span class="op">=</span> {<span class="st">"Joven"</span>: <span class="fl">0.8</span>, <span class="st">"Adulto"</span>: <span class="fl">0.5</span>, <span class="st">"Senior"</span>: <span class="fl">0.2</span>}</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>producto <span class="op">=</span> [</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    rng.choice([<span class="st">"Digital"</span>, <span class="st">"Físico"</span>], p<span class="op">=</span>[prob_digital[s], <span class="dv">1</span> <span class="op">-</span> prob_digital[s]])</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> segmento</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>tabla <span class="op">=</span> gc.build_contingency_table(segmento, producto)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>tabla</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">9</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n_clientes <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>segmento <span class="op">=</span> rng.choice([<span class="st">"Joven"</span>, <span class="st">"Adulto"</span>, <span class="st">"Senior"</span>], size<span class="op">=</span>n_clientes, p<span class="op">=</span>[<span class="fl">0.4</span>, <span class="fl">0.35</span>, <span class="fl">0.25</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># La preferencia depende del segmento (para que haya una asociación real que detectar)</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>prob_digital <span class="op">=</span> {<span class="st">"Joven"</span>: <span class="fl">0.8</span>, <span class="st">"Adulto"</span>: <span class="fl">0.5</span>, <span class="st">"Senior"</span>: <span class="fl">0.2</span>}</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>producto <span class="op">=</span> [</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    rng.choice([<span class="st">"Digital"</span>, <span class="st">"Físico"</span>], p<span class="op">=</span>[prob_digital[s], <span class="dv">1</span> <span class="op">-</span> prob_digital[s]])</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> segmento</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>tabla <span class="op">=</span> gc.build_contingency_table(segmento, producto)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>tabla</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Y</th>
+<th data-quarto-table-cell-role="th">Digital</th>
+<th data-quarto-table-cell-role="th">Físico</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">X</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Adulto</th>
+<td>61</td>
+<td>51</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Joven</th>
+<td>88</td>
+<td>22</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Senior</th>
+<td>15</td>
+<td>63</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div id="cell-7" class="cell">
+</div>
+</div>
+<div id="e93b01e2" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value, dof, esperadas <span class="op">=</span> gc.chi2_test_independence(tabla)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Chi² = </span><span class="sc">{</span>chi2_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">, g.l. = </span><span class="sc">{</span>dof<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Frecuencias esperadas bajo independencia:"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame(esperadas, index<span class="op">=</span>tabla.index, columns<span class="op">=</span>tabla.columns).<span class="bu">round</span>(<span class="dv">1</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Hay evidencia de asociación entre segmento y producto preferido."</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">No hay evidencia suficiente de asociación."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value, dof, esperadas <span class="op">=</span> gc.chi2_test_independence(tabla)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Chi² = </span><span class="sc">{</span>chi2_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">, g.l. = </span><span class="sc">{</span>dof<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Frecuencias esperadas bajo independencia:"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame(esperadas, index<span class="op">=</span>tabla.index, columns<span class="op">=</span>tabla.columns).<span class="bu">round</span>(<span class="dv">1</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Hay evidencia de asociación entre segmento y producto preferido."</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">No hay evidencia suficiente de asociación."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi² = 68.010, p-valor = 1.7e-15, g.l. = 2
+
+Frecuencias esperadas bajo independencia:
+Y       Digital  Físico
+X                      
+Adulto     61.2    50.8
+Joven      60.1    49.9
+Senior     42.6    35.4
+
+Hay evidencia de asociación entre segmento y producto preferido.</code></pre>
+</div>
 </div>
 </section>
 <section id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">14.3</span> 3. Mann-Whitney U: valoraciones no normales de dos versiones de una app</h2>
+<h2 data-number="14.3" class="anchored" data-anchor-id="mann-whitney-u-valoraciones-no-normales-de-dos-versiones-de-una-app"><span class="header-section-number">14.3</span> Mann-Whitney U: valoraciones no normales de dos versiones de una app</h2>
 <p>Simulamos valoraciones (escala 1-10) claramente no normales: la versión 1 tiene valoraciones polarizadas (o encanta o decepciona), mientras que la versión 2 tiene valoraciones más consistentes.</p>
-<div id="cell-9" class="cell">
+<div id="4868878c" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">11</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribución bimodal: mezcla de valoraciones muy bajas y muy altas</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>valoraciones_v1 <span class="op">=</span> np.concatenate([</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    rng.integers(<span class="dv">1</span>, <span class="dv">4</span>, size<span class="op">=</span><span class="dv">15</span>),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    rng.integers(<span class="dv">8</span>, <span class="dv">11</span>, size<span class="op">=</span><span class="dv">15</span>),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>valoraciones_v2 <span class="op">=</span> rng.integers(<span class="dv">5</span>, <span class="dv">8</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].hist(valoraciones_v1, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">12</span>), edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Versión 1 (polarizada)"</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].hist(valoraciones_v2, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">12</span>), edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Versión 2 (consistente)"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Valoración"</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">11</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribución bimodal: mezcla de valoraciones muy bajas y muy altas</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>valoraciones_v1 <span class="op">=</span> np.concatenate([</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    rng.integers(<span class="dv">1</span>, <span class="dv">4</span>, size<span class="op">=</span><span class="dv">15</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    rng.integers(<span class="dv">8</span>, <span class="dv">11</span>, size<span class="op">=</span><span class="dv">15</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>valoraciones_v2 <span class="op">=</span> rng.integers(<span class="dv">5</span>, <span class="dv">8</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].hist(valoraciones_v1, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">12</span>), edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Versión 1 (polarizada)"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].hist(valoraciones_v2, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">12</span>), edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Versión 2 (consistente)"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Valoración"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Frecuencia"</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Distribución de las valoraciones por versión de la app"</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img" alt="Dos histogramas de valoraciones de 1 a 10. La versión 1 está polarizada: valores entre 1 y 3 y entre 8 y 10, sin valores intermedios. La versión 2 concentra todas las valoraciones entre 5 y 7."></p>
+</figure>
 </div>
-<div id="cell-10" class="cell">
+</div>
+</div>
+<div id="1016c9b3" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>u_stat, p_value <span class="op">=</span> gc.mann_whitney_u(valoraciones_v1, valoraciones_v2)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"U = </span><span class="sc">{</span>u_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media v1: </span><span class="sc">{</span>valoraciones_v1<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> | Media v2: </span><span class="sc">{</span>valoraciones_v2<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Hay diferencia significativa entre las distribuciones de ambas versiones."</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">No hay evidencia suficiente de diferencia entre versiones."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>u_stat, p_value <span class="op">=</span> gc.mann_whitney_u(valoraciones_v1, valoraciones_v2)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"U = </span><span class="sc">{</span>u_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Media v1: </span><span class="sc">{</span>valoraciones_v1<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> | Media v2: </span><span class="sc">{</span>valoraciones_v2<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Hay diferencia significativa entre las distribuciones de ambas versiones."</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">No hay evidencia suficiente de diferencia entre versiones."</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>U = 450.000, p-valor = 1
+Media v1: 5.50 | Media v2: 6.30
+
+No hay evidencia suficiente de diferencia entre versiones.</code></pre>
 </div>
-<p>Fíjate en que ambas versiones pueden tener una media muy similar (por eso un t-test podría no detectar diferencia), pero Mann-Whitney sí puede detectar que sus <strong>distribuciones</strong> son distintas, porque compara la forma completa de los datos vía rangos, no solo la media.</p>
+</div>
+<p>Fíjate en lo que ocurre: las dos versiones tienen distribuciones muy distintas (la v1 polarizada, la v2 concentrada en el centro) y medias parecidas, pero Mann-Whitney no encuentra evidencia de diferencia. No es un fallo de la prueba: como vimos en la teoría, Mann-Whitney detecta sobre todo si los valores de un grupo <strong>tienden a ser mayores</strong> que los del otro, y aquí ninguna versión tiende a recibir valoraciones más altas (la v1 tiene tantas valoraciones por encima como por debajo de las de la v2). Por eso un p-valor grande no demuestra que las distribuciones sean iguales: esta prueba apenas detecta diferencias de dispersión o de forma como esta.</p>
 </section>
-<section id="ejercicios-propuestos" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">14.4</span> Ejercicios propuestos</h2>
+<section id="caso-real-estrés-según-el-tipo-de-trastorno-del-sueño" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="caso-real-estrés-según-el-tipo-de-trastorno-del-sueño"><span class="header-section-number">14.4</span> Caso real: estrés según el tipo de trastorno del sueño</h2>
+<p>Con los datos de sueño preparados en el Módulo 1 (sintéticos), comparamos el nivel de estrés (<code>Stress</code>) entre los tres grupos de <code>SD</code>: sin trastorno, insomnio y apnea del sueño. Aplicamos el ANOVA con su tamaño del efecto y las comparaciones de Tukey, y Kruskal-Wallis como alternativa basada en rangos, porque <code>Stress</code> es una puntuación entera.</p>
+<div id="e208522d" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sueno <span class="op">=</span> pd.read_csv(<span class="st">"../01_estadistica_descriptiva/data/sleephealth_processed.csv"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                    keep_default_na<span class="op">=</span><span class="va">False</span>, na_values<span class="op">=</span>[<span class="st">""</span>])</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>grupos_sd <span class="op">=</span> [<span class="st">"None"</span>, <span class="st">"Insomnia"</span>, <span class="st">"Sleep Apnea"</span>]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>estres_por_sd <span class="op">=</span> [sueno.loc[sueno[<span class="st">"SD"</span>] <span class="op">==</span> g, <span class="st">"Stress"</span>].to_numpy(<span class="bu">float</span>) <span class="cf">for</span> g <span class="kw">in</span> grupos_sd]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.boxplot(estres_por_sd, tick_labels<span class="op">=</span>[<span class="st">"Sin trastorno"</span>, <span class="st">"Insomnio"</span>, <span class="st">"Apnea"</span>])</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Nivel de estrés"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Estrés según el trastorno del sueño"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>f_s, p_s <span class="op">=</span> gc.anova_one_way(<span class="op">*</span>estres_por_sd)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ANOVA: F = </span><span class="sc">{</span>f_s<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_s<span class="sc">:.3g}</span><span class="ss">, η² = </span><span class="sc">{</span>gc<span class="sc">.</span>eta_squared(<span class="op">*</span>estres_por_sd)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>h_s, p_kw <span class="op">=</span> gc.kruskal_wallis(<span class="op">*</span>estres_por_sd)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Kruskal-Wallis: H = </span><span class="sc">{</span>h_s<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_kw<span class="sc">:.3g}</span><span class="ss">"</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>gc.tukey_hsd(<span class="op">*</span>estres_por_sd, labels<span class="op">=</span>[<span class="st">"Sin trastorno"</span>, <span class="st">"Insomnio"</span>, <span class="st">"Apnea"</span>]).<span class="bu">round</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img" alt="Diagramas de caja del nivel de estrés para las personas sin trastorno, con insomnio y con apnea del sueño."></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ANOVA: F = 6.883, p-valor = 0.00116, η² = 0.036
+Kruskal-Wallis: H = 10.493, p-valor = 0.00527</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">grupo_1</th>
+<th data-quarto-table-cell-role="th">grupo_2</th>
+<th data-quarto-table-cell-role="th">diferencia</th>
+<th data-quarto-table-cell-role="th">p_valor</th>
+<th data-quarto-table-cell-role="th">ic_inferior</th>
+<th data-quarto-table-cell-role="th">ic_superior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Sin trastorno</td>
+<td>Insomnio</td>
+<td>-0.7692</td>
+<td>0.0028</td>
+<td>-1.3134</td>
+<td>-0.2251</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Sin trastorno</td>
+<td>Apnea</td>
+<td>-0.5657</td>
+<td>0.0382</td>
+<td>-1.1073</td>
+<td>-0.0242</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Insomnio</td>
+<td>Apnea</td>
+<td>0.2035</td>
+<td>0.7482</td>
+<td>-0.4560</td>
+<td>0.8629</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Lee juntos los tres resultados: el p-valor del ANOVA indica si hay evidencia de que no todas las medias son iguales, <span class="math inline">\(\eta^2\)</span> indica qué parte de la variabilidad del estrés se asocia al tipo de trastorno, y la tabla de Tukey muestra qué parejas difieren (las de p-valor ajustado menor que 0,05). Comprueba también si Kruskal-Wallis llega a la misma conclusión. Como en el Módulo 5, son datos observacionales con muchas filas repetidas, así que el supuesto de independencia es dudoso.</p>
+<div id="b5fadd04" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tabla_sd <span class="op">=</span> gc.build_contingency_table(sueno[<span class="st">"Gender"</span>], sueno[<span class="st">"SD"</span>])</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>chi2_g, p_g, dof_g, esperadas_g <span class="op">=</span> gc.chi2_test_independence(tabla_sd)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>display(tabla_sd)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Chi² = </span><span class="sc">{</span>chi2_g<span class="sc">:.3f}</span><span class="ss">, g.l. = </span><span class="sc">{</span>dof_g<span class="sc">}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_g<span class="sc">:.3g}</span><span class="ss">"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"V de Cramér = </span><span class="sc">{</span>gc<span class="sc">.</span>cramers_v(tabla_sd)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mínima frecuencia esperada = </span><span class="sc">{</span>esperadas_g<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Y</th>
+<th data-quarto-table-cell-role="th">Insomnia</th>
+<th data-quarto-table-cell-role="th">None</th>
+<th data-quarto-table-cell-role="th">Sleep Apnea</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">X</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Female</th>
+<td>36</td>
+<td>82</td>
+<td>67</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Male</th>
+<td>41</td>
+<td>136</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi² = 53.885, g.l. = 2, p-valor = 1.99e-12
+V de Cramér = 0.380
+Mínima frecuencia esperada = 38.2</code></pre>
+</div>
+</div>
+<p>La tabla cruza el género con el tipo de trastorno. El p-valor indica si hay evidencia de asociación, la <span class="math inline">\(V\)</span> de Cramér mide su fuerza y la mínima frecuencia esperada permite comprobar que la aproximación chi-cuadrado es razonable.</p>
+</section>
+<section id="ejercicios-propuestos" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">14.5</span> Ejercicios propuestos</h2>
 <ol type="1">
-<li>Repite el ANOVA de la sección 1 pero con tres grupos generados con la MISMA media (por ejemplo, los tres con media 6). Comprueba que el p-valor ya no indica significancia.</li>
-<li>Añade una cuarta categoría de producto (“Suscripción”) a la tabla de contingencia de la sección 2 y repite el test Chi-cuadrado. ¿Cambian los grados de libertad? ¿Por qué?</li>
-<li>Compara los resultados de aplicar un t-test estándar (<code>scipy.stats.ttest_ind</code>) frente a Mann-Whitney U sobre los datos polarizados de la sección 3. ¿Llegan a la misma conclusión? ¿Cuál te parece más apropiado dado que los datos no son normales?</li>
+<li>Repite el ANOVA de la sección «ANOVA: efectividad de 3 tratamientos médicos» pero con tres grupos generados con la MISMA media (por ejemplo, los tres con media 6). Comprueba que el p-valor ya no indica significancia.</li>
+<li>Añade una cuarta categoría de producto (“Suscripción”) a la tabla de contingencia de la sección «Chi-cuadrado: segmento de cliente vs.&nbsp;producto preferido» y repite el test Chi-cuadrado. ¿Cambian los grados de libertad? ¿Por qué?</li>
+<li>Compara los resultados de aplicar un t-test estándar (<code>scipy.stats.ttest_ind</code>) frente a Mann-Whitney U sobre los datos polarizados de la sección «Mann-Whitney U: valoraciones no normales de dos versiones de una app». ¿Llegan a la misma conclusión? ¿Cuál te parece más apropiado dado que los datos no son normales?</li>
 </ol>
+</section>
+<section id="soluciones" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="soluciones"><span class="header-section-number">14.6</span> Soluciones</h2>
+<p>Intenta resolver los ejercicios antes de desplegar cada solución. Las soluciones se ejecutan con los mismos datos y semillas que el resto del cuaderno.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución del ejercicio 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Generamos los tres grupos con la misma media (6 días) y la misma desviación típica.</p>
+<div id="6d0214f0" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>rng_igual <span class="op">=</span> np.random.default_rng(<span class="dv">21</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>grupos_iguales <span class="op">=</span> [rng_igual.normal(<span class="dv">6</span>, <span class="fl">1.2</span>, size<span class="op">=</span><span class="dv">15</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>f_igual, p_igual <span class="op">=</span> gc.anova_one_way(<span class="op">*</span>grupos_iguales)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"F = </span><span class="sc">{</span>f_igual<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_igual<span class="sc">:.3g}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>F = 1.260, p-valor = 0.294</code></pre>
+</div>
+</div>
+<p>Con medias poblacionales iguales lo esperable es un F cercano a 1 y un p-valor grande: no hay evidencia de diferencias. Aun así, por azar, alrededor de un 5 % de las simulaciones darían <span class="math inline">\(p &lt; 0{,}05\)</span>: es la probabilidad de error de tipo I.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución del ejercicio 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Simulamos de nuevo las preferencias con tres productos, con probabilidades que dependen del segmento.</p>
+<div id="872924ab" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rng_prod <span class="op">=</span> np.random.default_rng(<span class="dv">9</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>segmento_3 <span class="op">=</span> rng_prod.choice([<span class="st">"Joven"</span>, <span class="st">"Adulto"</span>, <span class="st">"Senior"</span>], size<span class="op">=</span><span class="dv">300</span>, p<span class="op">=</span>[<span class="fl">0.4</span>, <span class="fl">0.35</span>, <span class="fl">0.25</span>])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>prob_producto <span class="op">=</span> {</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Joven"</span>: [<span class="fl">0.6</span>, <span class="fl">0.15</span>, <span class="fl">0.25</span>],</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Adulto"</span>: [<span class="fl">0.4</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>],</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Senior"</span>: [<span class="fl">0.15</span>, <span class="fl">0.7</span>, <span class="fl">0.15</span>],</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>producto_3 <span class="op">=</span> [rng_prod.choice([<span class="st">"Digital"</span>, <span class="st">"Físico"</span>, <span class="st">"Suscripción"</span>], p<span class="op">=</span>prob_producto[s]) <span class="cf">for</span> s <span class="kw">in</span> segmento_3]</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>tabla_3 <span class="op">=</span> gc.build_contingency_table(segmento_3, producto_3)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>display(tabla_3)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>chi2_3, p_3, dof_3, _ <span class="op">=</span> gc.chi2_test_independence(tabla_3)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Chi² = </span><span class="sc">{</span>chi2_3<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_3<span class="sc">:.3g}</span><span class="ss">, g.l. = </span><span class="sc">{</span>dof_3<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Y</th>
+<th data-quarto-table-cell-role="th">Digital</th>
+<th data-quarto-table-cell-role="th">Físico</th>
+<th data-quarto-table-cell-role="th">Suscripción</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">X</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Adulto</th>
+<td>48</td>
+<td>43</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Joven</th>
+<td>66</td>
+<td>17</td>
+<td>27</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Senior</th>
+<td>14</td>
+<td>55</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi² = 59.077, p-valor = 4.53e-12, g.l. = 4</code></pre>
+</div>
+</div>
+<p>Los grados de libertad pasan de <span class="math inline">\((3-1)(2-1) = 2\)</span> a <span class="math inline">\((3-1)(3-1) = 4\)</span>: con más categorías, hay más celdas que pueden variar libremente una vez fijados los totales de filas y columnas.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución del ejercicio 3
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicamos las dos pruebas a los mismos datos polarizados.</p>
+<div id="0352fcca" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>t_res <span class="op">=</span> stats.ttest_ind(valoraciones_v1, valoraciones_v2)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>u_v, p_u <span class="op">=</span> gc.mann_whitney_u(valoraciones_v1, valoraciones_v2)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t-test:       t = </span><span class="sc">{</span>t_res<span class="sc">.</span>statistic<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>t_res<span class="sc">.</span>pvalue<span class="sc">:.3g}</span><span class="ss">"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mann-Whitney: U = </span><span class="sc">{</span>u_v<span class="sc">:.1f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_u<span class="sc">:.3g}</span><span class="ss">"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Desviaciones típicas: v1 = </span><span class="sc">{</span>valoraciones_v1<span class="sc">.</span>std(ddof<span class="op">=</span><span class="dv">1</span>)<span class="sc">:.2f}</span><span class="ss">, v2 = </span><span class="sc">{</span>valoraciones_v2<span class="sc">.</span>std(ddof<span class="op">=</span><span class="dv">1</span>)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>t-test:       t = -1.136, p-valor = 0.261
+Mann-Whitney: U = 450.0, p-valor = 1
+Desviaciones típicas: v1 = 3.78, v2 = 0.79</code></pre>
+</div>
+</div>
+<p>Ninguna de las dos encuentra evidencia de diferencia, y es coherente: el t-test compara las medias, que aquí son parecidas, y Mann-Whitney busca que una versión tienda a recibir valoraciones más altas, cosa que tampoco ocurre. La diferencia real entre las versiones está en la <strong>dispersión</strong> (la v1 está polarizada), y ninguna de estas pruebas está diseñada para detectarla. La prueba adecuada depende de la pregunta: si interesa la satisfacción media, ambas responden algo parecido; si interesa la polarización, habría que comparar la dispersión, por ejemplo con la prueba de Levene (<code>scipy.stats.levene</code>).</p>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -552,7 +1038,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -561,8 +1048,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -576,6 +1124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -738,44 +1287,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -874,13 +1433,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation" aria-label="Página">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/06_anova_chi2/teoria.html" class="pagination-link" aria-label="ANOVA, Chi-cuadrado y Pruebas No Paramétricas">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../notebooks/07_proyecto_integrador/practica.html" class="pagination-link" aria-label="Proyecto integrador: ¿qué se asocia con la calidad del sueño?">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Proyecto integrador: ¿qué se asocia con la calidad del sueño?</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

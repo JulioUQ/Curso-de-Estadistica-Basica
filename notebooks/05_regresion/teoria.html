@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,14 +75,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../notebooks/04_inferencia/practica.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fd0503e23dce65854c81c5baaade3bdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -147,17 +148,17 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -168,7 +169,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Sitio web">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Estadística Básica</a> 
@@ -192,13 +193,10 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 1 — Estadística Descriptiva</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Módulo 1 — Estadística Descriptiva</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/01_estadistica_descriptiva/teoria.html" class="sidebar-item-text sidebar-link">
@@ -221,13 +219,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 2 — Probabilidad Básica</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Módulo 2 — Probabilidad Básica</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/02_probabilidad/teoria.html" class="sidebar-item-text sidebar-link">
@@ -244,13 +239,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 3 — Distribuciones de Probabilidad</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Módulo 3 — Distribuciones de Probabilidad</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/03_distribuciones/teoria.html" class="sidebar-item-text sidebar-link">
@@ -267,13 +259,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 4 — Inferencia Estadística</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Módulo 4 — Inferencia Estadística</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/04_inferencia/teoria.html" class="sidebar-item-text sidebar-link">
@@ -290,13 +279,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 5 — Correlación y Regresión Lineal</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Módulo 5 — Correlación y Regresión Lineal</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/05_regresion/teoria.html" class="sidebar-item-text sidebar-link active">
@@ -313,13 +299,10 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/06_anova_chi2/teoria.html" class="sidebar-item-text sidebar-link">
@@ -334,29 +317,74 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">Proyecto integrador</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/07_proyecto_integrador/practica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Proyecto integrador: ¿qué se asocia con la calidad del sueño?</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">Apéndices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/que_prueba_usar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">¿Qué prueba usar?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Notación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../apendices/glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Glosario</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">11.1</span> 5.1 Introducción</a></li>
-  <li><a href="#covarianza-y-correlación" id="toc-covarianza-y-correlación" class="nav-link" data-scroll-target="#covarianza-y-correlación"><span class="header-section-number">11.2</span> 5.2 Covarianza y Correlación</a></li>
-  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">11.3</span> 5.3 Regresión Lineal Simple</a></li>
-  <li><a href="#bondad-de-ajuste-r2" id="toc-bondad-de-ajuste-r2" class="nav-link" data-scroll-target="#bondad-de-ajuste-r2"><span class="header-section-number">11.4</span> 5.4 Bondad de Ajuste: <span class="math inline">\(R^2\)</span></a></li>
-  <li><a href="#la-relación-es-real-o-podría-deberse-al-azar" id="toc-la-relación-es-real-o-podría-deberse-al-azar" class="nav-link" data-scroll-target="#la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">11.5</span> 5.5 ¿La relación es real o podría deberse al azar?</a></li>
-  <li><a href="#cierre-del-curso" id="toc-cierre-del-curso" class="nav-link" data-scroll-target="#cierre-del-curso"><span class="header-section-number">11.6</span> 5.6 Cierre del curso</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">11.1</span> Introducción</a></li>
+  <li><a href="#covarianza-y-correlación" id="toc-covarianza-y-correlación" class="nav-link" data-scroll-target="#covarianza-y-correlación"><span class="header-section-number">11.2</span> Covarianza y Correlación</a>
+  <ul class="collapse">
+  <li><a href="#correlación-de-spearman-relaciones-monótonas" id="toc-correlación-de-spearman-relaciones-monótonas" class="nav-link" data-scroll-target="#correlación-de-spearman-relaciones-monótonas"><span class="header-section-number">11.2.1</span> Correlación de Spearman: relaciones monótonas</a></li>
+  </ul></li>
+  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">11.3</span> Regresión Lineal Simple</a></li>
+  <li><a href="#bondad-de-ajuste-r2" id="toc-bondad-de-ajuste-r2" class="nav-link" data-scroll-target="#bondad-de-ajuste-r2"><span class="header-section-number">11.4</span> Bondad de Ajuste: <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#supuestos-del-modelo-y-diagnóstico-de-residuos" id="toc-supuestos-del-modelo-y-diagnóstico-de-residuos" class="nav-link" data-scroll-target="#supuestos-del-modelo-y-diagnóstico-de-residuos"><span class="header-section-number">11.5</span> Supuestos del modelo y diagnóstico de residuos</a></li>
+  <li><a href="#la-relación-es-real-o-podría-deberse-al-azar" id="toc-la-relación-es-real-o-podría-deberse-al-azar" class="nav-link" data-scroll-target="#la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">11.6</span> ¿La relación es real o podría deberse al azar?</a></li>
+  <li><a href="#autoevaluación" id="toc-autoevaluación" class="nav-link" data-scroll-target="#autoevaluación"><span class="header-section-number">11.7</span> Autoevaluación</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">11.8</span> Cierre</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/notebooks/05_regresion/teoria.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html">Módulo 5 — Correlación y Regresión Lineal</a></li><li class="breadcrumb-item"><a href="../../notebooks/05_regresion/teoria.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlación y Regresión Lineal</span></h1>
 </div>
@@ -375,15 +403,36 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Objetivos del módulo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Medir la relación lineal entre dos variables con la covarianza y la correlación de Pearson.</li>
+<li>Medir relaciones monótonas con la correlación de Spearman.</li>
+<li>Ajustar una regresión lineal simple por mínimos cuadrados e interpretar sus coeficientes.</li>
+<li>Evaluar el ajuste con <span class="math inline">\(R^2\)</span> y revisar los supuestos mediante los residuos.</li>
+<li>Contrastar si la pendiente es distinta de cero y construir su intervalo de confianza.</li>
+<li>Distinguir asociación de causalidad y reconocer los riesgos de extrapolar.</li>
+</ul>
+</div>
+</div>
 <section id="introducción" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">11.1</span> 5.1 Introducción</h2>
-<p>Hasta ahora hemos trabajado con <strong>una sola variable a la vez</strong>: describirla (Módulo 1), modelar su incertidumbre (Módulos 2-3), y estimar o contrastar un parámetro suyo a partir de una muestra (Módulo 4). En este último módulo damos un paso natural: ¿qué pasa cuando tenemos <strong>dos variables</strong> y queremos saber si están relacionadas?</p>
+<h2 data-number="11.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">11.1</span> Introducción</h2>
+<p>Hasta ahora hemos trabajado con <strong>una sola variable a la vez</strong>: describirla (Módulo 1), modelar su incertidumbre (Módulos 2-3), y estimar o contrastar un parámetro suyo a partir de una muestra (Módulo 4). En este módulo damos un paso natural: ¿qué pasa cuando tenemos <strong>dos variables</strong> y queremos saber si están relacionadas?</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div id="fig-de-correlacion-a-regresion" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-de-correlacion-a-regresion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
+
 <pre class="mermaid mermaid-js" data-label="fig-de-correlacion-a-regresion">flowchart LR
     A["Dos variables:&lt;br/&gt;X e Y"] --&gt; B["Covarianza / Correlación&lt;br/&gt;¿van juntas?"]
     B --&gt; C["Regresión Lineal&lt;br/&gt;Y = β₀ + β₁X"]
@@ -401,7 +450,7 @@ Figura&nbsp;11.1: De observar dos variables juntas a poder predecir una a partir
 <p>Ejemplos típicos: horas de estudio y nota de un examen, inversión en publicidad y ventas, temperatura y consumo eléctrico. En todos ellos nos interesan dos preguntas distintas: <strong>¿existe relación?</strong> (correlación) y, si la hay, <strong>¿cómo la usamos para predecir?</strong> (regresión).</p>
 </section>
 <section id="covarianza-y-correlación" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="covarianza-y-correlación"><span class="header-section-number">11.2</span> 5.2 Covarianza y Correlación</h2>
+<h2 data-number="11.2" class="anchored" data-anchor-id="covarianza-y-correlación"><span class="header-section-number">11.2</span> Covarianza y Correlación</h2>
 <p>La <strong>covarianza</strong> mide si dos variables tienden a moverse juntas (en la misma dirección o en direcciones opuestas):</p>
 <p><span class="math display">\[
 \text{Cov}(X, Y) = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})
@@ -416,7 +465,7 @@ r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(-1\)</span>: relación lineal negativa fuerte.</li>
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(0\)</span>: poca o ninguna relación lineal (¡ojo! podría haber una relación no lineal fuerte y aun así <span class="math inline">\(r \approx 0\)</span>).</li>
 </ul>
-<div id="102c28de" class="cell" data-execution_count="2">
+<div id="d0336b5e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> regression <span class="im">as</span> reg</span>
@@ -434,29 +483,82 @@ r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
 <blockquote class="blockquote">
 <p><strong>Correlación no implica causalidad.</strong> Que dos variables estén correlacionadas no significa que una cause la otra — puede haber una tercera variable oculta (variable de confusión), o la relación puede ser pura coincidencia en los datos disponibles. La correlación es una herramienta descriptiva, no una prueba causal.</p>
 </blockquote>
+<section id="correlación-de-spearman-relaciones-monótonas" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="correlación-de-spearman-relaciones-monótonas"><span class="header-section-number">11.2.1</span> Correlación de Spearman: relaciones monótonas</h3>
+<p>Pearson mide relaciones <strong>lineales</strong> y es sensible a los valores atípicos. Cuando la relación es <strong>monótona</strong> (siempre creciente o siempre decreciente) pero no lineal, o cuando las variables son ordinales, se usa el <strong>coeficiente de Spearman</strong>, <span class="math inline">\(\rho_s\)</span>: la correlación de Pearson calculada sobre los <strong>rangos</strong> de los datos (la posición de cada valor una vez ordenados; los empates reciben el rango medio). Si no hay empates, coincide con</p>
+<p><span class="math display">\[
+\rho_s = 1 - \frac{6\sum_{i=1}^{n} d_i^2}{n(n^2-1)},
+\]</span></p>
+<p>donde <span class="math inline">\(d_i\)</span> es la diferencia entre los rangos de <span class="math inline">\(x_i\)</span> e <span class="math inline">\(y_i\)</span>. Vale <span class="math inline">\(1\)</span> si <span class="math inline">\(Y\)</span> crece siempre que crece <span class="math inline">\(X\)</span>, aunque no lo haga en línea recta:</p>
+<div id="ff791f71" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">21</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.exp(x <span class="op">/</span> <span class="dv">3</span>)  <span class="co"># crece siempre, pero de forma exponencial</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pearson:  r   = </span><span class="sc">{</span>reg<span class="sc">.</span>correlation(x, y)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Spearman: rho = </span><span class="sc">{</span>reg<span class="sc">.</span>spearman_correlation(x, y)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Pearson:  r   = 0.798
+Spearman: rho = 1.000</code></pre>
+</div>
+</div>
+<p>Un único valor atípico (30 horas de estudio y un 3 en el examen) basta para cambiar el signo de <span class="math inline">\(r\)</span>; <span class="math inline">\(\rho_s\)</span> también baja, pero sigue siendo positiva:</p>
+<div id="e7cd7b27" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>horas_atipico <span class="op">=</span> horas_estudio <span class="op">+</span> [<span class="dv">30</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nota_atipico <span class="op">=</span> nota_examen <span class="op">+</span> [<span class="fl">3.0</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Con un atípico -&gt; Pearson: </span><span class="sc">{</span>reg<span class="sc">.</span>correlation(horas_atipico, nota_atipico)<span class="sc">:.3f}</span><span class="ss">, "</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"Spearman: </span><span class="sc">{</span>reg<span class="sc">.</span>spearman_correlation(horas_atipico, nota_atipico)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Con un atípico -&gt; Pearson: -0.395, Spearman: 0.493</code></pre>
+</div>
+</div>
+<p>Para contrastar <span class="math inline">\(H_0\)</span>: no hay asociación monótona, se usa el estadístico <span class="math inline">\(t = \rho_s\sqrt{(n-2)/(1-\rho_s^2)}\)</span> con <span class="math inline">\(n-2\)</span> grados de libertad, una aproximación razonable a partir de unos 10 pares; es la que usa <code>scipy.stats.spearmanr</code>:</p>
+<div id="44845480" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>rho, p_value <span class="op">=</span> reg.spearman_test(horas_estudio, nota_examen)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ref <span class="op">=</span> stats.spearmanr(horas_estudio, nota_examen)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"stats_toolkit: rho = </span><span class="sc">{</span>rho<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"scipy:         rho = </span><span class="sc">{</span>ref<span class="sc">.</span>statistic<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>ref<span class="sc">.</span>pvalue<span class="sc">:.3g}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>stats_toolkit: rho = 0.994, p-valor = 5.93e-09
+scipy:         rho = 0.994, p-valor = 5.93e-09</code></pre>
+</div>
+</div>
+<p>Otro coeficiente basado en el orden es la <span class="math inline">\(\tau\)</span> de Kendall (<code>scipy.stats.kendalltau</code>), que cuenta las parejas de observaciones ordenadas en el mismo sentido en ambas variables. Spearman y Kendall tampoco implican causalidad.</p>
+</section>
 </section>
 <section id="regresión-lineal-simple" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="regresión-lineal-simple"><span class="header-section-number">11.3</span> 5.3 Regresión Lineal Simple</h2>
+<h2 data-number="11.3" class="anchored" data-anchor-id="regresión-lineal-simple"><span class="header-section-number">11.3</span> Regresión Lineal Simple</h2>
 <p>Mientras que la correlación solo nos dice <em>cuán fuerte</em> es la relación lineal, la <strong>regresión lineal</strong> va más allá: nos da un modelo concreto para predecir <span class="math inline">\(Y\)</span> a partir de <span class="math inline">\(X\)</span>.</p>
 <p><span class="math display">\[
 Y = \beta_0 + \beta_1 X + \varepsilon
 \]</span></p>
 <ul>
-<li><span class="math inline">\(\beta_0\)</span> (intercepto): el valor esperado de <span class="math inline">\(Y\)</span> cuando <span class="math inline">\(X = 0\)</span>.</li>
-<li><span class="math inline">\(\beta_1\)</span> (pendiente): cuánto cambia <span class="math inline">\(Y\)</span>, en promedio, por cada unidad que aumenta <span class="math inline">\(X\)</span>.</li>
+<li><span class="math inline">\(\beta_0\)</span> (intercepto): el valor esperado de <span class="math inline">\(Y\)</span> cuando <span class="math inline">\(X = 0\)</span> (solo es interpretable si ese valor tiene sentido y está dentro del rango de los datos).</li>
+<li><span class="math inline">\(\beta_1\)</span> (pendiente): cuánto difiere, en promedio, <span class="math inline">\(Y\)</span> entre observaciones cuya <span class="math inline">\(X\)</span> difiere en una unidad. Describe una asociación; solo admite una lectura causal si el diseño lo justifica (por ejemplo, un experimento).</li>
 <li><span class="math inline">\(\varepsilon\)</span> (error): la parte de <span class="math inline">\(Y\)</span> que el modelo no explica.</li>
 </ul>
-<p>El método de <strong>mínimos cuadrados ordinarios (OLS)</strong> encuentra los valores de <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> que minimizan la suma de los errores al cuadrado, y tienen una solución cerrada muy simple:</p>
+<p>El método de <strong>mínimos cuadrados ordinarios (OLS)</strong> encuentra los valores de <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> que minimizan la suma de los <strong>residuos</strong> al cuadrado, <span class="math inline">\(\sum_i (y_i - \hat{y}_i)^2\)</span>, y tiene una solución cerrada muy simple:</p>
 <p><span class="math display">\[
 \hat{\beta}_1 = \frac{\text{Cov}(X, Y)}{\text{Var}(X)} \qquad \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
 \]</span></p>
-<div id="07d0f6a6" class="cell" data-execution_count="3">
+<div id="407da46e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(horas_estudio, nota_examen)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Intercepto (β0): </span><span class="sc">{</span>beta0<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pendiente (β1): </span><span class="sc">{</span>beta1<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Interpretación: cada hora extra de estudio se asocia con +</span><span class="sc">{</span>beta1<span class="sc">:.2f}</span><span class="ss"> puntos en el examen"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(horas_estudio, nota_examen)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Intercepto (β0): </span><span class="sc">{</span>beta0<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Pendiente (β1): </span><span class="sc">{</span>beta1<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Interpretación: cada hora extra de estudio se asocia con +</span><span class="sc">{</span>beta1<span class="sc">:.2f}</span><span class="ss"> puntos en el examen"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Intercepto (β0): 3.267
@@ -464,45 +566,45 @@ Pendiente (β1): 0.655
 Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el examen</code></pre>
 </div>
 </div>
-<div id="15c648b4" class="cell" data-execution_count="4">
+<div id="d86b0e77" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x_line <span class="op">=</span> np.linspace(<span class="bu">min</span>(horas_estudio), <span class="bu">max</span>(horas_estudio), <span class="dv">100</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>y_line <span class="op">=</span> reg.predict(x_line, beta0, beta1)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(horas_estudio, nota_examen, color<span class="op">=</span><span class="st">"steelblue"</span>, label<span class="op">=</span><span class="st">"Datos observados"</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x_line, y_line, color<span class="op">=</span><span class="st">"crimson"</span>, label<span class="op">=</span><span class="ss">f"Y = </span><span class="sc">{</span>beta0<span class="sc">:.2f}</span><span class="ss"> + </span><span class="sc">{</span>beta1<span class="sc">:.2f}</span><span class="ss">X"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Horas de estudio"</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Nota del examen"</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Regresión lineal simple"</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>x_line <span class="op">=</span> np.linspace(<span class="bu">min</span>(horas_estudio), <span class="bu">max</span>(horas_estudio), <span class="dv">100</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>y_line <span class="op">=</span> reg.predict(x_line, beta0, beta1)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(horas_estudio, nota_examen, color<span class="op">=</span><span class="st">"steelblue"</span>, label<span class="op">=</span><span class="st">"Datos observados"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x_line, y_line, color<span class="op">=</span><span class="st">"crimson"</span>, label<span class="op">=</span><span class="ss">f"Y = </span><span class="sc">{</span>beta0<span class="sc">:.2f}</span><span class="ss"> + </span><span class="sc">{</span>beta1<span class="sc">:.2f}</span><span class="ss">X"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Horas de estudio"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Nota del examen"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Regresión lineal simple"</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="teoria_files/figure-html/cell-5-output-1.png" width="577" height="452" class="figure-img"></p>
+<p><img src="teoria_files/figure-html/cell-8-output-1.png" alt="Diagrama de dispersión de la nota del examen frente a las horas de estudio, con 10 puntos que suben casi en línea recta y la recta de regresión ajustada en rojo." width="577" height="452" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 <section id="bondad-de-ajuste-r2" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="bondad-de-ajuste-r2"><span class="header-section-number">11.4</span> 5.4 Bondad de Ajuste: <span class="math inline">\(R^2\)</span></h2>
+<h2 data-number="11.4" class="anchored" data-anchor-id="bondad-de-ajuste-r2"><span class="header-section-number">11.4</span> Bondad de Ajuste: <span class="math inline">\(R^2\)</span></h2>
 <p>¿Qué tan bien explica el modelo los datos? El <strong>coeficiente de determinación</strong> <span class="math inline">\(R^2\)</span> mide qué proporción de la variabilidad total de <span class="math inline">\(Y\)</span> queda explicada por el modelo:</p>
 <p><span class="math display">\[
 R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}
 \]</span></p>
 <p><span class="math inline">\(R^2\)</span> va de 0 (el modelo no explica nada) a 1 (el modelo explica toda la variabilidad). En regresión lineal simple, <span class="math inline">\(R^2\)</span> es exactamente el cuadrado del coeficiente de correlación de Pearson: <span class="math inline">\(R^2 = r^2\)</span>.</p>
-<div id="d26a3123" class="cell" data-execution_count="5">
+<div id="bd6a55cf" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(horas_estudio, nota_examen, beta0, beta1)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R² = </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">  (r² = </span><span class="sc">{</span>r<span class="op">**</span><span class="dv">2</span><span class="sc">:.3f}</span><span class="ss">)"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El modelo explica el </span><span class="sc">{</span>r2<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">% de la variabilidad de la nota"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(horas_estudio, nota_examen, beta0, beta1)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R² = </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">  (r² = </span><span class="sc">{</span>r<span class="op">**</span><span class="dv">2</span><span class="sc">:.3f}</span><span class="ss">)"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El modelo explica el </span><span class="sc">{</span>r2<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">% de la variabilidad de la nota"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>R² = 0.992  (r² = 0.992)
@@ -510,48 +612,200 @@ El modelo explica el 99.2% de la variabilidad de la nota</code></pre>
 </div>
 </div>
 </section>
-<section id="la-relación-es-real-o-podría-deberse-al-azar" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">11.5</span> 5.5 ¿La relación es real o podría deberse al azar?</h2>
+<section id="supuestos-del-modelo-y-diagnóstico-de-residuos" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="supuestos-del-modelo-y-diagnóstico-de-residuos"><span class="header-section-number">11.5</span> Supuestos del modelo y diagnóstico de residuos</h2>
+<p>La recta de mínimos cuadrados se puede calcular con cualquier conjunto de datos, pero el contraste y el intervalo de la sección siguiente solo son fiables si se cumplen, al menos aproximadamente, estos supuestos sobre los errores del modelo:</p>
+<ol type="1">
+<li><strong>Linealidad</strong>: la relación media entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> es una recta.</li>
+<li><strong>Independencia</strong>: los errores de distintas observaciones no están relacionados entre sí (por ejemplo, no hay medidas repetidas de la misma persona ni dependencia en el tiempo).</li>
+<li><strong>Varianza constante</strong> (<em>homocedasticidad</em>): la dispersión alrededor de la recta es la misma para cualquier valor de <span class="math inline">\(X\)</span>.</li>
+<li><strong>Normalidad de los errores</strong>: importante sobre todo con muestras pequeñas.</li>
+</ol>
+<p>Como los errores no se observan, se examinan los <strong>residuos</strong>, <span class="math inline">\(e_i = y_i - \hat{y}_i\)</span>. En un gráfico de residuos frente a los valores ajustados no debería verse ningún patrón: una curva indica que la relación no es lineal, y un “embudo” (residuos cada vez más dispersos) indica que la varianza no es constante.</p>
+<div id="9eaa5a94" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ajustados <span class="op">=</span> reg.predict(horas_estudio, beta0, beta1)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>resid <span class="op">=</span> reg.residuals(horas_estudio, nota_examen, beta0, beta1)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].scatter(ajustados, resid, color<span class="op">=</span><span class="st">"darkorange"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Residuos frente a valores ajustados"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Nota ajustada"</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Residuo"</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>stats.probplot(resid, dist<span class="op">=</span><span class="st">"norm"</span>, plot<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Gráfico Q-Q de los residuos"</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Cuantiles teóricos de la Normal"</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">"Cuantiles de los residuos"</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria_files/figure-html/cell-10-output-1.png" alt="Dos gráficos de diagnóstico de la regresión de nota sobre horas de estudio. A la izquierda, los residuos frente a los valores ajustados se reparten alrededor de cero sin un patrón claro. A la derecha, el gráfico Q-Q de los residuos, cuyos puntos quedan cerca de la recta." width="952" height="374" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Con solo 10 observaciones estos gráficos dan una orientación, no una prueba: no muestran problemas evidentes, pero tampoco pueden confirmar los supuestos.</p>
+<p><strong>Interpretación del intercepto y extrapolación.</strong> <span class="math inline">\(\hat{\beta}_0\)</span> es la nota predicha para 0 horas de estudio, un valor que no aparece en los datos (el mínimo es 2 horas). Fuera del rango observado de <span class="math inline">\(X\)</span> no sabemos si la relación sigue siendo lineal, así que las predicciones son <strong>extrapolaciones</strong> y deben tomarse con mucha cautela. Por eso el intercepto solo tiene una interpretación directa cuando <span class="math inline">\(X = 0\)</span> es un valor posible y está dentro del rango de los datos.</p>
+</section>
+<section id="la-relación-es-real-o-podría-deberse-al-azar" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="la-relación-es-real-o-podría-deberse-al-azar"><span class="header-section-number">11.6</span> ¿La relación es real o podría deberse al azar?</h2>
 <p>Aquí es donde reconectamos con el Módulo 4: <span class="math inline">\(\hat{\beta}_1\)</span> es un estimador calculado a partir de una muestra, así que tiene su propio error estándar, y podemos plantear un contraste de hipótesis sobre él.</p>
 <p><span class="math display">\[
 H_0: \beta_1 = 0 \quad \text{(no hay relación lineal real)} \qquad H_1: \beta_1 \neq 0
 \]</span></p>
-<p>El estadístico de prueba sigue una distribución t de Student con <span class="math inline">\(n-2\)</span> grados de libertad (perdemos 2 grados de libertad por estimar <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span>):</p>
+<p>Si los errores <span class="math inline">\(\varepsilon\)</span> del modelo son independientes, siguen una distribución Normal con media 0 y tienen la misma varianza para cualquier valor de <span class="math inline">\(X\)</span>, bajo <span class="math inline">\(H_0\)</span> el estadístico sigue una distribución t de Student con <span class="math inline">\(n-2\)</span> grados de libertad (perdemos 2 por estimar <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span>). Fíjate en que lo que se supone normal no es la variable <span class="math inline">\(Y\)</span> en su conjunto, sino su variación alrededor de la recta:</p>
 <p><span class="math display">\[
 t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)}
 \]</span></p>
-<div id="c0b0f532" class="cell" data-execution_count="6">
+<div id="b8830079" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(horas_estudio, nota_examen, beta0, beta1)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es estadísticamente significativa"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de una relación lineal real"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(horas_estudio, nota_examen, beta0, beta1)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t = </span><span class="sc">{</span>t_stat<span class="sc">:.3f}</span><span class="ss">, p-valor = </span><span class="sc">{</span>p_value<span class="sc">:.3g}</span><span class="ss">"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es estadísticamente significativa"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No hay evidencia suficiente de una relación lineal real"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>t = 31.057, p-valor = 0.000000
+<pre><code>t = 31.057, p-valor = 1.26e-09
 p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es estadísticamente significativa</code></pre>
 </div>
 </div>
 <p>Y, como en el Módulo 4, también podemos construir un intervalo de confianza para <span class="math inline">\(\beta_1\)</span> en vez de limitarnos a un sí/no:</p>
-<div id="e8e0c36e" class="cell" data-execution_count="7">
+<div id="dbef8d12" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(horas_estudio, nota_examen, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% para β1: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(horas_estudio, nota_examen, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IC 95% para β1: (</span><span class="sc">{</span>lower<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>upper<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>IC 95% para β1: (0.606, 0.704)</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ideas clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>La correlación de Pearson mide la fuerza de una relación <strong>lineal</strong>: <span class="math inline">\(r \approx 0\)</span> no excluye relaciones no lineales.</li>
+<li>La correlación de Spearman usa los rangos: mide relaciones monótonas y es más robusta frente a valores atípicos.</li>
+<li>La pendiente <span class="math inline">\(\hat{\beta}_1\)</span> indica cuánto difiere en promedio <span class="math inline">\(Y\)</span> por cada unidad de <span class="math inline">\(X\)</span>; describe una asociación, no un efecto causal.</li>
+<li><span class="math inline">\(R^2\)</span> es la proporción de la variabilidad de <span class="math inline">\(Y\)</span> asociada al modelo; en regresión simple, <span class="math inline">\(R^2 = r^2\)</span>.</li>
+<li>La inferencia sobre la pendiente exige revisar los supuestos con los residuos.</li>
+<li>Predecir fuera del rango observado (extrapolar) es arriesgado.</li>
+</ul>
+</div>
+</div>
 </section>
-<section id="cierre-del-curso" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="cierre-del-curso"><span class="header-section-number">11.6</span> 5.6 Cierre del curso</h2>
-<p>Con este módulo completamos el recorrido de <strong>Estadística Básica</strong>: describir datos (Módulo 1), modelar la incertidumbre de sucesos (Módulo 2) y de variables aleatorias completas (Módulo 3), usar esas distribuciones para estimar y contrastar parámetros poblacionales (Módulo 4), y finalmente estudiar y validar relaciones entre variables (Módulo 5).</p>
-<p>Estas cinco piezas son la base sobre la que se construye prácticamente cualquier análisis de datos aplicado: desde un experimento de A/B testing hasta un modelo de machine learning — de hecho, la regresión lineal que acabamos de ver es, en sí misma, uno de los algoritmos de machine learning más usados, y el Naive Bayes que vimos como cierre del Módulo 2 es otro. Si en el futuro amplías este curso, este es el punto natural desde el que dar el salto hacia regresión múltiple, clasificación y otros modelos predictivos.</p>
+<section id="autoevaluación" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="autoevaluación"><span class="header-section-number">11.7</span> Autoevaluación</h2>
+<p>Intenta responder cada pregunta antes de desplegar la respuesta.</p>
+<p><strong>1.</strong> La correlación de Pearson entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> es <span class="math inline">\(r = 0{,}02\)</span>. ¿Significa que no hay ninguna relación entre ellas?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No.&nbsp;Significa que no hay relación <strong>lineal</strong> apreciable. Puede existir una relación no lineal fuerte (por ejemplo, en forma de U). Por eso hay que mirar siempre el diagrama de dispersión.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> En una regresión lineal simple, <span class="math inline">\(R^2 = 0{,}64\)</span> y la pendiente es negativa. ¿Cuánto vale <span class="math inline">\(r\)</span>?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En regresión simple <span class="math inline">\(R^2 = r^2\)</span>, así que <span class="math inline">\(|r| = 0{,}8\)</span>; el signo es el de la pendiente: <span class="math inline">\(r = -0{,}8\)</span>.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Una regresión de ventas sobre publicidad (ambas en miles de euros) da <span class="math inline">\(\hat\beta_1 = 2{,}5\)</span>. ¿Cómo se interpreta?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Por cada 1000 € más de publicidad, las ventas son en promedio 2500 € mayores, dentro del rango de datos observado. Describe una asociación: sin un diseño experimental no demuestra que la publicidad cause ese aumento.</p>
+</div>
+</div>
+</div>
+<p><strong>4.</strong> El gráfico de residuos frente a los valores ajustados tiene forma de U. ¿Qué indica?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Que la relación no es lineal: el modelo sobrestima en el centro y subestima en los extremos (o al revés). Habría que transformar las variables o usar otro modelo; las inferencias del modelo lineal no son fiables.</p>
+</div>
+</div>
+</div>
+<p><strong>5.</strong> ¿Cuándo preferirías la correlación de Spearman a la de Pearson?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Cuando la relación es monótona pero no lineal, cuando hay valores atípicos influyentes o cuando las variables son ordinales (por ejemplo, puntuaciones de 1 a 5).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cierre" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="cierre"><span class="header-section-number">11.8</span> Cierre</h2>
+<p>En este módulo hemos pasado de analizar una variable a estudiar la relación entre dos variables numéricas: la covarianza y la correlación describen si se mueven juntas, la regresión lineal simple permite predecir una a partir de la otra, y el contraste y el intervalo de confianza sobre <span class="math inline">\(\beta_1\)</span> conectan de nuevo con la inferencia del Módulo 4. Una relación estadísticamente significativa sigue siendo una asociación, no una prueba de causalidad.</p>
+<p>El Módulo 6 completa las herramientas de comparación: qué hacer cuando hay más de dos grupos (ANOVA), cuando las variables son categóricas (test Chi-cuadrado) o cuando no es razonable suponer normalidad (pruebas no paramétricas).</p>
+<p>Continúa con la <a href="../../notebooks/05_regresion/practica.html">práctica del módulo</a>.</p>
 
 
 </section>
@@ -635,7 +889,8 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -644,8 +899,69 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -659,6 +975,7 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -821,44 +1138,54 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -957,7 +1284,10 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation" aria-label="Página">
   <div class="nav-page nav-page-previous">
       <a href="../../notebooks/04_inferencia/practica.html" class="pagination-link" aria-label="Actividad práctica: análisis descriptivo e inferencial de la salud del sueño">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Actividad práctica: análisis descriptivo e inferencial de la salud del sueño</span></span>

@@ -157,3 +157,44 @@ main a:not(.sidebar-link):not(.nav-link) {
 main a:not(.sidebar-link):not(.nav-link):hover {
   text-decoration: underline;
 }
+
+/* Figuras de los capítulos .qmd: Quarto les fija width/height sin img-fluid;
+   así se ajustan al ancho de la columna en lugar de desbordarla. */
+main .cell-output-display img.figure-img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Nombres de funciones largos en tablas y títulos: permitir el salto de línea */
+main table code,
+main :is(h1, h2, h3, h4) code {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+/* Widgets (Observable JS): si sus bibliotecas no cargan (sin conexión), el aviso
+ * #aviso-widget-* sigue en la página y explica la situación; se ocultan entonces los
+ * mensajes de error técnicos. Con conexión, el aviso se retira y esta regla no actúa. */
+main:has(.callout[id^="aviso-widget"]) .observablehq--error {
+  display: none;
+}
+
+/* Pantallas estrechas: las fórmulas en bloque, el código y las tablas se desplazan
+ * dentro de su propia caja, en lugar de desplazar la página entera. */
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+main pre,
+main div.sourceCode {
+  max-width: 100%;
+  overflow-x: auto;
+}
+@media (max-width: 767.98px) {
+  main table:not(.dataframe) {
+    display: block;
+    overflow-x: auto;
+  }
+}
