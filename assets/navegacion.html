@@ -1,0 +1,59 @@
+<script>
+/* Navegación del libro (F5.2). Se carga al final de cada página desde
+   _quarto.yml (format.html.include-after-body). Solo complementa el menú
+   lateral nativo de Quarto; no cambia su estructura ni su plegado.
+
+   1. Teclado: Quarto genera las cabeceras de grupo («4 Inferencia») como
+      enlaces sin href, que no reciben el foco. Se convierten en botones
+      accesibles (tabindex, role, aria-controls) que se activan con Intro o
+      Espacio; el plegado lo sigue haciendo Bootstrap (data-bs-toggle). La
+      flecha duplicada queda fuera del orden de tabulación.
+   2. Pie de página «anterior / siguiente»: como el menú usa etiquetas cortas
+      («Práctica»), se les antepone el grupo: «4 Inferencia · Práctica». */
+function mejorarNavegacion() {
+  "use strict";
+  var sidebar = document.getElementById("quarto-sidebar");
+  if (!sidebar) return;
+
+  sidebar.querySelectorAll(".sidebar-item-section > .sidebar-item-container").forEach(function (box) {
+    var label = box.querySelector("a.sidebar-item-text[data-bs-toggle='collapse']");
+    var toggle = box.querySelector("a.sidebar-item-toggle");
+    if (!label) return;
+    var target = (label.getAttribute("data-bs-target") || "").replace("#", "");
+    label.setAttribute("role", "button");
+    label.setAttribute("tabindex", "0");
+    if (target) label.setAttribute("aria-controls", target);
+    label.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        label.click();
+      }
+    });
+    if (toggle) {
+      toggle.setAttribute("tabindex", "-1");
+      toggle.setAttribute("aria-hidden", "true");
+      toggle.removeAttribute("role");
+    }
+  });
+
+  document.querySelectorAll(".nav-page a.pagination-link").forEach(function (link) {
+    var match = Array.prototype.find.call(sidebar.querySelectorAll("a.sidebar-link[href]"), function (a) {
+      return a.href === link.href;
+    });
+    var section = match && match.closest(".sidebar-item-section");
+    var group = section && section.querySelector(":scope > .sidebar-item-container .menu-text");
+    var title = link.querySelector(".chapter-title");
+    if (!group || !title) return;
+    var full = group.textContent.trim() + " · " + title.textContent.trim();
+    title.textContent = full;
+    link.setAttribute("aria-label", full);
+  });
+}
+
+// El pie «anterior / siguiente» se escribe después de este script: esperar al DOM completo.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", mejorarNavegacion);
+} else {
+  mejorarNavegacion();
+}
+</script>

@@ -27,7 +27,9 @@ manda el código: verifica y actualiza este archivo.
 _quarto.yml            # Proyecto type: book; capítulos, tema cosmo, freeze: auto
 index.qmd              # Portada ("Inicio"), rediseñada en F5.1 (ver §8, «Identidad visual»)
 styles.css             # Estilos propios: §0 identidad visual (variables --eb-*,
-                       # componentes .eb-*) + sidebar, tablas, citas…
+                       # componentes .eb-*), §1 menú lateral (F5.2), tablas, citas…
+assets/                # logo.svg (cabecera del menú) y navegacion.html (script del
+                       # menú, incluido con format.html.include-after-body)
 references.bib         # Bibliografía BibTeX citada con [@clave]
 requirements.txt       # Dependencias Python de ejecución (sin versiones fijadas)
 requirements-dev.txt   # Solo desarrollo: pytest
@@ -366,6 +368,17 @@ quarto render                         # lo mismo que hace el CI
   (la cabecera tiene su propio `h1`). Secciones `##` con `{.unnumbered
   .unlisted}`. Enlaces internos siempre en Markdown a `.qmd`/`.ipynb` (Quarto
   los resuelve); el SVG de la cabecera es propio e inline (`aria-hidden`).
+- Menú lateral (F5.2): etiquetas cortas con `href` + `text` en `book.chapters`
+  («Teoría», «Práctica», «Preprocesamiento»; los títulos de las páginas no
+  cambian); partes «N Título abreviado» con espacio de no separación tras el
+  número (la primera letra se pinta como insignia con `::first-letter`);
+  `book.sidebar.collapse-level: 1` (solo se despliega el grupo de la página
+  actual) y `logo`. Los grupos se reconocen en CSS con `:has()` por sus
+  enlaces (`notebooks/0X`, `07_proyecto_integrador`, `apendices/`): si cambian
+  las rutas, revisar `styles.css` §1. `assets/navegacion.html` solo hace dos
+  cosas: vuelve enfocables las cabeceras de grupo (Quarto las genera como
+  `<a>` sin `href`; pasan a `role="button"`, Intro/Espacio) y antepone el grupo
+  a las etiquetas del pie «anterior/siguiente» («4 Inferencia · Práctica»).
 - Validar las páginas de interfaz a 1440, 768 y 375 px sin desplazamiento
   horizontal. Chrome headless no baja de ~500 px de ventana: para capturas
   móviles, usar un `iframe` de 375 px o el navegador con perfil móvil.
@@ -625,10 +638,17 @@ una con commit, PR y despliegue tras la revisión del autor)
   proyecto integrador y «Requisitos y recursos». Validada a 1440/768/375 px,
   20 enlaces sin errores, contraste AA, foco por teclado y movimiento reducido.
   Sin cambios en el menú lateral, las teorías, los notebooks ni el toolkit.
-  Corrección en el mismo PR (#11): el CI falló porque `KNNImputer` resolvía
+  Publicada (merge 820e4e9). Corrección en el mismo PR (#11): el CI falló porque `KNNImputer` resolvía
   de forma distinta un empate de distancia 0; se añade `desc.knn_impute` con
   desempate por `ID` (ver §7), tests de reproducibilidad (incluida la
   regeneración del CSV desde el cuaderno) y se regenera el CSV.
+- F5.2 Menú lateral — *hecho, pendiente de revisión*: cabecera con logotipo,
+  «Inicio», rótulo «Módulos» con insignias numeradas, proyecto y apéndices
+  separados y con icono, etiquetas cortas, solo el grupo actual desplegado,
+  página actual resaltada (fondo + barra lateral), foco visible y grupos
+  operables con teclado. Validado a 1440/1024/768/375 px (sin desbordamiento,
+  objetivos táctiles de 47 px, panel móvil que se abre, se cierra y navega),
+  búsqueda nativa y 951 referencias internas sin errores.
 
 ## 12. Normas para futuras sesiones
 

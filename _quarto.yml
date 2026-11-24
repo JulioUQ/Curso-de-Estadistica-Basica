@@ -11,41 +11,62 @@ book:
   page-navigation: true
   repo-url: "https://github.com/JulioUQ/Curso-de-Estadistica-Basica"
   repo-actions: [edit, issue]
+  sidebar:
+    logo: assets/logo.svg
+    logo-alt: "Logotipo del curso: histograma con una curva normal"
+    collapse-level: 1
   chapters:
-    - index.qmd
-    - part: "Módulo 1 — Estadística Descriptiva"
+    - href: index.qmd
+      text: "Inicio"
+    - part: "1 Estadística descriptiva"
       chapters:
-        - notebooks/01_estadistica_descriptiva/teoria.qmd
-        - notebooks/01_estadistica_descriptiva/practica.ipynb
-        - notebooks/01_estadistica_descriptiva/practica_preprocesamiento.ipynb
-
-    - part: "Módulo 2 — Probabilidad Básica"
+        - href: notebooks/01_estadistica_descriptiva/teoria.qmd
+          text: "Teoría"
+        - href: notebooks/01_estadistica_descriptiva/practica.ipynb
+          text: "Práctica"
+        - href: notebooks/01_estadistica_descriptiva/practica_preprocesamiento.ipynb
+          text: "Preprocesamiento"
+    - part: "2 Probabilidad"
       chapters:
-        - notebooks/02_probabilidad/teoria.qmd
-        - notebooks/02_probabilidad/practica.ipynb
-    - part: "Módulo 3 — Distribuciones de Probabilidad"
+        - href: notebooks/02_probabilidad/teoria.qmd
+          text: "Teoría"
+        - href: notebooks/02_probabilidad/practica.ipynb
+          text: "Práctica"
+    - part: "3 Distribuciones"
       chapters:
-        - notebooks/03_distribuciones/teoria.qmd
-        - notebooks/03_distribuciones/practica.ipynb
-    - part: "Módulo 4 — Inferencia Estadística"
+        - href: notebooks/03_distribuciones/teoria.qmd
+          text: "Teoría"
+        - href: notebooks/03_distribuciones/practica.ipynb
+          text: "Práctica"
+    - part: "4 Inferencia"
       chapters:
-        - notebooks/04_inferencia/teoria.qmd
-        - notebooks/04_inferencia/practica.ipynb 
-    - part: "Módulo 5 — Correlación y Regresión Lineal"
+        - href: notebooks/04_inferencia/teoria.qmd
+          text: "Teoría"
+        - href: notebooks/04_inferencia/practica.ipynb
+          text: "Práctica"
+    - part: "5 Correlación y regresión"
       chapters:
-        - notebooks/05_regresion/teoria.qmd
-        - notebooks/05_regresion/practica.ipynb      
-    - part: "Módulo 6 — ANOVA, Chi-cuadrado y Pruebas No Paramétricas"
+        - href: notebooks/05_regresion/teoria.qmd
+          text: "Teoría"
+        - href: notebooks/05_regresion/practica.ipynb
+          text: "Práctica"
+    - part: "6 ANOVA y no paramétricas"
       chapters:
-        - notebooks/06_anova_chi2/teoria.qmd
-        - notebooks/06_anova_chi2/practica.ipynb
+        - href: notebooks/06_anova_chi2/teoria.qmd
+          text: "Teoría"
+        - href: notebooks/06_anova_chi2/practica.ipynb
+          text: "Práctica"
     - part: "Proyecto integrador"
       chapters:
-        - notebooks/07_proyecto_integrador/practica.ipynb
+        - href: notebooks/07_proyecto_integrador/practica.ipynb
+          text: "Calidad del sueño"
   appendices:
-    - apendices/que_prueba_usar.qmd
-    - apendices/notacion.qmd
-    - apendices/glosario.qmd
+    - href: apendices/que_prueba_usar.qmd
+      text: "¿Qué prueba usar?"
+    - href: apendices/notacion.qmd
+      text: "Notación"
+    - href: apendices/glosario.qmd
+      text: "Glosario"
 format:
   html:
     theme: cosmo
@@ -53,6 +74,7 @@ format:
     number-sections: true
     code-fold: true
     css: styles.css
+    include-after-body: assets/navegacion.html
 
 execute:
   freeze: auto
