@@ -505,14 +505,13 @@ window.Quarto = {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> KNNImputer</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> descriptive <span class="im">as</span> desc</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> (<span class="dv">8</span>, <span class="fl">4.5</span>)  <span class="co"># tamaño común de las figuras de una sola gráfica</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.max_columns"</span>, <span class="va">None</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> descriptive <span class="im">as</span> desc</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> (<span class="dv">8</span>, <span class="fl">4.5</span>)  <span class="co"># tamaño común de las figuras de una sola gráfica</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.max_columns"</span>, <span class="va">None</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <section id="preparación-del-conjunto-de-datos" class="level2" data-number="4.1">
@@ -1434,6 +1433,7 @@ Valores NaN en 'Age': 9</code></pre>
 <h2 data-number="4.5" class="anchored" data-anchor-id="imputación"><span class="header-section-number">4.5</span> Imputación</h2>
 <p>Imputamos los <code>NaN</code> de las variables numéricas (excluyendo <code>ID</code>) mediante el método de los <strong>k vecinos más cercanos</strong> (k = 3): cada valor ausente se sustituye por el promedio de ese valor en los k registros más parecidos.</p>
 <p>“Más parecidos” se mide con una distancia entre registros, y la distancia depende de las unidades: <code>Steps</code> se mide en miles y <code>SH</code> en horas, así que, sin más, una diferencia de 1000 pasos pesaría lo mismo que mil horas de sueño y los pasos decidirían por sí solos quiénes son los vecinos. Por eso <strong>estandarizamos</strong> antes cada variable (le restamos su media y la dividimos por su desviación típica), buscamos los vecinos en esa escala común y devolvemos después los valores imputados a sus unidades originales.</p>
+<p><strong>Empates.</strong> Varios registros de este conjunto son idénticos en todas las variables salvo la edad, así que un registro puede tener más de k vecinos a la misma distancia. <code>KNNImputer</code> de <code>scikit-learn</code> elige entonces entre ellos según un orden interno que puede cambiar de un ordenador a otro, y el valor imputado no sería reproducible. Usamos <code>desc.knn_impute</code>, que aplica el mismo <code>KNNImputer</code> con una regla de desempate fija: entre vecinos a la misma distancia se eligen los de menor <code>ID</code>.</p>
 <div id="455d946b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-06T11:42:22.852088Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-06T11:42:22.851917Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-06T11:42:22.872678Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-06T11:42:22.871920Z&quot;}}" data-execution_count="20">
 <details class="code-fold">
 <summary>Código</summary>
@@ -1444,9 +1444,9 @@ Valores NaN en 'Age': 9</code></pre>
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>medias, desv <span class="op">=</span> datos.mean(), datos.std()</span>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>datos_z <span class="op">=</span> (datos <span class="op">-</span> medias) <span class="op">/</span> desv</span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>imputer <span class="op">=</span> KNNImputer(n_neighbors<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>imputados_z <span class="op">=</span> pd.DataFrame(imputer.fit_transform(datos_z),</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>                           columns<span class="op">=</span>impute_cols, index<span class="op">=</span>datos.index)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># KNN (k = 3) con desempate determinista: entre vecinos a la misma distancia</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># se eligen los de menor ID (ver la explicación anterior)</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>imputados_z <span class="op">=</span> desc.knn_impute(datos_z, n_neighbors<span class="op">=</span><span class="dv">3</span>, ids<span class="op">=</span>df[<span class="st">"ID"</span>])</span>
 <span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Volvemos a las unidades originales y solo rellenamos los huecos</span></span>
 <span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>imputados <span class="op">=</span> imputados_z <span class="op">*</span> desv <span class="op">+</span> medias</span>
@@ -1480,7 +1480,7 @@ Valores NaN en 'Age': 9</code></pre>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">40</th>
 <td>41</td>
-<td>30.333333</td>
+<td>30.000000</td>
 <td>7.7</td>
 <td>7</td>
 <td>75</td>
@@ -1994,9 +1994,9 @@ Correlación (pandas): 0.972975</code></pre>
 <tr class="even">
 <th data-quarto-table-cell-role="th">Después (KNN)</th>
 <td>373</td>
-<td>42.346</td>
+<td>42.345</td>
 <td>43.0</td>
-<td>8.877</td>
+<td>8.878</td>
 </tr>
 </tbody>
 </table>
@@ -2004,7 +2004,7 @@ Correlación (pandas): 0.972975</code></pre>
 </div>
 </div>
 </div>
-<p>La imputación añade 9 valores (de 364 a 373). La media apenas cambia (de 42,40 a 42,35), la mediana se mantiene y la desviación típica baja ligeramente (de 8,90 a 8,88). KNN estima cada valor a partir de las personas más parecidas en las demás variables, así que no coloca todos los imputados en el mismo punto y reduce la dispersión mucho menos que imputar la media. Aun así, los valores imputados son estimaciones: el análisis posterior los trata como si se hubieran observado, lo que tiende a subestimar la incertidumbre.</p>
+<p>La imputación añade 9 valores (de 364 a 373). La media apenas cambia (de 42,40 a 42,34), la mediana se mantiene y la desviación típica baja ligeramente (de 8,90 a 8,88). KNN estima cada valor a partir de las personas más parecidas en las demás variables, así que no coloca todos los imputados en el mismo punto y reduce la dispersión mucho menos que imputar la media. Aun así, los valores imputados son estimaciones: el análisis posterior los trata como si se hubieran observado, lo que tiende a subestimar la incertidumbre.</p>
 </div>
 </div>
 </div>

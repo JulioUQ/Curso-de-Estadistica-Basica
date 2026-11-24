@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Julio Úbeda Quesada">
+<meta name="dcterms.date" content="2026-11-24">
 
 <title>Estadística Básica</title>
 <style>
@@ -48,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-227d190a39d2d9049c7a1a199b542b97.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,40 +78,11 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
+<body class="nav-sidebar floating eb-home quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -129,7 +101,7 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Sitio web">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -324,80 +296,202 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#bienvenida" id="toc-bienvenida" class="nav-link active" data-scroll-target="#bienvenida"><span class="header-section-number">1</span> Bienvenida</a>
-  <ul class="collapse">
-  <li><a href="#cómo-está-organizado" id="toc-cómo-está-organizado" class="nav-link" data-scroll-target="#cómo-está-organizado"><span class="header-section-number">1.1</span> Cómo está organizado</a></li>
-  <li><a href="#contenido" id="toc-contenido" class="nav-link" data-scroll-target="#contenido"><span class="header-section-number">1.2</span> Contenido</a></li>
-  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos"><span class="header-section-number">1.3</span> Datos</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content" tabindex="-1">
+<main class="content column-page-right" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Estadística Básica</h1></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Estadística Básica</h1>
-</div>
+<header id="title-block-header">
 
+<p class="author">Julio Úbeda Quesada</p>
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Julio Úbeda Quesada </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">23 de noviembre de 2026</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
+<p class="date">2026-11-24</p>
 </header>
 
 
-<section id="bienvenida" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Bienvenida</h1>
-<p>Este es un curso de estadística básica orientado a la práctica, en español. No presupone conocimientos previos de estadística: basta con álgebra básica y cierta familiaridad con Python. Cada concepto se presenta primero de forma intuitiva, después con su definición formal y, por último, con un ejemplo calculado en Python.</p>
-<section id="cómo-está-organizado" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="cómo-está-organizado"><span class="header-section-number">1.1</span> Cómo está organizado</h2>
-<p>Cada módulo tiene un capítulo de <strong>teoría</strong> y uno o dos cuadernos de <strong>práctica</strong> (Jupyter). Cada teoría termina con unas preguntas de <strong>autoevaluación</strong>, y las prácticas, con ejercicios propuestos y sus soluciones desarrolladas, plegadas para que puedas intentarlos primero. Algunos capítulos incluyen gráficos <strong>interactivos</strong> que se manipulan directamente en el navegador. Cada práctica puede abrirse en Google Colab o descargarse para ejecutarla en tu ordenador. Los cálculos se apoyan en <code>stats_toolkit</code>, una pequeña librería del curso (en <code>src/</code>) que implementa a mano los métodos con valor didáctico y compara sus resultados con <code>scipy</code> y <code>statsmodels</code>.</p>
-</section>
-<section id="contenido" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="contenido"><span class="header-section-number">1.2</span> Contenido</h2>
+<!--
+Portada del curso (F5.1). Estructura: cabecera, catálogo de módulos, cómo
+funciona, proyecto integrador y requisitos/recursos. Los estilos y la guía de
+diseño (variables --eb-*) están en styles.css, sección «0) Identidad visual».
+Los enlaces internos se escriben en Markdown para que Quarto los resuelva y
+compruebe al renderizar.
+-->
+<div class="eb-hero">
+<div class="eb-hero-text">
+<p><span class="eb-eyebrow">Curso en línea · En español</span></p>
+<h1 class="eb-hero-title">Aprende estadística paso a paso, de la intuición al análisis con Python</h1>
+<p><span class="eb-hero-lead">Para quien empieza sin base estadística: aprenderás a describir datos, razonar con probabilidades, estimar y contrastar hipótesis, estudiar relaciones y comparar grupos, con explicaciones claras y prácticas que puedes ejecutar en tu ordenador o en Google Colab.</span></p>
+<div class="eb-actions">
+<p><a href="./notebooks/01_estadistica_descriptiva/teoria.html" class="eb-btn eb-btn-primary">Empezar el curso <i class="bi bi-arrow-right" aria-hidden="true"></i></a> <a href="#modulos" class="eb-btn eb-btn-secondary">Explorar módulos</a></p>
+</div>
+<div class="eb-highlights">
 <ul>
-<li><strong>Módulo 1 — Estadística descriptiva</strong>: tipos de variables, tendencia central, dispersión, forma, valores atípicos y valores perdidos; práctica de preprocesamiento de datos reales con errores.</li>
-<li><strong>Módulo 2 — Probabilidad básica</strong>: espacio muestral, probabilidad condicionada, independencia, teorema de Bayes y una primera aproximación al clasificador Naive Bayes.</li>
-<li><strong>Módulo 3 — Distribuciones de probabilidad</strong>: Bernoulli, Binomial, Poisson, Uniforme, Normal y Exponencial; función de distribución, cuantiles, tipificación, distribución muestral de la media y Teorema Central del Límite.</li>
-<li><strong>Módulo 4 — Inferencia estadística</strong>: estimación, intervalos de confianza y contrastes de hipótesis para medias, proporciones y varianzas; potencia, tamaño muestral e intervalos bootstrap.</li>
-<li><strong>Módulo 5 — Correlación y regresión lineal</strong>: covarianza, correlación de Pearson y de Spearman, regresión lineal simple, <span class="math inline">\(R^2\)</span>, supuestos e inferencia sobre la pendiente.</li>
-<li><strong>Módulo 6 — ANOVA, chi-cuadrado y pruebas no paramétricas</strong>: comparación de varias medias, tamaño del efecto, comparaciones post-hoc, asociación entre variables categóricas y pruebas basadas en rangos y en signos.</li>
-<li><strong>Proyecto integrador</strong>: un análisis completo de los datos de sueño que combina las herramientas de los seis módulos.</li>
-<li><strong>Apéndices</strong>: guía para elegir la prueba adecuada, notación y glosario.</li>
+<li><i class="bi bi-layers" aria-hidden="true"></i> 6 módulos</li>
+<li><i class="bi bi-code-slash" aria-hidden="true"></i> Prácticas en Python</li>
+<li><i class="bi bi-check2-circle" aria-hidden="true"></i> Ejercicios con soluciones</li>
+<li><i class="bi bi-graph-up" aria-hidden="true"></i> Gráficos interactivos</li>
 </ul>
+</div>
+</div>
+<div class="eb-hero-art">
+<svg class="eb-hero-svg" viewbox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+  <line class="eb-art-axis" x1="18" y1="206" x2="342" y2="206"></line>
+  <rect class="eb-art-bar" x="26.0" y="200" width="22.0" height="6" rx="3"></rect><rect class="eb-art-bar" x="52.0" y="193" width="22.0" height="13" rx="3"></rect><rect class="eb-art-bar" x="78.0" y="168" width="22.0" height="38" rx="3"></rect><rect class="eb-art-bar" x="104.0" y="130" width="22.0" height="76" rx="3"></rect><rect class="eb-art-bar" x="130.0" y="76" width="22.0" height="130" rx="3"></rect><rect class="eb-art-bar" x="156.0" y="46" width="22.0" height="160" rx="3"></rect><rect class="eb-art-bar" x="182.0" y="36" width="22.0" height="170" rx="3"></rect><rect class="eb-art-bar" x="208.0" y="82" width="22.0" height="124" rx="3"></rect><rect class="eb-art-bar" x="234.0" y="126" width="22.0" height="80" rx="3"></rect><rect class="eb-art-bar" x="260.0" y="171" width="22.0" height="35" rx="3"></rect><rect class="eb-art-bar" x="286.0" y="191" width="22.0" height="15" rx="3"></rect><rect class="eb-art-bar" x="312.0" y="201" width="22.0" height="5" rx="3"></rect>
+  <line class="eb-art-mean" x1="180.0" y1="206" x2="180.0" y2="24"></line>
+  <path class="eb-art-curve" pathlength="1" d="M24.0,204.1 L27.1,203.7 L30.2,203.3 L33.4,202.8 L36.5,202.2 L39.6,201.5 L42.7,200.7 L45.8,199.8 L49.0,198.8 L52.1,197.7 L55.2,196.3 L58.3,194.9 L61.4,193.2 L64.6,191.4 L67.7,189.3 L70.8,187.0 L73.9,184.5 L77.0,181.8 L80.2,178.8 L83.3,175.5 L86.4,172.0 L89.5,168.1 L92.6,164.1 L95.8,159.7 L98.9,155.1 L102.0,150.2 L105.1,145.0 L108.2,139.6 L111.4,134.0 L114.5,128.2 L117.6,122.3 L120.7,116.2 L123.8,110.0 L127.0,103.8 L130.1,97.5 L133.2,91.3 L136.3,85.1 L139.4,79.1 L142.6,73.3 L145.7,67.7 L148.8,62.3 L151.9,57.3 L155.0,52.7 L158.2,48.5 L161.3,44.8 L164.4,41.6 L167.5,38.9 L170.6,36.8 L173.8,35.2 L176.9,34.3 L180.0,34.0 L183.1,34.3 L186.2,35.2 L189.4,36.8 L192.5,38.9 L195.6,41.6 L198.7,44.8 L201.8,48.5 L205.0,52.7 L208.1,57.3 L211.2,62.3 L214.3,67.7 L217.4,73.3 L220.6,79.1 L223.7,85.1 L226.8,91.3 L229.9,97.5 L233.0,103.8 L236.2,110.0 L239.3,116.2 L242.4,122.3 L245.5,128.2 L248.6,134.0 L251.8,139.6 L254.9,145.0 L258.0,150.2 L261.1,155.1 L264.2,159.7 L267.4,164.1 L270.5,168.1 L273.6,172.0 L276.7,175.5 L279.8,178.8 L283.0,181.8 L286.1,184.5 L289.2,187.0 L292.3,189.3 L295.4,191.4 L298.6,193.2 L301.7,194.9 L304.8,196.3 L307.9,197.7 L311.0,198.8 L314.2,199.8 L317.3,200.7 L320.4,201.5 L323.5,202.2 L326.6,202.8 L329.8,203.3 L332.9,203.7 L336.0,204.1"></path>
+  <circle class="eb-art-dot" cx="180.0" cy="34" r="5"></circle>
+</svg>
+</div>
+</div>
+<section id="modulos" class="level2 unnumbered unlisted eb-section-title">
+<h2 class="unnumbered unlisted eb-section-title anchored" data-anchor-id="modulos">Catálogo de módulos</h2>
+<p><span class="eb-section-lead">Seis módulos que avanzan de lo descriptivo a lo inferencial. Cada uno combina un capítulo de teoría con uno o dos cuadernos de práctica.</span></p>
+<div class="eb-grid eb-modules">
+<div class="eb-card eb-module">
+<div class="eb-module-head">
+<p><span class="eb-icon"><i class="bi bi-bar-chart-line" aria-hidden="true"></i></span> <span class="eb-kicker">Módulo 1</span></p>
+</div>
+<section id="estadística-descriptiva" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="estadística-descriptiva">Estadística Descriptiva</h3>
+<p>Tipos de variables, medidas de centro, dispersión y forma, valores atípicos y datos ausentes.</p>
+<div class="eb-card-links">
+<p><a href="./notebooks/01_estadistica_descriptiva/teoria.html" class="eb-card-link" aria-label="Teoría del módulo 1">Teoría</a> <a href="./notebooks/01_estadistica_descriptiva/practica.html" class="eb-card-link" aria-label="Práctica del módulo 1">Práctica</a> <a href="./notebooks/01_estadistica_descriptiva/practica_preprocesamiento.html" class="eb-card-link" aria-label="Preprocesamiento del módulo 1">Preprocesamiento</a></p>
+</div>
 </section>
-<section id="datos" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="datos"><span class="header-section-number">1.3</span> Datos</h2>
-<p>Además de datos simulados, el curso usa como caso recurrente un conjunto de datos sobre <strong>salud del sueño y estilo de vida</strong> (<code>sleephealth</code>). Sus datos son sintéticos, creados con fines ilustrativos: sirven para practicar los métodos, no para extraer conclusiones sobre la salud.</p>
+</div>
+<div class="eb-card eb-module">
+<div class="eb-module-head">
+<p><span class="eb-icon"><i class="bi bi-dice-5" aria-hidden="true"></i></span> <span class="eb-kicker">Módulo 2</span></p>
+</div>
+<section id="probabilidad-básica" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="probabilidad-básica">Probabilidad Básica</h3>
+<p>Sucesos, probabilidad condicionada, independencia y teorema de Bayes, con un primer clasificador Naive Bayes.</p>
+<div class="eb-card-links">
+<p><a href="./notebooks/02_probabilidad/teoria.html" class="eb-card-link" aria-label="Teoría del módulo 2">Teoría</a> <a href="./notebooks/02_probabilidad/practica.html" class="eb-card-link" aria-label="Práctica del módulo 2">Práctica</a></p>
+</div>
+</section>
+</div>
+<div class="eb-card eb-module">
+<div class="eb-module-head">
+<p><span class="eb-icon"><i class="bi bi-activity" aria-hidden="true"></i></span> <span class="eb-kicker">Módulo 3</span></p>
+</div>
+<section id="distribuciones-de-probabilidad" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="distribuciones-de-probabilidad">Distribuciones de Probabilidad</h3>
+<p>Binomial, Poisson, Normal y otras distribuciones; cuantiles, tipificación y Teorema Central del Límite.</p>
+<div class="eb-card-links">
+<p><a href="./notebooks/03_distribuciones/teoria.html" class="eb-card-link" aria-label="Teoría del módulo 3">Teoría</a> <a href="./notebooks/03_distribuciones/practica.html" class="eb-card-link" aria-label="Práctica del módulo 3">Práctica</a></p>
+</div>
+</section>
+</div>
+<div class="eb-card eb-module">
+<div class="eb-module-head">
+<p><span class="eb-icon"><i class="bi bi-bullseye" aria-hidden="true"></i></span> <span class="eb-kicker">Módulo 4</span></p>
+</div>
+<section id="inferencia-estadística" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="inferencia-estadística">Inferencia Estadística</h3>
+<p>Intervalos de confianza, contrastes de hipótesis, potencia, tamaño muestral y bootstrap.</p>
+<div class="eb-card-links">
+<p><a href="./notebooks/04_inferencia/teoria.html" class="eb-card-link" aria-label="Teoría del módulo 4">Teoría</a> <a href="./notebooks/04_inferencia/practica.html" class="eb-card-link" aria-label="Práctica del módulo 4">Práctica</a></p>
+</div>
+</section>
+</div>
+<div class="eb-card eb-module">
+<div class="eb-module-head">
+<p><span class="eb-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></span> <span class="eb-kicker">Módulo 5</span></p>
+</div>
+<section id="correlación-y-regresión-lineal" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="correlación-y-regresión-lineal">Correlación y Regresión Lineal</h3>
+<p>Correlaciones de Pearson y Spearman, regresión lineal simple e inferencia sobre la pendiente.</p>
+<div class="eb-card-links">
+<p><a href="./notebooks/05_regresion/teoria.html" class="eb-card-link" aria-label="Teoría del módulo 5">Teoría</a> <a href="./notebooks/05_regresion/practica.html" class="eb-card-link" aria-label="Práctica del módulo 5">Práctica</a></p>
+</div>
+</section>
+</div>
+<div class="eb-card eb-module">
+<div class="eb-module-head">
+<p><span class="eb-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span> <span class="eb-kicker">Módulo 6</span></p>
+</div>
+<section id="anova-chi-cuadrado-y-pruebas-no-paramétricas" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="anova-chi-cuadrado-y-pruebas-no-paramétricas">ANOVA, Chi-cuadrado y Pruebas No Paramétricas</h3>
+<p>Comparación de varios grupos, asociación entre variables categóricas y pruebas basadas en rangos.</p>
+<div class="eb-card-links">
+<p><a href="./notebooks/06_anova_chi2/teoria.html" class="eb-card-link" aria-label="Teoría del módulo 6">Teoría</a> <a href="./notebooks/06_anova_chi2/practica.html" class="eb-card-link" aria-label="Práctica del módulo 6">Práctica</a></p>
+</div>
+</section>
+</div>
+</div>
+</section>
+<section id="cómo-funciona-el-curso" class="level2 unnumbered unlisted eb-section-title">
+<h2 class="unnumbered unlisted eb-section-title anchored" data-anchor-id="cómo-funciona-el-curso">Cómo funciona el curso</h2>
+<div class="eb-grid eb-steps">
+<div class="eb-card eb-step">
+<p><span class="eb-icon"><i class="bi bi-lightbulb" aria-hidden="true"></i></span> <span class="eb-kicker">Paso 1</span></p>
+<section id="aprende-los-conceptos" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="aprende-los-conceptos">Aprende los conceptos</h3>
+<p>Cada idea se presenta primero de forma intuitiva, después con su definición formal y, por último, con un ejemplo calculado.</p>
+</section>
+</div>
+<div class="eb-card eb-step">
+<p><span class="eb-icon"><i class="bi bi-code-slash" aria-hidden="true"></i></span> <span class="eb-kicker">Paso 2</span></p>
+<section id="practica-con-python" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="practica-con-python">Practica con Python</h3>
+<p>Los cuadernos reproducen los cálculos con <code>stats_toolkit</code>, la librería del curso, y los comparan con <code>scipy</code> y <code>statsmodels</code>. Algunos capítulos incluyen gráficos interactivos.</p>
+</section>
+</div>
+<div class="eb-card eb-step">
+<p><span class="eb-icon"><i class="bi bi-check2-circle" aria-hidden="true"></i></span> <span class="eb-kicker">Paso 3</span></p>
+<section id="comprueba-lo-aprendido" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="comprueba-lo-aprendido">Comprueba lo aprendido</h3>
+<p>Cada teoría termina con preguntas de autoevaluación, y cada práctica, con ejercicios y soluciones desarrolladas, plegadas para que lo intentes primero.</p>
+</section>
+</div>
+</div>
+<div class="eb-project">
+<div class="eb-project-text">
+<p><span class="eb-kicker"><i class="bi bi-moon-stars" aria-hidden="true"></i> Proyecto integrador</span></p>
+<section id="qué-se-asocia-con-la-calidad-del-sueño" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="qué-se-asocia-con-la-calidad-del-sueño">¿Qué se asocia con la calidad del sueño?</h3>
+<p>Aplica las herramientas de los seis módulos a un mismo conjunto de datos: describe la calidad del sueño, estima con incertidumbre, compara grupos, estudia relaciones y planifica un nuevo estudio. Los datos de sueño (<code>sleephealth</code>) son sintéticos, creados con fines ilustrativos: sirven para practicar los métodos, no para sacar conclusiones sobre la salud.</p>
+</section>
+</div>
+<div class="eb-project-action">
+<p><a href="./notebooks/07_proyecto_integrador/practica.html" class="eb-btn eb-btn-light">Ir al proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></a></p>
+</div>
+</div>
+</section>
+<section id="requisitos-y-recursos" class="level2 unnumbered unlisted eb-section-title">
+<h2 class="unnumbered unlisted eb-section-title anchored" data-anchor-id="requisitos-y-recursos">Requisitos y recursos</h2>
+<div class="eb-grid eb-resources">
+<div class="eb-resource">
+<p><span class="eb-icon eb-icon-sm"><i class="bi bi-mortarboard" aria-hidden="true"></i></span></p>
+<section id="conocimientos-previos" class="level4 unnumbered unlisted eb-resource-body">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="conocimientos-previos">Conocimientos previos</h4>
+<p>Álgebra básica y algo de familiaridad con Python. No necesitas saber estadística.</p>
+</section>
+</div>
+<div class="eb-resource">
+<p><span class="eb-icon eb-icon-sm"><i class="bi bi-terminal" aria-hidden="true"></i></span></p>
+<section id="python-y-google-colab" class="level4 unnumbered unlisted eb-resource-body">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="python-y-google-colab">Python y Google Colab</h4>
+<p>Cada práctica se abre en Google Colab con un enlace o se ejecuta en tu ordenador con las dependencias de <code>requirements.txt</code>.</p>
+</section>
+</div>
+<div class="eb-resource">
+<p><span class="eb-icon eb-icon-sm"><i class="bi bi-github" aria-hidden="true"></i></span></p>
+<section id="código-en-github" class="level4 unnumbered unlisted eb-resource-body">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="código-en-github">Código en GitHub</h4>
+<p>Cuadernos, datos y <code>stats_toolkit</code> en el <a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica">repositorio del curso</a>.</p>
+</section>
+</div>
+<div class="eb-resource">
+<p><span class="eb-icon eb-icon-sm"><i class="bi bi-journal-bookmark" aria-hidden="true"></i></span></p>
+<section id="apéndices" class="level4 unnumbered unlisted eb-resource-body">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="apéndices">Apéndices</h4>
+<p><a href="./apendices/que_prueba_usar.html">¿Qué prueba usar?</a>, <a href="./apendices/notacion.html">notación</a> y <a href="./apendices/glosario.html">glosario</a>.</p>
+</section>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -877,7 +971,7 @@ window.Quarto = {
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
   </script>
-<nav class="page-navigation" aria-label="Página">
+<nav class="page-navigation column-page-right" aria-label="Página">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
@@ -891,4 +985,4 @@ window.Quarto = {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JulioUQ/Curso-de-Estadistica-Basica/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
