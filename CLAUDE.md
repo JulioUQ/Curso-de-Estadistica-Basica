@@ -379,6 +379,13 @@ quarto render                         # lo mismo que hace el CI
   cosas: vuelve enfocables las cabeceras de grupo (Quarto las genera como
   `<a>` sin `href`; pasan a `role="button"`, Intro/Espacio) y antepone el grupo
   a las etiquetas del pie «anterior/siguiente» («4 Inferencia · Práctica»).
+- Versiones de Quarto: el CI instala la última (1.11.9 al publicar F5.2) y en
+  local hay 1.10.18. En 1.11 la cabecera de grupo es un único `<button>`
+  (texto + flecha dentro); en 1.10, dos `<a>`. `styles.css` §1 cubre las dos
+  (el arreglo de teclado del script solo actúa en 1.10). Quarto fija el
+  tamaño en `.sidebar-navigation .sidebar-item`: para cambiarlo, apuntar ahí.
+  Para validar el HTML del CI sin instalar Quarto: `git archive origin/gh-pages`
+  en una carpeta temporal, copiar encima `styles.css` y servirla.
 - Validar las páginas de interfaz a 1440, 768 y 375 px sin desplazamiento
   horizontal. Chrome headless no baja de ~500 px de ventana: para capturas
   móviles, usar un `iframe` de 375 px o el navegador con perfil móvil.
@@ -642,13 +649,16 @@ una con commit, PR y despliegue tras la revisión del autor)
   de forma distinta un empate de distancia 0; se añade `desc.knn_impute` con
   desempate por `ID` (ver §7), tests de reproducibilidad (incluida la
   regeneración del CSV desde el cuaderno) y se regenera el CSV.
-- F5.2 Menú lateral — *hecho, pendiente de revisión*: cabecera con logotipo,
+- F5.2 Menú lateral — *hecho y aprobado*: cabecera con logotipo,
   «Inicio», rótulo «Módulos» con insignias numeradas, proyecto y apéndices
   separados y con icono, etiquetas cortas, solo el grupo actual desplegado,
   página actual resaltada (fondo + barra lateral), foco visible y grupos
   operables con teclado. Validado a 1440/1024/768/375 px (sin desbordamiento,
   objetivos táctiles de 47 px, panel móvil que se abre, se cierra y navega),
   búsqueda nativa y 951 referencias internas sin errores.
+  Publicada (merge 0313fe2). Corrección posterior para Quarto 1.11.9:
+  títulos de grupo alineados a la izquierda en móvil y flechas a la derecha
+  en escritorio (también a 1024 px).
 
 ## 12. Normas para futuras sesiones
 
