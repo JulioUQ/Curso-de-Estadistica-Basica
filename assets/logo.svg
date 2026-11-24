@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="Estadística Básica">
+  <rect width="40" height="40" rx="10" fill="#1f4fb8"/>
+  <g fill="#c9d7f4">
+    <rect x="7" y="25" width="4" height="7" rx="1"/>
+    <rect x="12.5" y="19" width="4" height="13" rx="1"/>
+    <rect x="18" y="13" width="4" height="19" rx="1"/>
+    <rect x="23.5" y="19" width="4" height="13" rx="1"/>
+    <rect x="29" y="25" width="4" height="7" rx="1"/>
+  </g>
+  <path d="M5 31 C 12 30, 14 10, 20 10 S 28 30, 35 31" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

@@ -504,41 +504,217 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
 
 
 /* ------------------------------------------------------------
-   1) SIDEBAR — menú lateral de navegación
-   ------------------------------------------------------------ */
+   1) MENÚ LATERAL (F5.2)
+   ------------------------------------------------------------
+   Etiquetas, grupos y plegado se definen en _quarto.yml (book.chapters con
+   `text` corto, book.sidebar con logo y collapse-level: 1). Aquí solo el
+   aspecto, con las variables --eb-* de la sección 0. Los grupos se reconocen
+   por sus enlaces con :has(), sin añadir clases:
+     módulos   -> secciones con enlaces a notebooks/0X (salvo el proyecto)
+     proyecto  -> sección con un enlace a 07_proyecto_integrador
+     apéndices -> sección con enlaces a apendices/
+   Las etiquetas de los módulos empiezan por su número («4 Inferencia»): la
+   primera letra se muestra como insignia. */
 
-/* Oculta el número de capítulo que Quarto añade automáticamente
-   delante de cada entrada del menú (ej. "1", "2.2"...).
-   No afecta a la numeración de secciones dentro del cuerpo del
-   texto (esa la controla number-sections en _quarto.yml y se
-   mantiene intacta). */
-.sidebar-item .chapter-number {
+#quarto-sidebar {
+  font-size: 0.93rem;
+}
+#quarto-sidebar .sidebar-item .chapter-number {
   display: none;
 }
 
-/* Pone en negrita todo el texto del menú lateral: enlaces,
-   texto de secciones ("Módulo X — ..."), y páginas hijas
-   (teoria/practica de cada módulo). */
-#quarto-sidebar .sidebar-item-text,
-#quarto-sidebar .sidebar-link,
-#quarto-sidebar .menu-text {
+/* Cabecera: logotipo + nombre del curso */
+#quarto-sidebar .sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: var(--eb-space-3);
+  padding-bottom: var(--eb-space-3);
+  border-bottom: 1px solid var(--eb-border);
+}
+#quarto-sidebar .sidebar-logo {
+  width: 2.25rem;
+  height: 2.25rem;
+  max-height: none;
+  padding: 0 !important;
+}
+#quarto-sidebar .sidebar-logo-link {
+  flex: none;
+  display: inline-flex;
+}
+#quarto-sidebar .sidebar-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+#quarto-sidebar .sidebar-title > a {
+  color: var(--eb-ink);
+}
+#quarto-sidebar .sidebar-title .quarto-navigation-tool {
+  color: var(--eb-muted);
+}
+
+/* Búsqueda */
+#quarto-sidebar .sidebar-search {
+  margin-top: var(--eb-space-2);
+}
+#quarto-sidebar .aa-DetachedSearchButton,
+#quarto-sidebar .aa-Form {
+  border-radius: var(--eb-radius-sm);
+  border-color: var(--eb-border);
+}
+
+/* Enlaces y cabeceras de grupo */
+#quarto-sidebar .sidebar-menu-container > ul > li {
+  margin: 0;
+}
+#quarto-sidebar .sidebar-item-container {
+  border-radius: var(--eb-radius-sm);
+  transition: background-color var(--eb-transition);
+}
+#quarto-sidebar .sidebar-item-container .sidebar-link {
+  display: flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.3rem var(--eb-space-3);
+  color: var(--eb-text);
+  font-weight: 500;
+  line-height: 1.3;
+}
+#quarto-sidebar .sidebar-section .sidebar-link {
+  overflow-wrap: anywhere;
+}
+#quarto-sidebar .sidebar-item-container:hover {
+  background: var(--eb-surface-alt);
+}
+#quarto-sidebar .sidebar-item-container .sidebar-link:hover {
+  color: var(--eb-primary);
+}
+#quarto-sidebar .sidebar-item-section > .sidebar-item-container .sidebar-link {
+  font-weight: 700;
+  color: var(--eb-ink);
+}
+#quarto-sidebar .sidebar-item-toggle {
+  padding: 0 var(--eb-space-2);
+  color: var(--eb-muted);
+}
+#quarto-sidebar .sidebar-item-toggle .bi {
+  margin: 0 !important;
+}
+
+/* Página actual */
+#quarto-sidebar .sidebar-link.active {
+  color: var(--eb-primary) !important;
   font-weight: 700;
 }
-
-/* Refuerzo adicional: "Inicio" y los títulos de cada Módulo
-   (nivel superior del menú) con un peso aún mayor, para que
-   destaquen sobre las páginas hijas (teoria/practica).
-   Si prefieres que todo el sidebar tenga el mismo peso visual,
-   basta con eliminar este bloque. */
-#quarto-sidebar > div.sidebar-menu-container > ul.sidebar-section > li.sidebar-item > div.sidebar-item-container > a.sidebar-item-text,
-#quarto-sidebar .sidebar-item-section > .sidebar-item-text {
-  font-weight: 800;
+#quarto-sidebar .sidebar-item-container:has(> .sidebar-link.active) {
+  background: var(--eb-primary-soft);
+  box-shadow: inset 3px 0 0 var(--eb-primary);
 }
 
-/* Un pequeño margen extra entre partes (Módulos) del sidebar,
-   para separar visualmente cada bloque temático. */
-#quarto-sidebar .sidebar-item-section {
-  margin-top: 0.5rem;
+/* Foco visible con teclado */
+#quarto-sidebar a:focus-visible {
+  outline: 3px solid var(--eb-primary);
+  outline-offset: -3px;
+  border-radius: var(--eb-radius-sm);
+}
+
+/* Páginas de cada grupo: sangría con una guía vertical discreta */
+#quarto-sidebar .sidebar-section.depth1 {
+  margin: 0.15rem 0 var(--eb-space-2) 0.7rem;
+  padding-left: var(--eb-space-1);
+  border-left: 1px solid var(--eb-border);
+}
+#quarto-sidebar .sidebar-section.depth1 .sidebar-item-container {
+  margin: 1px 0;
+}
+
+/* Iconos de Inicio, proyecto y apéndices (Bootstrap Icons, servidos en local) */
+#quarto-sidebar .sidebar-menu-container > ul > li:first-child .menu-text::before,
+#quarto-sidebar li.sidebar-item-section:has(a[href*="07_proyecto_integrador"]) > .sidebar-item-container .menu-text::before,
+#quarto-sidebar li.sidebar-item-section:has(a[href*="apendices/"]) > .sidebar-item-container .menu-text::before {
+  display: inline-block;
+  width: 1.5rem;
+  font-family: "bootstrap-icons";
+  font-weight: 400;
+  color: var(--eb-primary);
+}
+#quarto-sidebar .sidebar-menu-container > ul > li:first-child .menu-text::before {
+  content: "\f423";
+}
+#quarto-sidebar li.sidebar-item-section:has(a[href*="07_proyecto_integrador"]) > .sidebar-item-container .menu-text::before {
+  content: "\f496";
+}
+#quarto-sidebar li.sidebar-item-section:has(a[href*="apendices/"]) > .sidebar-item-container .menu-text::before {
+  content: "\f43d";
+}
+
+/* Módulos: rótulo «Módulos» sobre el primero e insignia con el número */
+#quarto-sidebar li.sidebar-item-section:has(a[href*="01_estadistica_descriptiva"])::before {
+  content: "Módulos";
+  display: block;
+  margin: var(--eb-space-4) 0 var(--eb-space-1) var(--eb-space-3);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--eb-muted);
+}
+#quarto-sidebar li.sidebar-item-section:has(a[href*="notebooks/0"]):not(:has(a[href*="07_proyecto_integrador"])) > .sidebar-item-container .menu-text {
+  display: inline-block;
+  padding-left: 1.7rem;
+  text-indent: -1.7rem;
+}
+#quarto-sidebar li.sidebar-item-section:has(a[href*="notebooks/0"]):not(:has(a[href*="07_proyecto_integrador"])) > .sidebar-item-container .menu-text::first-letter {
+  margin-right: 0.3rem;
+  padding: 0.05rem 0.42rem;
+  border-radius: 0.4rem;
+  background: var(--eb-primary-soft);
+  color: var(--eb-primary);
+  font-size: 0.8rem;
+}
+
+/* Separación entre módulos, proyecto y apéndices */
+#quarto-sidebar li.sidebar-item-section:has(a[href*="07_proyecto_integrador"]),
+#quarto-sidebar li.sidebar-item-section:has(a[href*="apendices/"]) {
+  margin-top: var(--eb-space-3);
+  padding-top: var(--eb-space-3);
+  border-top: 1px solid var(--eb-border);
+}
+
+/* Pie de página «anterior / siguiente»: sin el número de capítulo, porque el
+   script assets/navegacion.js añade el módulo a las etiquetas cortas. */
+.nav-page .chapter-number {
+  display: none;
+}
+
+/* Escritorio estrecho: el menú es más angosto */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #quarto-sidebar {
+    font-size: 0.87rem;
+  }
+}
+
+/* Pantallas táctiles y estrechas: objetivos más grandes */
+@media (max-width: 991.98px) {
+  #quarto-sidebar .sidebar-item-container .sidebar-link {
+    min-height: 2.75rem;
+  }
+  #quarto-sidebar .sidebar-item-toggle {
+    min-width: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #quarto-sidebar .sidebar-item-container {
+    transition: none;
+  }
 }
 
 
