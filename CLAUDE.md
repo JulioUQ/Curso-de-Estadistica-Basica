@@ -28,8 +28,10 @@ _quarto.yml            # Proyecto type: book; capítulos, tema cosmo, freeze: au
 index.qmd              # Portada ("Inicio"), rediseñada en F5.1 (ver §8, «Identidad visual»)
 styles.css             # Estilos propios: §0 identidad visual (variables --eb-*,
                        # componentes .eb-*), §1 menú lateral (F5.2), tablas, citas…
-assets/                # logo.svg (cabecera del menú) y navegacion.html (script del
-                       # menú, incluido con format.html.include-after-body)
+assets/                # logo.svg (cabecera del menú), navegacion.html (script del
+                       # menú, incluido con format.html.include-after-body; carga
+                       # curso.js) y curso.js (cuestionarios y progreso, F5.3;
+                       # declarado en project.resources)
 references.bib         # Bibliografía BibTeX citada con [@clave]
 requirements.txt       # Dependencias Python de ejecución (sin versiones fijadas)
 requirements-dev.txt   # Solo desarrollo: pytest
@@ -330,8 +332,9 @@ quarto render                         # lo mismo que hace el CI
   con un callout plegable por ejercicio (decisión del autor, §10; F2.5).
 - Cada teoría empieza con «Objetivos del módulo» (callout) y termina con
   «Ideas clave» y «Autoevaluación» antes del cierre, que enlaza a su práctica
-  (F2.8, F3.1). Autoevaluación: 5 preguntas, cada una con su respuesta en un
-  callout plegable («Respuesta»).
+  (F2.8, F3.1). Autoevaluación: 5 preguntas de elección múltiple (3–4
+  opciones) convertidas en cuestionario interactivo en F5.3 (ver §8,
+  «Cuestionarios y progreso»).
 - Cada práctica empieza (tras el título) con el callout «Ejecutar este
   cuaderno» (Colab, GitHub, zip) y una celda que solo actúa en Google Colab
   (clona el repositorio y hace `os.chdir` a la carpeta del cuaderno) (F3.7).
@@ -386,6 +389,28 @@ quarto render                         # lo mismo que hace el CI
   tamaño en `.sidebar-navigation .sidebar-item`: para cambiarlo, apuntar ahí.
   Para validar el HTML del CI sin instalar Quarto: `git archive origin/gh-pages`
   en una carpeta temporal, copiar encima `styles.css` y servirla.
+- Cuestionarios y progreso (F5.3). Marcado de cada autoevaluación:
+  `:::: {.eb-cuestionario}` > `::: {.eb-cuestionario-ayuda}` +
+  `::: {.eb-pregunta data-correcta="b"}` con el enunciado, una lista `a.`/`b.`
+  /`c.` y el callout plegable «Respuesta», cuyo texto empieza por
+  `[Respuesta correcta: b.]{.eb-clave}`. Sin JavaScript se ve igual que antes
+  (lista + respuesta plegable). `assets/curso.js` (único script, sin
+  dependencias) convierte cada pregunta en `fieldset` con botones de opción
+  nativos, mueve la explicación existente al bloque de respuesta (sin
+  duplicarla), comprueba todas a la vez, exige responderlas todas, muestra
+  «N de 5 respuestas correctas» y permite repetir. Progreso en
+  `localStorage["eb-curso-progreso"]` = `{v:1, lecciones:{ruta:t},
+  cuestionarios:{ruta:{aciertos,total,t}}, ultima:{ruta,titulo,t}}`; la ruta
+  es relativa a la raíz del libro (`meta quarto:offset`). Lecciones = enlaces
+  del menú lateral bajo `notebooks/` (teorías, prácticas y proyecto; no la
+  portada ni los apéndices). Solo se marca con el botón «Marcar como
+  completada» (nunca por visitar); visitar una lección solo actualiza
+  `ultima`. Lectura tolerante (JSON corrupto, campos ausentes, otras
+  versiones); sin almacenamiento disponible, la tarjeta lo explica y no
+  muestra el botón. Portada: `<section id="eb-progreso" hidden>` en
+  `index.qmd`, que solo aparece si hay progreso guardado. Para añadir una
+  pregunta: mismas clases, 3–4 opciones y `data-correcta`; para una lección
+  nueva basta con registrarla en `_quarto.yml`.
 - Validar las páginas de interfaz a 1440, 768 y 375 px sin desplazamiento
   horizontal. Chrome headless no baja de ~500 px de ventana: para capturas
   móviles, usar un `iframe` de 375 px o el navegador con perfil móvil.
@@ -659,6 +684,17 @@ una con commit, PR y despliegue tras la revisión del autor)
   Publicada (merge 0313fe2). Corrección posterior para Quarto 1.11.9:
   títulos de grupo alineados a la izquierda en móvil y flechas a la derecha
   en escritorio (también a 1024 px).
+- F5.3 Cuestionarios y progreso — *hecho, pendiente de revisión*: las 30
+  preguntas de autoevaluación pasan a elección múltiple (3–4 opciones; mismos
+  enunciados y explicaciones, distractores basados en errores habituales:
+  confundir una probabilidad con su complementaria, √n frente a n,
+  confundir sensibilidad y valor predictivo,
+  significación frente a tamaño del efecto…), con comprobación, explicación,
+  resumen y repetición; seguimiento de lecciones en `localStorage` (botón
+  «Marcar como completada», marcas y recuento en el menú, panel «Tu progreso»
+  con «Continuar» y «Reiniciar progreso» en la portada). Ninguna pregunta
+  necesitó quedarse abierta. Sin cambios en `stats_toolkit`, datos ni
+  notebooks.
 
 ## 12. Normas para futuras sesiones
 

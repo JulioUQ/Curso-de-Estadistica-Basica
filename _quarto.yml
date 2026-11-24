@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: _book
+  resources:
+    - assets/curso.js   # cuestionarios y progreso (F5.3), cargado por navegacion.html
 
 lang: es
 

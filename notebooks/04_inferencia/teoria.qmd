@@ -667,47 +667,87 @@ estadísticos que dependen de valores extremos, como el máximo.
 
 ## Autoevaluación
 
-Intenta responder cada pregunta antes de desplegar la respuesta.
+:::: {.eb-cuestionario}
 
+::: {.eb-cuestionario-ayuda}
+Intenta responder cada pregunta antes de desplegar la respuesta.
+:::
+
+::: {.eb-pregunta data-correcta="b"}
 **1.** Un intervalo de confianza del 95 % para $\mu$ es $(4{,}2;\ 5{,}8)$. ¿Es correcto decir que hay un 95 % de probabilidad de que $\mu$ esté entre 4,2 y 5,8?
 
+a. Sí: hay un 95 % de probabilidad de que $\mu$ esté en ese intervalo.
+b. No: $\mu$ es fija; el 95 % describe el procedimiento, que acierta en alrededor del 95 % de las muestras.
+c. No: significa que el 95 % de los datos de la muestra están entre 4,2 y 5,8.
+d. No: significa que el 95 % de las medias de futuras muestras caerán entre 4,2 y 5,8.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-No. En el enfoque frecuentista $\mu$ es fija: está o no está en ese intervalo. El 95 % describe el **procedimiento**: si repitiéramos el muestreo muchas veces, alrededor del 95 % de los intervalos construidos contendrían a $\mu$.
+[Respuesta correcta: b.]{.eb-clave} No. En el enfoque frecuentista $\mu$ es fija: está o no está en ese intervalo. El 95 % describe el **procedimiento**: si repitiéramos el muestreo muchas veces, alrededor del 95 % de los intervalos construidos contendrían a $\mu$.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="c"}
 **2.** Un contraste da $p = 0{,}03$ con $\alpha = 0{,}05$. ¿Qué se concluye? ¿Hay un 3 % de probabilidad de que $H_0$ sea cierta?
 
+a. No se rechaza $H_0$, y hay un 3 % de probabilidad de que $H_0$ sea cierta.
+b. Se rechaza $H_0$ al 5 %, y hay un 3 % de probabilidad de que $H_0$ sea cierta.
+c. Se rechaza $H_0$ al 5 %; 0,03 es la probabilidad de obtener un resultado al menos tan extremo como el observado si $H_0$ fuera cierta.
+d. Se rechaza $H_0$ al 5 %, y hay un 97 % de probabilidad de que $H_1$ sea cierta.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Se rechaza $H_0$ al 5 %. Pero el p-valor no es la probabilidad de que $H_0$ sea cierta: es la probabilidad de obtener un resultado al menos tan extremo como el observado **si** $H_0$ fuera cierta.
+[Respuesta correcta: c.]{.eb-clave} Se rechaza $H_0$ al 5 %. Pero el p-valor no es la probabilidad de que $H_0$ sea cierta: es la probabilidad de obtener un resultado al menos tan extremo como el observado **si** $H_0$ fuera cierta.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="b"}
 **3.** Un estudio con 15 personas no encuentra diferencias significativas ($p = 0{,}40$). ¿Demuestra que no hay efecto?
 
+a. Sí: un p-valor mayor que 0,05 demuestra que no hay efecto.
+b. No: con una muestra tan pequeña la potencia puede ser baja; conviene mirar el intervalo de confianza del efecto.
+c. Sí, siempre que el estudio esté bien diseñado.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-No. Con una muestra tan pequeña la potencia puede ser baja: un efecto real podría pasar inadvertido. Conviene mirar el intervalo de confianza del efecto: si es muy ancho, los datos son compatibles tanto con ausencia de efecto como con efectos importantes.
+[Respuesta correcta: b.]{.eb-clave} No. Con una muestra tan pequeña la potencia puede ser baja: un efecto real podría pasar inadvertido. Conviene mirar el intervalo de confianza del efecto: si es muy ancho, los datos son compatibles tanto con ausencia de efecto como con efectos importantes.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="c"}
 **4.** Para estimar una proporción con un margen de error de ±3 puntos hacen falta unas 1068 personas. ¿Cuántas necesitarías para un margen de ±1,5 puntos?
 
+a. Unas 2140.
+b. Unas 1510.
+c. Unas 4270.
+d. Unas 530.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Unas cuatro veces más, alrededor de 4270: el margen es proporcional a $1/\sqrt{n}$, así que reducirlo a la mitad exige cuadruplicar $n$.
+[Respuesta correcta: c.]{.eb-clave} Unas cuatro veces más, alrededor de 4270: el margen es proporcional a $1/\sqrt{n}$, así que reducirlo a la mitad exige cuadruplicar $n$.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="a"}
 **5.** Mides la presión arterial de 20 personas antes y después de un programa de ejercicio. ¿Qué prueba usarías para comparar las medias?
 
+a. Una t para datos emparejados, aplicada a las 20 diferencias.
+b. Una t de Welch para muestras independientes.
+c. Una prueba de Mann-Whitney para muestras independientes.
+d. Una prueba chi-cuadrado de independencia.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Una t para datos **emparejados**, aplicada a las 20 diferencias (o la prueba de Wilcoxon si las diferencias son claramente no normales). No una t de Welch para muestras independientes: las dos medidas proceden de las mismas personas y no son independientes.
+[Respuesta correcta: a.]{.eb-clave} Una t para datos **emparejados**, aplicada a las 20 diferencias (o la prueba de Wilcoxon si las diferencias son claramente no normales). No una t de Welch para muestras independientes: las dos medidas proceden de las mismas personas y no son independientes.
 :::
+:::
+
+::::
 
 ## Cierre
 

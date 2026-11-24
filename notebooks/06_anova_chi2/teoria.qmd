@@ -302,47 +302,86 @@ potencia que la de Wilcoxon: aquí su p-valor es mayor con los mismos datos.
 
 ## Autoevaluación
 
-Intenta responder cada pregunta antes de desplegar la respuesta.
+:::: {.eb-cuestionario}
 
+::: {.eb-cuestionario-ayuda}
+Intenta responder cada pregunta antes de desplegar la respuesta.
+:::
+
+::: {.eb-pregunta data-correcta="b"}
 **1.** ¿Por qué no comparar tres grupos con tres pruebas t por parejas en lugar de un ANOVA?
 
+a. Porque las tres pruebas t darían siempre el mismo p-valor.
+b. Porque la probabilidad de cometer al menos un error de tipo I crece con el número de comparaciones.
+c. Porque el ANOVA no necesita ningún supuesto sobre los datos.
+d. Porque las pruebas t solo pueden aplicarse a muestras grandes.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Porque la probabilidad de cometer al menos un error de tipo I crece con el número de comparaciones: con tres pruebas independientes al 5 % sería $1 - 0{,}95^3 \approx 0{,}143$. El ANOVA contrasta todas las medias a la vez con un $\alpha$ global del 5 %.
+[Respuesta correcta: b.]{.eb-clave} Porque la probabilidad de cometer al menos un error de tipo I crece con el número de comparaciones: con tres pruebas independientes al 5 % sería $1 - 0{,}95^3 \approx 0{,}143$. El ANOVA contrasta todas las medias a la vez con un $\alpha$ global del 5 %.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="c"}
 **2.** Un ANOVA de un factor es significativo. ¿Sabes ya qué grupos difieren entre sí?
 
+a. Sí: todas las medias son distintas entre sí.
+b. Sí: al menos difieren el grupo de media mayor y el de media menor, y ninguno más.
+c. No: solo indica que no todas las medias son iguales; para saber qué parejas difieren hace falta una prueba post-hoc.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-No. Solo indica que no todas las medias son iguales. Para saber qué parejas difieren se usa una prueba post-hoc, como la de Tukey, que controla el error de tipo I del conjunto de comparaciones.
+[Respuesta correcta: c.]{.eb-clave} No. Solo indica que no todas las medias son iguales. Para saber qué parejas difieren se usa una prueba post-hoc, como la de Tukey, que controla el error de tipo I del conjunto de comparaciones.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="b"}
 **3.** En una tabla 2×2, una de las frecuencias esperadas es 2,1. ¿Es fiable el test chi-cuadrado?
 
+a. Sí: lo que importa son las frecuencias observadas, no las esperadas.
+b. Es dudoso: la aproximación chi-cuadrado requiere frecuencias esperadas suficientes; es mejor la prueba exacta de Fisher.
+c. Sí: en tablas 2×2 el test chi-cuadrado es siempre exacto.
+d. No: hay que eliminar esa celda de la tabla y repetir el test.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Es dudoso: la distribución chi-cuadrado es una aproximación que requiere frecuencias esperadas suficientemente grandes (la regla habitual pide al menos 5). En este caso es mejor la prueba exacta de Fisher.
+[Respuesta correcta: b.]{.eb-clave} Es dudoso: la distribución chi-cuadrado es una aproximación que requiere frecuencias esperadas suficientemente grandes (la regla habitual pide al menos 5). En este caso es mejor la prueba exacta de Fisher.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="c"}
 **4.** Una prueba de Mann-Whitney da $p = 0{,}6$. ¿Demuestra que las dos distribuciones son iguales?
 
+a. Sí: un p-valor mayor que 0,05 demuestra que son iguales.
+b. Sí, siempre que las dos muestras tengan el mismo tamaño.
+c. No: solo indica que no hay evidencia suficiente de diferencia, y distribuciones de forma muy distinta pueden dar un p-valor grande.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-No. Un p-valor grande solo indica que no hay evidencia suficiente de diferencia. Además, Mann-Whitney es sensible sobre todo a que una población tienda a dar valores mayores que la otra: dos distribuciones muy distintas en forma pueden dar un p-valor grande.
+[Respuesta correcta: c.]{.eb-clave} No. Un p-valor grande solo indica que no hay evidencia suficiente de diferencia. Además, Mann-Whitney es sensible sobre todo a que una población tienda a dar valores mayores que la otra: dos distribuciones muy distintas en forma pueden dar un p-valor grande.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="b"}
 **5.** Con 3000 personas, un ANOVA da $p < 0{,}001$ y $\eta^2 = 0{,}02$. ¿Cómo lo interpretarías?
 
+a. Que el efecto es grande, porque el p-valor es muy pequeño.
+b. Que la diferencia es estadísticamente significativa, pero el efecto es pequeño: el factor solo se asocia con el 2 % de la variabilidad.
+c. Que el resultado no es fiable: con 3000 personas el ANOVA no es válido.
+d. Que el factor explica el 98 % de la variabilidad de la respuesta.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-La diferencia entre grupos es estadísticamente significativa, pero el factor solo se asocia con el 2 % de la variabilidad de la respuesta: un efecto pequeño. Con muestras grandes, diferencias pequeñas resultan significativas; su importancia práctica depende del contexto.
+[Respuesta correcta: b.]{.eb-clave} La diferencia entre grupos es estadísticamente significativa, pero el factor solo se asocia con el 2 % de la variabilidad de la respuesta: un efecto pequeño. Con muestras grandes, diferencias pequeñas resultan significativas; su importancia práctica depende del contexto.
 :::
+:::
+
+::::
 
 ## Cierre
 

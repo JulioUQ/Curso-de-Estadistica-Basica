@@ -274,47 +274,87 @@ print(f"IC 95% para β1: ({lower:.3f}, {upper:.3f})")
 
 ## Autoevaluación
 
-Intenta responder cada pregunta antes de desplegar la respuesta.
+:::: {.eb-cuestionario}
 
+::: {.eb-cuestionario-ayuda}
+Intenta responder cada pregunta antes de desplegar la respuesta.
+:::
+
+::: {.eb-pregunta data-correcta="b"}
 **1.** La correlación de Pearson entre $X$ e $Y$ es $r = 0{,}02$. ¿Significa que no hay ninguna relación entre ellas?
 
+a. Sí: las dos variables son independientes.
+b. No: no hay relación lineal apreciable, pero puede existir una relación no lineal fuerte.
+c. No: indica una relación lineal fuerte con una pendiente muy pequeña.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-No. Significa que no hay relación **lineal** apreciable. Puede existir una relación no lineal fuerte (por ejemplo, en forma de U). Por eso hay que mirar siempre el diagrama de dispersión.
+[Respuesta correcta: b.]{.eb-clave} No. Significa que no hay relación **lineal** apreciable. Puede existir una relación no lineal fuerte (por ejemplo, en forma de U). Por eso hay que mirar siempre el diagrama de dispersión.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="c"}
 **2.** En una regresión lineal simple, $R^2 = 0{,}64$ y la pendiente es negativa. ¿Cuánto vale $r$?
 
+a. $r = 0{,}64$
+b. $r = -0{,}64$
+c. $r = -0{,}8$
+d. $r = 0{,}8$
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-En regresión simple $R^2 = r^2$, así que $|r| = 0{,}8$; el signo es el de la pendiente: $r = -0{,}8$.
+[Respuesta correcta: c.]{.eb-clave} En regresión simple $R^2 = r^2$, así que $|r| = 0{,}8$; el signo es el de la pendiente: $r = -0{,}8$.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="a"}
 **3.** Una regresión de ventas sobre publicidad (ambas en miles de euros) da $\hat\beta_1 = 2{,}5$. ¿Cómo se interpreta?
 
+a. Por cada 1000 € más de publicidad, las ventas son en promedio 2500 € mayores, dentro del rango observado; describe una asociación.
+b. Por cada 1000 € más de publicidad, las ventas aumentan 2,5 €.
+c. Invertir 1000 € más en publicidad causa 2500 € más de ventas, sea cual sea el presupuesto.
+d. Las ventas son siempre 2,5 veces la inversión en publicidad.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Por cada 1000 € más de publicidad, las ventas son en promedio 2500 € mayores, dentro del rango de datos observado. Describe una asociación: sin un diseño experimental no demuestra que la publicidad cause ese aumento.
+[Respuesta correcta: a.]{.eb-clave} Por cada 1000 € más de publicidad, las ventas son en promedio 2500 € mayores, dentro del rango de datos observado. Describe una asociación: sin un diseño experimental no demuestra que la publicidad cause ese aumento.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="c"}
 **4.** El gráfico de residuos frente a los valores ajustados tiene forma de U. ¿Qué indica?
 
+a. Que el modelo es adecuado: los residuos se reparten a ambos lados de cero.
+b. Que la varianza de los errores crece con los valores ajustados.
+c. Que la relación no es lineal: habría que transformar las variables o usar otro modelo.
+d. Que hay un único valor atípico influyente.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Que la relación no es lineal: el modelo sobrestima en el centro y subestima en los extremos (o al revés). Habría que transformar las variables o usar otro modelo; las inferencias del modelo lineal no son fiables.
+[Respuesta correcta: c.]{.eb-clave} Que la relación no es lineal: el modelo sobrestima en el centro y subestima en los extremos (o al revés). Habría que transformar las variables o usar otro modelo; las inferencias del modelo lineal no son fiables.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="b"}
 **5.** ¿Cuándo preferirías la correlación de Spearman a la de Pearson?
 
+a. Cuando las dos variables son normales y la relación es lineal.
+b. Cuando la relación es monótona pero no lineal, hay valores atípicos influyentes o las variables son ordinales.
+c. Cuando la muestra es muy grande.
+d. Cuando se quiere estimar la pendiente de la recta de regresión.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Cuando la relación es monótona pero no lineal, cuando hay valores atípicos influyentes o cuando las variables son ordinales (por ejemplo, puntuaciones de 1 a 5).
+[Respuesta correcta: b.]{.eb-clave} Cuando la relación es monótona pero no lineal, cuando hay valores atípicos influyentes o cuando las variables son ordinales (por ejemplo, puntuaciones de 1 a 5).
 :::
+:::
+
+::::
 
 ## Cierre
 
