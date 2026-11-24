@@ -447,47 +447,88 @@ Naive Bayes (Módulo 2), son también modelos estadísticos.
 
 ## Autoevaluación
 
-Intenta responder cada pregunta antes de desplegar la respuesta.
+:::: {.eb-cuestionario}
 
+::: {.eb-cuestionario-ayuda}
+Intenta responder cada pregunta antes de desplegar la respuesta.
+:::
+
+::: {.eb-pregunta data-correcta="c"}
 **1.** En una empresa, el salario medio es 3200 € y el mediano, 2400 €. ¿Qué indica esta diferencia y qué medida describe mejor el salario típico?
 
+a. La distribución es simétrica; la media describe bien el salario típico.
+b. La distribución es asimétrica a la izquierda; la media describe mejor el salario típico.
+c. La distribución es asimétrica a la derecha, con unos pocos salarios muy altos; la mediana describe mejor el salario típico.
+d. La distribución es asimétrica a la derecha; la media describe mejor el salario típico porque usa todos los datos.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-La media es mucho mayor que la mediana: la distribución es asimétrica a la derecha, con unos pocos salarios muy altos que arrastran la media hacia arriba. La mediana (la mitad cobra menos de 2400 €) describe mejor el salario típico, porque es robusta frente a esos valores extremos.
+[Respuesta correcta: c.]{.eb-clave} La media es mucho mayor que la mediana: la distribución es asimétrica a la derecha, con unos pocos salarios muy altos que arrastran la media hacia arriba. La mediana (la mitad cobra menos de 2400 €) describe mejor el salario típico, porque es robusta frente a esos valores extremos.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="b"}
 **2.** Clasifica estas variables: código postal, número de hijos, satisfacción en una escala de 1 a 5 y temperatura corporal.
 
+a. Cuantitativa discreta, cuantitativa discreta, cualitativa ordinal y cuantitativa continua.
+b. Cualitativa nominal, cuantitativa discreta, cualitativa ordinal y cuantitativa continua.
+c. Cualitativa nominal, cuantitativa continua, cualitativa nominal y cuantitativa discreta.
+d. Cualitativa ordinal, cuantitativa continua, cuantitativa continua y cualitativa ordinal.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Código postal: cualitativa nominal (aunque se escriba con números, no tiene sentido sumarlo ni promediarlo). Número de hijos: cuantitativa discreta. Satisfacción de 1 a 5: cualitativa ordinal (hay orden, pero la distancia entre categorías no es necesariamente la misma). Temperatura: cuantitativa continua.
+[Respuesta correcta: b.]{.eb-clave} Código postal: cualitativa nominal (aunque se escriba con números, no tiene sentido sumarlo ni promediarlo). Número de hijos: cuantitativa discreta. Satisfacción de 1 a 5: cualitativa ordinal (hay orden, pero la distancia entre categorías no es necesariamente la misma). Temperatura: cuantitativa continua.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="a"}
 **3.** Un conjunto de datos tiene $Q_1 = 20$ y $Q_3 = 30$. ¿A partir de qué valores se considera atípica una observación según la regla de Tukey?
 
+a. Los menores que 5 o mayores que 45.
+b. Los menores que 10 o mayores que 40.
+c. Los menores que 15 o mayores que 35.
+d. Los menores que 20 o mayores que 30.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-$\text{RIC} = 30 - 20 = 10$. Los límites son $Q_1 - 1{,}5 \cdot 10 = 5$ y $Q_3 + 1{,}5 \cdot 10 = 45$: los valores menores que 5 o mayores que 45 se señalan como posibles atípicos. Señalarlos no significa que sean errores: hay que investigar su origen antes de decidir qué hacer con ellos.
+[Respuesta correcta: a.]{.eb-clave} $\text{RIC} = 30 - 20 = 10$. Los límites son $Q_1 - 1{,}5 \cdot 10 = 5$ y $Q_3 + 1{,}5 \cdot 10 = 45$: los valores menores que 5 o mayores que 45 se señalan como posibles atípicos. Señalarlos no significa que sean errores: hay que investigar su origen antes de decidir qué hacer con ellos.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="b"}
 **4.** Quieres comparar la dispersión de la altura (en cm) y del peso (en kg) de un mismo grupo. ¿Puedes comparar directamente sus desviaciones típicas?
 
+a. Sí: la variable con mayor desviación típica es la más dispersa.
+b. No: están en unidades distintas; el coeficiente de variación, que no tiene unidades, permite compararlas si las variables son positivas y con un cero real.
+c. No, pero sí se pueden comparar sus varianzas, que no dependen de las unidades.
+d. Sí, siempre que las dos variables se hayan medido en el mismo número de personas.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-No: están en unidades distintas. El coeficiente de variación, $CV = s/\bar{x}$, no tiene unidades y permite compararlas, siempre que las variables sean positivas y con un cero real (no tendría sentido, por ejemplo, con temperaturas en grados Celsius).
+[Respuesta correcta: b.]{.eb-clave} No: están en unidades distintas. El coeficiente de variación, $CV = s/\bar{x}$, no tiene unidades y permite compararlas, siempre que las variables sean positivas y con un cero real (no tendría sentido, por ejemplo, con temperaturas en grados Celsius).
+:::
 :::
 
+::: {.eb-pregunta data-correcta="c"}
 **5.** Faltan el 20 % de los valores de una variable y los sustituyes por la media observada. ¿Qué efectos tiene sobre el análisis posterior?
 
+a. Ninguno: como la media se conserva, los resultados posteriores no cambian.
+b. Se conservan la media y la variabilidad; solo se pierde algo de precisión en los extremos.
+c. Se conserva la media observada, pero la variabilidad se reduce artificialmente, se pueden distorsionar las relaciones con otras variables y los errores estándar quedan subestimados.
+d. La variabilidad aumenta, porque se añaden valores que no se han observado.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-La media observada no cambia, pero la variabilidad se reduce artificialmente (todos los valores imputados son iguales), se pueden distorsionar las relaciones con otras variables y los errores estándar quedan subestimados. Además, si los datos no faltan al azar, la media observada puede no representar a la población.
+[Respuesta correcta: c.]{.eb-clave} La media observada no cambia, pero la variabilidad se reduce artificialmente (todos los valores imputados son iguales), se pueden distorsionar las relaciones con otras variables y los errores estándar quedan subestimados. Además, si los datos no faltan al azar, la media observada puede no representar a la población.
 :::
+:::
+
+::::
 
 ## Cierre
 

@@ -134,47 +134,86 @@ En la práctica calcularemos exactamente esta expresión "a mano" sobre un mini-
 
 ## Autoevaluación
 
-Intenta responder cada pregunta antes de desplegar la respuesta.
+:::: {.eb-cuestionario}
 
+::: {.eb-cuestionario-ayuda}
+Intenta responder cada pregunta antes de desplegar la respuesta.
+:::
+
+::: {.eb-pregunta data-correcta="a"}
 **1.** $A$ y $B$ son independientes, con $P(A) = 0{,}3$ y $P(B) = 0{,}5$. Calcula $P(A \cap B)$ y $P(A \cup B)$.
 
+a. $P(A \cap B) = 0{,}15$ y $P(A \cup B) = 0{,}65$.
+b. $P(A \cap B) = 0{,}15$ y $P(A \cup B) = 0{,}8$.
+c. $P(A \cap B) = 0$ y $P(A \cup B) = 0{,}8$.
+d. $P(A \cap B) = 0{,}8$ y $P(A \cup B) = 0{,}15$.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Por independencia, $P(A \cap B) = 0{,}3 \cdot 0{,}5 = 0{,}15$. Por la regla de la suma, $P(A \cup B) = 0{,}3 + 0{,}5 - 0{,}15 = 0{,}65$.
+[Respuesta correcta: a.]{.eb-clave} Por independencia, $P(A \cap B) = 0{,}3 \cdot 0{,}5 = 0{,}15$. Por la regla de la suma, $P(A \cup B) = 0{,}3 + 0{,}5 - 0{,}15 = 0{,}65$.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="c"}
 **2.** Si dos sucesos con probabilidad positiva son mutuamente excluyentes, ¿pueden ser independientes?
 
+a. Sí, siempre: ser excluyentes y ser independientes significa lo mismo.
+b. Sí, cuando sus probabilidades son pequeñas.
+c. No: $P(A \cap B) = 0$ pero $P(A)P(B) > 0$, así que son dependientes.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-No. Si son excluyentes, $P(A \cap B) = 0$, pero $P(A)P(B) > 0$, así que no se cumple la condición de independencia. De hecho, saber que ocurrió $A$ nos dice que $B$ no ha ocurrido: son dependientes.
+[Respuesta correcta: c.]{.eb-clave} No. Si son excluyentes, $P(A \cap B) = 0$, pero $P(A)P(B) > 0$, así que no se cumple la condición de independencia. De hecho, saber que ocurrió $A$ nos dice que $B$ no ha ocurrido: son dependientes.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="d"}
 **3.** Un test tiene una sensibilidad del 99 % y una especificidad del 95 %, y la enfermedad afecta a 1 de cada 1000 personas. Si una persona da positivo, ¿qué probabilidad hay de que esté enferma?
 
+a. Aproximadamente 0,99.
+b. Aproximadamente 0,95.
+c. Aproximadamente 0,05.
+d. Aproximadamente 0,019.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Por el teorema de Bayes: $P(+) = 0{,}99 \cdot 0{,}001 + 0{,}05 \cdot 0{,}999 = 0{,}05094$ y $P(E \mid +) = 0{,}00099 / 0{,}05094 \approx 0{,}019$. Menos de un 2 %: con una enfermedad tan rara, casi todos los positivos son falsos positivos.
+[Respuesta correcta: d.]{.eb-clave} Por el teorema de Bayes: $P(+) = 0{,}99 \cdot 0{,}001 + 0{,}05 \cdot 0{,}999 = 0{,}05094$ y $P(E \mid +) = 0{,}00099 / 0{,}05094 \approx 0{,}019$. Menos de un 2 %: con una enfermedad tan rara, casi todos los positivos son falsos positivos.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="b"}
 **4.** ¿Es lo mismo $P(\text{positivo} \mid \text{enfermo})$ que $P(\text{enfermo} \mid \text{positivo})$?
 
+a. Sí: es la misma probabilidad escrita en otro orden.
+b. No: la primera es la sensibilidad del test; la segunda depende además de la prevalencia y puede ser muy distinta.
+c. No, pero si el test es bueno siempre son parecidas.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-No. La primera es la sensibilidad del test; la segunda es lo que interesa al paciente. Pueden ser muy distintas, como muestra la pregunta anterior (0,99 frente a 0,019). El teorema de Bayes permite pasar de una a otra usando la prevalencia.
+[Respuesta correcta: b.]{.eb-clave} No. La primera es la sensibilidad del test; la segunda es lo que interesa al paciente. Pueden ser muy distintas, como muestra la pregunta anterior (0,99 frente a 0,019). El teorema de Bayes permite pasar de una a otra usando la prevalencia.
+:::
 :::
 
+::: {.eb-pregunta data-correcta="b"}
 **5.** Estimas una probabilidad por Monte Carlo con 1000 simulaciones. ¿Cuántas necesitarías, aproximadamente, para reducir el error a la mitad?
 
+a. Unas 2000.
+b. Unas 4000.
+c. Unas 1400.
+d. Alrededor de un millón.
+
 ::: {.callout-tip collapse="true"}
 ## Respuesta
 
-Unas 4000. El error de una estimación Monte Carlo disminuye en proporción a $1/\sqrt{n}$: para dividirlo por 2 hay que multiplicar el número de simulaciones por 4.
+[Respuesta correcta: b.]{.eb-clave} Unas 4000. El error de una estimación Monte Carlo disminuye en proporción a $1/\sqrt{n}$: para dividirlo por 2 hay que multiplicar el número de simulaciones por 4.
 :::
+:::
+
+::::
 
 ## Cierre
 

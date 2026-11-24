@@ -50,6 +50,12 @@ compruebe al renderizar.
 :::
 :::
 
+```{=html}
+<!-- F5.3: progreso personal. Vacío y oculto; assets/curso.js lo rellena y lo
+     muestra solo si este navegador ya tiene progreso guardado. -->
+<section id="eb-progreso" class="eb-progress" aria-labelledby="eb-progreso-titulo" hidden></section>
+```
+
 ## Catálogo de módulos {#modulos .unnumbered .unlisted .eb-section-title}
 
 [Seis módulos que avanzan de lo descriptivo a lo inferencial. Cada uno combina un capítulo de teoría con uno o dos cuadernos de práctica.]{.eb-section-lead}
