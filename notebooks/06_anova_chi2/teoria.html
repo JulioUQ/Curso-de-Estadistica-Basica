@@ -335,6 +335,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../laboratorio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Laboratorio estadístico</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="false">
@@ -495,7 +501,7 @@ H_0: \mu_1 = \mu_2 = \dots = \mu_k \qquad H_1: \text{al menos una media es disti
 F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-1)}{SS_{\text{dentro}} / (n-k)}
 \]</span></p>
 <p>donde <span class="math inline">\(k\)</span> es el número de grupos y <span class="math inline">\(n\)</span> el número total de observaciones. Bajo <span class="math inline">\(H_0\)</span>, y si las observaciones son independientes y, dentro de cada grupo, se distribuyen de forma Normal con la misma varianza en todos los grupos, este estadístico sigue una <strong>distribución F</strong> con <span class="math inline">\((k-1, n-k)\)</span> grados de libertad. No se exige que el conjunto de todos los datos parezca Normal: si las medias de los grupos son distintas, los datos mezclados pueden no parecerlo aunque cada grupo sí lo sea.</p>
-<div id="722c3885" class="cell" data-execution_count="2">
+<div id="79eb41de" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> group_comparisons <span class="im">as</span> gc</span>
@@ -521,7 +527,7 @@ F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-
 \eta^2 = \frac{SS_{\text{entre}}}{SS_{\text{total}}},
 \]</span></p>
 <p>la proporción de la variabilidad total de los datos que se asocia a las diferencias entre grupos (entre 0 y 1). Como orientación muy general, valores en torno a 0,01, 0,06 y 0,14 se suelen considerar pequeños, medianos y grandes, aunque lo importante es interpretarlo en el contexto del problema.</p>
-<div id="ea0cf46b" class="cell" data-execution_count="3">
+<div id="e335e958" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>eta2 <span class="op">=</span> gc.eta_squared(tratamiento_a, tratamiento_b, tratamiento_c)</span>
@@ -535,7 +541,7 @@ F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-
 <section id="comparaciones-post-hoc-tukey" class="level3" data-number="13.2.4">
 <h3 data-number="13.2.4" class="anchored" data-anchor-id="comparaciones-post-hoc-tukey"><span class="header-section-number">13.2.4</span> Comparaciones post-hoc: Tukey</h3>
 <p>Si el ANOVA es significativo, el siguiente paso es averiguar <strong>qué</strong> grupos difieren. Hacer todos los t-tests por pares vuelve a acumular falsos positivos; el método de <strong>Tukey</strong> (HSD) compara todas las parejas controlando la probabilidad de cometer al menos un error de tipo I en el conjunto. Para cada pareja da la diferencia de medias, un p-valor ajustado y un intervalo de confianza simultáneo:</p>
-<div id="3dc3eb9c" class="cell" data-execution_count="4">
+<div id="be1e9457" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tukey <span class="op">=</span> gc.tukey_hsd(tratamiento_a, tratamiento_b, tratamiento_c, labels<span class="op">=</span>[<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>])</span>
@@ -564,7 +570,7 @@ H_0: \text{las dos variables son independientes} \qquad H_1: \text{existe asocia
 \chi^2 = \sum_{i,j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
 \]</span></p>
 <p>donde <span class="math inline">\(E_{ij}\)</span> es la frecuencia esperada bajo independencia, calculada a partir de los totales de fila y columna. Bajo <span class="math inline">\(H_0\)</span>, el estadístico sigue <strong>aproximadamente</strong> una distribución Chi-cuadrado con <span class="math inline">\((filas-1)(columnas-1)\)</span> grados de libertad; la aproximación es fiable cuando las frecuencias esperadas no son pequeñas (una regla habitual es que todas sean al menos 5). En tablas 2×2 existe además la <strong>corrección de Yates</strong>, que resta 0,5 a cada <span class="math inline">\(|O_{ij}-E_{ij}|\)</span> y hace el contraste más conservador; <code>scipy.stats.chi2_contingency</code> la aplica por defecto en esas tablas. <code>chi2_test_independence()</code> calcula el estadístico de la fórmula anterior, sin corrección, salvo que se indique <code>correction=True</code>.</p>
-<div id="991a1155" class="cell" data-execution_count="5">
+<div id="807fa865" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -584,7 +590,7 @@ Joven        40      10
 Senior       15      35</code></pre>
 </div>
 </div>
-<div id="cdb9b2af" class="cell" data-execution_count="6">
+<div id="fb257abc" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value, dof, esperadas <span class="op">=</span> gc.chi2_test_independence(tabla)</span>
@@ -610,7 +616,7 @@ E_{ij}=\frac{(\text{total de la fila }i)\,(\text{total de la columna }j)}{n}.
 V = \sqrt{\frac{\chi^2}{n\,(\min(\text{filas}, \text{columnas}) - 1)}},
 \]</span></p>
 <p>vale 0 si no hay asociación en la muestra y 1 si la asociación es perfecta:</p>
-<div id="6558e295" class="cell" data-execution_count="7">
+<div id="534967d3" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"V de Cramér = </span><span class="sc">{</span>gc<span class="sc">.</span>cramers_v(tabla)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
@@ -638,7 +644,7 @@ H_1 &amp;: \text{las dos distribuciones no son iguales}
 <li><strong>Cuándo es una prueba de medianas:</strong> solo si se supone, además, que las dos distribuciones tienen la misma forma y dispersión y difieren únicamente en un desplazamiento. Sin ese supuesto adicional, un resultado significativo no permite afirmar que las medianas (ni las medias) sean distintas.</li>
 <li><strong>Qué no permite concluir:</strong> un p-valor mayor que 0,05 no demuestra que las distribuciones sean iguales. Solo indica que no hay evidencia suficiente de una diferencia, y puede deberse a una muestra pequeña o a diferencias que el estadístico apenas detecta.</li>
 </ul>
-<div id="24cd21b8" class="cell" data-execution_count="8">
+<div id="c79186f0" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valoraciones de satisfacción (escala 1-10) de dos versiones de una app,</span></span>
@@ -671,7 +677,7 @@ H_0: \text{todos los grupos proceden de la misma distribución} \qquad
 H_1: \text{no todas las distribuciones son iguales}
 \]</span></p>
 <p>Como Mann-Whitney, supone observaciones independientes y una variable al menos ordinal, y es sensible sobre todo a que unos grupos tiendan a tomar valores mayores que otros. Si es significativo, también hacen falta comparaciones posteriores para saber qué grupos difieren. Aplicado a los tratamientos del ANOVA:</p>
-<div id="f1d3e94b" class="cell" data-execution_count="9">
+<div id="12b600db" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>h_stat, p_value <span class="op">=</span> gc.kruskal_wallis(tratamiento_a, tratamiento_b, tratamiento_c)</span>
@@ -689,7 +695,7 @@ H_1: \text{no todas las distribuciones son iguales}
 <li>La <strong>prueba de signos</strong> solo usa el signo de cada diferencia: bajo <span class="math inline">\(H_0\)</span>, la mitad de las diferencias no nulas deberían ser positivas. Necesita muy pocos supuestos, pero ignora la magnitud de las diferencias, así que tiene poca potencia.</li>
 <li>La <strong>prueba de Wilcoxon de rangos con signo</strong> ordena las diferencias no nulas por su valor absoluto y compara la suma de los rangos de las positivas con la de las negativas. Usa más información que la prueba de signos. Para interpretarla como un contraste sobre la mediana de las diferencias hace falta suponer que estas se distribuyen de forma simétrica.</li>
 </ul>
-<div id="a69d776a" class="cell" data-execution_count="10">
+<div id="8e42bdb5" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Presión sistólica antes y después de un programa de ejercicio (datos ilustrativos)</span></span>
@@ -703,7 +709,7 @@ H_1: \text{no todas las distribuciones son iguales}
 </div>
 </div>
 <p>Con los mismos datos, la prueba de signos solo cuenta cuántas diferencias son positivas (bajó la presión) y calcula el p-valor exacto con una Binomial<span class="math inline">\((m;\ 0{,}5)\)</span>, donde <span class="math inline">\(m\)</span> es el número de diferencias no nulas:</p>
-<div id="36d5d72c" class="cell" data-execution_count="11">
+<div id="91eb5017" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>k, p_signos <span class="op">=</span> gc.sign_test(antes, despues)</span>

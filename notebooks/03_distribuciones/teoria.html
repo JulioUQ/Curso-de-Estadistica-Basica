@@ -356,6 +356,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../laboratorio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Laboratorio estadístico</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="false">
@@ -535,7 +541,7 @@ P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n
 E[X] = np \qquad \text{Var}(X) = np(1-p)
 \]</span></p>
 <p><strong>Ejemplo</strong>: de 50 clientes que ven el anuncio, ¿cuántos convertirán? <span class="math inline">\(X \sim \text{Binomial}(n=50, p=0{,}3)\)</span>.</p>
-<div id="af15468c" class="cell" data-execution_count="2">
+<div id="baafc5b9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> distributions <span class="im">as</span> dist</span>
@@ -559,7 +565,7 @@ P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
 E[X] = \lambda \qquad \text{Var}(X) = \lambda
 \]</span></p>
 <p><strong>Ejemplo</strong>: si un servidor recibe en media <span class="math inline">\(\lambda = 4\)</span> peticiones fallidas por minuto, ¿cuál es la probabilidad de que reciba exactamente 6 en el próximo minuto?</p>
-<div id="81320c0a" class="cell" data-execution_count="3">
+<div id="b4b5ff1f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_6 <span class="op">=</span> dist.poisson_pmf(k<span class="op">=</span><span class="dv">6</span>, lam<span class="op">=</span><span class="dv">4</span>)</span>
@@ -594,7 +600,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 E[X] = \mu \qquad \text{Var}(X) = \sigma^2
 \]</span></p>
 <p>Es simétrica alrededor de <span class="math inline">\(\mu\)</span>, y la conocida “regla 68-95-99,7” indica que aproximadamente el 68% de la probabilidad cae dentro de <span class="math inline">\(\pm 1\sigma\)</span>, el 95% dentro de <span class="math inline">\(\pm 2\sigma\)</span>, y el 99,7% dentro de <span class="math inline">\(\pm 3\sigma\)</span>.</p>
-<div id="2c47e6bc" class="cell" data-execution_count="4">
+<div id="458805a9" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidad acumulada P(X &lt;= 1.96) para una Normal estándar</span></span>
@@ -631,7 +637,7 @@ F(x) = P(X \le x).
 <section id="cuantiles" class="level3" data-number="7.5.2">
 <h3 data-number="7.5.2" class="anchored" data-anchor-id="cuantiles"><span class="header-section-number">7.5.2</span> Cuantiles</h3>
 <p>El <strong>cuantil</strong> de orden <span class="math inline">\(p\)</span> es el valor <span class="math inline">\(q_p\)</span> que deja por debajo una probabilidad <span class="math inline">\(p\)</span>: <span class="math inline">\(F(q_p) = p\)</span> (en las distribuciones continuas). La mediana es <span class="math inline">\(q_{0{,}5}\)</span>. En inferencia usaremos mucho los cuantiles de la Normal estándar: por ejemplo, <span class="math inline">\(z_{0{,}975} \approx 1{,}96\)</span> deja un 2,5 % de probabilidad en la cola derecha y, por simetría, otro 2,5 % por debajo de <span class="math inline">\(-1{,}96\)</span>.</p>
-<div id="83aa985f" class="cell" data-execution_count="5">
+<div id="d30b2a1a" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -655,7 +661,7 @@ P(-1,96 &lt; Z &lt;= 1,96) = 0.9500</code></pre>
 Z = \frac{X - \mu}{\sigma}
 \]</span></p>
 <p>sigue una Normal estándar, <span class="math inline">\(\mathcal{N}(0, 1)\)</span>. Tipificar expresa cada valor como “a cuántas desviaciones típicas está de la media”, lo que permite usar una sola tabla (o una sola función) para cualquier Normal. Por ejemplo, si la estatura de una población sigue una <span class="math inline">\(\mathcal{N}(170, 8^2)\)</span> en centímetros, medir 186 cm equivale a <span class="math inline">\(z = (186 - 170)/8 = 2\)</span>:</p>
-<div id="6937e0e4" class="cell" data-execution_count="6">
+<div id="bb31ed15" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> (<span class="dv">186</span> <span class="op">-</span> <span class="dv">170</span>) <span class="op">/</span> <span class="dv">8</span></span>
@@ -694,7 +700,7 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 <p>Hay que tipificar porque <span class="math inline">\(\bar{X}\)</span>, por sí sola, no tiende a una Normal: al crecer <span class="math inline">\(n\)</span> se concentra cada vez más en torno a <span class="math inline">\(\mu\)</span>. Lo que se estabiliza es su forma una vez centrada y reescalada. Las condiciones i.i.d. y varianza finita y positiva son <em>suficientes</em> para que el resultado se cumpla, pero no las únicas posibles: hay versiones del teorema que las relajan y que quedan fuera de este curso.</p>
 <p>Lo notable es que el límite no depende de la forma de la población: puede ser una Exponencial muy asimétrica, una Uniforme o cualquier otra con varianza finita. Lo que sí depende de la forma es qué significa «suficientemente grande»: con poblaciones simétricas la aproximación es buena con pocas observaciones, y con poblaciones muy asimétricas o con valores extremos hacen falta muestras mayores. La regla habitual <span class="math inline">\(n \ge 30\)</span> es solo orientativa.</p>
 <p>Podemos verlo empíricamente simulando muchas muestras de una población muy asimétrica (una Exponencial) y observando cómo se distribuyen sus medias muestrales:</p>
-<div id="f2d98458" class="cell" data-execution_count="7">
+<div id="ccb38d70" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -872,7 +878,7 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 <li><strong>t de Student con <span class="math inline">\(k\)</span> grados de libertad, <span class="math inline">\(t_k\)</span></strong>: el cociente <span class="math inline">\(Z / \sqrt{\chi^2_k / k}\)</span>, con <span class="math inline">\(Z\)</span> y <span class="math inline">\(\chi^2_k\)</span> independientes. Es simétrica como la Normal, pero con colas más pesadas, y se parece cada vez más a ella al crecer <span class="math inline">\(k\)</span>. Se usa para las medias cuando <span class="math inline">\(\sigma\)</span> es desconocida (Módulo 4) y para la pendiente de una regresión (Módulo 5).</li>
 <li><strong>F de Snedecor con <span class="math inline">\((k_1, k_2)\)</span> grados de libertad</strong>: el cociente de dos chi-cuadrado independientes divididas por sus grados de libertad. Solo toma valores positivos. Es la distribución del estadístico del ANOVA (Módulo 6).</li>
 </ul>
-<div id="a42b16bd" class="cell" data-execution_count="8">
+<div id="19f09db7" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">400</span>)</span>
