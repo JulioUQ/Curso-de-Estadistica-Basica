@@ -1148,7 +1148,9 @@ function mejorarNavegacion() {
     var group = section && section.querySelector(":scope > .sidebar-item-container .menu-text");
     var title = link.querySelector(".chapter-title");
     if (!group || !title) return;
-    var full = group.textContent.trim() + " · " + title.textContent.trim();
+    var nombre = group.cloneNode(true);
+    nombre.querySelectorAll(".eb-menu-count").forEach(function (n) { n.remove(); }); // contador de F5.3
+    var full = nombre.textContent.trim() + " · " + title.textContent.trim();
     title.textContent = full;
     link.setAttribute("aria-label", full);
   });
@@ -1160,6 +1162,17 @@ if (document.readyState === "loading") {
 } else {
   mejorarNavegacion();
 }
+
+/* F5.3: cuestionarios y progreso. Un único archivo compartido
+   (assets/curso.js, copiado como recurso en _quarto.yml) que se carga desde
+   la raíz del libro con la ruta relativa que Quarto publica en
+   <meta name="quarto:offset">. */
+(function () {
+  var meta = document.querySelector('meta[name="quarto:offset"]');
+  var script = document.createElement("script");
+  script.src = (meta ? meta.getAttribute("content") : "./") + "assets/curso.js";
+  document.body.appendChild(script);
+})();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

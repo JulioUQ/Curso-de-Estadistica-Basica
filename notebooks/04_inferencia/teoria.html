@@ -515,7 +515,7 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 \bar{x} \pm z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},
 \]</span></p>
 <p>donde <span class="math inline">\(z_{1-\alpha/2}\)</span> es el cuantil de la normal estándar. Para un intervalo bilateral del 95 %, el valor crítico es aproximadamente <span class="math inline">\(1{,}96\)</span>.</p>
-<div id="1bcb79e3" class="cell" data-execution_count="2">
+<div id="0493f0f0" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> inference <span class="im">as</span> inf</span>
@@ -538,7 +538,7 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 \bar{x} \pm t_{1-\alpha/2,\,n-1}\frac{s}{\sqrt{n}}.
 \]</span></p>
 <p>La distribución <span class="math inline">\(t\)</span> tiene colas más pesadas que la normal estándar, especialmente con pocos grados de libertad, y por ello refleja la incertidumbre adicional asociada a estimar la desviación típica. A medida que <span class="math inline">\(n\)</span> aumenta, se aproxima a la normal.</p>
-<div id="3fa8b793" class="cell" data-execution_count="3">
+<div id="5f030dd5" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: salario mensual en una muestra de 25 empleados.</span></span>
@@ -559,7 +559,7 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 \hat{p} \pm z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.
 \]</span></p>
 <p>Esta aproximación puede ser deficiente en muestras pequeñas o cuando la proporción está cerca de 0 o 1. En esas situaciones conviene considerar intervalos como Wilson o métodos exactos, en vez de confiar automáticamente en el intervalo normal.</p>
-<div id="138da24c" class="cell" data-execution_count="4">
+<div id="536bf0cc" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: 15 conversiones entre 50 clientes.</span></span>
@@ -573,7 +573,7 @@ SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}
 </div>
 </div>
 <p>El <strong>intervalo de Wilson</strong> corrige estos problemas: calcula la incertidumbre con cada valor posible de <span class="math inline">\(p\)</span>, en lugar de con <span class="math inline">\(\hat{p}\)</span>, y nunca se sale de <span class="math inline">\([0, 1]\)</span>. Con 15 éxitos de 50 los dos intervalos se parecen; con 0 éxitos de 20, el de Wald se reduce a un punto, como si no hubiera incertidumbre, mientras que el de Wilson sigue siendo informativo:</p>
-<div id="ab66396a" class="cell" data-execution_count="5">
+<div id="f841bf26" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"15 de 50 -&gt; Wilson:"</span>, <span class="bu">tuple</span>(<span class="bu">round</span>(v, <span class="dv">3</span>) <span class="cf">for</span> v <span class="kw">in</span> inf.confidence_interval_proportion_wilson(<span class="dv">15</span>, <span class="dv">50</span>)))</span>
@@ -647,7 +647,7 @@ z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}.
 t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}, \qquad df=n-1.
 \]</span></p>
 <p>El <strong>nivel de significación</strong> <span class="math inline">\(\alpha\)</span> se fija antes de analizar los datos. En un contraste bilateral, la región crítica para <span class="math inline">\(z\)</span> es <span class="math inline">\(|z|&gt;z_{1-\alpha/2}\)</span>; en uno unilateral izquierdo es <span class="math inline">\(z&lt;z_{\alpha}\)</span>. La decisión equivalente basada en el valor p es rechazar <span class="math inline">\(H_0\)</span> cuando <span class="math inline">\(p\text{-valor}\leq\alpha\)</span>.</p>
-<div id="f4845f8d" class="cell" data-execution_count="6">
+<div id="30a850c0" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -751,7 +751,7 @@ t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}, \qquad df=n-1.
 n = \left(\frac{(z_{1-\alpha/2} + z_{1-\beta})\,\sigma}{\delta}\right)^2,
 \]</span></p>
 <p>redondeado hacia arriba (con <span class="math inline">\(z_{1-\alpha}\)</span> en lugar de <span class="math inline">\(z_{1-\alpha/2}\)</span> si el contraste es unilateral). En el caso bilateral la fórmula ignora la cola opuesta, que solo añade potencia, así que con ese <span class="math inline">\(n\)</span> la potencia es al menos la pedida.</p>
-<div id="d59d0dec" class="cell" data-execution_count="7">
+<div id="37059d87" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tiempo de respuesta de una API: σ = 15 ms. ¿Detectaríamos una diferencia de 5 ms?</span></span>
@@ -767,7 +767,7 @@ Potencia con n = 71: 0.802</code></pre>
 </div>
 </div>
 <p>Con 36 observaciones, una diferencia real de 5 ms solo se detectaría en algo más de la mitad de los estudios: un resultado no significativo sería poco informativo. El gráfico muestra cómo crece la potencia con <span class="math inline">\(n\)</span> para varios tamaños del efecto.</p>
-<div id="9c76dc14" class="cell" data-execution_count="8">
+<div id="2ee3b378" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ns <span class="op">=</span> np.arange(<span class="dv">2</span>, <span class="dv">201</span>)</span>
@@ -791,7 +791,7 @@ Potencia con n = 71: 0.802</code></pre>
 </div>
 </div>
 <p>Si <span class="math inline">\(\sigma\)</span> es desconocida, se usa el test t, cuya potencia se calcula con la distribución t <em>no central</em>; <code>statsmodels</code> lo hace directamente. El tamaño del efecto se expresa entonces en unidades de desviación típica, <span class="math inline">\(d = \delta/\sigma\)</span>, y el <span class="math inline">\(n\)</span> resultante es algo mayor que el del test z:</p>
-<div id="a9672177" class="cell" data-execution_count="9">
+<div id="7fea5d57" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.power <span class="im">import</span> TTestPower</span>
@@ -804,7 +804,7 @@ Potencia con n = 71: 0.802</code></pre>
 </div>
 </div>
 <p>El mismo razonamiento sirve para fijar el tamaño muestral de un <strong>intervalo de confianza</strong>: para estimar una media con un margen de error <span class="math inline">\(E\)</span> hace falta <span class="math inline">\(n = (z_{1-\alpha/2}\,\sigma/E)^2\)</span>, y para una proporción, <span class="math inline">\(n = z_{1-\alpha/2}^2\,p(1-p)/E^2\)</span>. Si no se conoce <span class="math inline">\(p\)</span>, tomar <span class="math inline">\(p = 0{,}5\)</span> da el tamaño más conservador. Reducir el margen a la mitad exige cuadruplicar <span class="math inline">\(n\)</span>.</p>
-<div id="51e3f766" class="cell" data-execution_count="10">
+<div id="823674bb" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Media, margen ±2 ms (σ = 15):"</span>, inf.sample_size_mean_ci(margin<span class="op">=</span><span class="dv">2</span>, sigma<span class="op">=</span><span class="dv">15</span>))</span>
@@ -981,7 +981,7 @@ Proporción, margen ±1,5 puntos: 4269</code></pre>
 t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}},\qquad df=n-1.
 \]</span></p>
 <p>La prueba presupone observaciones independientes y, para muestras pequeñas, una distribución aproximadamente normal de la variable. En muestras grandes, la inferencia sobre la media puede ser robusta frente a desviaciones moderadas de normalidad, pero los valores atípicos graves, la dependencia o una distribución muy asimétrica requieren atención.</p>
-<div id="505ad35b" class="cell" data-execution_count="11">
+<div id="8d5ece11" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>salarios_muestra <span class="op">=</span> [<span class="dv">2340</span>, <span class="dv">2510</span>, <span class="dv">2280</span>, <span class="dv">2600</span>, <span class="dv">2455</span>, <span class="dv">2390</span>, <span class="dv">2470</span>, <span class="dv">2530</span>, <span class="dv">2410</span>, <span class="dv">2380</span>]</span>
@@ -1000,7 +1000,7 @@ t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}},\qquad df=n-1.
 z=\frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}.
 \]</span></p>
 <p>Debe comprobarse que la aproximación sea razonable. Para muestras pequeñas, conteos escasos o probabilidades próximas a los extremos, se consideran pruebas binomiales exactas u otros métodos apropiados.</p>
-<div id="53ddda5b" class="cell" data-execution_count="12">
+<div id="0990c86a" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: 62 de 100 clientes prefieren la nueva versión. ¿Difiere de 0,5?</span></span>
@@ -1019,7 +1019,7 @@ z=\frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}.
 \chi^2=\frac{(n-1)s^2}{\sigma_0^2},\qquad df=n-1.
 \]</span></p>
 <p>Este contraste es sensible a desviaciones de la normalidad; no debe aplicarse mecánicamente a datos muy asimétricos o con valores atípicos.</p>
-<div id="61ecce2a" class="cell" data-execution_count="13">
+<div id="389fc6a8" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿La desviación típica de los salarios de la muestra anterior difiere de 100 €?</span></span>
@@ -1043,7 +1043,7 @@ t=\frac{\bar{x}_1-\bar{x}_2}{\sqrt{s_1^2/n_1+s_2^2/n_2}}.
 \]</span></p>
 <p>Los grados de libertad se aproximan mediante la fórmula de Welch–Satterthwaite. Es una opción general recomendable para comparar medias independientes, incluso cuando las varianzas son similares.</p>
 <p>La prueba t agrupada tradicional presupone varianzas poblacionales iguales y estima una varianza común. No es necesario decidir automáticamente entre ambas mediante una prueba preliminar de igualdad de varianzas: esa estrategia puede alterar las propiedades del análisis. La elección debe atender al diseño y a los supuestos, y Welch suele ser una opción robusta.</p>
-<div id="fb5581f7" class="cell" data-execution_count="14">
+<div id="da9885b5" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: tiempo de carga (s) de dos versiones de una web</span></span>
@@ -1064,7 +1064,7 @@ t=\frac{\bar{x}_1-\bar{x}_2}{\sqrt{s_1^2/n_1+s_2^2/n_2}}.
 t=\frac{\bar{D}-\mu_{D,0}}{s_D/\sqrt{n}},\qquad df=n-1.
 \]</span></p>
 <p>La unidad de análisis es la diferencia dentro de cada pareja. No se deben tratar las mediciones emparejadas como dos muestras independientes.</p>
-<div id="289b5584" class="cell" data-execution_count="15">
+<div id="8caf3f05" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo: presión sistólica de 8 personas antes y después de un programa de ejercicio</span></span>
@@ -1088,7 +1088,7 @@ t=\frac{\bar{D}-\mu_{D,0}}{s_D/\sqrt{n}},\qquad df=n-1.
 z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1+1/n_2)}}.
 \]</span></p>
 <p>Esta aproximación requiere tamaños y conteos adecuados. En tablas pequeñas pueden ser preferibles métodos exactos. Si las proporciones provienen de observaciones emparejadas, debe usarse una prueba para datos pareados, no una prueba de dos proporciones independientes.</p>
-<div id="699ede30" class="cell" data-execution_count="16">
+<div id="84c026db" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo ilustrativo (A/B testing): 30 conversiones de 100 frente a 45 de 110</span></span>
@@ -1106,7 +1106,7 @@ z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1+1/n_2)}}.
 <p>La normalidad relevante depende de la prueba: para la prueba t de una muestra se considera la distribución de la variable; para la t emparejada, la distribución de las diferencias; y para la comparación de medias independientes, las distribuciones dentro de cada grupo. El teorema central del límite justifica ciertas aproximaciones de la media muestral bajo condiciones, pero no corrige el sesgo de muestreo ni la dependencia entre observaciones.</p>
 <p>La normalidad puede examinarse con histogramas, gráficos Q–Q y, como complemento, pruebas como Shapiro–Wilk. Una prueba de normalidad no debe ser el único criterio: con muestras grandes puede detectar desviaciones triviales y con muestras pequeñas puede no detectar desviaciones importantes.</p>
 <p>En un <strong>gráfico Q–Q</strong> se comparan los cuantiles de la muestra con los que tendría una Normal: si los datos son aproximadamente normales, los puntos quedan cerca de la recta; las curvaturas sistemáticas indican asimetría o colas distintas de las de la Normal.</p>
-<div id="bb95454d" class="cell" data-execution_count="17">
+<div id="7fbb7057" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1</span>)</span>
@@ -1149,7 +1149,7 @@ z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1+1/n_2)}}.
 <section id="simulación-cobertura-de-intervalos-de-confianza" class="level2" data-number="9.10">
 <h2 data-number="9.10" class="anchored" data-anchor-id="simulación-cobertura-de-intervalos-de-confianza"><span class="header-section-number">9.10</span> Simulación: cobertura de intervalos de confianza</h2>
 <p>Podemos ilustrar la interpretación de un intervalo del 95 % simulando muestras de una población con media conocida y contando cuántos intervalos contienen el valor real. La proporción observada variará de una simulación a otra, pero debería aproximarse al nivel nominal si se cumplen los supuestos y se simulan suficientes repeticiones.</p>
-<div id="a03e0e67" class="cell" data-execution_count="18">
+<div id="b5b298a0" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> inf.simulate_ci_coverage(</span>
@@ -1163,7 +1163,7 @@ z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1+1/n_2)}}.
 </div>
 </div>
 <p>El gráfico muestra 100 de esos intervalos. Cada línea es el intervalo de una muestra distinta; los que no contienen el valor real aparecen en rojo. El parámetro está fijo: lo que varía de una muestra a otra es el intervalo.</p>
-<div id="a37d4623" class="cell" data-execution_count="19">
+<div id="819e003b" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
@@ -1203,7 +1203,7 @@ z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1+1/n_2)}}.
 <li>El <strong>intervalo percentil</strong> del 95 % está formado por los percentiles 2,5 y 97,5 de los <span class="math inline">\(B\)</span> valores obtenidos.</li>
 </ol>
 <p>La idea es que la muestra hace el papel de la población: la variación del estadístico de una remuestra a otra imita su variación de una muestra a otra. Por ejemplo, para la mediana de unos tiempos de respuesta muy asimétricos:</p>
-<div id="df209421" class="cell" data-execution_count="20">
+<div id="07a0a6bd" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">12</span>)</span>
@@ -1219,7 +1219,7 @@ z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1+1/n_2)}}.
 IC bootstrap del 95 % para la mediana: (41.7, 118.6) ms</code></pre>
 </div>
 </div>
-<div id="def0f75d" class="cell" data-execution_count="21">
+<div id="74b49c38" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">4.5</span>))</span>
@@ -1242,7 +1242,7 @@ IC bootstrap del 95 % para la mediana: (41.7, 118.6) ms</code></pre>
 </div>
 </div>
 <p><code>scipy.stats.bootstrap</code> implementa el mismo método y variantes más precisas, como el intervalo <strong>BCa</strong> (corregido por sesgo y asimetría), que es su opción por defecto. Como las remuestras son aleatorias, sus resultados pueden diferir ligeramente de los nuestros; en este ejemplo coinciden, porque la mediana de una remuestra solo puede tomar unos pocos valores de la muestra:</p>
-<div id="cfd6e6e3" class="cell" data-execution_count="22">
+<div id="879f7e5f" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -1281,8 +1281,18 @@ scipy (BCa): (41.7, 118.6) ms</code></pre>
 </section>
 <section id="autoevaluación" class="level2" data-number="9.12">
 <h2 data-number="9.12" class="anchored" data-anchor-id="autoevaluación"><span class="header-section-number">9.12</span> Autoevaluación</h2>
+<div class="eb-cuestionario">
+<div class="eb-cuestionario-ayuda">
 <p>Intenta responder cada pregunta antes de desplegar la respuesta.</p>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>1.</strong> Un intervalo de confianza del 95 % para <span class="math inline">\(\mu\)</span> es <span class="math inline">\((4{,}2;\ 5{,}8)\)</span>. ¿Es correcto decir que hay un 95 % de probabilidad de que <span class="math inline">\(\mu\)</span> esté entre 4,2 y 5,8?</p>
+<ol type="a">
+<li>Sí: hay un 95 % de probabilidad de que <span class="math inline">\(\mu\)</span> esté en ese intervalo.</li>
+<li>No: <span class="math inline">\(\mu\)</span> es fija; el 95 % describe el procedimiento, que acierta en alrededor del 95 % de las muestras.</li>
+<li>No: significa que el 95 % de los datos de la muestra están entre 4,2 y 5,8.</li>
+<li>No: significa que el 95 % de las medias de futuras muestras caerán entre 4,2 y 5,8.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1295,11 +1305,19 @@ scipy (BCa): (41.7, 118.6) ms</code></pre>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No.&nbsp;En el enfoque frecuentista <span class="math inline">\(\mu\)</span> es fija: está o no está en ese intervalo. El 95 % describe el <strong>procedimiento</strong>: si repitiéramos el muestreo muchas veces, alrededor del 95 % de los intervalos construidos contendrían a <span class="math inline">\(\mu\)</span>.</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> No.&nbsp;En el enfoque frecuentista <span class="math inline">\(\mu\)</span> es fija: está o no está en ese intervalo. El 95 % describe el <strong>procedimiento</strong>: si repitiéramos el muestreo muchas veces, alrededor del 95 % de los intervalos construidos contendrían a <span class="math inline">\(\mu\)</span>.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="c">
 <p><strong>2.</strong> Un contraste da <span class="math inline">\(p = 0{,}03\)</span> con <span class="math inline">\(\alpha = 0{,}05\)</span>. ¿Qué se concluye? ¿Hay un 3 % de probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta?</p>
+<ol type="a">
+<li>No se rechaza <span class="math inline">\(H_0\)</span>, y hay un 3 % de probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta.</li>
+<li>Se rechaza <span class="math inline">\(H_0\)</span> al 5 %, y hay un 3 % de probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta.</li>
+<li>Se rechaza <span class="math inline">\(H_0\)</span> al 5 %; 0,03 es la probabilidad de obtener un resultado al menos tan extremo como el observado si <span class="math inline">\(H_0\)</span> fuera cierta.</li>
+<li>Se rechaza <span class="math inline">\(H_0\)</span> al 5 %, y hay un 97 % de probabilidad de que <span class="math inline">\(H_1\)</span> sea cierta.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1312,11 +1330,18 @@ scipy (BCa): (41.7, 118.6) ms</code></pre>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Se rechaza <span class="math inline">\(H_0\)</span> al 5 %. Pero el p-valor no es la probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta: es la probabilidad de obtener un resultado al menos tan extremo como el observado <strong>si</strong> <span class="math inline">\(H_0\)</span> fuera cierta.</p>
+<p><span class="eb-clave">Respuesta correcta: c.</span> Se rechaza <span class="math inline">\(H_0\)</span> al 5 %. Pero el p-valor no es la probabilidad de que <span class="math inline">\(H_0\)</span> sea cierta: es la probabilidad de obtener un resultado al menos tan extremo como el observado <strong>si</strong> <span class="math inline">\(H_0\)</span> fuera cierta.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>3.</strong> Un estudio con 15 personas no encuentra diferencias significativas (<span class="math inline">\(p = 0{,}40\)</span>). ¿Demuestra que no hay efecto?</p>
+<ol type="a">
+<li>Sí: un p-valor mayor que 0,05 demuestra que no hay efecto.</li>
+<li>No: con una muestra tan pequeña la potencia puede ser baja; conviene mirar el intervalo de confianza del efecto.</li>
+<li>Sí, siempre que el estudio esté bien diseñado.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1329,11 +1354,19 @@ scipy (BCa): (41.7, 118.6) ms</code></pre>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No.&nbsp;Con una muestra tan pequeña la potencia puede ser baja: un efecto real podría pasar inadvertido. Conviene mirar el intervalo de confianza del efecto: si es muy ancho, los datos son compatibles tanto con ausencia de efecto como con efectos importantes.</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> No.&nbsp;Con una muestra tan pequeña la potencia puede ser baja: un efecto real podría pasar inadvertido. Conviene mirar el intervalo de confianza del efecto: si es muy ancho, los datos son compatibles tanto con ausencia de efecto como con efectos importantes.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="c">
 <p><strong>4.</strong> Para estimar una proporción con un margen de error de ±3 puntos hacen falta unas 1068 personas. ¿Cuántas necesitarías para un margen de ±1,5 puntos?</p>
+<ol type="a">
+<li>Unas 2140.</li>
+<li>Unas 1510.</li>
+<li>Unas 4270.</li>
+<li>Unas 530.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1346,11 +1379,19 @@ scipy (BCa): (41.7, 118.6) ms</code></pre>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Unas cuatro veces más, alrededor de 4270: el margen es proporcional a <span class="math inline">\(1/\sqrt{n}\)</span>, así que reducirlo a la mitad exige cuadruplicar <span class="math inline">\(n\)</span>.</p>
+<p><span class="eb-clave">Respuesta correcta: c.</span> Unas cuatro veces más, alrededor de 4270: el margen es proporcional a <span class="math inline">\(1/\sqrt{n}\)</span>, así que reducirlo a la mitad exige cuadruplicar <span class="math inline">\(n\)</span>.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="a">
 <p><strong>5.</strong> Mides la presión arterial de 20 personas antes y después de un programa de ejercicio. ¿Qué prueba usarías para comparar las medias?</p>
+<ol type="a">
+<li>Una t para datos emparejados, aplicada a las 20 diferencias.</li>
+<li>Una t de Welch para muestras independientes.</li>
+<li>Una prueba de Mann-Whitney para muestras independientes.</li>
+<li>Una prueba chi-cuadrado de independencia.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1363,7 +1404,9 @@ scipy (BCa): (41.7, 118.6) ms</code></pre>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Una t para datos <strong>emparejados</strong>, aplicada a las 20 diferencias (o la prueba de Wilcoxon si las diferencias son claramente no normales). No una t de Welch para muestras independientes: las dos medidas proceden de las mismas personas y no son independientes.</p>
+<p><span class="eb-clave">Respuesta correcta: a.</span> Una t para datos <strong>emparejados</strong>, aplicada a las 20 diferencias (o la prueba de Wilcoxon si las diferencias son claramente no normales). No una t de Welch para muestras independientes: las dos medidas proceden de las mismas personas y no son independientes.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1427,7 +1470,9 @@ function mejorarNavegacion() {
     var group = section && section.querySelector(":scope > .sidebar-item-container .menu-text");
     var title = link.querySelector(".chapter-title");
     if (!group || !title) return;
-    var full = group.textContent.trim() + " · " + title.textContent.trim();
+    var nombre = group.cloneNode(true);
+    nombre.querySelectorAll(".eb-menu-count").forEach(function (n) { n.remove(); }); // contador de F5.3
+    var full = nombre.textContent.trim() + " · " + title.textContent.trim();
     title.textContent = full;
     link.setAttribute("aria-label", full);
   });
@@ -1439,6 +1484,17 @@ if (document.readyState === "loading") {
 } else {
   mejorarNavegacion();
 }
+
+/* F5.3: cuestionarios y progreso. Un único archivo compartido
+   (assets/curso.js, copiado como recurso en _quarto.yml) que se carga desde
+   la raíz del libro con la ruta relativa que Quarto publica en
+   <meta name="quarto:offset">. */
+(function () {
+  var meta = document.querySelector('meta[name="quarto:offset"]');
+  var script = document.createElement("script");
+  script.src = (meta ? meta.getAttribute("content") : "./") + "assets/curso.js";
+  document.body.appendChild(script);
+})();
 </script>
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBlZmVjdG8gPSBJbnB1dHMucmFuZ2UoWzAsIDE1XSwge3ZhbHVlOiA1LCBzdGVwOiAwLjUsIGxhYmVsOiBcIkRpZmVyZW5jaWEgcmVhbCDOtFwifSlcbnZpZXdvZiBzaWdtYVAgPSBJbnB1dHMucmFuZ2UoWzEsIDQwXSwge3ZhbHVlOiAxNSwgc3RlcDogMSwgbGFiZWw6IFwiRGVzdmlhY2nDs24gdMOtcGljYSDPg1wifSlcbnZpZXdvZiBuUCA9IElucHV0cy5yYW5nZShbMiwgMzAwXSwge3ZhbHVlOiAzNiwgc3RlcDogMSwgbGFiZWw6IFwiVGFtYcOxbyBtdWVzdHJhbCBuXCJ9KVxudmlld29mIGFsZmFQID0gSW5wdXRzLnJhZGlvKG5ldyBNYXAoW1tcIjAsMDFcIiwgMC4wMV0sIFtcIjAsMDVcIiwgMC4wNV0sIFtcIjAsMTBcIiwgMC4xMF1dKSwge3ZhbHVlOiAwLjA1LCBsYWJlbDogXCJOaXZlbCDOsVwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIM6mKHgpIGNvbiBsYSBhcHJveGltYWNpw7NuIGRlIEFicmFtb3dpdHogeSBTdGVndW4gKDcuMS4yNiksIGVycm9yIDwgMSw1wrcxMOKBu+KBt1xuUGhpID0geCA9PiB7XG4gIGNvbnN0IHQgPSAxIC8gKDEgKyAwLjMyNzU5MTEgKiBNYXRoLmFicyh4KSAvIE1hdGguU1FSVDIpO1xuICBjb25zdCBwb2x5ID0gKCgoKDEuMDYxNDA1NDI5ICogdCAtIDEuNDUzMTUyMDI3KSAqIHQgKyAxLjQyMTQxMzc0MSkgKiB0IC0gMC4yODQ0OTY3MzYpICogdCArIDAuMjU0ODI5NTkyKSAqIHQ7XG4gIGNvbnN0IGVyZiA9IDEgLSBwb2x5ICogTWF0aC5leHAoLXggKiB4IC8gMik7XG4gIHJldHVybiB4ID49IDAgPyAoMSArIGVyZikgLyAyIDogKDEgLSBlcmYpIC8gMjtcbn1cbnpDcml0ID0gKHswLjAxOiAyLjU3NTgyOTMwMzU0ODksIDAuMDU6IDEuOTU5OTYzOTg0NTQwMDU0LCAwLjE6IDEuNjQ0ODUzNjI2OTUxNDcyMn0pW2FsZmFQXVxucG90ZW5jaWEgPSAoZCwgcywgbSkgPT4ge1xuICBjb25zdCBkZXNwID0gZCAqIE1hdGguc3FydChtKSAvIHM7XG4gIHJldHVybiAoMSAtIFBoaSh6Q3JpdCAtIGRlc3ApKSArIFBoaSgtekNyaXQgLSBkZXNwKTtcbn1cbnBvdEFjdHVhbCA9IHBvdGVuY2lhKGVmZWN0bywgc2lnbWFQLCBuUClcbm5OZWNlc2FyaW8gPSBlZmVjdG8gPiAwID8gTWF0aC5jZWlsKCgoekNyaXQgKyAwLjg0MTYyMTIzMzU3MjkxNDMpICogc2lnbWFQIC8gZWZlY3RvKSAqKiAyKSA6IG51bGxcblBsb3QucGxvdCh7XG4gIGhlaWdodDogMjgwLFxuICB4OiB7bGFiZWw6IFwiVGFtYcOxbyBtdWVzdHJhbCBuXCJ9LFxuICB5OiB7bGFiZWw6IFwiUG90ZW5jaWFcIiwgZG9tYWluOiBbMCwgMV0sIGdyaWQ6IHRydWV9LFxuICBtYXJrczogW1xuICAgIFBsb3QucnVsZVkoWzAuOF0sIHtzdHJva2U6IFwiZ3JheVwiLCBzdHJva2VEYXNoYXJyYXk6IFwiNCw0XCJ9KSxcbiAgICBQbG90LmxpbmUoZDMucmFuZ2UoMiwgMzAxKS5tYXAobSA9PiAoe246IG0sIHBvdDogcG90ZW5jaWEoZWZlY3RvLCBzaWdtYVAsIG0pfSkpLCB7eDogXCJuXCIsIHk6IFwicG90XCIsIHN0cm9rZTogXCJzdGVlbGJsdWVcIiwgc3Ryb2tlV2lkdGg6IDJ9KSxcbiAgICBQbG90LmRvdChbe246IG5QLCBwb3Q6IHBvdEFjdHVhbH1dLCB7eDogXCJuXCIsIHk6IFwicG90XCIsIGZpbGw6IFwiY3JpbXNvblwiLCByOiA2fSlcbiAgXSxcbiAgYXJpYUxhYmVsOiBcIkN1cnZhIGRlIHBvdGVuY2lhIGRlbCB0ZXN0IHogYmlsYXRlcmFsIGZyZW50ZSBhbCB0YW1hw7FvIG11ZXN0cmFsIHBhcmEgbG9zIHZhbG9yZXMgZWxlZ2lkb3MsIGNvbiB1bmEgbMOtbmVhIGRpc2NvbnRpbnVhIGVuIDAsOCB5IHVuIHB1bnRvIHJvam8gZW4gZWwgdGFtYcOxbyBtdWVzdHJhbCBzZWxlY2Npb25hZG8uXCJcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJtZGBDb24gbiA9ICR7blB9LCBsYSBwb3RlbmNpYSBlcyAqKiR7KDEwMCAqIHBvdEFjdHVhbCkudG9GaXhlZCgxKS5yZXBsYWNlKFwiLlwiLCBcIixcIil9ICUqKi4gJHtuTmVjZXNhcmlvID09PSBudWxsID8gXCJDb24gzrQgPSAwIG5vIGhheSBkaWZlcmVuY2lhIHF1ZSBkZXRlY3RhcjogbGEgcG90ZW5jaWEgY29pbmNpZGUgY29uIM6xLlwiIDogYFBhcmEgYWxjYW56YXIgdW5hIHBvdGVuY2lhIGRlbCA4MCAlIGhhcsOtYW4gZmFsdGEgKioke25OZWNlc2FyaW99Kiogb2JzZXJ2YWNpb25lcy5gfWBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFNvbG8gbGxlZ2EgYSBlamVjdXRhcnNlIHNpIHNlIGhhbiBjYXJnYWRvIGxhcyBiaWJsaW90ZWNhczogZW50b25jZXMgcmV0aXJhIGVsIGF2aXNvLlxuYXZpc29Qb3RlbmNpYSA9IHtcbiAgUGxvdDsgSW5wdXRzO1xuICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImF2aXNvLXdpZGdldC1wb3RlbmNpYVwiKT8ucmVtb3ZlKCk7XG4gIHJldHVybiBodG1sYGA7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2VmZWN0bycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzaWdtYVAnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnblAnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYWxmYVAnKSJ9XX0=

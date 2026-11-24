@@ -48,6 +48,13 @@
   --eb-border: #e1e6ef;
   --eb-band: #1b2a4a;
   --eb-band-2: #24427e;
+  /* Estados de los cuestionarios (F5.3): texto >= 4,5:1 sobre su fondo suave */
+  --eb-success: var(--eb-accent);
+  --eb-success-soft: var(--eb-accent-soft);
+  --eb-danger: #b42318;
+  --eb-danger-soft: #fdeceb;
+  --eb-warning: #8a5300;
+  --eb-warning-soft: #fff4e0;
 
   --eb-space-1: 0.25rem;
   --eb-space-2: 0.5rem;
@@ -746,6 +753,401 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
 
 @media (prefers-reduced-motion: reduce) {
   #quarto-sidebar .sidebar-item-container {
+    transition: none;
+  }
+}
+
+
+/* ------------------------------------------------------------
+   1b) CUESTIONARIOS Y PROGRESO (F5.3)
+   ------------------------------------------------------------
+   Marcado en las teorías: .eb-cuestionario > .eb-pregunta[data-correcta]
+   con una lista a./b./c. y el bloque plegable «Respuesta». assets/curso.js
+   lo convierte en fieldset + botones de opción (.eb-q*) y añade la tarjeta
+   de lección (.eb-lesson-status), las marcas del menú (.eb-menu-*) y el
+   panel de la portada (.eb-progress). Sin JavaScript se ve la lista y el
+   bloque plegable de siempre. El acierto y el error llevan icono y texto,
+   no solo color. */
+
+.eb-btn[hidden],
+.eb-progress[hidden],
+.eb-q-feedback[hidden],
+.eb-quiz-last[hidden] {
+  display: none !important;
+}
+.eb-btn:focus-visible,
+.eb-q-option:focus-within {
+  outline: 3px solid var(--eb-primary);
+  outline-offset: 2px;
+}
+.eb-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Cuestionario */
+.eb-cuestionario.is-interactive {
+  margin: var(--eb-space-4) 0 var(--eb-space-6);
+}
+.eb-cuestionario-ayuda {
+  margin-bottom: var(--eb-space-4);
+  color: var(--eb-muted);
+}
+.eb-pregunta + .eb-pregunta {
+  margin-top: var(--eb-space-4);
+}
+.eb-q {
+  margin: 0;
+  padding: var(--eb-space-5);
+  min-width: 0;
+  background: var(--eb-surface);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius);
+  box-shadow: var(--eb-shadow-sm);
+}
+.eb-q.is-missing {
+  border-color: var(--eb-warning);
+  box-shadow: inset 3px 0 0 var(--eb-warning), var(--eb-shadow-sm);
+}
+.eb-q.is-correct {
+  box-shadow: inset 4px 0 0 var(--eb-success), var(--eb-shadow-sm);
+}
+.eb-q.is-incorrect {
+  box-shadow: inset 4px 0 0 var(--eb-danger), var(--eb-shadow-sm);
+}
+/* float: left saca la leyenda del borde del fieldset (como hace Bootstrap) */
+.eb-q-stem {
+  float: left;
+  width: 100%;
+  margin: 0 0 var(--eb-space-3);
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--eb-ink);
+}
+.eb-q-options {
+  clear: both;
+  display: grid;
+  gap: var(--eb-space-2);
+}
+.eb-q-option {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--eb-space-3);
+  min-height: 2.75rem;
+  margin: 0;
+  padding: var(--eb-space-3) var(--eb-space-4);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius-sm);
+  background: var(--eb-surface);
+  cursor: pointer;
+  transition: background-color var(--eb-transition), border-color var(--eb-transition);
+}
+.eb-q-option:hover {
+  border-color: var(--eb-primary-tint);
+  background: var(--eb-surface-alt);
+}
+.eb-q-option:has(input:checked) {
+  border-color: var(--eb-primary);
+  background: var(--eb-primary-soft);
+}
+.eb-q-option input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0.2rem 0 0;
+  accent-color: var(--eb-primary);
+  cursor: inherit;
+}
+.eb-q-option input:focus-visible {
+  outline: none; /* el contorno lo dibuja la opción completa (:focus-within) */
+}
+.eb-q-letter {
+  font-weight: 700;
+  color: var(--eb-primary);
+}
+.eb-q-letter::after {
+  content: ".";
+}
+.eb-q-text {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.eb-q-mark {
+  grid-column: 3;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.eb-q-mark:empty {
+  display: none;
+}
+.eb-q-option:has(input:disabled) {
+  cursor: default;
+}
+.eb-q-option:has(input:disabled):hover {
+  background: var(--eb-surface);
+  border-color: var(--eb-border);
+}
+/* .eb-q delante: deben ganar a :has(input:checked) y al hover deshabilitado */
+.eb-q .eb-q-option.is-answer,
+.eb-q .eb-q-option.is-answer:hover {
+  border-color: var(--eb-success);
+  background: var(--eb-success-soft);
+}
+.eb-q-option.is-answer .eb-q-mark {
+  color: var(--eb-success);
+}
+.eb-q .eb-q-option.is-wrong,
+.eb-q .eb-q-option.is-wrong:hover {
+  border-color: var(--eb-danger);
+  background: var(--eb-danger-soft);
+}
+.eb-q-option.is-wrong .eb-q-mark {
+  color: var(--eb-danger);
+}
+.eb-q-feedback {
+  margin-top: var(--eb-space-4);
+  padding: var(--eb-space-4);
+  border-radius: var(--eb-radius-sm);
+  background: var(--eb-surface-alt);
+  border: 1px solid var(--eb-border);
+}
+.eb-q-feedback > :last-child {
+  margin-bottom: 0;
+}
+.eb-q-verdict {
+  margin-bottom: var(--eb-space-2);
+  font-weight: 700;
+}
+.eb-q.is-correct .eb-q-verdict {
+  color: var(--eb-success);
+}
+.eb-q.is-incorrect .eb-q-verdict {
+  color: var(--eb-danger);
+}
+.eb-quiz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eb-space-3);
+  margin-top: var(--eb-space-5);
+}
+.eb-quiz-summary {
+  margin: var(--eb-space-4) 0 0;
+  font-weight: 700;
+  color: var(--eb-ink);
+}
+.eb-quiz-summary:empty {
+  display: none;
+}
+.eb-quiz-summary.is-result {
+  padding: var(--eb-space-3) var(--eb-space-4);
+  border-radius: var(--eb-radius-sm);
+  background: var(--eb-primary-soft);
+  color: var(--eb-primary);
+}
+.eb-quiz-summary.is-warning {
+  padding: var(--eb-space-3) var(--eb-space-4);
+  border-radius: var(--eb-radius-sm);
+  background: var(--eb-warning-soft);
+  color: var(--eb-warning);
+}
+.eb-quiz-last {
+  margin: var(--eb-space-2) 0 0;
+  font-size: 0.9rem;
+  color: var(--eb-muted);
+}
+
+/* Tarjeta de lección: «Marcar como completada» */
+.eb-lesson-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--eb-space-4);
+  margin: var(--eb-space-7) 0 var(--eb-space-4);
+  padding: var(--eb-space-5);
+  background: var(--eb-surface-alt);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius);
+}
+.eb-lesson-status.is-done {
+  background: var(--eb-success-soft);
+  border-color: var(--eb-success);
+}
+.eb-lesson-status-text {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+.eb-lesson-status-title {
+  display: flex;
+  align-items: center;
+  gap: var(--eb-space-2);
+  margin: 0 0 var(--eb-space-1);
+  font-weight: 700;
+  color: var(--eb-ink);
+}
+.eb-lesson-status-title .bi {
+  color: var(--eb-muted);
+}
+.eb-lesson-status.is-done .eb-lesson-status-title .bi {
+  color: var(--eb-success);
+}
+.eb-lesson-status-detail {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--eb-muted);
+}
+
+/* Menú lateral: lección completada y recuento del módulo */
+#quarto-sidebar .eb-menu-check {
+  margin-left: auto;
+  padding-left: var(--eb-space-2);
+  color: var(--eb-success);
+  font-size: 0.85em;
+}
+#quarto-sidebar .eb-menu-count {
+  display: inline-block;
+  margin-left: var(--eb-space-1);
+  text-indent: 0; /* la etiqueta del módulo tiene sangría francesa */
+  white-space: nowrap;
+  vertical-align: 0.05em;
+  padding: 0 0.4rem;
+  border-radius: var(--eb-radius-pill);
+  background: var(--eb-surface-alt);
+  border: 1px solid var(--eb-border);
+  color: var(--eb-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+#quarto-sidebar .eb-menu-count.eb-menu-count-done {
+  background: var(--eb-success-soft);
+  border-color: var(--eb-success);
+  color: var(--eb-success);
+}
+
+/* Portada: «Tu progreso» (solo si ya hay progreso en este navegador) */
+.eb-progress {
+  display: grid;
+  gap: var(--eb-space-4);
+  margin: var(--eb-space-6) 0 0;
+  padding: var(--eb-space-5) var(--eb-space-6);
+  background: var(--eb-surface);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius-lg);
+  box-shadow: var(--eb-shadow-sm);
+}
+.eb-progress-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--eb-space-2) var(--eb-space-4);
+}
+.eb-home .eb-progress .eb-progress-title {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--eb-ink);
+}
+.eb-progress-figure {
+  margin: 0;
+  font-weight: 700;
+  color: var(--eb-primary);
+}
+.eb-progress-bar {
+  height: 0.6rem;
+  border-radius: var(--eb-radius-pill);
+  background: var(--eb-primary-soft);
+  overflow: hidden;
+}
+.eb-progress-bar > span {
+  display: block;
+  height: 100%;
+  min-width: 0.6rem;
+  border-radius: inherit;
+  background: var(--eb-primary);
+}
+.eb-progress-modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  gap: var(--eb-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.eb-progress-modules li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0 var(--eb-space-2);
+  padding: var(--eb-space-2) var(--eb-space-3);
+  border-radius: var(--eb-radius-sm);
+  background: var(--eb-surface-alt);
+  font-size: 0.9rem;
+}
+.eb-progress-module-name {
+  font-weight: 600;
+  color: var(--eb-ink);
+}
+.eb-progress-module-count {
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--eb-muted);
+}
+.eb-progress-modules li.is-started .eb-progress-module-count {
+  color: var(--eb-primary);
+}
+.eb-progress-modules li.is-done {
+  background: var(--eb-success-soft);
+}
+.eb-progress-modules li.is-done .eb-progress-module-count {
+  color: var(--eb-success);
+}
+.eb-progress-modules li.is-done .eb-progress-module-count::before {
+  content: "\f26e"; /* bi-check-lg */
+  margin-right: 0.2rem;
+  font-family: "bootstrap-icons";
+}
+.eb-progress-module-quiz {
+  grid-column: 1 / -1;
+  font-size: 0.8rem;
+  color: var(--eb-muted);
+}
+.eb-progress-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eb-space-3);
+}
+.eb-progress-note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--eb-muted);
+}
+
+@media (max-width: 575.98px) {
+  .eb-q,
+  .eb-lesson-status,
+  .eb-progress {
+    padding: var(--eb-space-4);
+  }
+  .eb-q-option {
+    padding: var(--eb-space-3);
+    gap: var(--eb-space-2);
+  }
+  .eb-quiz-actions .eb-btn,
+  .eb-lesson-status .eb-btn,
+  .eb-progress-actions .eb-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eb-q-option {
     transition: none;
   }
 }

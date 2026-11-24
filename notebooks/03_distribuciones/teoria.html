@@ -535,7 +535,7 @@ P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n
 E[X] = np \qquad \text{Var}(X) = np(1-p)
 \]</span></p>
 <p><strong>Ejemplo</strong>: de 50 clientes que ven el anuncio, ¿cuántos convertirán? <span class="math inline">\(X \sim \text{Binomial}(n=50, p=0{,}3)\)</span>.</p>
-<div id="872d81c9" class="cell" data-execution_count="2">
+<div id="af15468c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> distributions <span class="im">as</span> dist</span>
@@ -559,7 +559,7 @@ P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
 E[X] = \lambda \qquad \text{Var}(X) = \lambda
 \]</span></p>
 <p><strong>Ejemplo</strong>: si un servidor recibe en media <span class="math inline">\(\lambda = 4\)</span> peticiones fallidas por minuto, ¿cuál es la probabilidad de que reciba exactamente 6 en el próximo minuto?</p>
-<div id="2f6909fa" class="cell" data-execution_count="3">
+<div id="81320c0a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_6 <span class="op">=</span> dist.poisson_pmf(k<span class="op">=</span><span class="dv">6</span>, lam<span class="op">=</span><span class="dv">4</span>)</span>
@@ -594,7 +594,7 @@ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 E[X] = \mu \qquad \text{Var}(X) = \sigma^2
 \]</span></p>
 <p>Es simétrica alrededor de <span class="math inline">\(\mu\)</span>, y la conocida “regla 68-95-99,7” indica que aproximadamente el 68% de la probabilidad cae dentro de <span class="math inline">\(\pm 1\sigma\)</span>, el 95% dentro de <span class="math inline">\(\pm 2\sigma\)</span>, y el 99,7% dentro de <span class="math inline">\(\pm 3\sigma\)</span>.</p>
-<div id="c3d04253" class="cell" data-execution_count="4">
+<div id="2c47e6bc" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidad acumulada P(X &lt;= 1.96) para una Normal estándar</span></span>
@@ -631,7 +631,7 @@ F(x) = P(X \le x).
 <section id="cuantiles" class="level3" data-number="7.5.2">
 <h3 data-number="7.5.2" class="anchored" data-anchor-id="cuantiles"><span class="header-section-number">7.5.2</span> Cuantiles</h3>
 <p>El <strong>cuantil</strong> de orden <span class="math inline">\(p\)</span> es el valor <span class="math inline">\(q_p\)</span> que deja por debajo una probabilidad <span class="math inline">\(p\)</span>: <span class="math inline">\(F(q_p) = p\)</span> (en las distribuciones continuas). La mediana es <span class="math inline">\(q_{0{,}5}\)</span>. En inferencia usaremos mucho los cuantiles de la Normal estándar: por ejemplo, <span class="math inline">\(z_{0{,}975} \approx 1{,}96\)</span> deja un 2,5 % de probabilidad en la cola derecha y, por simetría, otro 2,5 % por debajo de <span class="math inline">\(-1{,}96\)</span>.</p>
-<div id="f0c2f20d" class="cell" data-execution_count="5">
+<div id="83aa985f" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -655,7 +655,7 @@ P(-1,96 &lt; Z &lt;= 1,96) = 0.9500</code></pre>
 Z = \frac{X - \mu}{\sigma}
 \]</span></p>
 <p>sigue una Normal estándar, <span class="math inline">\(\mathcal{N}(0, 1)\)</span>. Tipificar expresa cada valor como “a cuántas desviaciones típicas está de la media”, lo que permite usar una sola tabla (o una sola función) para cualquier Normal. Por ejemplo, si la estatura de una población sigue una <span class="math inline">\(\mathcal{N}(170, 8^2)\)</span> en centímetros, medir 186 cm equivale a <span class="math inline">\(z = (186 - 170)/8 = 2\)</span>:</p>
-<div id="70ee9bf7" class="cell" data-execution_count="6">
+<div id="6937e0e4" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> (<span class="dv">186</span> <span class="op">-</span> <span class="dv">170</span>) <span class="op">/</span> <span class="dv">8</span></span>
@@ -694,7 +694,7 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 <p>Hay que tipificar porque <span class="math inline">\(\bar{X}\)</span>, por sí sola, no tiende a una Normal: al crecer <span class="math inline">\(n\)</span> se concentra cada vez más en torno a <span class="math inline">\(\mu\)</span>. Lo que se estabiliza es su forma una vez centrada y reescalada. Las condiciones i.i.d. y varianza finita y positiva son <em>suficientes</em> para que el resultado se cumpla, pero no las únicas posibles: hay versiones del teorema que las relajan y que quedan fuera de este curso.</p>
 <p>Lo notable es que el límite no depende de la forma de la población: puede ser una Exponencial muy asimétrica, una Uniforme o cualquier otra con varianza finita. Lo que sí depende de la forma es qué significa «suficientemente grande»: con poblaciones simétricas la aproximación es buena con pocas observaciones, y con poblaciones muy asimétricas o con valores extremos hacen falta muestras mayores. La regla habitual <span class="math inline">\(n \ge 30\)</span> es solo orientativa.</p>
 <p>Podemos verlo empíricamente simulando muchas muestras de una población muy asimétrica (una Exponencial) y observando cómo se distribuyen sus medias muestrales:</p>
-<div id="dc0cd6f7" class="cell" data-execution_count="7">
+<div id="f2d98458" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -872,7 +872,7 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 <li><strong>t de Student con <span class="math inline">\(k\)</span> grados de libertad, <span class="math inline">\(t_k\)</span></strong>: el cociente <span class="math inline">\(Z / \sqrt{\chi^2_k / k}\)</span>, con <span class="math inline">\(Z\)</span> y <span class="math inline">\(\chi^2_k\)</span> independientes. Es simétrica como la Normal, pero con colas más pesadas, y se parece cada vez más a ella al crecer <span class="math inline">\(k\)</span>. Se usa para las medias cuando <span class="math inline">\(\sigma\)</span> es desconocida (Módulo 4) y para la pendiente de una regresión (Módulo 5).</li>
 <li><strong>F de Snedecor con <span class="math inline">\((k_1, k_2)\)</span> grados de libertad</strong>: el cociente de dos chi-cuadrado independientes divididas por sus grados de libertad. Solo toma valores positivos. Es la distribución del estadístico del ANOVA (Módulo 6).</li>
 </ul>
-<div id="76ab35e4" class="cell" data-execution_count="8">
+<div id="a42b16bd" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">400</span>)</span>
@@ -916,8 +916,18 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 </section>
 <section id="autoevaluación" class="level2" data-number="7.9">
 <h2 data-number="7.9" class="anchored" data-anchor-id="autoevaluación"><span class="header-section-number">7.9</span> Autoevaluación</h2>
+<div class="eb-cuestionario">
+<div class="eb-cuestionario-ayuda">
 <p>Intenta responder cada pregunta antes de desplegar la respuesta.</p>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>1.</strong> Una centralita recibe de media 3 llamadas por hora, de forma independiente. ¿Qué distribución modela el número de llamadas en una hora y cuál es la probabilidad de que no llegue ninguna?</p>
+<ol type="a">
+<li>Una Binomial con <span class="math inline">\(n = 3\)</span> y <span class="math inline">\(p = 0{,}5\)</span>; <span class="math inline">\(P(X = 0) = 0{,}125\)</span>.</li>
+<li>Una Poisson con <span class="math inline">\(\lambda = 3\)</span>; <span class="math inline">\(P(X = 0) = e^{-3} \approx 0{,}050\)</span>.</li>
+<li>Una Normal de media 3; <span class="math inline">\(P(X = 0) \approx 0\)</span>.</li>
+<li>Una Poisson con <span class="math inline">\(\lambda = 3\)</span>; <span class="math inline">\(P(X = 0) = 1/3\)</span>.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -930,11 +940,19 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Una Poisson con <span class="math inline">\(\lambda = 3\)</span>. <span class="math inline">\(P(X = 0) = e^{-3} \approx 0{,}050\)</span>.</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> Una Poisson con <span class="math inline">\(\lambda = 3\)</span>. <span class="math inline">\(P(X = 0) = e^{-3} \approx 0{,}050\)</span>.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="a">
 <p><strong>2.</strong> <span class="math inline">\(X \sim \mathcal{N}(100, 15^2)\)</span>. ¿Cuánto vale aproximadamente <span class="math inline">\(P(X &gt; 130)\)</span>?</p>
+<ol type="a">
+<li>Aproximadamente 0,023.</li>
+<li>Aproximadamente 0,977.</li>
+<li>Aproximadamente 0,05.</li>
+<li>Aproximadamente 0,159.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -947,11 +965,19 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Tipificando, <span class="math inline">\(z = (130 - 100)/15 = 2\)</span>, y <span class="math inline">\(P(Z &gt; 2) \approx 0{,}023\)</span>: algo más del 2 % de los valores supera 130.</p>
+<p><span class="eb-clave">Respuesta correcta: a.</span> Tipificando, <span class="math inline">\(z = (130 - 100)/15 = 2\)</span>, y <span class="math inline">\(P(Z &gt; 2) \approx 0{,}023\)</span>: algo más del 2 % de los valores supera 130.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="c">
 <p><strong>3.</strong> Si <span class="math inline">\(X \sim \text{Binomial}(20;\ 0{,}5)\)</span>, ¿cuáles son su media y su varianza?</p>
+<ol type="a">
+<li>Media 10 y varianza 10.</li>
+<li>Media 10 y varianza 2,24.</li>
+<li>Media 10 y varianza 5.</li>
+<li>Media 0,5 y varianza 0,25.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -964,11 +990,18 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(E[X] = np = 10\)</span> y <span class="math inline">\(\text{Var}(X) = np(1-p) = 5\)</span> (desviación típica <span class="math inline">\(\sqrt{5} \approx 2{,}24\)</span>).</p>
+<p><span class="eb-clave">Respuesta correcta: c.</span> <span class="math inline">\(E[X] = np = 10\)</span> y <span class="math inline">\(\text{Var}(X) = np(1-p) = 5\)</span> (desviación típica <span class="math inline">\(\sqrt{5} \approx 2{,}24\)</span>).</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>4.</strong> ¿Dice el Teorema Central del Límite que, con una muestra grande, los datos siguen una distribución Normal?</p>
+<ol type="a">
+<li>Sí: con una muestra grande, los datos pasan a seguir una distribución Normal.</li>
+<li>No: los datos conservan la distribución de la población; lo que se aproxima a una Normal es la distribución de la media muestral (tipificada).</li>
+<li>No: el teorema solo se aplica cuando la población ya es Normal.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -981,11 +1014,19 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No.&nbsp;Los datos conservan la distribución de la población, sea cual sea. Lo que se aproxima a una Normal es la distribución de la <strong>media muestral</strong> (tipificada) cuando el tamaño de la muestra crece.</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> No.&nbsp;Los datos conservan la distribución de la población, sea cual sea. Lo que se aproxima a una Normal es la distribución de la <strong>media muestral</strong> (tipificada) cuando el tamaño de la muestra crece.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="d">
 <p><strong>5.</strong> Los tickets de soporte llegan en promedio cada 15 minutos (proceso de Poisson). ¿Cuál es la tasa <span class="math inline">\(\lambda\)</span> por hora y la probabilidad de esperar más de media hora hasta el siguiente?</p>
+<ol type="a">
+<li><span class="math inline">\(\lambda = 0{,}25\)</span> por hora y <span class="math inline">\(P(T &gt; 0{,}5) = e^{-0{,}125} \approx 0{,}88\)</span>.</li>
+<li><span class="math inline">\(\lambda = 4\)</span> por hora y <span class="math inline">\(P(T &gt; 0{,}5) = 1 - e^{-2} \approx 0{,}865\)</span>.</li>
+<li><span class="math inline">\(\lambda = 15\)</span> por hora y <span class="math inline">\(P(T &gt; 0{,}5) = e^{-7{,}5} \approx 0{,}0006\)</span>.</li>
+<li><span class="math inline">\(\lambda = 4\)</span> por hora y <span class="math inline">\(P(T &gt; 0{,}5) = e^{-2} \approx 0{,}135\)</span>.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -998,7 +1039,9 @@ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \;\xrightarrow{\;d\;}\; \mathcal{N}(
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(\lambda = 4\)</span> tickets por hora. El tiempo de espera es Exponencial y <span class="math inline">\(P(T &gt; 0{,}5) = e^{-4 \cdot 0{,}5} = e^{-2} \approx 0{,}135\)</span>.</p>
+<p><span class="eb-clave">Respuesta correcta: d.</span> <span class="math inline">\(\lambda = 4\)</span> tickets por hora. El tiempo de espera es Exponencial y <span class="math inline">\(P(T &gt; 0{,}5) = e^{-4 \cdot 0{,}5} = e^{-2} \approx 0{,}135\)</span>.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1063,7 +1106,9 @@ function mejorarNavegacion() {
     var group = section && section.querySelector(":scope > .sidebar-item-container .menu-text");
     var title = link.querySelector(".chapter-title");
     if (!group || !title) return;
-    var full = group.textContent.trim() + " · " + title.textContent.trim();
+    var nombre = group.cloneNode(true);
+    nombre.querySelectorAll(".eb-menu-count").forEach(function (n) { n.remove(); }); // contador de F5.3
+    var full = nombre.textContent.trim() + " · " + title.textContent.trim();
     title.textContent = full;
     link.setAttribute("aria-label", full);
   });
@@ -1075,6 +1120,17 @@ if (document.readyState === "loading") {
 } else {
   mejorarNavegacion();
 }
+
+/* F5.3: cuestionarios y progreso. Un único archivo compartido
+   (assets/curso.js, copiado como recurso en _quarto.yml) que se carga desde
+   la raíz del libro con la ruta relativa que Quarto publica en
+   <meta name="quarto:offset">. */
+(function () {
+  var meta = document.querySelector('meta[name="quarto:offset"]');
+  var script = document.createElement("script");
+  script.src = (meta ? meta.getAttribute("content") : "./") + "assets/curso.js";
+  document.body.appendChild(script);
+})();
 </script>
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBuYiA9IElucHV0cy5yYW5nZShbMSwgMjAwXSwge3ZhbHVlOiAyMCwgc3RlcDogMSwgbGFiZWw6IFwiTsO6bWVybyBkZSBlbnNheW9zIG5cIn0pXG52aWV3b2YgcGIgPSBJbnB1dHMucmFuZ2UoWzAuMDEsIDAuOTldLCB7dmFsdWU6IDAuMywgc3RlcDogMC4wMSwgbGFiZWw6IFwiUHJvYmFiaWxpZGFkIGRlIMOpeGl0byBwXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYmlub21pYWwgPSB7XG4gIC8vIEZ1bmNpw7NuIGRlIHByb2JhYmlsaWRhZCBjYWxjdWxhZGEgZW4gZXNjYWxhIGxvZ2Fyw610bWljYSAoc2luIGRlc2JvcmRhbWllbnRvKVxuICBjb25zdCBvdXQgPSBbXTtcbiAgbGV0IGxwID0gbmIgKiBNYXRoLmxvZygxIC0gcGIpO1xuICBmb3IgKGxldCBrID0gMDsgayA8PSBuYjsgaysrKSB7XG4gICAgb3V0LnB1c2goe2ssIHByb2I6IE1hdGguZXhwKGxwKX0pO1xuICAgIGxwICs9IE1hdGgubG9nKChuYiAtIGspIC8gKGsgKyAxKSkgKyBNYXRoLmxvZyhwYiAvICgxIC0gcGIpKTtcbiAgfVxuICByZXR1cm4gb3V0O1xufVxubWVkaWFCID0gbmIgKiBwYlxuc2RCID0gTWF0aC5zcXJ0KG5iICogcGIgKiAoMSAtIHBiKSlcbm5vcm1hbEIgPSBkMy5yYW5nZShNYXRoLm1heCgtMC41LCBtZWRpYUIgLSA0ICogc2RCKSwgTWF0aC5taW4obmIgKyAwLjUsIG1lZGlhQiArIDQgKiBzZEIpLCBzZEIgLyAyNSlcbiAgLm1hcCh4ID0+ICh7eCwgZGVuczogTWF0aC5leHAoLSgoeCAtIG1lZGlhQikgKiogMikgLyAoMiAqIHNkQiAqKiAyKSkgLyAoc2RCICogTWF0aC5zcXJ0KDIgKiBNYXRoLlBJKSl9KSlcblBsb3QucGxvdCh7XG4gIGhlaWdodDogMzAwLFxuICB4OiB7bGFiZWw6IFwiayAobsO6bWVybyBkZSDDqXhpdG9zKVwifSxcbiAgeToge2xhYmVsOiBcIlByb2JhYmlsaWRhZCAvIGRlbnNpZGFkXCIsIGdyaWQ6IHRydWV9LFxuICBjb2xvcjoge2xlZ2VuZDogdHJ1ZSwgZG9tYWluOiBbXCJCaW5vbWlhbChuLCBwKVwiLCBcIk5vcm1hbChucCwgbnAoMeKIknApKVwiXSwgcmFuZ2U6IFtcInN0ZWVsYmx1ZVwiLCBcImNyaW1zb25cIl19LFxuICBtYXJrczogW1xuICAgIFBsb3QucnVsZVgoYmlub21pYWwsIHt4OiBcImtcIiwgeTogXCJwcm9iXCIsIHN0cm9rZTogXCJzdGVlbGJsdWVcIiwgc3Ryb2tlV2lkdGg6IDN9KSxcbiAgICBQbG90LmxpbmUobm9ybWFsQiwge3g6IFwieFwiLCB5OiBcImRlbnNcIiwgc3Ryb2tlOiBcImNyaW1zb25cIiwgc3Ryb2tlV2lkdGg6IDJ9KSxcbiAgICBQbG90LnJ1bGVZKFswXSlcbiAgXSxcbiAgYXJpYUxhYmVsOiBcIkZ1bmNpw7NuIGRlIHByb2JhYmlsaWRhZCBkZSBsYSBCaW5vbWlhbCBjb24gbG9zIHZhbG9yZXMgZWxlZ2lkb3MgZGUgbiB5IHAsIGNvbW8gYmFycmFzIHZlcnRpY2FsZXMsIHkgbGEgZGVuc2lkYWQgZGUgbGEgTm9ybWFsIGNvbiBsYSBtaXNtYSBtZWRpYSB5IHZhcmlhbnphIGNvbW8gY3VydmEgcm9qYS5cIlxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1kYENvbiAqbiogPSAke25ifSB5ICpwKiA9ICR7cGIudG9GaXhlZCgyKS5yZXBsYWNlKFwiLlwiLCBcIixcIil9OiAqbnAqID0gJHttZWRpYUIudG9GaXhlZCgxKS5yZXBsYWNlKFwiLlwiLCBcIixcIil9IHkgKm4qKDEg4oiSICpwKikgPSAkeyhuYiAtIG1lZGlhQikudG9GaXhlZCgxKS5yZXBsYWNlKFwiLlwiLCBcIixcIil9LiAke01hdGgubWluKG1lZGlhQiwgbmIgLSBtZWRpYUIpID49IDEwID8gXCJTZSBjdW1wbGUgbGEgcmVnbGEgcHLDoWN0aWNhOiBsYSBhcHJveGltYWNpw7NuIE5vcm1hbCBkZWJlcsOtYSBzZXIgYnVlbmEuXCIgOiBcIk5vIHNlIGN1bXBsZSBsYSByZWdsYSBwcsOhY3RpY2E6IGxhIGFwcm94aW1hY2nDs24gTm9ybWFsIHB1ZWRlIHNlciBwb2JyZS5cIn1gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBTb2xvIGxsZWdhIGEgZWplY3V0YXJzZSBzaSBzZSBoYW4gY2FyZ2FkbyBsYXMgYmlibGlvdGVjYXM6IGVudG9uY2VzIHJldGlyYSBlbCBhdmlzby5cbmF2aXNvQmlub21pYWwgPSB7XG4gIFBsb3Q7IElucHV0cztcbiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJhdmlzby13aWRnZXQtYmlub21pYWxcIik/LnJlbW92ZSgpO1xuICByZXR1cm4gaHRtbGBgO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduYicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwYicpIn1dfQ==

@@ -469,7 +469,7 @@ r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(-1\)</span>: relación lineal negativa fuerte.</li>
 <li><span class="math inline">\(r\)</span> cercano a <span class="math inline">\(0\)</span>: poca o ninguna relación lineal (¡ojo! podría haber una relación no lineal fuerte y aun así <span class="math inline">\(r \approx 0\)</span>).</li>
 </ul>
-<div id="f4cb72b5" class="cell" data-execution_count="2">
+<div id="e541e3f4" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> regression <span class="im">as</span> reg</span>
@@ -494,7 +494,7 @@ r = \frac{\text{Cov}(X, Y)}{s_X \, s_Y}
 \rho_s = 1 - \frac{6\sum_{i=1}^{n} d_i^2}{n(n^2-1)},
 \]</span></p>
 <p>donde <span class="math inline">\(d_i\)</span> es la diferencia entre los rangos de <span class="math inline">\(x_i\)</span> e <span class="math inline">\(y_i\)</span>. Vale <span class="math inline">\(1\)</span> si <span class="math inline">\(Y\)</span> crece siempre que crece <span class="math inline">\(X\)</span>, aunque no lo haga en línea recta:</p>
-<div id="09575c3d" class="cell" data-execution_count="3">
+<div id="c2c0b89f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -510,7 +510,7 @@ Spearman: rho = 1.000</code></pre>
 </div>
 </div>
 <p>Un único valor atípico (30 horas de estudio y un 3 en el examen) basta para cambiar el signo de <span class="math inline">\(r\)</span>; <span class="math inline">\(\rho_s\)</span> también baja, pero sigue siendo positiva:</p>
-<div id="912d13c5" class="cell" data-execution_count="4">
+<div id="0afe8a0b" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>horas_atipico <span class="op">=</span> horas_estudio <span class="op">+</span> [<span class="dv">30</span>]</span>
@@ -523,7 +523,7 @@ Spearman: rho = 1.000</code></pre>
 </div>
 </div>
 <p>Para contrastar <span class="math inline">\(H_0\)</span>: no hay asociación monótona, se usa el estadístico <span class="math inline">\(t = \rho_s\sqrt{(n-2)/(1-\rho_s^2)}\)</span> con <span class="math inline">\(n-2\)</span> grados de libertad, una aproximación razonable a partir de unos 10 pares; es la que usa <code>scipy.stats.spearmanr</code>:</p>
-<div id="393fbbbd" class="cell" data-execution_count="5">
+<div id="b5684302" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -556,7 +556,7 @@ Y = \beta_0 + \beta_1 X + \varepsilon
 <p><span class="math display">\[
 \hat{\beta}_1 = \frac{\text{Cov}(X, Y)}{\text{Var}(X)} \qquad \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
 \]</span></p>
-<div id="74eea560" class="cell" data-execution_count="6">
+<div id="4347ad19" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>beta0, beta1 <span class="op">=</span> reg.simple_linear_regression(horas_estudio, nota_examen)</span>
@@ -570,7 +570,7 @@ Pendiente (β1): 0.655
 Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el examen</code></pre>
 </div>
 </div>
-<div id="51d47f90" class="cell" data-execution_count="7">
+<div id="493411da" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -603,7 +603,7 @@ Interpretación: cada hora extra de estudio se asocia con +0.65 puntos en el exa
 R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}
 \]</span></p>
 <p><span class="math inline">\(R^2\)</span> va de 0 (el modelo no explica nada) a 1 (el modelo explica toda la variabilidad). En regresión lineal simple, <span class="math inline">\(R^2\)</span> es exactamente el cuadrado del coeficiente de correlación de Pearson: <span class="math inline">\(R^2 = r^2\)</span>.</p>
-<div id="206593c9" class="cell" data-execution_count="8">
+<div id="19b33848" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> reg.r_squared(horas_estudio, nota_examen, beta0, beta1)</span>
@@ -626,7 +626,7 @@ El modelo explica el 99.2% de la variabilidad de la nota</code></pre>
 <li><strong>Normalidad de los errores</strong>: importante sobre todo con muestras pequeñas.</li>
 </ol>
 <p>Como los errores no se observan, se examinan los <strong>residuos</strong>, <span class="math inline">\(e_i = y_i - \hat{y}_i\)</span>. En un gráfico de residuos frente a los valores ajustados no debería verse ningún patrón: una curva indica que la relación no es lineal, y un “embudo” (residuos cada vez más dispersos) indica que la varianza no es constante.</p>
-<div id="60164824" class="cell" data-execution_count="9">
+<div id="d55999e4" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -668,7 +668,7 @@ H_0: \beta_1 = 0 \quad \text{(no hay relación lineal real)} \qquad H_1: \beta_1
 <p><span class="math display">\[
 t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)}
 \]</span></p>
-<div id="41bfbd8a" class="cell" data-execution_count="10">
+<div id="0537239d" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> reg.t_test_slope(horas_estudio, nota_examen, beta0, beta1)</span>
@@ -685,7 +685,7 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 </div>
 <p>Y, como en el Módulo 4, también podemos construir un intervalo de confianza para <span class="math inline">\(\beta_1\)</span> en vez de limitarnos a un sí/no:</p>
-<div id="7896e5a0" class="cell" data-execution_count="11">
+<div id="9368f1f0" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lower, upper <span class="op">=</span> reg.confidence_interval_slope(horas_estudio, nota_examen, beta0, beta1, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
@@ -718,8 +718,17 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </section>
 <section id="autoevaluación" class="level2" data-number="11.7">
 <h2 data-number="11.7" class="anchored" data-anchor-id="autoevaluación"><span class="header-section-number">11.7</span> Autoevaluación</h2>
+<div class="eb-cuestionario">
+<div class="eb-cuestionario-ayuda">
 <p>Intenta responder cada pregunta antes de desplegar la respuesta.</p>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>1.</strong> La correlación de Pearson entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> es <span class="math inline">\(r = 0{,}02\)</span>. ¿Significa que no hay ninguna relación entre ellas?</p>
+<ol type="a">
+<li>Sí: las dos variables son independientes.</li>
+<li>No: no hay relación lineal apreciable, pero puede existir una relación no lineal fuerte.</li>
+<li>No: indica una relación lineal fuerte con una pendiente muy pequeña.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -732,11 +741,19 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No.&nbsp;Significa que no hay relación <strong>lineal</strong> apreciable. Puede existir una relación no lineal fuerte (por ejemplo, en forma de U). Por eso hay que mirar siempre el diagrama de dispersión.</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> No.&nbsp;Significa que no hay relación <strong>lineal</strong> apreciable. Puede existir una relación no lineal fuerte (por ejemplo, en forma de U). Por eso hay que mirar siempre el diagrama de dispersión.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="c">
 <p><strong>2.</strong> En una regresión lineal simple, <span class="math inline">\(R^2 = 0{,}64\)</span> y la pendiente es negativa. ¿Cuánto vale <span class="math inline">\(r\)</span>?</p>
+<ol type="a">
+<li><span class="math inline">\(r = 0{,}64\)</span></li>
+<li><span class="math inline">\(r = -0{,}64\)</span></li>
+<li><span class="math inline">\(r = -0{,}8\)</span></li>
+<li><span class="math inline">\(r = 0{,}8\)</span></li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -749,11 +766,19 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>En regresión simple <span class="math inline">\(R^2 = r^2\)</span>, así que <span class="math inline">\(|r| = 0{,}8\)</span>; el signo es el de la pendiente: <span class="math inline">\(r = -0{,}8\)</span>.</p>
+<p><span class="eb-clave">Respuesta correcta: c.</span> En regresión simple <span class="math inline">\(R^2 = r^2\)</span>, así que <span class="math inline">\(|r| = 0{,}8\)</span>; el signo es el de la pendiente: <span class="math inline">\(r = -0{,}8\)</span>.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="a">
 <p><strong>3.</strong> Una regresión de ventas sobre publicidad (ambas en miles de euros) da <span class="math inline">\(\hat\beta_1 = 2{,}5\)</span>. ¿Cómo se interpreta?</p>
+<ol type="a">
+<li>Por cada 1000 € más de publicidad, las ventas son en promedio 2500 € mayores, dentro del rango observado; describe una asociación.</li>
+<li>Por cada 1000 € más de publicidad, las ventas aumentan 2,5 €.</li>
+<li>Invertir 1000 € más en publicidad causa 2500 € más de ventas, sea cual sea el presupuesto.</li>
+<li>Las ventas son siempre 2,5 veces la inversión en publicidad.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -766,11 +791,19 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Por cada 1000 € más de publicidad, las ventas son en promedio 2500 € mayores, dentro del rango de datos observado. Describe una asociación: sin un diseño experimental no demuestra que la publicidad cause ese aumento.</p>
+<p><span class="eb-clave">Respuesta correcta: a.</span> Por cada 1000 € más de publicidad, las ventas son en promedio 2500 € mayores, dentro del rango de datos observado. Describe una asociación: sin un diseño experimental no demuestra que la publicidad cause ese aumento.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="c">
 <p><strong>4.</strong> El gráfico de residuos frente a los valores ajustados tiene forma de U. ¿Qué indica?</p>
+<ol type="a">
+<li>Que el modelo es adecuado: los residuos se reparten a ambos lados de cero.</li>
+<li>Que la varianza de los errores crece con los valores ajustados.</li>
+<li>Que la relación no es lineal: habría que transformar las variables o usar otro modelo.</li>
+<li>Que hay un único valor atípico influyente.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -783,11 +816,19 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Que la relación no es lineal: el modelo sobrestima en el centro y subestima en los extremos (o al revés). Habría que transformar las variables o usar otro modelo; las inferencias del modelo lineal no son fiables.</p>
+<p><span class="eb-clave">Respuesta correcta: c.</span> Que la relación no es lineal: el modelo sobrestima en el centro y subestima en los extremos (o al revés). Habría que transformar las variables o usar otro modelo; las inferencias del modelo lineal no son fiables.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>5.</strong> ¿Cuándo preferirías la correlación de Spearman a la de Pearson?</p>
+<ol type="a">
+<li>Cuando las dos variables son normales y la relación es lineal.</li>
+<li>Cuando la relación es monótona pero no lineal, hay valores atípicos influyentes o las variables son ordinales.</li>
+<li>Cuando la muestra es muy grande.</li>
+<li>Cuando se quiere estimar la pendiente de la recta de regresión.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -800,7 +841,9 @@ p-valor &lt; 0.05: rechazamos H0, la relación entre horas de estudio y nota es 
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Cuando la relación es monótona pero no lineal, cuando hay valores atípicos influyentes o cuando las variables son ordinales (por ejemplo, puntuaciones de 1 a 5).</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> Cuando la relación es monótona pero no lineal, cuando hay valores atípicos influyentes o cuando las variables son ordinales (por ejemplo, puntuaciones de 1 a 5).</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -861,7 +904,9 @@ function mejorarNavegacion() {
     var group = section && section.querySelector(":scope > .sidebar-item-container .menu-text");
     var title = link.querySelector(".chapter-title");
     if (!group || !title) return;
-    var full = group.textContent.trim() + " · " + title.textContent.trim();
+    var nombre = group.cloneNode(true);
+    nombre.querySelectorAll(".eb-menu-count").forEach(function (n) { n.remove(); }); // contador de F5.3
+    var full = nombre.textContent.trim() + " · " + title.textContent.trim();
     title.textContent = full;
     link.setAttribute("aria-label", full);
   });
@@ -873,6 +918,17 @@ if (document.readyState === "loading") {
 } else {
   mejorarNavegacion();
 }
+
+/* F5.3: cuestionarios y progreso. Un único archivo compartido
+   (assets/curso.js, copiado como recurso en _quarto.yml) que se carga desde
+   la raíz del libro con la ruta relativa que Quarto publica en
+   <meta name="quarto:offset">. */
+(function () {
+  var meta = document.querySelector('meta[name="quarto:offset"]');
+  var script = document.createElement("script");
+  script.src = (meta ? meta.getAttribute("content") : "./") + "assets/curso.js";
+  document.body.appendChild(script);
+})();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

@@ -495,7 +495,7 @@ H_0: \mu_1 = \mu_2 = \dots = \mu_k \qquad H_1: \text{al menos una media es disti
 F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-1)}{SS_{\text{dentro}} / (n-k)}
 \]</span></p>
 <p>donde <span class="math inline">\(k\)</span> es el número de grupos y <span class="math inline">\(n\)</span> el número total de observaciones. Bajo <span class="math inline">\(H_0\)</span>, y si las observaciones son independientes y, dentro de cada grupo, se distribuyen de forma Normal con la misma varianza en todos los grupos, este estadístico sigue una <strong>distribución F</strong> con <span class="math inline">\((k-1, n-k)\)</span> grados de libertad. No se exige que el conjunto de todos los datos parezca Normal: si las medias de los grupos son distintas, los datos mezclados pueden no parecerlo aunque cada grupo sí lo sea.</p>
-<div id="644d700c" class="cell" data-execution_count="2">
+<div id="722c3885" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stats_toolkit <span class="im">import</span> group_comparisons <span class="im">as</span> gc</span>
@@ -521,7 +521,7 @@ F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-
 \eta^2 = \frac{SS_{\text{entre}}}{SS_{\text{total}}},
 \]</span></p>
 <p>la proporción de la variabilidad total de los datos que se asocia a las diferencias entre grupos (entre 0 y 1). Como orientación muy general, valores en torno a 0,01, 0,06 y 0,14 se suelen considerar pequeños, medianos y grandes, aunque lo importante es interpretarlo en el contexto del problema.</p>
-<div id="8c09867d" class="cell" data-execution_count="3">
+<div id="ea0cf46b" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>eta2 <span class="op">=</span> gc.eta_squared(tratamiento_a, tratamiento_b, tratamiento_c)</span>
@@ -535,7 +535,7 @@ F = \frac{MS_{\text{entre}}}{MS_{\text{dentro}}} = \frac{SS_{\text{entre}} / (k-
 <section id="comparaciones-post-hoc-tukey" class="level3" data-number="13.2.4">
 <h3 data-number="13.2.4" class="anchored" data-anchor-id="comparaciones-post-hoc-tukey"><span class="header-section-number">13.2.4</span> Comparaciones post-hoc: Tukey</h3>
 <p>Si el ANOVA es significativo, el siguiente paso es averiguar <strong>qué</strong> grupos difieren. Hacer todos los t-tests por pares vuelve a acumular falsos positivos; el método de <strong>Tukey</strong> (HSD) compara todas las parejas controlando la probabilidad de cometer al menos un error de tipo I en el conjunto. Para cada pareja da la diferencia de medias, un p-valor ajustado y un intervalo de confianza simultáneo:</p>
-<div id="fb20df61" class="cell" data-execution_count="4">
+<div id="3dc3eb9c" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tukey <span class="op">=</span> gc.tukey_hsd(tratamiento_a, tratamiento_b, tratamiento_c, labels<span class="op">=</span>[<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>])</span>
@@ -564,7 +564,7 @@ H_0: \text{las dos variables son independientes} \qquad H_1: \text{existe asocia
 \chi^2 = \sum_{i,j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
 \]</span></p>
 <p>donde <span class="math inline">\(E_{ij}\)</span> es la frecuencia esperada bajo independencia, calculada a partir de los totales de fila y columna. Bajo <span class="math inline">\(H_0\)</span>, el estadístico sigue <strong>aproximadamente</strong> una distribución Chi-cuadrado con <span class="math inline">\((filas-1)(columnas-1)\)</span> grados de libertad; la aproximación es fiable cuando las frecuencias esperadas no son pequeñas (una regla habitual es que todas sean al menos 5). En tablas 2×2 existe además la <strong>corrección de Yates</strong>, que resta 0,5 a cada <span class="math inline">\(|O_{ij}-E_{ij}|\)</span> y hace el contraste más conservador; <code>scipy.stats.chi2_contingency</code> la aplica por defecto en esas tablas. <code>chi2_test_independence()</code> calcula el estadístico de la fórmula anterior, sin corrección, salvo que se indique <code>correction=True</code>.</p>
-<div id="14a53896" class="cell" data-execution_count="5">
+<div id="991a1155" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -584,7 +584,7 @@ Joven        40      10
 Senior       15      35</code></pre>
 </div>
 </div>
-<div id="40f33cdb" class="cell" data-execution_count="6">
+<div id="cdb9b2af" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value, dof, esperadas <span class="op">=</span> gc.chi2_test_independence(tabla)</span>
@@ -610,7 +610,7 @@ E_{ij}=\frac{(\text{total de la fila }i)\,(\text{total de la columna }j)}{n}.
 V = \sqrt{\frac{\chi^2}{n\,(\min(\text{filas}, \text{columnas}) - 1)}},
 \]</span></p>
 <p>vale 0 si no hay asociación en la muestra y 1 si la asociación es perfecta:</p>
-<div id="0a37051c" class="cell" data-execution_count="7">
+<div id="6558e295" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"V de Cramér = </span><span class="sc">{</span>gc<span class="sc">.</span>cramers_v(tabla)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
@@ -638,7 +638,7 @@ H_1 &amp;: \text{las dos distribuciones no son iguales}
 <li><strong>Cuándo es una prueba de medianas:</strong> solo si se supone, además, que las dos distribuciones tienen la misma forma y dispersión y difieren únicamente en un desplazamiento. Sin ese supuesto adicional, un resultado significativo no permite afirmar que las medianas (ni las medias) sean distintas.</li>
 <li><strong>Qué no permite concluir:</strong> un p-valor mayor que 0,05 no demuestra que las distribuciones sean iguales. Solo indica que no hay evidencia suficiente de una diferencia, y puede deberse a una muestra pequeña o a diferencias que el estadístico apenas detecta.</li>
 </ul>
-<div id="0c8bf278" class="cell" data-execution_count="8">
+<div id="24cd21b8" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valoraciones de satisfacción (escala 1-10) de dos versiones de una app,</span></span>
@@ -671,7 +671,7 @@ H_0: \text{todos los grupos proceden de la misma distribución} \qquad
 H_1: \text{no todas las distribuciones son iguales}
 \]</span></p>
 <p>Como Mann-Whitney, supone observaciones independientes y una variable al menos ordinal, y es sensible sobre todo a que unos grupos tiendan a tomar valores mayores que otros. Si es significativo, también hacen falta comparaciones posteriores para saber qué grupos difieren. Aplicado a los tratamientos del ANOVA:</p>
-<div id="b32144d6" class="cell" data-execution_count="9">
+<div id="f1d3e94b" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>h_stat, p_value <span class="op">=</span> gc.kruskal_wallis(tratamiento_a, tratamiento_b, tratamiento_c)</span>
@@ -689,7 +689,7 @@ H_1: \text{no todas las distribuciones son iguales}
 <li>La <strong>prueba de signos</strong> solo usa el signo de cada diferencia: bajo <span class="math inline">\(H_0\)</span>, la mitad de las diferencias no nulas deberían ser positivas. Necesita muy pocos supuestos, pero ignora la magnitud de las diferencias, así que tiene poca potencia.</li>
 <li>La <strong>prueba de Wilcoxon de rangos con signo</strong> ordena las diferencias no nulas por su valor absoluto y compara la suma de los rangos de las positivas con la de las negativas. Usa más información que la prueba de signos. Para interpretarla como un contraste sobre la mediana de las diferencias hace falta suponer que estas se distribuyen de forma simétrica.</li>
 </ul>
-<div id="81f4799e" class="cell" data-execution_count="10">
+<div id="a69d776a" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Presión sistólica antes y después de un programa de ejercicio (datos ilustrativos)</span></span>
@@ -703,7 +703,7 @@ H_1: \text{no todas las distribuciones son iguales}
 </div>
 </div>
 <p>Con los mismos datos, la prueba de signos solo cuenta cuántas diferencias son positivas (bajó la presión) y calcula el p-valor exacto con una Binomial<span class="math inline">\((m;\ 0{,}5)\)</span>, donde <span class="math inline">\(m\)</span> es el número de diferencias no nulas:</p>
-<div id="1bc2809a" class="cell" data-execution_count="11">
+<div id="36d5d72c" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>k, p_signos <span class="op">=</span> gc.sign_test(antes, despues)</span>
@@ -736,8 +736,18 @@ H_1: \text{no todas las distribuciones son iguales}
 </section>
 <section id="autoevaluación" class="level2" data-number="13.6">
 <h2 data-number="13.6" class="anchored" data-anchor-id="autoevaluación"><span class="header-section-number">13.6</span> Autoevaluación</h2>
+<div class="eb-cuestionario">
+<div class="eb-cuestionario-ayuda">
 <p>Intenta responder cada pregunta antes de desplegar la respuesta.</p>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>1.</strong> ¿Por qué no comparar tres grupos con tres pruebas t por parejas en lugar de un ANOVA?</p>
+<ol type="a">
+<li>Porque las tres pruebas t darían siempre el mismo p-valor.</li>
+<li>Porque la probabilidad de cometer al menos un error de tipo I crece con el número de comparaciones.</li>
+<li>Porque el ANOVA no necesita ningún supuesto sobre los datos.</li>
+<li>Porque las pruebas t solo pueden aplicarse a muestras grandes.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -750,11 +760,18 @@ H_1: \text{no todas las distribuciones son iguales}
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Porque la probabilidad de cometer al menos un error de tipo I crece con el número de comparaciones: con tres pruebas independientes al 5 % sería <span class="math inline">\(1 - 0{,}95^3 \approx 0{,}143\)</span>. El ANOVA contrasta todas las medias a la vez con un <span class="math inline">\(\alpha\)</span> global del 5 %.</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> Porque la probabilidad de cometer al menos un error de tipo I crece con el número de comparaciones: con tres pruebas independientes al 5 % sería <span class="math inline">\(1 - 0{,}95^3 \approx 0{,}143\)</span>. El ANOVA contrasta todas las medias a la vez con un <span class="math inline">\(\alpha\)</span> global del 5 %.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="c">
 <p><strong>2.</strong> Un ANOVA de un factor es significativo. ¿Sabes ya qué grupos difieren entre sí?</p>
+<ol type="a">
+<li>Sí: todas las medias son distintas entre sí.</li>
+<li>Sí: al menos difieren el grupo de media mayor y el de media menor, y ninguno más.</li>
+<li>No: solo indica que no todas las medias son iguales; para saber qué parejas difieren hace falta una prueba post-hoc.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -767,11 +784,19 @@ H_1: \text{no todas las distribuciones son iguales}
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No.&nbsp;Solo indica que no todas las medias son iguales. Para saber qué parejas difieren se usa una prueba post-hoc, como la de Tukey, que controla el error de tipo I del conjunto de comparaciones.</p>
+<p><span class="eb-clave">Respuesta correcta: c.</span> No.&nbsp;Solo indica que no todas las medias son iguales. Para saber qué parejas difieren se usa una prueba post-hoc, como la de Tukey, que controla el error de tipo I del conjunto de comparaciones.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>3.</strong> En una tabla 2×2, una de las frecuencias esperadas es 2,1. ¿Es fiable el test chi-cuadrado?</p>
+<ol type="a">
+<li>Sí: lo que importa son las frecuencias observadas, no las esperadas.</li>
+<li>Es dudoso: la aproximación chi-cuadrado requiere frecuencias esperadas suficientes; es mejor la prueba exacta de Fisher.</li>
+<li>Sí: en tablas 2×2 el test chi-cuadrado es siempre exacto.</li>
+<li>No: hay que eliminar esa celda de la tabla y repetir el test.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -784,11 +809,18 @@ H_1: \text{no todas las distribuciones son iguales}
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Es dudoso: la distribución chi-cuadrado es una aproximación que requiere frecuencias esperadas suficientemente grandes (la regla habitual pide al menos 5). En este caso es mejor la prueba exacta de Fisher.</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> Es dudoso: la distribución chi-cuadrado es una aproximación que requiere frecuencias esperadas suficientemente grandes (la regla habitual pide al menos 5). En este caso es mejor la prueba exacta de Fisher.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="c">
 <p><strong>4.</strong> Una prueba de Mann-Whitney da <span class="math inline">\(p = 0{,}6\)</span>. ¿Demuestra que las dos distribuciones son iguales?</p>
+<ol type="a">
+<li>Sí: un p-valor mayor que 0,05 demuestra que son iguales.</li>
+<li>Sí, siempre que las dos muestras tengan el mismo tamaño.</li>
+<li>No: solo indica que no hay evidencia suficiente de diferencia, y distribuciones de forma muy distinta pueden dar un p-valor grande.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -801,11 +833,19 @@ H_1: \text{no todas las distribuciones son iguales}
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No.&nbsp;Un p-valor grande solo indica que no hay evidencia suficiente de diferencia. Además, Mann-Whitney es sensible sobre todo a que una población tienda a dar valores mayores que la otra: dos distribuciones muy distintas en forma pueden dar un p-valor grande.</p>
+<p><span class="eb-clave">Respuesta correcta: c.</span> No.&nbsp;Un p-valor grande solo indica que no hay evidencia suficiente de diferencia. Además, Mann-Whitney es sensible sobre todo a que una población tienda a dar valores mayores que la otra: dos distribuciones muy distintas en forma pueden dar un p-valor grande.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="eb-pregunta" data-correcta="b">
 <p><strong>5.</strong> Con 3000 personas, un ANOVA da <span class="math inline">\(p &lt; 0{,}001\)</span> y <span class="math inline">\(\eta^2 = 0{,}02\)</span>. ¿Cómo lo interpretarías?</p>
+<ol type="a">
+<li>Que el efecto es grande, porque el p-valor es muy pequeño.</li>
+<li>Que la diferencia es estadísticamente significativa, pero el efecto es pequeño: el factor solo se asocia con el 2 % de la variabilidad.</li>
+<li>Que el resultado no es fiable: con 3000 personas el ANOVA no es válido.</li>
+<li>Que el factor explica el 98 % de la variabilidad de la respuesta.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -818,7 +858,9 @@ H_1: \text{no todas las distribuciones son iguales}
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>La diferencia entre grupos es estadísticamente significativa, pero el factor solo se asocia con el 2 % de la variabilidad de la respuesta: un efecto pequeño. Con muestras grandes, diferencias pequeñas resultan significativas; su importancia práctica depende del contexto.</p>
+<p><span class="eb-clave">Respuesta correcta: b.</span> La diferencia entre grupos es estadísticamente significativa, pero el factor solo se asocia con el 2 % de la variabilidad de la respuesta: un efecto pequeño. Con muestras grandes, diferencias pequeñas resultan significativas; su importancia práctica depende del contexto.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -883,7 +925,9 @@ function mejorarNavegacion() {
     var group = section && section.querySelector(":scope > .sidebar-item-container .menu-text");
     var title = link.querySelector(".chapter-title");
     if (!group || !title) return;
-    var full = group.textContent.trim() + " · " + title.textContent.trim();
+    var nombre = group.cloneNode(true);
+    nombre.querySelectorAll(".eb-menu-count").forEach(function (n) { n.remove(); }); // contador de F5.3
+    var full = nombre.textContent.trim() + " · " + title.textContent.trim();
     title.textContent = full;
     link.setAttribute("aria-label", full);
   });
@@ -895,6 +939,17 @@ if (document.readyState === "loading") {
 } else {
   mejorarNavegacion();
 }
+
+/* F5.3: cuestionarios y progreso. Un único archivo compartido
+   (assets/curso.js, copiado como recurso en _quarto.yml) que se carga desde
+   la raíz del libro con la ruta relativa que Quarto publica en
+   <meta name="quarto:offset">. */
+(function () {
+  var meta = document.querySelector('meta[name="quarto:offset"]');
+  var script = document.createElement("script");
+  script.src = (meta ? meta.getAttribute("content") : "./") + "assets/curso.js";
+  document.body.appendChild(script);
+})();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
