@@ -112,6 +112,26 @@ function fijar(input, valor) {
 
 ```{ojs}
 //| echo: false
+// Accesibilidad (F5.5): Inputs solo asocia la etiqueta a la casilla numérica.
+// Se nombra también el deslizador y cada grupo de opciones (radiogroup).
+etiquetasLab = {
+  viewof resetA; viewof resetB; viewof resetC; viewof resetD;
+  document.querySelectorAll(".eb-lab-panel form").forEach((form, i) => {
+    const etiqueta = form.querySelector(":scope > label");
+    if (!etiqueta) return;
+    if (!etiqueta.id) etiqueta.id = `eb-lab-etiqueta-${i}`;
+    form.querySelectorAll('input[type="range"]').forEach(r => r.setAttribute("aria-label", etiqueta.textContent.trim()));
+    if (form.querySelector('input[type="radio"]')) {
+      form.setAttribute("role", "radiogroup");
+      form.setAttribute("aria-labelledby", etiqueta.id);
+    }
+  });
+  return html``;
+}
+```
+
+```{ojs}
+//| echo: false
 // Solo llega a ejecutarse si se han cargado las bibliotecas: entonces retira el aviso.
 avisoLaboratorio = {
   Plot; Inputs;

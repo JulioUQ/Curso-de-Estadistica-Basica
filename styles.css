@@ -742,6 +742,14 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
   #quarto-sidebar .sidebar-item-container .sidebar-link {
     min-height: 2.75rem;
   }
+  /* F5.5: en móvil la búsqueda está en la barra superior; su hueco vacío en
+     el panel separaba demasiado la cabecera de «Inicio». */
+  #quarto-sidebar > div:has(> .sidebar-search):not(:has(input)) {
+    display: none;
+  }
+  #quarto-sidebar .sidebar-menu-container {
+    padding-top: var(--eb-space-2);
+  }
   /* Solo la flecha separada de Quarto 1.10, no la cabecera-botón de 1.11 */
   #quarto-sidebar .sidebar-item-toggle:not(.sidebar-item-text) {
     min-width: 2.75rem;
