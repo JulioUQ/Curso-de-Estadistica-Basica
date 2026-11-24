@@ -604,6 +604,26 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
 #quarto-sidebar .sidebar-item-toggle .bi {
   margin: 0 !important;
 }
+/* Quarto 1.11: cada cabecera de grupo es un único <button> con el texto y la
+   flecha dentro (en 1.10 eran dos <a>: texto y flecha). Texto a la
+   izquierda, flecha a la derecha. */
+#quarto-sidebar .sidebar-item-container > button.sidebar-item-text {
+  flex: 1 1 auto;
+  width: 100%;
+  justify-content: space-between;
+  gap: var(--eb-space-2);
+  padding: 0.3rem var(--eb-space-3);
+  text-align: left;
+}
+#quarto-sidebar button.sidebar-item-text > .menu-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+#quarto-sidebar button.sidebar-item-text > .bi {
+  flex: none;
+  padding: 0;
+  color: var(--eb-muted);
+}
 
 /* Página actual */
 #quarto-sidebar .sidebar-link.active {
@@ -616,7 +636,8 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
 }
 
 /* Foco visible con teclado */
-#quarto-sidebar a:focus-visible {
+#quarto-sidebar a:focus-visible,
+#quarto-sidebar button:focus-visible {
   outline: 3px solid var(--eb-primary);
   outline-offset: -3px;
   border-radius: var(--eb-radius-sm);
@@ -691,10 +712,21 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
   display: none;
 }
 
-/* Escritorio estrecho: el menú es más angosto */
+/* Escritorio estrecho: el menú es más angosto. El tamaño va en .sidebar-item
+   porque Quarto lo fija ahí (.sidebar-navigation .sidebar-item); con menos
+   relleno caben la insignia, la palabra más larga y la flecha. */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #quarto-sidebar {
-    font-size: 0.87rem;
+  #quarto-sidebar,
+  #quarto-sidebar .sidebar-item {
+    font-size: 0.8rem;
+  }
+  #quarto-sidebar .sidebar-menu-container {
+    padding-right: var(--eb-space-1);
+  }
+  #quarto-sidebar .sidebar-item-container > button.sidebar-item-text {
+    padding-left: var(--eb-space-2);
+    padding-right: var(--eb-space-1);
+    gap: var(--eb-space-1);
   }
 }
 
@@ -703,7 +735,8 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
   #quarto-sidebar .sidebar-item-container .sidebar-link {
     min-height: 2.75rem;
   }
-  #quarto-sidebar .sidebar-item-toggle {
+  /* Solo la flecha separada de Quarto 1.10, no la cabecera-botón de 1.11 */
+  #quarto-sidebar .sidebar-item-toggle:not(.sidebar-item-text) {
     min-width: 2.75rem;
     display: inline-flex;
     align-items: center;
