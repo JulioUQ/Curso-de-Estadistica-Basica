@@ -1176,6 +1176,11 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
   padding-top: var(--eb-space-3);
   border-top: 1px solid var(--eb-border);
 }
+/* En negrita, como las cabeceras de módulo, proyecto y apéndices */
+#quarto-sidebar .sidebar-menu-container > ul > li:has(> .sidebar-item-container a[href$="laboratorio.html"]) .sidebar-link {
+  font-weight: 700;
+  color: var(--eb-ink);
+}
 #quarto-sidebar .sidebar-menu-container > ul > li:has(> .sidebar-item-container a[href$="laboratorio.html"]) .menu-text::before {
   content: "\f90a"; /* bi-flask */
   display: inline-block;
