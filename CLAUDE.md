@@ -25,8 +25,9 @@ manda el código: verifica y actualiza este archivo.
 
 ```
 _quarto.yml            # Proyecto type: book; capítulos, tema cosmo, freeze: auto
-index.qmd              # Portada ("Inicio")
-styles.css             # Estilos propios (sidebar, tablas, citas…)
+index.qmd              # Portada ("Inicio"), rediseñada en F5.1 (ver §8, «Identidad visual»)
+styles.css             # Estilos propios: §0 identidad visual (variables --eb-*,
+                       # componentes .eb-*) + sidebar, tablas, citas…
 references.bib         # Bibliografía BibTeX citada con [@clave]
 requirements.txt       # Dependencias Python de ejecución (sin versiones fijadas)
 requirements-dev.txt   # Solo desarrollo: pytest
@@ -282,6 +283,12 @@ quarto render                         # lo mismo que hace el CI
     imprime 0.000000) y se comunica `p < 0,001` cuando corresponde; las
     prácticas de M5–M6 aún usan `:.6f` (F1.7).
   - `confidence_interval_mean_t` recibe `sample_std` y asume que es la s con n−1.
+  - `knn_impute(data, n_neighbors, ids)` (corrección del CI de F5.1): envuelve
+    `KNNImputer` con una métrica que suma `1e-9·rango(ID)/n` a la distancia,
+    de modo que entre vecinos equidistantes ganan siempre los de menor `ID`.
+    Sin ella, los empates (registros idénticos salvo la edad) se resolvían
+    según el orden interno de la selección, distinto entre máquinas. La usa el
+    preprocesamiento; único cambio en el CSV: `Age` del `ID` 41, 30,33 → 30,0.
   - Fase 3: `power_z_test_mean` y `sample_size_z_test_mean` son del test z
     (σ conocida); para el test t se remite a `statsmodels` `TTestPower`. El
     tamaño muestral bilateral ignora la cola opuesta (potencia ≥ la pedida).
@@ -340,6 +347,28 @@ quarto render                         # lo mismo que hace el CI
   del área de trazado. Reproducibilidad: semillas fijas.
 - Citas con `[@clave]` contra `references.bib`; no inventar referencias ni
   añadir entradas sin fuente verificable.
+
+### Identidad visual (F5.1)
+- La guía de diseño vive al principio de `styles.css` («0) IDENTIDAD VISUAL»):
+  variables `--eb-*` (colores, espaciado `--eb-space-1…8`, radios, sombras,
+  tamaños `--eb-fs-hero`/`--eb-fs-h2`) y componentes `.eb-*` (`.eb-btn`
+  primario/secundario/claro, `.eb-card`, `.eb-icon`, `.eb-kicker`, `.eb-grid`,
+  `.eb-resource`). Cualquier pieza nueva de interfaz debe reutilizarlos; no
+  escribir colores sueltos. Paleta: primario `#1f4fb8`, acento `#0d7a74`,
+  tinta `#172033`, texto secundario `#525d71`; todo el texto ≥ 4,5:1 (AA).
+- Modo oscuro futuro: redefinir las variables bajo el selector del tema oscuro.
+- Iconos: Bootstrap Icons (`<i class="bi bi-…" aria-hidden="true">`), que
+  Quarto ya sirve en local. Sin fuentes, frameworks ni recursos externos nuevos.
+- Interacción: hover con sombra y elevación de 2 px; `:focus-visible` con
+  contorno de 3 px; todo se desactiva con `prefers-reduced-motion`.
+- Portada (`index.qmd`): `page-layout: full`, `toc: false`,
+  `body-classes: eb-home`; el bloque de título del libro se oculta solo ahí
+  (la cabecera tiene su propio `h1`). Secciones `##` con `{.unnumbered
+  .unlisted}`. Enlaces internos siempre en Markdown a `.qmd`/`.ipynb` (Quarto
+  los resuelve); el SVG de la cabecera es propio e inline (`aria-hidden`).
+- Validar las páginas de interfaz a 1440, 768 y 375 px sin desplazamiento
+  horizontal. Chrome headless no baja de ~500 px de ventana: para capturas
+  móviles, usar un `iframe` de 375 px o el navegador con perfil móvil.
 - No duplicar contenido entre teoría y práctica ni entre módulos: enlazar.
 
 ## 9. Incoherencias detectadas (estado de cada una)
@@ -587,6 +616,19 @@ y usar en Colab» (2026-11-23). Estado:
   `stats_toolkit`, lint y comprobación de enlaces en el CI, fijar versiones
   exactas (lockfile), licencia (sigue sin `LICENSE`), CONTRIBUTING, PDF/EPUB,
   MathJax sin CDN (sin conexión las fórmulas se ven en LaTeX).
+
+**Fase 5 — frontend y experiencia de usuario** (fases independientes, cada
+una con commit, PR y despliegue tras la revisión del autor)
+- F5.1 Portada e identidad visual — *hecho, pendiente de revisión*: cabecera
+  con ilustración SVG propia y dos acciones, catálogo de 6 tarjetas con
+  enlaces reales a teoría y práctica, «Cómo funciona el curso», banda del
+  proyecto integrador y «Requisitos y recursos». Validada a 1440/768/375 px,
+  20 enlaces sin errores, contraste AA, foco por teclado y movimiento reducido.
+  Sin cambios en el menú lateral, las teorías, los notebooks ni el toolkit.
+  Corrección en el mismo PR (#11): el CI falló porque `KNNImputer` resolvía
+  de forma distinta un empate de distancia 0; se añade `desc.knn_impute` con
+  desempate por `ID` (ver §7), tests de reproducibilidad (incluida la
+  regeneración del CSV desde el cuaderno) y se regenera el CSV.
 
 ## 12. Normas para futuras sesiones
 
