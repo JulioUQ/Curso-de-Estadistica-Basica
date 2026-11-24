@@ -62,6 +62,8 @@ book:
       chapters:
         - href: notebooks/07_proyecto_integrador/practica.ipynb
           text: "Calidad del sueño"
+    - href: laboratorio.qmd          # F5.4: experimentos interactivos (sin número)
+      text: "Laboratorio estadístico"
   appendices:
     - href: apendices/que_prueba_usar.qmd
       text: "¿Qué prueba usar?"

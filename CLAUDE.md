@@ -26,6 +26,7 @@ manda el código: verifica y actualiza este archivo.
 ```
 _quarto.yml            # Proyecto type: book; capítulos, tema cosmo, freeze: auto
 index.qmd              # Portada ("Inicio"), rediseñada en F5.1 (ver §8, «Identidad visual»)
+laboratorio.qmd        # F5.4: «Laboratorio estadístico», 4 experimentos en OJS (sin número)
 styles.css             # Estilos propios: §0 identidad visual (variables --eb-*,
                        # componentes .eb-*), §1 menú lateral (F5.2), tablas, citas…
 assets/                # logo.svg (cabecera del menú), navegacion.html (script del
@@ -411,6 +412,25 @@ quarto render                         # lo mismo que hace el CI
   `index.qmd`, que solo aparece si hay progreso guardado. Para añadir una
   pregunta: mismas clases, 3–4 opciones y `data-correcta`; para una lección
   nueva basta con registrarla en `_quarto.yml`.
+- Laboratorio estadístico (F5.4): `laboratorio.qmd`, capítulo sin número
+  (`# … {.unnumbered}`) registrado tras el proyecto en `book.chapters`; fuera
+  de `notebooks/`, así que el progreso de F5.3 no lo cuenta como lección.
+  Cuatro experimentos en OJS (Normal, TCL, intervalos de confianza,
+  contraste y potencia), cada uno con `.eb-lab-goal`, `.eb-lab-panel`
+  (controles de Inputs + botón «Restablecer valores» que usa
+  `fijar(viewof x, valor)`), gráfico de Plot, `.eb-lab-legend` (muestra de
+  color + texto), `.eb-lab-result` (interpretación dinámica con `md`) y
+  `.eb-lab-question` (pregunta + respuesta plegable). Los cálculos están en
+  una sola celda entre `// <funciones>` y `// </funciones>` (Φ de
+  Abramowitz-Stegun, t de Student por beta incompleta, cuantiles z de SciPy)
+  para poder extraerlos y contrastarlos con SciPy; la potencia y el n del
+  80 % coinciden con `inference.power_z_test_mean` y
+  `sample_size_z_test_mean`. Simulaciones con `d3.randomLcg(semilla)`
+  (enteros) para que sean reproducibles. Los colores de Plot se leen de las
+  variables `--eb-*`. En `md` de Observable no hay LaTeX: usar Unicode.
+  Aviso `#aviso-widget-laboratorio` como en M3/M4. Ojo al validar: Observable
+  no pinta las celdas si el panel del navegador está oculto; usar Chrome
+  headless (con un `iframe` del mismo origen para mover controles).
 - Validar las páginas de interfaz a 1440, 768 y 375 px sin desplazamiento
   horizontal. Chrome headless no baja de ~500 px de ventana: para capturas
   móviles, usar un `iframe` de 375 px o el navegador con perfil móvil.
@@ -684,7 +704,7 @@ una con commit, PR y despliegue tras la revisión del autor)
   Publicada (merge 0313fe2). Corrección posterior para Quarto 1.11.9:
   títulos de grupo alineados a la izquierda en móvil y flechas a la derecha
   en escritorio (también a 1024 px).
-- F5.3 Cuestionarios y progreso — *hecho, pendiente de revisión*: las 30
+- F5.3 Cuestionarios y progreso — *hecho y aprobado* (publicado, merge f654b80): las 30
   preguntas de autoevaluación pasan a elección múltiple (3–4 opciones; mismos
   enunciados y explicaciones, distractores basados en errores habituales:
   confundir una probabilidad con su complementaria, √n frente a n,
@@ -695,6 +715,13 @@ una con commit, PR y despliegue tras la revisión del autor)
   con «Continuar» y «Reiniciar progreso» en la portada). Ninguna pregunta
   necesitó quedarse abierta. Sin cambios en `stats_toolkit`, datos ni
   notebooks.
+- F5.4 Laboratorio estadístico — *hecho, pendiente de revisión*: página
+  `laboratorio.qmd` con cuatro experimentos interactivos (Normal con
+  probabilidad de un intervalo; TCL con tres poblaciones, n, número de
+  muestras y semilla, y tabla simulación/teoría; 100 IC con t o z y cobertura
+  a largo plazo con 2000 intervalos; región de rechazo, α, β y potencia con
+  n para el 80 %). Enlazada desde el menú (con icono) y desde «Requisitos y
+  recursos» de la portada. Cálculos contrastados con SciPy y con el toolkit.
 
 ## 12. Normas para futuras sesiones
 
