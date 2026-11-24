@@ -229,4 +229,13 @@ Cuadernos, datos y `stats_toolkit` en el [repositorio del curso](https://github.
 [¿Qué prueba usar?](apendices/que_prueba_usar.qmd), [notación](apendices/notacion.qmd) y [glosario](apendices/glosario.qmd).
 :::
 :::
+::: {.eb-resource}
+[<i class="bi bi-flask" aria-hidden="true"></i>]{.eb-icon .eb-icon-sm}
+
+::: {.eb-resource-body}
+#### Laboratorio estadístico {.unnumbered .unlisted}
+
+Experimenta con la Normal, el Teorema Central del Límite, los intervalos de confianza y la potencia en el [laboratorio interactivo](laboratorio.qmd).
+:::
+:::
 :::

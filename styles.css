@@ -1154,6 +1154,181 @@ main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
 
 
 /* ------------------------------------------------------------
+   1c) LABORATORIO ESTADÍSTICO (F5.4)
+   ------------------------------------------------------------
+   laboratorio.qmd: cada experimento tiene objetivo (.eb-lab-goal), controles
+   de Observable Inputs (.eb-lab-panel), gráfico de Observable Plot, leyenda
+   con muestras de color y texto (.eb-lab-legend), interpretación dinámica
+   (.eb-lab-result) y pregunta para reflexionar (.eb-lab-question). Los
+   colores de los gráficos se leen de las variables --eb-*. */
+
+/* Menú lateral: entrada del laboratorio, separada y con icono */
+#quarto-sidebar .sidebar-menu-container > ul > li:has(> .sidebar-item-container a[href$="laboratorio.html"]) {
+  margin-top: var(--eb-space-3);
+  padding-top: var(--eb-space-3);
+  border-top: 1px solid var(--eb-border);
+}
+#quarto-sidebar .sidebar-menu-container > ul > li:has(> .sidebar-item-container a[href$="laboratorio.html"]) .menu-text::before {
+  content: "\f90a"; /* bi-flask */
+  display: inline-block;
+  width: 1.5rem;
+  font-family: "bootstrap-icons";
+  font-weight: 400;
+  color: var(--eb-primary);
+}
+
+.eb-lab-goal {
+  margin: var(--eb-space-3) 0 var(--eb-space-4);
+  padding: var(--eb-space-3) var(--eb-space-4);
+  border-radius: var(--eb-radius-sm);
+  background: var(--eb-primary-soft);
+  box-shadow: inset 3px 0 0 var(--eb-primary);
+  color: var(--eb-ink);
+}
+.eb-lab-goal > :last-child,
+.eb-lab-result > :last-child,
+.eb-lab-question > :last-child {
+  margin-bottom: 0;
+}
+
+.eb-lab-panel {
+  margin: var(--eb-space-4) 0;
+  padding: var(--eb-space-4) var(--eb-space-5);
+  background: var(--eb-surface);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius);
+  box-shadow: var(--eb-shadow-sm);
+}
+.eb-lab-panel form {
+  --label-width: 11rem;
+  max-width: 100%;
+  margin: var(--eb-space-1) 0;
+}
+.eb-lab-panel form label {
+  color: var(--eb-ink);
+  font-weight: 600;
+}
+.eb-lab-panel input[type="range"],
+.eb-lab-panel input[type="radio"] {
+  accent-color: var(--eb-primary);
+}
+.eb-lab-panel form input:focus-visible,
+.eb-lab-panel form button:focus-visible {
+  outline: 3px solid var(--eb-primary);
+  outline-offset: 2px;
+}
+/* Botón «Restablecer valores» con el aspecto de .eb-btn-secondary */
+.eb-lab-panel form button {
+  margin-top: var(--eb-space-2);
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--eb-primary-tint);
+  border-radius: var(--eb-radius-sm);
+  background: var(--eb-surface);
+  color: var(--eb-primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+.eb-lab-panel form button:hover {
+  background: var(--eb-primary-soft);
+  border-color: var(--eb-primary);
+}
+
+.eb-lab-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eb-space-1) var(--eb-space-4);
+  margin: var(--eb-space-2) 0 var(--eb-space-4);
+  font-size: 0.88rem;
+  color: var(--eb-muted);
+}
+.eb-lab-legend > p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eb-space-1) var(--eb-space-4);
+  margin: 0;
+}
+.eb-legend-item {
+  display: inline-block;
+}
+.eb-legend-item > .eb-swatch {
+  margin-right: 0.35rem;
+  vertical-align: 0.05rem;
+}
+.eb-lab-panel input[type="number"] {
+  padding: 0.15rem 0.35rem;
+  border: 1px solid var(--eb-border);
+  border-radius: 0.35rem;
+  color: var(--eb-ink);
+}
+.eb-swatch {
+  display: inline-block;
+  width: 1.6rem;
+  height: 0.8rem;
+  flex: none;
+  border-radius: 2px;
+}
+.eb-swatch-bar { background: var(--eb-primary-tint); }
+.eb-swatch-area-danger { background: rgba(180, 35, 24, 0.45); }
+.eb-swatch-area-warning { background: rgba(138, 83, 0, 0.25); }
+.eb-swatch-area-accent { background: rgba(13, 122, 116, 0.32); }
+.eb-swatch-line-danger,
+.eb-swatch-line-primary,
+.eb-swatch-line-ink,
+.eb-swatch-dash,
+.eb-swatch-solid {
+  height: 0;
+  border-radius: 0;
+  border-top: 3px solid var(--eb-danger);
+}
+.eb-swatch-line-primary { border-top-color: var(--eb-primary); }
+.eb-swatch-line-ink,
+.eb-swatch-solid { border-top-color: var(--eb-ink); border-top-width: 2px; }
+.eb-swatch-dash { border-top: 2px dashed var(--eb-ink); }
+
+.eb-lab-result {
+  margin: var(--eb-space-3) 0 var(--eb-space-4);
+  padding: var(--eb-space-4) var(--eb-space-5);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius);
+  background: var(--eb-surface-alt);
+}
+.eb-lab-result table {
+  margin-bottom: var(--eb-space-3);
+  font-size: 0.92rem;
+}
+
+.eb-lab-question {
+  margin: var(--eb-space-4) 0 var(--eb-space-7);
+  padding: var(--eb-space-4) var(--eb-space-5);
+  border: 1px dashed var(--eb-primary-tint);
+  border-radius: var(--eb-radius);
+}
+.eb-lab-question .callout {
+  margin-bottom: 0;
+}
+
+/* Gráficos del laboratorio: no desbordan la columna (solo en esta página) */
+main:has(#exp-normal) .cell-output-display svg {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 575.98px) {
+  .eb-lab-panel {
+    padding: var(--eb-space-3) var(--eb-space-4);
+  }
+  .eb-lab-panel form {
+    --label-width: 100%;
+    flex-wrap: wrap;
+  }
+  .eb-lab-result,
+  .eb-lab-question {
+    padding: var(--eb-space-3) var(--eb-space-4);
+  }
+}
+
+
+/* ------------------------------------------------------------
    2) BLOQUES DE CITA (blockquote) — definiciones y avisos
    ------------------------------------------------------------
    Usados en el contenido para resaltar definiciones formales
