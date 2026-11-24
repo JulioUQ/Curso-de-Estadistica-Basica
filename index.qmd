@@ -1,55 +1,226 @@
 ---
 title: "Inicio"
+page-layout: full
+toc: false
+title-block-style: none
+body-classes: eb-home
 ---
 
-# Bienvenida
+<!--
+Portada del curso (F5.1). Estructura: cabecera, catálogo de módulos, cómo
+funciona, proyecto integrador y requisitos/recursos. Los estilos y la guía de
+diseño (variables --eb-*) están en styles.css, sección «0) Identidad visual».
+Los enlaces internos se escriben en Markdown para que Quarto los resuelva y
+compruebe al renderizar.
+-->
 
-Este es un curso de estadística básica orientado a la práctica, en español. No
-presupone conocimientos previos de estadística: basta con álgebra básica y
-cierta familiaridad con Python. Cada concepto se presenta primero de forma
-intuitiva, después con su definición formal y, por último, con un ejemplo
-calculado en Python.
+::: {.eb-hero}
+::: {.eb-hero-text}
+[Curso en línea · En español]{.eb-eyebrow}
 
-## Cómo está organizado
+```{=html}
+<h1 class="eb-hero-title">Aprende estadística paso a paso, de la intuición al análisis con Python</h1>
+```
 
-Cada módulo tiene un capítulo de **teoría** y uno o dos cuadernos de
-**práctica** (Jupyter). Cada teoría termina con unas preguntas de
-**autoevaluación**, y las prácticas, con ejercicios propuestos y sus
-soluciones desarrolladas, plegadas para que puedas intentarlos primero. Algunos
-capítulos incluyen gráficos **interactivos** que se manipulan directamente en
-el navegador. Cada práctica puede abrirse en Google Colab o descargarse para
-ejecutarla en tu ordenador. Los
-cálculos se apoyan en `stats_toolkit`, una pequeña librería del curso (en
-`src/`) que implementa a mano los métodos con valor didáctico y compara sus
-resultados con `scipy` y `statsmodels`.
+[Para quien empieza sin base estadística: aprenderás a describir datos, razonar con probabilidades, estimar y contrastar hipótesis, estudiar relaciones y comparar grupos, con explicaciones claras y prácticas que puedes ejecutar en tu ordenador o en Google Colab.]{.eb-hero-lead}
 
-## Contenido
+::: {.eb-actions}
+[Empezar el curso <i class="bi bi-arrow-right" aria-hidden="true"></i>](notebooks/01_estadistica_descriptiva/teoria.qmd){.eb-btn .eb-btn-primary}
+[Explorar módulos](#modulos){.eb-btn .eb-btn-secondary}
+:::
 
-- **Módulo 1 — Estadística descriptiva**: tipos de variables, tendencia
-  central, dispersión, forma, valores atípicos y valores perdidos; práctica de
-  preprocesamiento de datos reales con errores.
-- **Módulo 2 — Probabilidad básica**: espacio muestral, probabilidad
-  condicionada, independencia, teorema de Bayes y una primera aproximación al
-  clasificador Naive Bayes.
-- **Módulo 3 — Distribuciones de probabilidad**: Bernoulli, Binomial, Poisson,
-  Uniforme, Normal y Exponencial; función de distribución, cuantiles,
-  tipificación, distribución muestral de la media y Teorema Central del Límite.
-- **Módulo 4 — Inferencia estadística**: estimación, intervalos de confianza y
-  contrastes de hipótesis para medias, proporciones y varianzas; potencia,
-  tamaño muestral e intervalos bootstrap.
-- **Módulo 5 — Correlación y regresión lineal**: covarianza, correlación de
-  Pearson y de Spearman, regresión lineal simple, $R^2$, supuestos e
-  inferencia sobre la pendiente.
-- **Módulo 6 — ANOVA, chi-cuadrado y pruebas no paramétricas**: comparación de
-  varias medias, tamaño del efecto, comparaciones post-hoc, asociación entre
-  variables categóricas y pruebas basadas en rangos y en signos.
-- **Proyecto integrador**: un análisis completo de los datos de sueño que
-  combina las herramientas de los seis módulos.
-- **Apéndices**: guía para elegir la prueba adecuada, notación y glosario.
+::: {.eb-highlights}
+- <i class="bi bi-layers" aria-hidden="true"></i> 6 módulos
+- <i class="bi bi-code-slash" aria-hidden="true"></i> Prácticas en Python
+- <i class="bi bi-check2-circle" aria-hidden="true"></i> Ejercicios con soluciones
+- <i class="bi bi-graph-up" aria-hidden="true"></i> Gráficos interactivos
+:::
+:::
 
-## Datos
+::: {.eb-hero-art}
+```{=html}
+<svg class="eb-hero-svg" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+  <line class="eb-art-axis" x1="18" y1="206" x2="342" y2="206"/>
+  <rect class="eb-art-bar" x="26.0" y="200" width="22.0" height="6" rx="3"/><rect class="eb-art-bar" x="52.0" y="193" width="22.0" height="13" rx="3"/><rect class="eb-art-bar" x="78.0" y="168" width="22.0" height="38" rx="3"/><rect class="eb-art-bar" x="104.0" y="130" width="22.0" height="76" rx="3"/><rect class="eb-art-bar" x="130.0" y="76" width="22.0" height="130" rx="3"/><rect class="eb-art-bar" x="156.0" y="46" width="22.0" height="160" rx="3"/><rect class="eb-art-bar" x="182.0" y="36" width="22.0" height="170" rx="3"/><rect class="eb-art-bar" x="208.0" y="82" width="22.0" height="124" rx="3"/><rect class="eb-art-bar" x="234.0" y="126" width="22.0" height="80" rx="3"/><rect class="eb-art-bar" x="260.0" y="171" width="22.0" height="35" rx="3"/><rect class="eb-art-bar" x="286.0" y="191" width="22.0" height="15" rx="3"/><rect class="eb-art-bar" x="312.0" y="201" width="22.0" height="5" rx="3"/>
+  <line class="eb-art-mean" x1="180.0" y1="206" x2="180.0" y2="24"/>
+  <path class="eb-art-curve" pathLength="1" d="M24.0,204.1 L27.1,203.7 L30.2,203.3 L33.4,202.8 L36.5,202.2 L39.6,201.5 L42.7,200.7 L45.8,199.8 L49.0,198.8 L52.1,197.7 L55.2,196.3 L58.3,194.9 L61.4,193.2 L64.6,191.4 L67.7,189.3 L70.8,187.0 L73.9,184.5 L77.0,181.8 L80.2,178.8 L83.3,175.5 L86.4,172.0 L89.5,168.1 L92.6,164.1 L95.8,159.7 L98.9,155.1 L102.0,150.2 L105.1,145.0 L108.2,139.6 L111.4,134.0 L114.5,128.2 L117.6,122.3 L120.7,116.2 L123.8,110.0 L127.0,103.8 L130.1,97.5 L133.2,91.3 L136.3,85.1 L139.4,79.1 L142.6,73.3 L145.7,67.7 L148.8,62.3 L151.9,57.3 L155.0,52.7 L158.2,48.5 L161.3,44.8 L164.4,41.6 L167.5,38.9 L170.6,36.8 L173.8,35.2 L176.9,34.3 L180.0,34.0 L183.1,34.3 L186.2,35.2 L189.4,36.8 L192.5,38.9 L195.6,41.6 L198.7,44.8 L201.8,48.5 L205.0,52.7 L208.1,57.3 L211.2,62.3 L214.3,67.7 L217.4,73.3 L220.6,79.1 L223.7,85.1 L226.8,91.3 L229.9,97.5 L233.0,103.8 L236.2,110.0 L239.3,116.2 L242.4,122.3 L245.5,128.2 L248.6,134.0 L251.8,139.6 L254.9,145.0 L258.0,150.2 L261.1,155.1 L264.2,159.7 L267.4,164.1 L270.5,168.1 L273.6,172.0 L276.7,175.5 L279.8,178.8 L283.0,181.8 L286.1,184.5 L289.2,187.0 L292.3,189.3 L295.4,191.4 L298.6,193.2 L301.7,194.9 L304.8,196.3 L307.9,197.7 L311.0,198.8 L314.2,199.8 L317.3,200.7 L320.4,201.5 L323.5,202.2 L326.6,202.8 L329.8,203.3 L332.9,203.7 L336.0,204.1"/>
+  <circle class="eb-art-dot" cx="180.0" cy="34" r="5"/>
+</svg>
+```
+:::
+:::
 
-Además de datos simulados, el curso usa como caso recurrente un conjunto de
-datos sobre **salud del sueño y estilo de vida** (`sleephealth`). Sus datos son
-sintéticos, creados con fines ilustrativos: sirven para practicar los métodos,
-no para extraer conclusiones sobre la salud.
+## Catálogo de módulos {#modulos .unnumbered .unlisted .eb-section-title}
+
+[Seis módulos que avanzan de lo descriptivo a lo inferencial. Cada uno combina un capítulo de teoría con uno o dos cuadernos de práctica.]{.eb-section-lead}
+
+::: {.eb-grid .eb-modules}
+::: {.eb-card .eb-module}
+::: {.eb-module-head}
+[<i class="bi bi-bar-chart-line" aria-hidden="true"></i>]{.eb-icon}
+[Módulo 1]{.eb-kicker}
+:::
+
+### Estadística Descriptiva {.unnumbered .unlisted}
+
+Tipos de variables, medidas de centro, dispersión y forma, valores atípicos y datos ausentes.
+
+::: {.eb-card-links}
+[Teoría](notebooks/01_estadistica_descriptiva/teoria.qmd){.eb-card-link aria-label="Teoría del módulo 1"} [Práctica](notebooks/01_estadistica_descriptiva/practica.ipynb){.eb-card-link aria-label="Práctica del módulo 1"} [Preprocesamiento](notebooks/01_estadistica_descriptiva/practica_preprocesamiento.ipynb){.eb-card-link aria-label="Preprocesamiento del módulo 1"}
+:::
+:::
+::: {.eb-card .eb-module}
+::: {.eb-module-head}
+[<i class="bi bi-dice-5" aria-hidden="true"></i>]{.eb-icon}
+[Módulo 2]{.eb-kicker}
+:::
+
+### Probabilidad Básica {.unnumbered .unlisted}
+
+Sucesos, probabilidad condicionada, independencia y teorema de Bayes, con un primer clasificador Naive Bayes.
+
+::: {.eb-card-links}
+[Teoría](notebooks/02_probabilidad/teoria.qmd){.eb-card-link aria-label="Teoría del módulo 2"} [Práctica](notebooks/02_probabilidad/practica.ipynb){.eb-card-link aria-label="Práctica del módulo 2"}
+:::
+:::
+::: {.eb-card .eb-module}
+::: {.eb-module-head}
+[<i class="bi bi-activity" aria-hidden="true"></i>]{.eb-icon}
+[Módulo 3]{.eb-kicker}
+:::
+
+### Distribuciones de Probabilidad {.unnumbered .unlisted}
+
+Binomial, Poisson, Normal y otras distribuciones; cuantiles, tipificación y Teorema Central del Límite.
+
+::: {.eb-card-links}
+[Teoría](notebooks/03_distribuciones/teoria.qmd){.eb-card-link aria-label="Teoría del módulo 3"} [Práctica](notebooks/03_distribuciones/practica.ipynb){.eb-card-link aria-label="Práctica del módulo 3"}
+:::
+:::
+::: {.eb-card .eb-module}
+::: {.eb-module-head}
+[<i class="bi bi-bullseye" aria-hidden="true"></i>]{.eb-icon}
+[Módulo 4]{.eb-kicker}
+:::
+
+### Inferencia Estadística {.unnumbered .unlisted}
+
+Intervalos de confianza, contrastes de hipótesis, potencia, tamaño muestral y bootstrap.
+
+::: {.eb-card-links}
+[Teoría](notebooks/04_inferencia/teoria.qmd){.eb-card-link aria-label="Teoría del módulo 4"} [Práctica](notebooks/04_inferencia/practica.ipynb){.eb-card-link aria-label="Práctica del módulo 4"}
+:::
+:::
+::: {.eb-card .eb-module}
+::: {.eb-module-head}
+[<i class="bi bi-graph-up-arrow" aria-hidden="true"></i>]{.eb-icon}
+[Módulo 5]{.eb-kicker}
+:::
+
+### Correlación y Regresión Lineal {.unnumbered .unlisted}
+
+Correlaciones de Pearson y Spearman, regresión lineal simple e inferencia sobre la pendiente.
+
+::: {.eb-card-links}
+[Teoría](notebooks/05_regresion/teoria.qmd){.eb-card-link aria-label="Teoría del módulo 5"} [Práctica](notebooks/05_regresion/practica.ipynb){.eb-card-link aria-label="Práctica del módulo 5"}
+:::
+:::
+::: {.eb-card .eb-module}
+::: {.eb-module-head}
+[<i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>]{.eb-icon}
+[Módulo 6]{.eb-kicker}
+:::
+
+### ANOVA, Chi-cuadrado y Pruebas No Paramétricas {.unnumbered .unlisted}
+
+Comparación de varios grupos, asociación entre variables categóricas y pruebas basadas en rangos.
+
+::: {.eb-card-links}
+[Teoría](notebooks/06_anova_chi2/teoria.qmd){.eb-card-link aria-label="Teoría del módulo 6"} [Práctica](notebooks/06_anova_chi2/practica.ipynb){.eb-card-link aria-label="Práctica del módulo 6"}
+:::
+:::
+:::
+
+## Cómo funciona el curso {.unnumbered .unlisted .eb-section-title}
+
+::: {.eb-grid .eb-steps}
+::: {.eb-card .eb-step}
+[<i class="bi bi-lightbulb" aria-hidden="true"></i>]{.eb-icon}
+[Paso 1]{.eb-kicker}
+
+### Aprende los conceptos {.unnumbered .unlisted}
+
+Cada idea se presenta primero de forma intuitiva, después con su definición formal y, por último, con un ejemplo calculado.
+:::
+::: {.eb-card .eb-step}
+[<i class="bi bi-code-slash" aria-hidden="true"></i>]{.eb-icon}
+[Paso 2]{.eb-kicker}
+
+### Practica con Python {.unnumbered .unlisted}
+
+Los cuadernos reproducen los cálculos con `stats_toolkit`, la librería del curso, y los comparan con `scipy` y `statsmodels`. Algunos capítulos incluyen gráficos interactivos.
+:::
+::: {.eb-card .eb-step}
+[<i class="bi bi-check2-circle" aria-hidden="true"></i>]{.eb-icon}
+[Paso 3]{.eb-kicker}
+
+### Comprueba lo aprendido {.unnumbered .unlisted}
+
+Cada teoría termina con preguntas de autoevaluación, y cada práctica, con ejercicios y soluciones desarrolladas, plegadas para que lo intentes primero.
+:::
+:::
+
+::: {.eb-project}
+::: {.eb-project-text}
+[<i class="bi bi-moon-stars" aria-hidden="true"></i> Proyecto integrador]{.eb-kicker}
+
+### ¿Qué se asocia con la calidad del sueño? {.unnumbered .unlisted}
+
+Aplica las herramientas de los seis módulos a un mismo conjunto de datos: describe la calidad del sueño, estima con incertidumbre, compara grupos, estudia relaciones y planifica un nuevo estudio. Los datos de sueño (`sleephealth`) son sintéticos, creados con fines ilustrativos: sirven para practicar los métodos, no para sacar conclusiones sobre la salud.
+:::
+
+::: {.eb-project-action}
+[Ir al proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i>](notebooks/07_proyecto_integrador/practica.ipynb){.eb-btn .eb-btn-light}
+:::
+:::
+
+## Requisitos y recursos {.unnumbered .unlisted .eb-section-title}
+
+::: {.eb-grid .eb-resources}
+::: {.eb-resource}
+[<i class="bi bi-mortarboard" aria-hidden="true"></i>]{.eb-icon .eb-icon-sm}
+
+::: {.eb-resource-body}
+#### Conocimientos previos {.unnumbered .unlisted}
+
+Álgebra básica y algo de familiaridad con Python. No necesitas saber estadística.
+:::
+:::
+::: {.eb-resource}
+[<i class="bi bi-terminal" aria-hidden="true"></i>]{.eb-icon .eb-icon-sm}
+
+::: {.eb-resource-body}
+#### Python y Google Colab {.unnumbered .unlisted}
+
+Cada práctica se abre en Google Colab con un enlace o se ejecuta en tu ordenador con las dependencias de `requirements.txt`.
+:::
+:::
+::: {.eb-resource}
+[<i class="bi bi-github" aria-hidden="true"></i>]{.eb-icon .eb-icon-sm}
+
+::: {.eb-resource-body}
+#### Código en GitHub {.unnumbered .unlisted}
+
+Cuadernos, datos y `stats_toolkit` en el [repositorio del curso](https://github.com/JulioUQ/Curso-de-Estadistica-Basica).
+:::
+:::
+::: {.eb-resource}
+[<i class="bi bi-journal-bookmark" aria-hidden="true"></i>]{.eb-icon .eb-icon-sm}
+
+::: {.eb-resource-body}
+#### Apéndices {.unnumbered .unlisted}
+
+[¿Qué prueba usar?](apendices/que_prueba_usar.qmd), [notación](apendices/notacion.qmd) y [glosario](apendices/glosario.qmd).
+:::
+:::
+:::

@@ -4,6 +4,504 @@
    Se carga desde _quarto.yml (format: html: css: styles.css)
    ============================================================ */
 
+/* ============================================================
+   0) IDENTIDAD VISUAL (F5.1) — guía de diseño del curso
+   ------------------------------------------------------------
+   Todas las piezas nuevas usan estas variables (prefijo --eb-) y
+   clases con prefijo .eb-. Para cambiar la identidad, editar aquí.
+   Pensadas para un futuro modo oscuro: bastará con redefinir las
+   variables bajo el selector del tema oscuro.
+
+   Colores
+     --eb-primary      azul tinta: acciones, enlaces destacados, énfasis
+     --eb-accent       verde azulado: detalles secundarios e iconos de pasos
+     --eb-ink/-text/-muted  títulos, texto y texto secundario
+     --eb-surface/-alt, --eb-border  fondos y bordes de tarjetas
+     Todas las combinaciones de texto cumplen WCAG AA (≥ 4,5:1).
+   Tipografía
+     La del tema (Source Sans Pro). Jerarquía: título de portada
+     --eb-fs-hero, títulos de sección --eb-fs-h2, tarjetas 1,15rem,
+     etiquetas («Módulo 1») 0,78rem en mayúsculas.
+   Espaciado    escala --eb-space-1 … -8 (0,25 rem → 4,5 rem)
+   Bordes       --eb-radius-sm (botones, etiquetas), --eb-radius
+                (tarjetas), --eb-radius-lg (bloques grandes)
+   Sombras      --eb-shadow-sm en reposo, --eb-shadow-md al pasar el ratón
+   Botones      .eb-btn + .eb-btn-primary | -secondary | -light
+   Tarjetas     .eb-card (+ .eb-module, .eb-step), .eb-resource
+   Estados      hover: sombra y elevación de 2 px; focus-visible: contorno
+                de 3 px en --eb-primary; sin animaciones con
+                prefers-reduced-motion.
+   ============================================================ */
+
+:root {
+  --eb-primary: #1f4fb8;
+  --eb-primary-hover: #173e93;
+  --eb-primary-soft: #eaf0fc;
+  --eb-primary-tint: #c9d7f4;
+  --eb-accent: #0d7a74;
+  --eb-accent-soft: #e2f3f1;
+  --eb-ink: #172033;
+  --eb-text: #2b3547;
+  --eb-muted: #525d71;
+  --eb-surface: #ffffff;
+  --eb-surface-alt: #f6f8fc;
+  --eb-border: #e1e6ef;
+  --eb-band: #1b2a4a;
+  --eb-band-2: #24427e;
+
+  --eb-space-1: 0.25rem;
+  --eb-space-2: 0.5rem;
+  --eb-space-3: 0.75rem;
+  --eb-space-4: 1rem;
+  --eb-space-5: 1.5rem;
+  --eb-space-6: 2rem;
+  --eb-space-7: 3rem;
+  --eb-space-8: 4.5rem;
+
+  --eb-radius-sm: 0.55rem;
+  --eb-radius: 0.9rem;
+  --eb-radius-lg: 1.35rem;
+  --eb-radius-pill: 999px;
+
+  --eb-shadow-sm: 0 1px 2px rgba(23, 32, 51, 0.05), 0 1px 3px rgba(23, 32, 51, 0.07);
+  --eb-shadow-md: 0 8px 24px rgba(23, 32, 51, 0.09), 0 2px 6px rgba(23, 32, 51, 0.05);
+
+  --eb-fs-hero: clamp(1.75rem, 1.2rem + 2.4vw, 3.05rem);
+  --eb-fs-h2: clamp(1.4rem, 1.15rem + 0.8vw, 1.8rem);
+  --eb-transition: 160ms ease;
+}
+
+/* ---------- Componentes reutilizables ---------- */
+
+.eb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--eb-space-2);
+  padding: 0.75rem 1.35rem;
+  border-radius: var(--eb-radius-sm);
+  border: 1px solid transparent;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background-color var(--eb-transition), border-color var(--eb-transition),
+    box-shadow var(--eb-transition), transform var(--eb-transition);
+}
+main a.eb-btn:not(.sidebar-link):not(.nav-link),
+main a.eb-btn:not(.sidebar-link):not(.nav-link):hover {
+  text-decoration: none;
+}
+.eb-btn-primary {
+  background: var(--eb-primary);
+  color: #fff !important;
+  box-shadow: var(--eb-shadow-sm);
+}
+.eb-btn-primary:hover {
+  background: var(--eb-primary-hover);
+  box-shadow: var(--eb-shadow-md);
+}
+.eb-btn-secondary {
+  background: var(--eb-surface);
+  border-color: var(--eb-primary-tint);
+  color: var(--eb-primary) !important;
+}
+.eb-btn-secondary:hover {
+  background: var(--eb-primary-soft);
+  border-color: var(--eb-primary);
+}
+.eb-btn-light {
+  background: #fff;
+  color: var(--eb-primary) !important;
+}
+.eb-btn-light:hover {
+  background: var(--eb-primary-soft);
+}
+.eb-btn .bi {
+  transition: transform var(--eb-transition);
+}
+.eb-btn:hover .bi-arrow-right {
+  transform: translateX(3px);
+}
+
+.eb-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--eb-radius-sm);
+  background: var(--eb-primary-soft);
+  color: var(--eb-primary);
+  font-size: 1.3rem;
+}
+.eb-icon-sm {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.05rem;
+}
+.eb-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--eb-muted);
+}
+
+.eb-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--eb-space-5);
+  background: var(--eb-surface);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius);
+  box-shadow: var(--eb-shadow-sm);
+  transition: box-shadow var(--eb-transition), border-color var(--eb-transition),
+    transform var(--eb-transition);
+}
+.eb-card:hover,
+.eb-card:focus-within {
+  border-color: var(--eb-primary-tint);
+  box-shadow: var(--eb-shadow-md);
+}
+.eb-card:hover {
+  transform: translateY(-2px);
+}
+.eb-card h3 {
+  margin: var(--eb-space-4) 0 var(--eb-space-2);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--eb-ink);
+}
+.eb-card p {
+  margin-bottom: var(--eb-space-4);
+  color: var(--eb-muted);
+}
+
+.eb-grid {
+  display: grid;
+  gap: var(--eb-space-5);
+}
+
+/* Enlaces y foco visibles con teclado en todos los componentes */
+.eb-home a:focus-visible {
+  outline: 3px solid var(--eb-primary);
+  outline-offset: 3px;
+  border-radius: var(--eb-radius-sm);
+}
+
+/* ---------- Portada (body.eb-home, ver index.qmd) ---------- */
+
+.eb-home main.content {
+  max-width: 1140px;
+  margin-inline: auto;
+  color: var(--eb-text);
+}
+
+/* El formato libro añade su bloque de título («Estadística Básica»); en la
+   portada lo sustituye la cabecera, que tiene su propio h1. */
+.eb-home #title-block-header {
+  display: none;
+}
+
+/* Cabecera */
+.eb-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: var(--eb-space-7);
+  margin-top: var(--eb-space-4);
+  padding: var(--eb-space-7) var(--eb-space-7);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius-lg);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(13, 122, 116, 0.08), transparent 42%),
+    linear-gradient(140deg, var(--eb-primary-soft) 0%, var(--eb-surface) 62%);
+}
+.eb-eyebrow {
+  display: inline-block;
+  padding: var(--eb-space-1) var(--eb-space-3);
+  border-radius: var(--eb-radius-pill);
+  background: var(--eb-surface);
+  border: 1px solid var(--eb-border);
+  color: var(--eb-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.eb-hero-title {
+  margin: var(--eb-space-4) 0;
+  font-size: var(--eb-fs-hero);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--eb-ink);
+}
+.eb-hero-lead {
+  display: block;
+  max-width: 60ch;
+  font-size: 1.13rem;
+  line-height: 1.6;
+  color: var(--eb-muted);
+}
+.eb-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eb-space-3);
+  margin: var(--eb-space-6) 0 var(--eb-space-5);
+}
+.eb-actions p {
+  display: contents;
+}
+.eb-highlights ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eb-space-2) var(--eb-space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.eb-highlights li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--eb-space-2);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--eb-text);
+}
+.eb-highlights .bi {
+  color: var(--eb-accent);
+}
+.eb-hero-art {
+  padding: var(--eb-space-5);
+  background: var(--eb-surface);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius);
+  box-shadow: var(--eb-shadow-md);
+}
+.eb-hero-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+.eb-art-bar { fill: var(--eb-primary-tint); }
+.eb-art-axis { stroke: #b6c1d4; stroke-width: 2; }
+.eb-art-mean { stroke: var(--eb-accent); stroke-width: 2; stroke-dasharray: 5 5; }
+.eb-art-dot { fill: var(--eb-accent); }
+.eb-art-curve {
+  fill: none;
+  stroke: var(--eb-primary);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: eb-draw 1.4s ease-out 0.25s forwards;
+}
+@keyframes eb-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Títulos de sección */
+.eb-home section.eb-section-title,
+.eb-home .eb-section-title {
+  margin-top: var(--eb-space-8);
+}
+.eb-home .eb-section-title h2,
+.eb-home h2.eb-section-title {
+  margin: 0 0 var(--eb-space-2);
+  padding: 0;
+  border: none;
+  font-size: var(--eb-fs-h2);
+  font-weight: 700;
+  color: var(--eb-ink);
+}
+.eb-section-lead {
+  display: block;
+  max-width: 70ch;
+  margin-bottom: var(--eb-space-5);
+  color: var(--eb-muted);
+}
+
+/* Catálogo de módulos */
+.eb-modules {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 285px), 1fr));
+}
+.eb-module-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.eb-module-head p {
+  display: contents;
+}
+.eb-card-links {
+  margin-top: auto;
+}
+.eb-card-links p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eb-space-2);
+  margin: 0;
+}
+main a.eb-card-link:not(.sidebar-link):not(.nav-link) {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius-pill);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--eb-primary);
+  text-decoration: none;
+  transition: background-color var(--eb-transition), border-color var(--eb-transition);
+}
+main a.eb-card-link:not(.sidebar-link):not(.nav-link):hover {
+  background: var(--eb-primary-soft);
+  border-color: var(--eb-primary-tint);
+  text-decoration: none;
+}
+
+/* Cómo funciona */
+.eb-steps {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+}
+.eb-step .eb-icon {
+  background: var(--eb-accent-soft);
+  color: var(--eb-accent);
+}
+.eb-step .eb-kicker {
+  display: block;
+  margin-top: var(--eb-space-4);
+}
+.eb-step h3 {
+  margin-top: var(--eb-space-1);
+}
+.eb-step p:last-child {
+  margin-bottom: 0;
+}
+
+/* Proyecto integrador */
+.eb-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--eb-space-6);
+  margin-top: var(--eb-space-8);
+  padding: var(--eb-space-7);
+  border-radius: var(--eb-radius-lg);
+  background: linear-gradient(135deg, var(--eb-band) 0%, var(--eb-band-2) 100%);
+  color: #e8edf7;
+}
+.eb-project .eb-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--eb-space-2);
+  color: #b9cdf5;
+}
+.eb-project h3 {
+  margin: var(--eb-space-2) 0 var(--eb-space-3);
+  font-size: var(--eb-fs-h2);
+  font-weight: 700;
+  color: #fff;
+}
+.eb-project p:last-child {
+  margin-bottom: 0;
+  max-width: 68ch;
+}
+.eb-project p code:not(.sourceCode) {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+.eb-project a:focus-visible {
+  outline-color: #fff;
+}
+
+/* Requisitos y recursos */
+.eb-resources {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--eb-space-4);
+}
+.eb-resource {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--eb-space-3);
+  padding: var(--eb-space-4) var(--eb-space-5);
+  background: var(--eb-surface-alt);
+  border: 1px solid var(--eb-border);
+  border-radius: var(--eb-radius);
+}
+.eb-resource > p {
+  margin: 0;
+}
+.eb-resource h4 {
+  margin: 0.2rem 0 var(--eb-space-1);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--eb-ink);
+}
+.eb-resource-body p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--eb-muted);
+}
+.eb-home .eb-resources + * {
+  margin-top: var(--eb-space-7);
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .eb-hero {
+    grid-template-columns: 1fr;
+    gap: var(--eb-space-6);
+    padding: var(--eb-space-6);
+  }
+  .eb-hero-art {
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+  .eb-project {
+    grid-template-columns: 1fr;
+    padding: var(--eb-space-6);
+  }
+}
+@media (max-width: 575.98px) {
+  .eb-hero {
+    padding: var(--eb-space-5);
+    border-radius: var(--eb-radius);
+  }
+  .eb-actions .eb-btn {
+    flex: 1 1 100%;
+  }
+  .eb-project {
+    padding: var(--eb-space-5);
+    border-radius: var(--eb-radius);
+  }
+  .eb-home section.eb-section-title,
+  .eb-project {
+    margin-top: var(--eb-space-7);
+  }
+}
+
+/* Movimiento reducido: sin transiciones ni animaciones */
+@media (prefers-reduced-motion: reduce) {
+  .eb-btn,
+  .eb-btn .bi,
+  .eb-card,
+  main a.eb-card-link:not(.sidebar-link):not(.nav-link) {
+    transition: none;
+  }
+  .eb-card:hover,
+  .eb-btn:hover .bi-arrow-right {
+    transform: none;
+  }
+  .eb-art-curve {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+
 
 /* ------------------------------------------------------------
    1) SIDEBAR — menú lateral de navegación
