@@ -431,6 +431,22 @@ quarto render                         # lo mismo que hace el CI
   Aviso `#aviso-widget-laboratorio` como en M3/M4. Ojo al validar: Observable
   no pinta las celdas si el panel del navegador está oculto; usar Chrome
   headless (con un `iframe` del mismo origen para mover controles).
+- Arquitectura frontend definitiva (cierre F5.5), en resumen:
+  `styles.css` (§0 tokens `--eb-*` y componentes `.eb-*`; §1 menú lateral;
+  §1b cuestionarios y progreso; §1c laboratorio; resto: contenido),
+  `assets/navegacion.html` (teclado del menú, pie anterior/siguiente y carga
+  de `curso.js`), `assets/curso.js` (cuestionarios + progreso en
+  `localStorage`) y OJS solo en M3, M4 y `laboratorio.qmd`, siempre con
+  aviso `#aviso-widget-*`. Sin dependencias externas propias: Bootstrap
+  Icons y MathJax los sirve Quarto; Observable carga sus bibliotecas de la
+  CDN. Convenciones: colores solo con variables `--eb-*`; estados con texto
+  e icono además de color; foco visible de 3 px; objetivos táctiles ≥ 44 px;
+  `prefers-reduced-motion` respetado.
+- Limitaciones conocidas: el progreso vive solo en el navegador; los
+  gráficos OJS necesitan conexión; MathJax hace enfocables las fórmulas
+  (más pulsaciones de Tab en las preguntas con fórmulas) y en móvil parte
+  algunas fórmulas en línea; en local hay Quarto 1.10.18 y el CI usa la
+  última (1.11.9 al cerrar F5.5): el menú está validado con ambas.
 - Validar las páginas de interfaz a 1440, 768 y 375 px sin desplazamiento
   horizontal. Chrome headless no baja de ~500 px de ventana: para capturas
   móviles, usar un `iframe` de 375 px o el navegador con perfil móvil.
@@ -715,13 +731,20 @@ una con commit, PR y despliegue tras la revisión del autor)
   con «Continuar» y «Reiniciar progreso» en la portada). Ninguna pregunta
   necesitó quedarse abierta. Sin cambios en `stats_toolkit`, datos ni
   notebooks.
-- F5.4 Laboratorio estadístico — *hecho, pendiente de revisión*: página
+- F5.4 Laboratorio estadístico — *hecho y aprobado* (publicado, merge 3138bae): página
   `laboratorio.qmd` con cuatro experimentos interactivos (Normal con
   probabilidad de un intervalo; TCL con tres poblaciones, n, número de
   muestras y semilla, y tabla simulación/teoría; 100 IC con t o z y cobertura
   a largo plazo con 2000 intervalos; región de rechazo, α, β y potencia con
   n para el 80 %). Enlazada desde el menú (con icono) y desde «Requisitos y
   recursos» de la portada. Cálculos contrastados con SciPy y con el toolkit.
+- F5.5 Pulido final — *hecho*: nombre accesible para los deslizadores del
+  laboratorio y `role="radiogroup"` con `aria-labelledby` en sus grupos de
+  opciones (Inputs solo etiquetaba la casilla numérica); en móvil se retira
+  el hueco vacío de la búsqueda del panel lateral (la búsqueda está en la
+  barra superior). Probado con teclado real (Tab, flechas, Intro) en el
+  laboratorio publicado; 19 páginas sin desbordamiento a 375/768/1440 px,
+  3483 referencias internas sin errores. Cierra la fase 5.
 
 ## 12. Normas para futuras sesiones
 
