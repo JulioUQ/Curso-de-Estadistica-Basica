@@ -11,7 +11,8 @@ Incluye dos bloques:
 2. Utilidades de exploración y limpieza de DataFrames, adaptadas de
    ``tidy_functions.py``, pensadas para los notebooks de
    preprocesamiento (detección de duplicados, resumen de columnas,
-   categorías únicas, resúmenes agrupados).
+   categorías únicas, resúmenes agrupados) e imputación KNN con
+   desempate determinista (``knn_impute``).
 
 Nota: las funciones de ``tidy_functions.py`` que dependen de
 ``xlwings`` (``xlimport``, ``xlexport``) y las de importación/
@@ -522,6 +523,75 @@ def summarize_by_group(
         summary = summary.sort_values(by=order, ascending=ascending)
 
     return summary
+
+
+def knn_impute(
+    data: pd.DataFrame,
+    n_neighbors: int = 3,
+    ids: Sequence | None = None,
+) -> pd.DataFrame:
+    """
+    Imputación KNN con desempate determinista entre vecinos equidistantes.
+
+    Envuelve ``sklearn.impute.KNNImputer`` (media de los ``n_neighbors``
+    donantes más cercanos con la distancia euclídea que ignora los valores
+    ausentes, ``nan_euclidean``) y solo cambia cómo se resuelven los
+    empates. Con ``KNNImputer`` tal cual, si hay más donantes a la misma
+    distancia que vecinos pedidos, cuáles se eligen depende del orden
+    interno del algoritmo de selección, que puede variar entre máquinas
+    aunque las versiones sean las mismas.
+
+    **Regla de desempate**: a cada distancia se le suma
+    ``1e-9 · r / n``, donde ``r`` es la posición del donante al ordenar las
+    observaciones por su identificador (``ids``) y ``n`` su número. Entre
+    donantes a la misma distancia se eligen siempre los de menor
+    identificador; las distancias reales (en datos estandarizados, del
+    orden de 0,01 o más) no se alteran en la práctica. No usa ninguna
+    semilla ni depende del orden de las filas.
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        Variables numéricas, normalmente ya estandarizadas; ``NaN`` marca
+        los valores que hay que imputar.
+    n_neighbors : int, default 3
+        Número de donantes cuya media se usa.
+    ids : secuencia, opcional
+        Identificador estable y único de cada fila (por ejemplo, la
+        columna ``ID``). Por defecto, el índice de ``data``.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Mismo índice y columnas que ``data``; los valores observados no
+        cambian y los ausentes se rellenan.
+    """
+    from sklearn.impute import KNNImputer
+    from sklearn.metrics.pairwise import nan_euclidean_distances
+
+    ids = pd.Index(data.index if ids is None else ids)
+    if len(ids) != len(data):
+        raise ValueError("ids debe tener un identificador por fila de data.")
+    if not ids.is_unique:
+        raise ValueError("Los identificadores (ids) deben ser únicos.")
+
+    # Posición de cada fila en el orden canónico de los identificadores,
+    # en [0, 1): se añade como última columna (no interviene en la distancia).
+    rank = pd.Series(np.arange(len(ids)), index=ids.sort_values()).loc[ids].to_numpy()
+    orden = rank / len(ids)
+    eps = 1e-9
+
+    def distancia(x, y, missing_values=np.nan):
+        d = nan_euclidean_distances(
+            x[:-1].reshape(1, -1), y[:-1].reshape(1, -1), missing_values=missing_values
+        )[0, 0]
+        return d + eps * y[-1]
+
+    valores = np.column_stack([data.to_numpy(dtype=float), orden])
+    imputer = KNNImputer(n_neighbors=n_neighbors, metric=distancia, keep_empty_features=True)
+    completos = imputer.fit_transform(valores)[:, :-1]
+    resultado = pd.DataFrame(completos, index=data.index, columns=data.columns)
+    return data.where(data.notna(), resultado)
 
 
 if __name__ == "__main__":

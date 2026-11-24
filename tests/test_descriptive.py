@@ -525,3 +525,105 @@ class TestValidacionEntradas:
         with pytest.raises(ValueError):
             desc.dispersion([5.0])
         assert desc.dispersion([5.0], ddof=0)["variance"] == 0.0
+
+
+# ---------------------------------------------------------------------------
+# knn_impute: imputación KNN con desempate determinista (corrección del CI de F5.1)
+# Referencias: sklearn.impute.KNNImputer cuando no hay empates, medias
+# calculadas a mano y ejecución completa del cuaderno de preprocesamiento.
+# ---------------------------------------------------------------------------
+
+def _datos_sin_empates():
+    rng = np.random.default_rng(0)
+    X = pd.DataFrame(rng.normal(size=(60, 4)), columns=list("abcd"))
+    X.iloc[[3, 10, 20], 0] = np.nan
+    X.iloc[[5, 33], 2] = np.nan
+    return X
+
+
+def test_knn_sin_empates_coincide_con_sklearn():
+    from sklearn.impute import KNNImputer
+
+    X = _datos_sin_empates()
+    ref = KNNImputer(n_neighbors=3).fit_transform(X)
+    assert np.allclose(desc.knn_impute(X).to_numpy(), ref, rtol=0, atol=1e-12)
+
+
+def test_knn_empate_entre_mas_de_tres_vecinos_elige_los_de_menor_id():
+    # Cinco donantes a distancia exactamente 0 del receptor (fila con ID 100).
+    datos = pd.DataFrame({"v": [np.nan, 1.0, 2.0, 3.0, 4.0, 5.0], "w": [0.0] * 6})
+    ids = [100, 10, 3, 7, 1, 5]
+    res = desc.knn_impute(datos, n_neighbors=3, ids=ids)
+    # Menores ID: 1 (v=4), 3 (v=2) y 5 (v=5) -> media 11/3
+    assert res.loc[0, "v"] == pytest.approx(11 / 3)
+    # Otro conjunto de identificadores cambia la elección de forma predecible
+    res2 = desc.knn_impute(datos, n_neighbors=3, ids=[100, 1, 2, 3, 4, 5])
+    assert res2.loc[0, "v"] == pytest.approx((1 + 2 + 3) / 3)
+
+
+def test_knn_independiente_del_orden_de_las_filas():
+    rng = np.random.default_rng(1)
+    base = pd.DataFrame({
+        "x": np.r_[np.full(8, 0.5), rng.normal(size=12)],
+        "y": np.r_[np.zeros(8), rng.normal(size=12)],
+        "z": np.r_[np.arange(8, dtype=float), rng.normal(size=12)],
+    })
+    base.loc[[0, 15], "z"] = np.nan  # el receptor 0 tiene 7 donantes empatados
+    ids = pd.Index(rng.permutation(np.arange(200, 220)))
+    referencia = desc.knn_impute(base, ids=ids).set_axis(ids)
+    for semilla in range(5):
+        perm = np.random.default_rng(semilla).permutation(len(base))
+        barajado = base.iloc[perm].reset_index(drop=True)
+        res = desc.knn_impute(barajado, ids=ids[perm]).set_axis(ids[perm])
+        pd.testing.assert_frame_equal(res.loc[referencia.index], referencia, check_exact=True)
+
+
+def test_knn_repetible_y_conserva_filas_ids_y_observados():
+    X = _datos_sin_empates()
+    X.iloc[:6, 1] = 0.0  # crea empates adicionales
+    ids = pd.Index(np.arange(1000, 1060))
+    a = desc.knn_impute(X, ids=ids)
+    b = desc.knn_impute(X, ids=ids)
+    pd.testing.assert_frame_equal(a, b, check_exact=True)
+    assert a.shape == X.shape and a.index.equals(X.index) and list(a.columns) == list(X.columns)
+    assert not a.isna().any().any()
+    observados = X.notna()
+    pd.testing.assert_frame_equal(a[observados], X[observados], check_exact=True)
+
+
+def test_knn_ids_invalidos():
+    X = _datos_sin_empates()
+    with pytest.raises(ValueError):
+        desc.knn_impute(X, ids=range(5))
+    with pytest.raises(ValueError):
+        desc.knn_impute(X, ids=[1] * len(X))
+
+
+# Aviso de zmq exclusivo de Windows al lanzar el kernel (no afecta al resultado)
+@pytest.mark.filterwarnings("ignore:Proactor event loop:RuntimeWarning")
+def test_preprocesamiento_reproduce_el_csv_versionado(tmp_path):
+    """Ejecuta el cuaderno de preprocesamiento en una copia y compara su CSV
+    con el versionado (la misma comprobación estricta que hace el CI)."""
+    import shutil
+    from pathlib import Path
+
+    import nbformat
+    from nbclient import NotebookClient
+
+    raiz = Path(__file__).resolve().parent.parent
+    origen = raiz / "notebooks" / "01_estadistica_descriptiva"
+    destino = tmp_path / "notebooks" / "01_estadistica_descriptiva"
+    shutil.copytree(raiz / "src", tmp_path / "src")
+    (destino / "data").mkdir(parents=True)
+    shutil.copy(origen / "data" / "sleephealth.xlsx", destino / "data")
+    shutil.copy(origen / "practica_preprocesamiento.ipynb", destino)
+
+    nb = nbformat.read(destino / "practica_preprocesamiento.ipynb", as_version=4)
+    NotebookClient(nb, timeout=600, kernel_name="python3",
+                   resources={"metadata": {"path": str(destino)}}).execute()
+
+    leer = lambda p: pd.read_csv(p, keep_default_na=False, na_values=[""])  # noqa: E731
+    versionado = leer(origen / "data" / "sleephealth_processed.csv")
+    regenerado = leer(destino / "data" / "sleephealth_processed.csv")
+    assert len(regenerado) == 373 and regenerado["ID"].is_unique
+    pd.testing.assert_frame_equal(versionado, regenerado, check_exact=False, rtol=1e-9)

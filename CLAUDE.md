@@ -283,6 +283,12 @@ quarto render                         # lo mismo que hace el CI
     imprime 0.000000) y se comunica `p < 0,001` cuando corresponde; las
     prácticas de M5–M6 aún usan `:.6f` (F1.7).
   - `confidence_interval_mean_t` recibe `sample_std` y asume que es la s con n−1.
+  - `knn_impute(data, n_neighbors, ids)` (corrección del CI de F5.1): envuelve
+    `KNNImputer` con una métrica que suma `1e-9·rango(ID)/n` a la distancia,
+    de modo que entre vecinos equidistantes ganan siempre los de menor `ID`.
+    Sin ella, los empates (registros idénticos salvo la edad) se resolvían
+    según el orden interno de la selección, distinto entre máquinas. La usa el
+    preprocesamiento; único cambio en el CSV: `Age` del `ID` 41, 30,33 → 30,0.
   - Fase 3: `power_z_test_mean` y `sample_size_z_test_mean` son del test z
     (σ conocida); para el test t se remite a `statsmodels` `TTestPower`. El
     tamaño muestral bilateral ignora la cola opuesta (potencia ≥ la pedida).
@@ -619,6 +625,10 @@ una con commit, PR y despliegue tras la revisión del autor)
   proyecto integrador y «Requisitos y recursos». Validada a 1440/768/375 px,
   20 enlaces sin errores, contraste AA, foco por teclado y movimiento reducido.
   Sin cambios en el menú lateral, las teorías, los notebooks ni el toolkit.
+  Corrección en el mismo PR (#11): el CI falló porque `KNNImputer` resolvía
+  de forma distinta un empate de distancia 0; se añade `desc.knn_impute` con
+  desempate por `ID` (ver §7), tests de reproducibilidad (incluida la
+  regeneración del CSV desde el cuaderno) y se regenera el CSV.
 
 ## 12. Normas para futuras sesiones
 
