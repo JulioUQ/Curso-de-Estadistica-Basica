@@ -1,130 +1,92 @@
-# Estadística Básica
+<div align="center">
 
-Curso interactivo de estadística básica orientado a la práctica, construido con [Quarto](https://quarto.org/) y publicado como libro web. Cada módulo combina teoría formal con un cuaderno de ejercicios en Python, y todo el contenido se apoya en una librería propia (`stats_toolkit`): implementa a mano los métodos con valor didáctico (intervalos, contrastes z y t, regresión, ANOVA…) y envuelve `scipy.stats` en los demás, comparando siempre sus resultados con `scipy` y `statsmodels`.
+![Curso](https://img.shields.io/badge/CURSO-6A1B9A?style=for-the-badge) ![Ruta de ciencia de datos 1/3](https://img.shields.io/badge/RUTA_DE_CIENCIA_DE_DATOS-1%2F3-8E24AA?style=for-the-badge)
 
-🔗 **Sitio en vivo:** https://juliouq.github.io/Curso-de-Estadistica-Basica/
+# Estadística básica
 
-![Estado del despliegue](https://github.com/JulioUQ/Curso-de-Estadistica-Basica/actions/workflows/deploy.yml/badge.svg)
+Curso interactivo de estadística con Python, publicado como libro web: seis módulos de teoría y práctica, un proyecto integrador y una librería propia con tests.
 
-## Contenido del curso
+[![Curso en vivo: Abrir el libro](https://img.shields.io/badge/CURSO_EN_VIVO-Abrir_el_libro-2EA043?style=for-the-badge&logo=googlechrome&logoColor=white)](https://juliouq.github.io/Curso-de-Estadistica-Basica/)
 
-| Módulo | Título | Temas | Caso de uso |
-|---|---|---|---|
-| 1 | Fundamentos y Estadística Descriptiva | Tipos de variables, medidas de tendencia central, dispersión y forma | Salarios simulados por departamento; preprocesamiento del dataset `sleephealth` |
-| 2 | Probabilidad Básica | Espacio muestral, probabilidad condicional, Teorema de Bayes, Naive Bayes intuitivo | Filtro de spam simplificado |
-| 3 | Distribuciones de Probabilidad | Bernoulli, Binomial, Poisson, Uniforme, Normal, Exponencial, Teorema Central del Límite | Modelado de tiempos de espera / conversión |
-| 4 | Inferencia Estadística | Estimación puntual, intervalos de confianza, contrastes de hipótesis (z, t, Welch, emparejados, proporciones), potencia y tamaño muestral, bootstrap | Cuatro preguntas de investigación sobre `sleephealth` |
-| 5 | Correlación y Regresión Lineal | Covarianza, correlación de Pearson y de Spearman, regresión lineal simple (OLS), R², inferencia sobre la pendiente | Publicidad y ventas; sueño y estrés en `sleephealth` |
-| 6 | ANOVA, Chi-cuadrado y Pruebas No Paramétricas | ANOVA de un factor, tamaño del efecto, Tukey, Chi-cuadrado, Mann-Whitney U, Kruskal-Wallis, Wilcoxon, prueba de signos | Tratamientos, segmentos de clientes y `sleephealth` |
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Quarto](https://img.shields.io/badge/Quarto-39729E?style=flat-square&logo=quarto&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white) ![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat-square&logo=scipy&logoColor=white) ![statsmodels](https://img.shields.io/badge/statsmodels-4051B5?style=flat-square) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 
-> **Nota sobre la numeración:** los Módulos 4, 5 y 6 de este repositorio agrupan de forma distinta algunos temas respecto a otros temarios de referencia (por ejemplo, Muestreo/TLC, Estimación e IC, y Contraste de Hipótesis aparecen aquí unificados dentro del Módulo 4 — *Inferencia Estadística*). Es una decisión deliberada para mantener el curso compacto; el contenido cubierto es equivalente.
+<sub>Ruta de ciencia de datos: **1. Estadística básica** → [2. Aprendizaje automático](https://github.com/JulioUQ/curso-aprendizaje-automatico) → [3. Deep learning](https://github.com/JulioUQ/curso-deep-learning)</sub>
 
-Cada módulo incluye:
-- **`teoria.qmd`** — desarrollo teórico con fórmulas, ejemplos, preguntas de autoevaluación y, en varios casos, un diagrama Mermaid o un gráfico interactivo (Observable JS, integrado en Quarto).
-- **`practica.ipynb`** — cuaderno Jupyter con simulaciones, visualizaciones, ejercicios propuestos y sus soluciones plegadas. Cada práctica enlaza a Google Colab y a su descarga.
-- Un módulo Python correspondiente en `src/stats_toolkit/` con las funciones usadas en la teoría y, en la mayoría de los módulos, también en la práctica (la práctica del Módulo 4 trabaja sobre todo con `scipy` y `statsmodels`, y sus ejercicios usan `stats_toolkit`).
+<img src="docs/captura-curso.png" alt="Portada del curso publicado: índice de módulos y acceso al curso" width="100%" />
 
-Además, el curso incluye un **proyecto integrador** (`notebooks/07_proyecto_integrador/`) que aplica todos los módulos a los datos de sueño, y tres **apéndices** (`apendices/`): qué prueba usar, notación y glosario.
+</div>
 
-## Estructura del repositorio
+---
 
-```
-Estadistica-Basica/
-├── _quarto.yml                # Configuración del libro (capítulos, tema, formato)
-├── index.qmd                  # Portada del curso
-├── styles.css                 # Estilos personalizados (sidebar, tablas, citas...)
-├── references.bib             # Bibliografía citable desde los .qmd
-├── requirements.txt           # Dependencias Python del proyecto
-├── requirements-dev.txt       # Dependencias de desarrollo (pytest)
-├── tests/                     # Tests de stats_toolkit (pytest)
+## Descripción general
+
+Curso práctico para aprender estadística desde cero. Cada módulo combina teoría con fórmulas y ejemplos, y un cuaderno de ejercicios con soluciones. Todo se apoya en `stats_toolkit`, una librería propia que implementa a mano los métodos con valor didáctico y compara sus resultados con `scipy` y `statsmodels`.
+
+Es el primer paso de la ruta de ciencia de datos, que continúa con [aprendizaje automático](https://github.com/JulioUQ/curso-aprendizaje-automatico) y [deep learning](https://github.com/JulioUQ/curso-deep-learning).
+
+## Contenido
+
+| Módulo | Temas | Caso práctico |
+| --- | --- | --- |
+| 1. Estadística descriptiva | Tipos de variables, tendencia central, dispersión y forma | Salarios simulados; preprocesamiento de `sleephealth` |
+| 2. Probabilidad | Probabilidad condicional, Teorema de Bayes, Naive Bayes | Filtro de spam simplificado |
+| 3. Distribuciones | Bernoulli, binomial, Poisson, normal, exponencial, TCL | Tiempos de espera y conversión |
+| 4. Inferencia | Intervalos de confianza, contrastes z y t, potencia, bootstrap | Cuatro preguntas sobre `sleephealth` |
+| 5. Correlación y regresión | Pearson, Spearman, regresión lineal simple, R² | Publicidad y ventas; sueño y estrés |
+| 6. ANOVA y no paramétricas | ANOVA, Tukey, chi-cuadrado, Mann-Whitney, Kruskal-Wallis, Wilcoxon | Tratamientos y segmentos de clientes |
+
+Además: un **proyecto integrador** sobre los datos de sueño y tres **apéndices** (qué prueba usar, notación y glosario).
+
+## Tecnologías y herramientas
+
+| Ámbito | Herramientas |
+| --- | --- |
+| Publicación | Quarto (libro web), Mermaid, Observable JS |
+| Cálculo | Python, NumPy, pandas, SciPy, statsmodels, matplotlib |
+| Calidad | pytest, ejecución de las prácticas en CI |
+| Despliegue | GitHub Actions y GitHub Pages |
+
+## Estructura del proyecto
+
+```text
+.
+├── _quarto.yml              # Configuración del libro
+├── index.qmd                # Portada
 ├── notebooks/
-│   ├── 01_estadistica_descriptiva/
-│   ├── 02_probabilidad/
-│   ├── 03_distribuciones/
-│   ├── 04_inferencia/
-│   ├── 05_regresion/
-│   ├── 06_anova_chi2/
-│   │   ├── teoria.qmd
-│   │   └── practica.ipynb
-│   └── 07_proyecto_integrador/  # Proyecto final (practica.ipynb)
-├── apendices/                 # Qué prueba usar, notación y glosario
-├── src/
-│   └── stats_toolkit/         # Librería Python del curso
-│       ├── __init__.py
-│       ├── descriptive.py
-│       ├── probability.py
-│       ├── distributions.py
-│       ├── inference.py
-│       ├── regression.py
-│       └── group_comparisons.py
-└── .github/workflows/
-    ├── deploy.yml              # Publica el libro en GitHub Pages (push a main)
-    └── ci-check.yml            # En cada Pull Request: pytest, ejecución de las prácticas y render (sin publicar)
+│   ├── 01_estadistica_descriptiva/ … 06_anova_chi2/   # teoria.qmd + practica.ipynb
+│   └── 07_proyecto_integrador/
+├── apendices/               # Qué prueba usar, notación y glosario
+├── src/stats_toolkit/       # Librería del curso
+├── tests/                   # Tests de stats_toolkit
+└── .github/workflows/       # deploy.yml (publica) y ci-check.yml (valida cada PR)
 ```
 
-## Cómo ejecutarlo en local
+## Instalación y uso
 
-**Requisitos previos:** [Quarto CLI](https://quarto.org/docs/get-started/) instalado y Python 3.12+.
+Requisitos: [Quarto CLI](https://quarto.org/docs/get-started/) y Python 3.12 o superior.
 
 ```bash
-# 1. Clonar el repositorio
 git clone https://github.com/JulioUQ/Curso-de-Estadistica-Basica.git
 cd Curso-de-Estadistica-Basica
-
-# 2. Crear y activar un entorno virtual
 python -m venv venv
-source venv/Scripts/activate      # Windows (Git Bash)
-# source venv/bin/activate        # macOS / Linux
-
-# 3. Instalar dependencias
+source venv/Scripts/activate      # Windows (Git Bash); en macOS/Linux: source venv/bin/activate
 pip install -r requirements.txt
-
-# 4. Levantar el libro con recarga en vivo
 quarto preview
 ```
 
-`quarto preview` abre el libro en el navegador y se actualiza automáticamente al guardar cambios. Para generar el sitio estático sin servirlo (equivalente a lo que hace el despliegue), usa `quarto render`.
+Cada práctica tiene un enlace **Abrir en Google Colab**: su primera celda clona el repositorio e instala lo necesario, así que se puede seguir sin instalar nada.
 
-## Uso en Google Colab
+Los cambios se trabajan en la rama `test` y llegan a `main` mediante pull request. El flujo `ci-check.yml` ejecuta los tests, las prácticas y el render antes de fusionar; `deploy.yml` publica el libro tras cada merge.
 
-Cada práctica empieza con un enlace **Abrir en Google Colab**. Su primera celda de código solo actúa en Colab: clona este repositorio en `/content`, instala las bibliotecas de cálculo de `requirements.txt` que falten (si instala o actualiza alguna, pide reiniciar la sesión) y se sitúa en la carpeta del cuaderno, de modo que `stats_toolkit` y los datos se cargan con las mismas rutas relativas que en local. Los enlaces apuntan a la rama `main`.
+## Aspectos técnicos destacados
 
-Los datos procesados que usan varias prácticas (`notebooks/01_estadistica_descriptiva/data/sleephealth_processed.csv`) están versionados: ninguna práctica necesita ejecutar antes otra. La práctica de preprocesamiento muestra cómo se generan, y el CI comprueba que el archivo regenerado coincide con el versionado.
-
-## Uso sin conexión
-
-El libro publicado carga desde CDN MathJax (fórmulas) y las bibliotecas de los dos gráficos interactivos (Observable). Sin conexión, el texto, el código, las figuras y los diagramas se siguen viendo; las fórmulas aparecen en LaTeX sin formatear y, en lugar de los gráficos interactivos, se muestra un aviso explicativo.
-
-## Flujo de trabajo del proyecto
-
-El repositorio sigue un flujo de **rama de desarrollo → Pull Request → producción**, pensado para validar cada cambio antes de que llegue al sitio publicado. Esta es la rutina para cada módulo nuevo:
-
-1º Trabajar en `test`, commit y `git push origin test`.
-2º Abrir el PR a `main` en GitHub, esperar a que `render-check` salga en verde y hacer el merge (merge commit).
-3º Sincronizar en local: `git checkout main`, `git pull origin main`, `git checkout test`, `git merge origin/main`, `git push origin test`.
-
-```
-test (rama de trabajo)
-  │
-  ├── commit + push
-  │
-  └── Pull Request hacia main
-        │
-        ├── ci-check.yml renderiza el sitio (sin publicar) para detectar errores
-        │
-        └── Merge → dispara deploy.yml → publica en GitHub Pages
-```
-
-- `main` está protegida: todo cambio debe pasar por una Pull Request, y el check `render-check` debe estar en verde antes de poder fusionar.
-- `test` es la rama de trabajo permanente; tras cada merge se sincroniza con `git pull origin main`.
-
-## Tecnologías
-
-- **[Quarto](https://quarto.org/)** — motor de publicación del libro (Markdown + código ejecutable + Mermaid).
-- **Python** — `numpy`, `pandas`, `matplotlib`, `scipy` para el cálculo y la visualización.
-- **GitHub Actions** — integración continua (validación de PRs) y despliegue automático.
-- **GitHub Pages** — hosting del sitio estático generado.
+- Librería propia con tests que valida cada método frente a `scipy` y `statsmodels`.
+- Integración continua que ejecuta todas las prácticas y comprueba que los datos procesados versionados coinciden con los regenerados.
+- Prácticas ejecutables en local y en Google Colab con las mismas rutas.
+- Gráficos interactivos con Observable JS integrados en Quarto.
 
 ## Autor
 
-Julio Úbeda Quesada
+**Julio Úbeda Quesada** · Data Scientist
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-0B2545?style=flat-square&logo=astro&logoColor=white)](https://juliouq.github.io/Portfolio-Web---JulioUQ/es/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square)](https://www.linkedin.com/in/juliouq/) [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/JulioUQ)
