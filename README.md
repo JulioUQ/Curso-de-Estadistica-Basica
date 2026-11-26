@@ -1,12 +1,27 @@
-# Estadística Básica
+# Curso · Estadística básica con Python
+
+Curso interactivo en Quarto con teoría, ejercicios en Python y una biblioteca didáctica propia que contrasta sus resultados con SciPy y statsmodels.
+
+[![Sitio en vivo](https://img.shields.io/badge/Sitio_en_vivo-0369A1?style=flat)](https://juliouq.github.io/Curso-de-Estadistica-Basica/) · [Libro Quarto en GitHub Pages](https://juliouq.github.io/Curso-de-Estadistica-Basica/)
+
+[![Estado del despliegue](https://github.com/JulioUQ/Curso-de-Estadistica-Basica/actions/workflows/deploy.yml/badge.svg)](https://github.com/JulioUQ/Curso-de-Estadistica-Basica/actions/workflows/deploy.yml)
+
+## Tecnologías
+
+Quarto, Python, SciPy y statsmodels
+
+## Explorar el repositorio
+
+- [`notebooks`](./notebooks)
+- [`index.qmd`](./index.qmd)
+
+## Documentación
 
 Curso interactivo de estadística básica orientado a la práctica, construido con [Quarto](https://quarto.org/) y publicado como libro web. Cada módulo combina teoría formal con un cuaderno de ejercicios en Python, y todo el contenido se apoya en una librería propia (`stats_toolkit`): implementa a mano los métodos con valor didáctico (intervalos, contrastes z y t, regresión, ANOVA…) y envuelve `scipy.stats` en los demás, comparando siempre sus resultados con `scipy` y `statsmodels`.
 
-🔗 **Sitio en vivo:** https://juliouq.github.io/Curso-de-Estadistica-Basica/
 
-![Estado del despliegue](https://github.com/JulioUQ/Curso-de-Estadistica-Basica/actions/workflows/deploy.yml/badge.svg)
 
-## Contenido del curso
+#### Contenido del curso
 
 | Módulo | Título | Temas | Caso de uso |
 |---|---|---|---|
@@ -26,7 +41,7 @@ Cada módulo incluye:
 
 Además, el curso incluye un **proyecto integrador** (`notebooks/07_proyecto_integrador/`) que aplica todos los módulos a los datos de sueño, y tres **apéndices** (`apendices/`): qué prueba usar, notación y glosario.
 
-## Estructura del repositorio
+#### Estructura del repositorio
 
 ```
 Estadistica-Basica/
@@ -62,7 +77,7 @@ Estadistica-Basica/
     └── ci-check.yml            # En cada Pull Request: pytest, ejecución de las prácticas y render (sin publicar)
 ```
 
-## Cómo ejecutarlo en local
+#### Cómo ejecutarlo en local
 
 **Requisitos previos:** [Quarto CLI](https://quarto.org/docs/get-started/) instalado y Python 3.12+.
 
@@ -85,17 +100,17 @@ quarto preview
 
 `quarto preview` abre el libro en el navegador y se actualiza automáticamente al guardar cambios. Para generar el sitio estático sin servirlo (equivalente a lo que hace el despliegue), usa `quarto render`.
 
-## Uso en Google Colab
+#### Uso en Google Colab
 
 Cada práctica empieza con un enlace **Abrir en Google Colab**. Su primera celda de código solo actúa en Colab: clona este repositorio en `/content`, instala las bibliotecas de cálculo de `requirements.txt` que falten (si instala o actualiza alguna, pide reiniciar la sesión) y se sitúa en la carpeta del cuaderno, de modo que `stats_toolkit` y los datos se cargan con las mismas rutas relativas que en local. Los enlaces apuntan a la rama `main`.
 
 Los datos procesados que usan varias prácticas (`notebooks/01_estadistica_descriptiva/data/sleephealth_processed.csv`) están versionados: ninguna práctica necesita ejecutar antes otra. La práctica de preprocesamiento muestra cómo se generan, y el CI comprueba que el archivo regenerado coincide con el versionado.
 
-## Uso sin conexión
+#### Uso sin conexión
 
 El libro publicado carga desde CDN MathJax (fórmulas) y las bibliotecas de los dos gráficos interactivos (Observable). Sin conexión, el texto, el código, las figuras y los diagramas se siguen viendo; las fórmulas aparecen en LaTeX sin formatear y, en lugar de los gráficos interactivos, se muestra un aviso explicativo.
 
-## Flujo de trabajo del proyecto
+#### Flujo de trabajo del proyecto
 
 El repositorio sigue un flujo de **rama de desarrollo → Pull Request → producción**, pensado para validar cada cambio antes de que llegue al sitio publicado. Esta es la rutina para cada módulo nuevo:
 
@@ -118,13 +133,13 @@ test (rama de trabajo)
 - `main` está protegida: todo cambio debe pasar por una Pull Request, y el check `render-check` debe estar en verde antes de poder fusionar.
 - `test` es la rama de trabajo permanente; tras cada merge se sincroniza con `git pull origin main`.
 
-## Tecnologías
+#### Tecnologías
 
 - **[Quarto](https://quarto.org/)** — motor de publicación del libro (Markdown + código ejecutable + Mermaid).
 - **Python** — `numpy`, `pandas`, `matplotlib`, `scipy` para el cálculo y la visualización.
 - **GitHub Actions** — integración continua (validación de PRs) y despliegue automático.
 - **GitHub Pages** — hosting del sitio estático generado.
 
-## Autor
+#### Autor
 
 Julio Úbeda Quesada
